@@ -4,16 +4,29 @@ const db = require('../models');
 
 // DEFINING METHODS
 // ---------------------------------------------------
-module.exports = ({
-    signUp: (user) => {
-        console.log('sign up!')
+module.exports = {
+    findOne: () => {
+
     },
 
-    signIn: (user) => {
-        console.log('sign in!')
+    findOne: () => {
+
     },
 
-    update: (user) => {
-        console.log('updating')
+    findAll: () => {
+
+    },
+
+    create: () => {
+
+    },
+
+    update: () => {
+
+    },
+
+    delete: () => {
+
     }
-})
+    
+}

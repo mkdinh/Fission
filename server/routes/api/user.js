@@ -1,21 +1,19 @@
 // IMPORT DEPENDENCIES
 // ---------------------------------------------------
 const router = require("express").Router();
-const userController = require("../../controllers/usersController");
+const usersController = require("../../controllers/usersController.js");
 
 // API ROUTES
 // ---------------------------------------------------
-// // Matches with "/api/books"
-// router.route("/")
-//   .get(booksController.findAll)
-//   .post(booksController.create);
+// Matches with "/api/user"
+router.route('/signUp')
+    .post(usersController.signUp);
 
-// // Matches with "/api/books/:id"
-// router
-//   .route("/:id")
-//   .get(booksController.findById)
-//   .put(booksController.update)
-//   .delete(booksController.remove);
+router.route('/signIn')
+    .post(usersController.signIn);
+
+router.route('/:id')
+    .put(usersController.update);
 
 // EXPORT ROUTES
 // ---------------------------------------------------

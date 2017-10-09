@@ -1,6 +1,6 @@
 // Import Dependencies
 //--------------------------------------------------------
-const compiler = require('./compiler.js');
+const compiler = require('./compiler.1.js');
 
 // Sample Template
 //--------------------------------------------------------

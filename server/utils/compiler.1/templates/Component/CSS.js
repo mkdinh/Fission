@@ -1,5 +1,4 @@
 module.exports = (props) => {
-    // props = JSON.stringify(props);
     
     let className = props.className;
     delete props.className;
@@ -12,6 +11,6 @@ module.exports = (props) => {
     
     let css = `${className} {
     ${attr}}`;
-
-    console.log(css)
+    
+    return css
 }

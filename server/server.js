@@ -4,24 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes');
-const template = require('./templates')
-
-// Sample Template
-//--------------------------------------------------------
-const sample = {
-    index: {
-        js: {},
-        css: {}
-    },
-
-    App: {
-        js: {},
-        test: 'App.test.js',
-        css: {},
-        children: {}
-    }
-}
-
 
 // SETTING UP DATABASE
 // --------------------------------------------

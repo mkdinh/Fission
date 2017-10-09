@@ -13,12 +13,10 @@ ${children? children.map(child => `import {${child.name}} from '../components/${
 class App extends Component {
   render() {
     return (
-      <div className="App">
       ${children ? `${helper.childrenComp(children)}` : ""}
-      </div>
     );
   }
 }
 
-export default App;
+export {App};
 `

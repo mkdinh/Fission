@@ -17,6 +17,7 @@ module.exports = (template,Comp,job) => {
     const index = dir + `index.js`;
     
     fse.outputFile(file, template)
+    
     if(fse.existsSync(path)){
         fse.appendFile(index,`\nimport {${Comp}} from './${Comp}'`)    
     }else{

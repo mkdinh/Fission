@@ -13,9 +13,11 @@ module.exports = (children,job) => {
     const js = dir + "App.js";
     const test = dir + "App.test.js";
     const css = dir + "App.css";
+    const index = dir + "index.js"
     
     fse.outputFile(js, App.js(children));
     fse.outputFile(test, App.test());
-    fse.outputFile(css, "/* Empty CSS file */")
-    
+    fse.outputFile(index, `export {App} from './App'`);
+    fse.outputFile(css, "/* Empty CSS file */");
+
 }

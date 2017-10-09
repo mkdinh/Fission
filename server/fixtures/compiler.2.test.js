@@ -37,41 +37,41 @@ const sample = {
                         },
                         children: [
                             {
-                                name: 'Title',
-                                className: 'title',
+                                name: 'Col',
+                                className: 'col-5',
                                 js: {
                                     type: 'Dumb',
-                                    tag: 'h1' 
+                                    tag: 'div' 
                                 },
                                 css: {
-                                    color: 'black'
-                                }
-                            }
-                        ]
-                    },         
-                      
-                    {
-                        name: 'Col',
-                        className: 'col-5',
-                        js: {
-                            type: 'Dumb',
-                            tag: 'div' 
-                        },
-                        css: {
-                            width: "auto",
-                            "background-color": "blue"
-                        },
-                        children: [
-                            {
-                                name: 'Paragraph',
-                                className: 'paragraph',
-                                js: {
-                                    type: 'Dumb',
-                                    tag: 'p' 
+                                    width: "auto",
+                                    "background-color": "blue"
                                 },
-                                css: {
-                                    "font-size": "1rem"
-                                }
+                                children: [
+                                    {
+                                        name: 'Title',
+                                        className: 'title',
+                                        js: {
+                                            type: 'Dumb',
+                                            tag: 'h1' 
+                                        },
+                                        css: {
+                                            color: 'black'
+                                        }
+                                    },
+                                    
+                                    {
+                                        name: 'Paragraph',
+                                        className: 'paragraph',
+                                        js: {
+                                            type: 'Dumb',
+                                            tag: 'p' 
+                                        },
+                                        css: {
+                                            "font-size": "1rem"
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     }

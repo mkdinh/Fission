@@ -24,7 +24,7 @@ module.exports = {
         let file = "";
 
         children.forEach(child => {   
-            file += `import {${child.name}} from '../${child.name}';\n`
+            file += `import { ${child.name} } from '../${child.name}';\n`
         })
 
         return file;

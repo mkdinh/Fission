@@ -12,9 +12,9 @@ module.exports = function Dumb(props) {
 import React from 'react';
 ${children? helper.importChildren(children): ""}
 
-// Export component to application
+// Create stateless component
 //--------------------------------------------------------
-export default (props) =>
+const ${name} = (props) =>
 
 ${children ?
 `   
@@ -24,6 +24,10 @@ ${children ?
 :
 `    ${openTag} Add nesting component here ${closeTag}`
 }
+
+// Export component to application
+//--------------------------------------------------------
+export {${name}};
 `
     )
 }

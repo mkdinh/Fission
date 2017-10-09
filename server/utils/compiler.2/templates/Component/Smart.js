@@ -16,12 +16,14 @@ class ${props.name} extends Component{
     }
 
     render(){
-        ${helper.childrenComp(props.children)}
+        return(
+            ${helper.childrenComp(props.children)}
+        )
     }
 };
 
 
 // Export component to application
 //--------------------------------------------------------
-export default ${props.name};
+export {${props.name}};
 `

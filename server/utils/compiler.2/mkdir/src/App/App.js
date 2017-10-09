@@ -1,8 +1,8 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Container} from '../components/Container'
 
 // Create App component
 //--------------------------------------------------------
@@ -11,8 +11,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         
-        <div className='container fluid'> Add more nesting component here </div>
+      
+        	<Container> Add more nesting component here </Container>
 
       </div>
     );

@@ -4,11 +4,14 @@ module.exports = (props) => {
     let attr = "";
 
     for(key in props.css){
-        attr += `\t${key}: ${props.css[key]}\n`
+        if(attr === ""){
+            attr += `${key}: ${props.css[key]};\n`
+        }else{
+            attr += `\t${key}: ${props.css[key]};\n`
+        }
     }
     
-    let css = `${className} {
-    ${attr}}`;
+    let css = `${className} {\n\t${attr}}`;
     
     return css
 }

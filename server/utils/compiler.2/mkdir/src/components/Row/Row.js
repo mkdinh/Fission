@@ -1,14 +1,16 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
+import {Title} from '../Title';
 
 
 // Export component to application
 //--------------------------------------------------------
 export default (props) =>
 
+   
     <div className='row'> 
-
-        <h1 className='title'> Add nesting component here </h1>
+        
+        	<Title> Add more nesting component here </Title>
 
     </div>

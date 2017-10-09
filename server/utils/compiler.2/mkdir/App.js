@@ -6,7 +6,7 @@ module.exports = (children) => {
 
     // create source dir
     const dir = path.join(__dirname,'src/App/');
-    console.log(__dirname)
+
     // create App files
     const js = dir + "App.js";
     const test = dir + "App.test.js";

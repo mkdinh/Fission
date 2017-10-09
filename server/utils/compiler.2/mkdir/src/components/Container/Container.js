@@ -1,27 +1,30 @@
-
-const helper = require('../../helpers/template.helper')
-
-module.exports = (props) =>
-`// Import React dependencies
+// Import React dependencies
 //--------------------------------------------------------
 import React, {Component} from 'react';
-${props.children? helper.importChildren(props.children) : ""}
+import {Row} from '../Row';
+import {Col} from '../Col';
+
 
 // Create new stateful component
 //--------------------------------------------------------
-class ${props.name} extends Component{
+class Container extends Component{
 
     state = {
 
     }
 
     render(){
-        ${helper.childrenComp(props.children)}
+        <div>
+
+        	<Row> Add more nesting component here </Row>
+
+        	<Col> Add more nesting component here </Col>
+
+		</div>
     }
 };
 
 
 // Export component to application
 //--------------------------------------------------------
-export default ${props.name};
-`
+export default Container;

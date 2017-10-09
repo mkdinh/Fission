@@ -9,7 +9,7 @@ const path = require('path');
 module.exports = (template,Comp) => {
 
     // create source dir
-    const dir = path.join(__dirname,`src/App/${Comp}/`);
+    const dir = path.join(__dirname,`src/components/${Comp}/`);
 
     // create App files
     const file = dir + `${Comp}.css`;

@@ -1,6 +1,7 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
+import {Paragraph} from '../Paragraph';
 
 
 // Export component to application
@@ -9,7 +10,7 @@ export default (props) =>
 
    
     <div className='col-5'> 
-
-        <p className='paragraph'> Add nesting component here </p>
+        
+        	<Paragraph> Add more nesting component here </Paragraph>
 
     </div>

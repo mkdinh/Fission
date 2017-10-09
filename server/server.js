@@ -4,6 +4,24 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const template = require('./templates')
+
+// Sample Template
+//--------------------------------------------------------
+const sample = {
+    index: {
+        js: {},
+        css: {}
+    },
+
+    App: {
+        js: {},
+        test: 'App.test.js',
+        css: {},
+        children: {}
+    }
+}
+
 
 // SETTING UP DATABASE
 // --------------------------------------------
@@ -28,7 +46,7 @@ mongoose.connect(
 let app = express();
 
 // assign port to listen to 
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 3001;
 
 // parse body in HTTP request
 app.use(bodyParser.urlencoded({extended: false}));

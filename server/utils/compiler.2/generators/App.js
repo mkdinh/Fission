@@ -1,11 +1,13 @@
 const fse = require('fs-extra');
 const path = require('path');
-const App = require('../templates.2/App'); 
+const App = require('../templates/App'); 
 
-module.exports = (children) => {
-
+module.exports = (children,job) => {
+    
+    const jobDir = process.cwd() + `/server/jobs/${job}/`;
+    
     // create source dir
-    const dir = path.join(__dirname,'src/App/');
+    const dir = path.join(jobDir,'src/App/');
 
     // create App files
     const js = dir + "App.js";

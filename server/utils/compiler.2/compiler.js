@@ -1,14 +1,15 @@
 // Import Dependencies
 //--------------------------------------------------------
-const templater = require('./templater.2');
+const templater = require('./templater');
 
 // Complier Modules
 //--------------------------------------------------------
-module.exports = function compile(package, parentKey) {
+module.exports = function compile(package, parentKey, num) {
     // if this is a recursive interation, set parent the name of parent object for reference
     let parent = parentKey || "App";
+    let jobNum = num || package.jobNum;
     let compiledLevel = false;
-    
+    console.log(jobNum)
         // loop through each key in object and recursively check if key value is an object
         for(component in package){
         
@@ -35,15 +36,15 @@ module.exports = function compile(package, parentKey) {
 
                     package[component].forEach(child => {
                         console.log(`-----------------------${parent}--------------------------`)
-                        compile(child ,parent);
+                        compile(child ,parent, jobNum);
                     })
 
                 }else if(!compiledLevel){
                     // if component is a attributes (js/css)
                     // recursive loop to read over files parameters
                     // send the whole object as argument to templater to generate files
-                    templater(package,parent, () => { 
-                        compile(package[component],parent);
+                    templater(package,parent, jobNum, () => { 
+                        compile(package[component],parent, jobNum);
                         compiledLevel = true;
                     })
                             

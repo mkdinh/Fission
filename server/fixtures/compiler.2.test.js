@@ -1,11 +1,14 @@
 // Import Dependencies
 //--------------------------------------------------------
-const compiler = require('./compiler.2.js');
+const compiler = require('../utils/compiler.2/compiler.js');
 
 // Sample Template
 //--------------------------------------------------------
+const jobNum = Math.floor(Math.random() * 10000000000)  
+
 const sample = {
-    
+    jobNum: jobNum,
+
     App: {
         name: 'App',
         test: 'App.test.js',

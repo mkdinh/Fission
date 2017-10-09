@@ -1,12 +1,14 @@
 const fse = require('fs-extra');
 const path = require('path');
-const IndexJS = require('../templates.2/Index/index.js'); 
-const IndexCSS = require('../templates.2/Index/style.js');
+const IndexJS = require('../templates/Index/index.js'); 
+const IndexCSS = require('../templates/Index/style.js');
 
-module.exports = () => {
-
+module.exports = (job) => {
+    
+    const jobDir = process.cwd() + `/server/jobs/${job}/`;
+    
     // create source dir
-    const dir = path.join(__dirname,'src/');
+    const dir = path.join(jobDir,'src/');
     
     // create App files
     const js = dir + "index.js";

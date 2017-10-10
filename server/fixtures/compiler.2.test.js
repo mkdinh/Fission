@@ -17,6 +17,54 @@ const sample = {
         test: "App.test.js",
         children:[
                 {
+                    name: "Nav",
+                    js: {
+                        type: "Smart",
+                        tag: "nav",
+                        value: "<a> href='#' class='brand-logo'>Logo</a>"
+                    },
+                    children: [
+                        {
+                            name: "NavList",
+                            className: "right hide-on-med-and-down",
+                            js: {
+                                type: "Smart",
+                                tag: "ul"
+                            },
+                            children: [
+                                {
+                                    name: "NavLink",
+                                    className: "",
+                                    js: {
+                                        type: "Dumb",
+                                        tag: "il",
+                                        value: "<a href='#'>Sass</a>"
+                                    },
+                                },
+                                {
+                                    name: "NavLink",
+                                    className: "",
+                                    js: {
+                                        type: "Dumb",
+                                        tag: "il",
+                                        value: "<a href='#'>Sass</a>"
+                                    }
+                                },
+                                {
+                                    name: "NavLink",
+                                    className: "",
+                                    js: {
+                                        type: "Dumb",
+                                        tag: "il",
+                                        value: "<a href='#'>Sass</a>"
+                                    }
+                                },
+                            ]
+                        }
+                    ] 
+                },
+
+                {
                 name: "Container",
                 className: "container",
                 js: {

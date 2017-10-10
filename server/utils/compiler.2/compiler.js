@@ -9,7 +9,7 @@ module.exports = function compile(package, parentKey, num) {
     let parent = parentKey || "App";
     let jobNum = num || package.jobNum;
     let compiledLevel = false;
-    console.log(jobNum)
+
         // loop through each key in object and recursively check if key value is an object
         for(component in package){
         
@@ -30,9 +30,9 @@ module.exports = function compile(package, parentKey, num) {
 
                 if(component === 'children'){
                     // if the component is a children
-                    console.log(`##########################################################################`)
-                    console.log(`                               ${parent}                                  `)
-                    console.log(`##########################################################################`)
+                    // console.log(`##########################################################################`)
+                    // console.log(`                               ${parent}                                  `)
+                    // console.log(`##########################################################################`)
 
                     package[component].forEach(child => {
                         // console.log(`-----------------------${parent}--------------------------`)

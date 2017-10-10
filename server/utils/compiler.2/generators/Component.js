@@ -7,20 +7,31 @@ const path = require('path');
 //--------------------------------------------------------
 module.exports = (template,Comp,job) => {
 
+    // set job directory
     const jobDir = process.cwd() + `/server/jobs/${job}/`;
     
     // create source dir
     const dir = path.join(jobDir,`src/components/${Comp}/`);
     
-    // create App files
+    // create component files
     const file = dir + `${Comp}.js`;
     const index = dir + `index.js`;
     
-    fse.outputFile(file, template)
+    // create file with template if isnt exist
+    // prevent multiple overwrites if using the same component as children
+    // if(!fse.existsSync(file)){
+    //     fse.outputFile(file, template)
+    // }else{
+    //     console.log(`${Comp}.js already exists!`)
+    // }
     
-    if(fse.existsSync(path)){
-        fse.appendFile(index,`\nimport {${Comp}} from './${Comp}'`)    
+    fse.outputFile(file,template)
+    
+    // if index file doesnt exist, create index file and write export code
+    // else if it does exist, then append to the file
+    if(fse.existsSync(index)){
+        fse.appendFile(index,`\nexport {${Comp}} from './${Comp}';`)    
     }else{
-        fse.outputFile(index,`export {${Comp}} from './${Comp}'\n`)
+        fse.outputFile(index,`export {${Comp}} from './${Comp}';\n`)
     }
 }

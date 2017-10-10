@@ -3,31 +3,47 @@ const helper = require('../../helpers/template.helper')
 
 module.exports = (props) => {
 
-    
     let {js, css, className, name, children} = props;
     let openTag = `<${js.tag} className='${className}'>`;
-    let closeTag = `</${js.tag}>`
-    
+    let closeTag = `</${js.tag}>`;
+    let singleTag = `<${js.tag}/>`;
+
+    let inherit;
+    let value;
+
+    children ? inherit = `{this.props.children}` : inherit = "";
+    js.value ? value = js.value : value = "";
+
+    // \t\t\t\t${helper.children(children,'Smart')}
     return(
 
 `// Import React dependencies
 //--------------------------------------------------------
 import React, {Component} from 'react';
-import './${name}.css'
-${props.children? helper.importChildren(props.children) : ""}
+import './${name}.css';
+${props.children? helper.import(props.children) : ""}
+
 // Create new stateful component
 //--------------------------------------------------------
 class ${props.name} extends Component{
     
-    state = {
-        
-    }
-    
-    render(){
-        return(
-            ${openTag}\n\n${helper.childrenComp(props.children)}\n\n\t\t\t${closeTag}
-        )
-    }
+\tstate = {
+
+\t}
+
+\trender(){
+\t\treturn(
+
+\t\t\t${children ? `${openTag}
+
+\t\t\t\t${inherit + value}
+
+\t\t\t${closeTag}` 
+
+: `\t\t\t${singleTag}`}
+
+\t\t)
+\t}
 };
 
 

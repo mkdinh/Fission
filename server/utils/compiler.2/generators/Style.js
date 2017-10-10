@@ -7,6 +7,7 @@ const path = require('path');
 //--------------------------------------------------------
 module.exports = (template,Comp,job) => {
     
+    // set job directory
     const jobDir = process.cwd() + `/server/jobs/${job}/`;
 
     // create source dir

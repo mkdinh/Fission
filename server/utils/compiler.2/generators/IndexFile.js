@@ -5,6 +5,7 @@ const IndexCSS = require('../templates/Index/style.js');
 
 module.exports = (job) => {
     
+    // set job directory
     const jobDir = process.cwd() + `/server/jobs/${job}/`;
     
     // create source dir

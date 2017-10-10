@@ -1,8 +1,7 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './Col.css'
-import { Title } from '../Title';
+import './Col.css';
 import { Paragraph } from '../Paragraph';
 
 
@@ -10,14 +9,11 @@ import { Paragraph } from '../Paragraph';
 //--------------------------------------------------------
 const Col = (props) =>
 
-   
-    <div className='col-5'> 
-        
-            <Title> Add more nesting component here </Title>
+	<div className='col-5'>
 
-            <Paragraph> Add more nesting component here </Paragraph>
+		{props.children}
 
-    </div>
+	</div>
 
 // Export component to application
 //--------------------------------------------------------

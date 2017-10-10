@@ -12,13 +12,11 @@ const Col = (props) =>
 
    
     <div className='col-5'> 
-        <div>
+        
+            <Title> Add more nesting component here </Title>
 
-            	<Title> Add more nesting component here </Title>
+            <Paragraph> Add more nesting component here </Paragraph>
 
-            	<Paragraph> Add more nesting component here </Paragraph>
-
-</div>
     </div>
 
 // Export component to application

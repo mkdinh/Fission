@@ -9,12 +9,11 @@ import { Col } from '../Col';
 //--------------------------------------------------------
 const Row = (props) =>
 
-   
-    <div className='row'> 
-        
-            	<Col> Add more nesting component here </Col>
+	<div className='row'>
 
-    </div>
+		<Col>Add more nesting component here </Col>
+
+	</div>
 
 // Export component to application
 //--------------------------------------------------------

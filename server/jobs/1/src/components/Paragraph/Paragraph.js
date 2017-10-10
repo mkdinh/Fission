@@ -1,21 +1,15 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './Row.css'
-import { Col } from '../Col';
+import './Paragraph.css'
 
 
 // Create stateless component
 //--------------------------------------------------------
-const Row = (props) =>
+const Paragraph = (props) =>
 
-   
-    <div className='row'> 
-        
-            	<Col> Add more nesting component here </Col>
-
-    </div>
+<p className='paragraph'> Add nesting component here </p>
 
 // Export component to application
 //--------------------------------------------------------
-export {Row};
+export {Paragraph};

@@ -35,7 +35,7 @@ module.exports = function compile(package, parentKey, num) {
                     console.log(`##########################################################################`)
 
                     package[component].forEach(child => {
-                        console.log(`-----------------------${parent}--------------------------`)
+                        // console.log(`-----------------------${parent}--------------------------`)
                         compile(child ,parent, jobNum);
                     })
 

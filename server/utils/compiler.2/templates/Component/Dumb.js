@@ -10,24 +10,20 @@ module.exports = function Dumb(props) {
 `// Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
+import './${name}.css'
 ${children? helper.importChildren(children): ""}
 
 // Create stateless component
 //--------------------------------------------------------
 const ${name} = (props) =>
 
-${children ?
-`   
-    ${openTag} 
-        ${helper.childrenComp(children)}
-    ${closeTag}`
-:
-`    ${openTag} Add nesting component here ${closeTag}`
+${children ? `\t${openTag}\n\n${helper.childrenComp(children,'Dumb')}\n\n\t${closeTag}` 
+: 
+`${openTag} Add nesting component here ${closeTag}`
 }
 
 // Export component to application
 //--------------------------------------------------------
-export {${name}};
-`
+export {${name}};`
     )
 }

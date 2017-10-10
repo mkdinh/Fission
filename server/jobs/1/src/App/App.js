@@ -10,9 +10,7 @@ import {Container} from '../components/Container'
 class App extends Component {
   render() {
     return (
-      
-            <Container> Add more nesting component here </Container>
-
+      				<Container>Add more nesting component here </Container>
     );
   }
 }

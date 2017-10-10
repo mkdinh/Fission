@@ -6,14 +6,23 @@ const generate = require('./generators');
 
 //templating
 //--------------------------------------------------------
-module.exports = (props,parent,job,cb) => {
+module.exports = (props,parent,job,jobType, cb) => {
     
     let {name, className, js, css, children} = props;
     
-    if(parent === 'App'){
+    if(jobType === 'createApp'){
         let AppChildren = props.App.children;
         generate.App(AppChildren, job);
         generate.Index(job);
+    }else{
+
+        // set src directory
+        const jobDir = process.cwd() + `/server/jobs/${job}/src/`;
+        
+        // create job directory
+        if(fse.existsSync(jobDir)){
+            fse.mkdir(jobDir)
+        }
     }
 
     if(js){

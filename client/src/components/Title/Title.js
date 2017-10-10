@@ -10,10 +10,11 @@ const Title = (props) =>
 
 	<h1 className='title'>
 
-		{props.children}
+		Welcome to the PRC Application
 
 	</h1>
 
 // Export component to application
 //--------------------------------------------------------
-export {Title};
+export { Title };
+

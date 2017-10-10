@@ -17,4 +17,5 @@ const Col = (props) =>
 
 // Export component to application
 //--------------------------------------------------------
-export {Col};
+export { Col };
+

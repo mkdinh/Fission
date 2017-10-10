@@ -17,4 +17,5 @@ const Row = (props) =>
 
 // Export component to application
 //--------------------------------------------------------
-export {Row};
+export { Row };
+

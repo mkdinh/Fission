@@ -43,6 +43,7 @@ ${children || js.value ? `\t${openTag}
 // Export component to application
 //--------------------------------------------------------
 export { ${name} };
+
 `
     )
 }

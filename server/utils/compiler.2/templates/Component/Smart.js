@@ -50,6 +50,7 @@ class ${props.name} extends Component{
 // Export component to application
 //--------------------------------------------------------
 export {${props.name}};
+
 `
     )
 }

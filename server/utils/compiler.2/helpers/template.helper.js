@@ -1,109 +1,102 @@
-const getImportApp = (array,list) => {
-    let component = list || [];
+const helper = {
 
-    array.forEach(child => {
-        component.push(child.name);
-
-        if(child.children){
-            getImportApp(child.children, component)
-        }
-    })
-
-    return component;
-}
-
-const populateApp = (array,tab,sibling) => {
-
-    let children = sibling || [];
-
-    var tab = tab || 2;
-    tab++;
-    var numTab = '\t'.repeat(tab);
+    flatten: (array,list) => {
+        var list = list || [];
     
-    for(let i = 0; i < array.length; i++){
-
-        const {name, className, js} = array[i];           
-        const openTag = `<${name}>`;
-        const closeTag = `</${name}>`;
-        const singleTag =  `<${name}/>`;
-    
-        if(js.value){
-            var value = '\t'.repeat(tab+1) + js.value + "\n\n"
-        }
-
-        // if the component either have children or value, create open/close tag with prefixed tab number else print out a single tag
-        // if have children, then run recursive loop, print out value
-        children.push(`${array[i].children || js.value? `${numTab}${openTag}${value || populateApp(array[i].children,tab,sibling)}${numTab}${closeTag}` 
-        : 
-        `${numTab}${singleTag}`}`)
-
-    }
-    
-    return children;
-    
-}
-
-const templateHelper = {
-
-    importApp: (array) => {
-        let fileArray = getImportApp(array);
-        
-        let imported = [];
-        let fileStr = "";
-
-        fileArray.forEach(file => {
-            if(!imported.includes(file)){
-                fileStr += `import { ${file} } from '../components/${file}'\n`;
-                imported.push(file);
+        array.forEach(child => {
+            list.push(child);
+            if(child.children){
+                helper.flatten(child.children, list)
             }
-        });
+        })
 
-        return fileStr;
+        return list;
     },
 
-    initApp: (array) => {
-        let children;
-        children = populateApp(array);
-        children = children[0].replace(",","").replace(new RegExp('>', 'g'), ">\n\n")
-        return children
-    },
+    recursive: (array,tab,sibling) => {
+        
+        let children = sibling || [];
+        
+        var tab = tab || 3;
+        tab++;
+        var numTab = '\t'.repeat(tab);
     
-    children: (array,type) => {
+        if(array){
+    
+            for(let i = 0; i < array.length; i++){
+    
+                const {name, className, html, classProps} = array[i];      
+                
+                if(html.type === "Smart"){
+                    numTab = numTab + "\t";
+                    tab++;
+                }
 
-        let children = [];
-        if(type === 'Smart'){console.log(array)}
-        array.map(child => {
-
-            const {name, className, js} = child;           
-            const openTag = `<${name}>`;
-            const closeTag = `</${name}>`;
-            const singleTag =  `<${name}/>`    
-            
-            let propsInherit = type === 'Dumb'? "{props.children}": "{this.props.children}";
-            let propsValue = js.value ? js.value : "";
-            
-            children.push(`${js.value || child.children ? `${propsInherit}` || `${propsValue}` : `${singleTag}`}` )
-
-        });
-        
-        children = children.join('\n\t\t');
-        
-        return children
+                let propStr = "";
+                
+                if(classProps){
+                    for(prop in classProps){
+                        propStr += `${prop}={ "${classProps[prop]}" }`
+                    }
+                }
+                
+                const openTag = `${numTab}<${name} ${propStr}>`;
+                const closeTag = `${numTab}</${name}>`;
+                const singleTag =  `${numTab}<${name}/>`;
+                
+                if(html.value){
+                    var value = '\t'.repeat(tab+1) + html.value + "\n";
+                }else{
+                    var value = "";
+                }
+    
+                // if the component either have children or value, create open/close tag with prefixed tab number else print out a single tag
+                // if have children, then run recursive loop, print out value
+    
+                let hasChildren = `${openTag} ${value} ${helper.recursive(array[i].children,tab,sibling)} ${closeTag} `;
+    
+                if(array[i].children || value){
+                    children.push(hasChildren);
+                }else{
+                    children.push(singleTag)
+                }
+            }    
+        }
+    
+        return children;  
     },
-
-    import: (children) => {
+    import: (array,expand,path) => {
+        
+        let importArray;
         let file = "";
         let imported = [];
 
-        children.forEach(child => {  
+        if(expand){
+            importArray = helper.flatten(array);
+        }else{
+            importArray = array;
+        };
+
+        importArray.forEach(child => {  
             if(!imported.includes(child.name)){
-                file += `import { ${child.name} } from '../${child.name}';\n`
+                file += `import { ${child.name} } from '${path+child.name}';\n`
                 imported.push(child.name);
             } 
         })
-
+  
         return file;
+    },
+
+    children: (array) => {
+        let children;
+
+        children = helper.recursive(array);
+  
+        children = children.join(" ").replace(new RegExp('> ', 'g'), ">\n").replace(new RegExp(",","g"), "");
+
+        return children;
     }
+    
 }
 
-module.exports = templateHelper;
+module.exports = helper;

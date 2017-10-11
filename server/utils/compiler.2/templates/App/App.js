@@ -1,23 +1,52 @@
 const helper = require('../../helpers/template.helper')
-// ${children? children.map(child => `import {${child.name}} from '../components/${child.name}'`).join('\n'): ""  }
-module.exports = (children) => 
+
+module.exports = (children) => {
+
+    let openTag = `<div>`;
+    let closeTag = `</div>`;
+    let importPath = "../components/";
+    
+    let inherit;
+    let value;
+
+    let components = [];
+    
+    children.forEach(child => {
+
+        let propStr = "";
+
+        if(child.classProps){
+            for(prop in child.classProps){
+                propStr += `${prop}="${child.classProps[prop]}"`
+            }
+        };
+        
+        components.push(`\t\t\t\t<${child.name} ${propStr}/>`);
+    })
+    components = components.join("\n")
+
+    return(
 `// Import React dependencies
 //--------------------------------------------------------
 import React, { Component } from 'react';
 import './App.css';
-${helper.importApp(children)}
+${helper.import(children, false, importPath)}
 
 // Create App component
 //--------------------------------------------------------
 
 class App extends Component {
-\trender() {
+\trender(){
+\t\treturn(
 
-\t\treturn (
-
-${children ? `${helper.initApp(children)}` : ""}\t\t);
+\t\t\t${openTag}
+${components}
+\t\t\t${closeTag}
+\t\t)
 \t}
-}
+};
 
 export {App};
 `
+    )
+};

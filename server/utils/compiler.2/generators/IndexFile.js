@@ -12,10 +12,10 @@ module.exports = (job) => {
     const dir = path.join(jobDir,'src/');
     
     // create App files
-    const js = dir + "index.js";
+    const html = dir + "index.js";
     const css = dir + "index.css";
     
-    fse.outputFile(js, IndexJS());
+    fse.outputFile(html, IndexJS());
     fse.outputFile(css, IndexCSS());
 }
     

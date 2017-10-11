@@ -1,8 +1,17 @@
 module.exports = (props) => {
     
+    
     let className = "." + props.className.replace(" ",".");
-    let attr = "";
 
+    if(props.classProps){
+        for(prop in props.classProps){
+            let placeholder = '$'+`{${prop}}`;
+            className = className.replace(placeholder, props.classProps[prop])
+        };
+    }
+
+    let attr = "";
+    
     for(key in props.css){
         if(attr === ""){
             attr += `${key}: ${props.css[key]};\n`
@@ -10,8 +19,9 @@ module.exports = (props) => {
             attr += `\t${key}: ${props.css[key]};\n`
         }
     }
+
+    let css = `${className} {\n\t${attr}}               `;
     
-    let css = `${className} {\n\t${attr}}`;
     
     return css
 }

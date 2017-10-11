@@ -9,7 +9,7 @@ import { Paragraph } from '../Paragraph';
 //--------------------------------------------------------
 const Col = (props) =>
 
-	<div className='col-5'>
+	<div className={`col ${props.size}`}>
 
 		{props.children}
 
@@ -17,5 +17,4 @@ const Col = (props) =>
 
 // Export component to application
 //--------------------------------------------------------
-export { Col };
-
+export { Col };                                     

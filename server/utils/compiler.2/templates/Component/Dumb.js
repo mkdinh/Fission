@@ -8,16 +8,35 @@ const helper = require('../../helpers/template.helper');
 //--------------------------------------------------------
 module.exports = function Dumb(props) {
  
-    let {js, css, className, name, children} = props;
-    let openTag = `<${js.tag} className='${className}'>`;
-    let closeTag = `</${js.tag}>`;
-    let singleTag = `<${js.tag}/>`;
+    let {html, css, className,classProps, name, children} = props;
+    
+    if(classProps){
+        for(prop in classProps){
+            let placeholder = "$"+`{${prop}}`
+            className = className.split(" ");
+            className = "{`" + `${className[0]} \${${"props."+prop}}` + "`}";
+        }
+    }
+
+    if(className === ""){
+        openTag = `<${html.tag} className="">`
+    }else if(!classProps){
+        openTag = `<${html.tag} className="${className}">`;
+    }else{
+        openTag = `<${html.tag} className=${className}>`;
+    };
+    
+    let closeTag = `</${html.tag}>`;
+    let singleTag = `<${html.tag}/>`;
+    let importPath = "../";
+    console.log(openTag)
 
     let inherit;
-    let value;
-
-    children ? inherit = `{props.children}` : inherit = "";
-    js.value ? value = js.value : value = "";
+    if(children && html.expand){
+        inherit = "{this.props.children}\n\n" + helper.children(children);
+    }else{
+        inherit = "{props.children}"
+    };
 
     // \t\t${'{props.children}' || helper.children(children,'Dumb')}
     return(
@@ -25,15 +44,15 @@ module.exports = function Dumb(props) {
 //--------------------------------------------------------
 import React from 'react';
 import './${name}.css';
-${children? helper.import(children): ""}
+${children? helper.import(children,false, importPath): ""}
 
 // Create stateless component
 //--------------------------------------------------------
 const ${name} = (props) =>
 
-${children || js.value ? `\t${openTag}
+${children || html.value ? `\t${openTag}
 
-\t\t${inherit + value}
+\t\t${inherit}
 
 \t${closeTag}` 
 : 
@@ -42,8 +61,6 @@ ${children || js.value ? `\t${openTag}
 
 // Export component to application
 //--------------------------------------------------------
-export { ${name} };
-
-`
+export { ${name} };                                     `
     )
 }

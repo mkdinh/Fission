@@ -1,4 +1,4 @@
-.container {
+.container.fluid {
 	width: auto;
-	background-color: green;
-}
+	margin-top: 2rem;
+}               

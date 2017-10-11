@@ -7,155 +7,250 @@ const fse = require('fs-extra');
 //--------------------------------------------------------
 // const jobNum = Math.floor(Math.random() * 10000000000)  
 
-const jobNum = 13;
+const jobNum = 1;
 
 const sample = {
     jobNum: jobNum,
 
     App: {
         name: "App",
-        test: "App.test.js",
         children:[
-                {
-                    name: "Nav",
-                    js: {
-                        type: "Smart",
-                        tag: "nav",
-                        value: "<a> href='#' class='brand-logo'>Logo</a>"
-                    },
-                    children: [
-                        {
-                            name: "NavList",
-                            className: "right hide-on-med-and-down",
-                            js: {
-                                type: "Smart",
-                                tag: "ul"
-                            },
-                            children: [
-                                {
-                                    name: "NavLink",
-                                    className: "",
-                                    js: {
-                                        type: "Dumb",
-                                        tag: "il",
-                                        value: "<a href='#'>Sass</a>"
-                                    },
-                                },
-                                {
-                                    name: "NavLink",
-                                    className: "",
-                                    js: {
-                                        type: "Dumb",
-                                        tag: "il",
-                                        value: "<a href='#'>Sass</a>"
-                                    }
-                                },
-                                {
-                                    name: "NavLink",
-                                    className: "",
-                                    js: {
-                                        type: "Dumb",
-                                        tag: "il",
-                                        value: "<a href='#'>Sass</a>"
-                                    }
-                                },
-                            ]
-                        }
-                    ] 
+            {
+                name: "Nav",
+                className: "",
+                html: {
+                    expand: true,
+                    type: "Smart",
+                    tag: "nav",
+                    value: "<img src='logo.png'/>",
                 },
+                css: {},
+                children: [
+                    {
+                        name: "NavList",
+                        className: "right hide-on-med-and-down",
+                        html: {
+                            type: "Smart",
+                            tag: "ul"
+                        },
+                        css: {},
+                        children: [
+                            {
+                                name: "NavLink",
+                                className: "",
+                                css: {},
+                                html: {
+                                    type: "Dumb",
+                                    tag: "il",
+                                    value: "<a href='#'>Sass</a>"
+                                },
+                            },
+                            {
+                                name: "NavLink",
+                                className: "",
+                                css: {},
+                                html: {
+                                    type: "Dumb",
+                                    tag: "il",
+                                    value: "<a href='#'>Sass</a>"
+                                }
+                            },
+                            {
+                                name: "NavLink",
+                                className: "",
+                                css: {},
+                                html: {
+                                    type: "Dumb",
+                                    tag: "il",
+                                    value: "<a href='#'>Sass</a>"
+                                }
+                            },
+                        ]
+                    }
+                ] 
+            },
 
-                {
+            {
                 name: "Container",
-                className: "container",
-                js: {
+                className: "container ${fluid}",
+                classProps: {fluid: "fluid"},
+                group: "Grid"
+                html: {
+                    expand: true,
                     type: "Smart",
                     tag: "div",
                 },
                 css: {
                     width: "auto",
-                    "background-color": "green"
+                    "margin-top": "2rem"
                 },
                 children: [
-                    {
-                        name: "Row",
-                        className: "row",
-                        js: {
-                            type: "Dumb",
-                            tag: "div" 
-                        },
-                        css: {
-                            "background-color": "yellow"
-                        },
-                        children: [
+                    
                             {
-                                name: "Title",
-                                className: "title",
-                                js: {
-                                    type: "Dumb",
-                                    tag: "h1",
-                                    value: "Welcome to the PRC Application"
-                                },
-                                css: {
-                                    color: "black"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        name: "Row",
-                        className: "row",
-                        js: {
-                            type: "Dumb",
-                            tag: "div" 
-                        },
-                        css: {
-                            "background-color": "yellow"
-                        },
-                        children: [
-                            {
-                                name: "Col",
-                                className: "col-5",
-                                js: {
+                                name: "Row",
+                                className: "row",
+                                group: "Grid",
+                                html: {
                                     type: "Dumb",
                                     tag: "div" 
                                 },
                                 css: {
-                                    width: "auto",
-                                    "background-color": "blue"
+                                    
                                 },
                                 children: [
                                     {
-                                        name: "Paragraph",
-                                        className: "paragraph",
-                                        js: {
+                                        name: "Title",
+                                        className: "title",
+                                        html: {
                                             type: "Dumb",
-                                            tag: "p",
-                                            value: "This is a sample view generated by the application"
+                                            tag: "h1",
+                                            value: "Welcome to the Fission Application"
                                         },
                                         css: {
-                                            "font-size": "1rem"
-                                        }
-                                    },
-                                    {
-                                        name: "Paragraph",
-                                        className: "paragraph",
-                                        js: {
-                                            type: "Dumb",
-                                            tag: "p",
-                                            value: "This is a sample view generated by the application"
-                                        },
-                                        css: {
-                                            "font-size": "1rem"
+                                            color: "black"
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            {
+                                name: "Row",
+                                className: "row",
+                                group: "Grid",
+                                html: {
+                                    type: "Dumb",
+                                    tag: "div" 
+                                },
+                                css: {
+                                    "border": "1px solid black",
+                                    "margin-left": 0,
+                                    "margin-right": 0
+                                },
+                                children: [
+                                    {
+                                        name: "Col",
+                                        className: "col s${size}",
+                                        classProps: {size: "s4"},
+                                        group: "Grid",
+                                        html: {
+                                            type: "Dumb",
+                                            tag: "div",
+                                        },
+                                        css: {
+                                            width: "auto",
+                                            "background-color": "blue"
+                                        },
+                                        children: [
+                                            {
+                                                name: "Paragraph",
+                                                className: "paragraph",
+                                                html: {
+                                                    type: "Dumb",
+                                                    tag: "p",
+                                                    value: "This is a sample view generated by the application"
+                                                },
+                                                css: {
+                                                    "font-size": "1rem"
+                                                }
+                                            },
+                                            {
+                                                name: "Paragraph",
+                                                className: "paragraph",
+                                                html: {
+                                                    type: "Dumb",
+                                                    tag: "p",
+                                                    value: "This is a sample view generated by the application"
+                                                },
+                                                css: {
+                                                    "font-size": "1rem"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: "Col",
+                                        className: "col s${size}",
+                                        classProps: {size: "s8"},
+                                        Group: "Grid",
+                                        html: {
+                                            type: "Dumb",
+                                            tag: "div" 
+                                        },
+                                        css: {
+                                            width: "auto",
+                                            "background-color": "red",
+                                        },
+                                        children: [
+                                            {
+                                                name: "Paragraph",
+                                                className: "paragraph",
+                                                html: {
+                                                    type: "Dumb",
+                                                    tag: "p",
+                                                    value: "This is a sample view generated by the application"
+                                                },
+                                                css: {
+                                                    "font-size": "1rem"
+                                                }
+                                            },
+                                            {
+                                                name: "Paragraph",
+                                                className: "paragraph",
+                                                html: {
+                                                    type: "Dumb",
+                                                    tag: "p",
+                                                    value: "This is a sample view generated by the application"
+                                                },
+                                                css: {
+                                                    "font-size": "1rem"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }         
                         ]
-                    }         
-                ]
-            }
+            }         
         ]
     }
 }
 
-compile(sample)
+// {
+//     name: "Col",
+//     className: "col s4",
+//     html: {
+//         type: "Dumb",
+//         tag: "div" 
+//     },
+//     css: {
+//         width: "auto",
+//         "background-color": "blue"
+//     },
+//     children: [
+//         {
+//             name: "Paragraph",
+//             className: "paragraph",
+//             html: {
+//                 type: "Dumb",
+//                 tag: "p",
+//                 value: "This is a sample view generated by the application"
+//             },
+//             css: {
+//                 "font-size": "1rem"
+//             }
+//         },
+//         {
+//             name: "Paragraph",
+//             className: "paragraph",
+//             html: {
+//                 type: "Dumb",
+//                 tag: "p",
+//                 value: "This is a sample view generated by the application"
+//             },
+//             css: {
+//                 "font-size": "1rem"
+//             }
+//         }
+//     ]
+// }
+
+compile(sample, 'createApp')

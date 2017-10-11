@@ -1,4 +1,4 @@
 module.exports = App = {
-    js: require('./App.js'),
-    test: require('./Test.js'),
+    Component: require('./App.js'),
+    Test: require('./Test.js'),
 }

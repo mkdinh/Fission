@@ -4,7 +4,8 @@ const templater = require('./templater');
 
 // Complier Modules
 //--------------------------------------------------------
-module.exports = function compile(package, parentKey, num, jobType) {
+module.exports = function compile(package, jobType, num, parentKey) {
+
     // if this is a recursive interation, set parent the name of parent object for reference
     let parent = parentKey || "App";
     let jobNum = num || package.jobNum;
@@ -26,7 +27,7 @@ module.exports = function compile(package, parentKey, num, jobType) {
             }else if(typeof package[component] === 'object'){
                 // if this prop is a nested object
                 // check whether it is called 'children' -> then run recursive loop
-                // this will be where we create js and css files
+                // this will be where we create html and css files
 
                 if(component === 'children'){
                     // if the component is a children
@@ -36,23 +37,23 @@ module.exports = function compile(package, parentKey, num, jobType) {
 
                     package[component].forEach(child => {
                         // console.log(`-----------------------${parent}--------------------------`)
-                        compile(child ,parent, jobNum, jobType);
+                        compile(child , jobType, jobNum, parent);
                     })
 
-                }else if(!compiledLevel){
-                    // if component is a attributes (js/css)
-                    // recursive loop to read over files parameters
-                    // send the whole object as argument to templater to generate files
-                    templater(package,parent, jobNum, jobType, () => { 
-                        compile(package[component],parent, jobNum, jobType);
-                        compiledLevel = true;
-                    })
-                            
-                }
-
+            }else if(!compiledLevel){
+                // if component is a attributes (html/css)
+                // recursive loop to read over files parameters
+                // send the whole object as argument to templater to generate files
+                templater(package, jobType, jobNum, parent, () => { 
+                    compile(package[component], jobType, jobNum, parent);
+                    compiledLevel = true;
+                })
+              
             }else{
-
-            }  
+                // console.log(component,": ", package[component])
+            }
+            
         }
+    }
 }
      

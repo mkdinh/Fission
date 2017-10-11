@@ -8,13 +8,12 @@ import './Title.css';
 //--------------------------------------------------------
 const Title = (props) =>
 
-	<h1 className='title'>
+	<h1 className="title">
 
-		Welcome to the PRC Application
+		{props.children}
 
 	</h1>
 
 // Export component to application
 //--------------------------------------------------------
-export { Title };
-
+export { Title };                                     

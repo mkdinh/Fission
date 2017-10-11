@@ -9,7 +9,7 @@ import { Col } from '../Col';
 //--------------------------------------------------------
 const Row = (props) =>
 
-	<div className='row'>
+	<div className="row">
 
 		{props.children}
 
@@ -17,5 +17,4 @@ const Row = (props) =>
 
 // Export component to application
 //--------------------------------------------------------
-export { Row };
-
+export { Row };                                         

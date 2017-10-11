@@ -9,22 +9,24 @@ const App = require('../templates/App');
 module.exports = (children,job) => {
     
     // set job directory
-    const jobDir = process.cwd() + `/server/jobs/${job}/`;
+    // const jobDir = process.cwd() + `/server/jobs/${job}/`;
+
+    const jobDir = process.cwd() + '/client/'
     
     // create source dir
     const dir = path.join(jobDir,'src/App/');
 
     // create App files
-    const js = dir + "App.js";
+    const html = dir + "App.js";
     const test = dir + "App.test.js";
     const css = dir + "App.css";
     const index = dir + "index.js"
     
     // create App.js with its children components
-    fse.outputFile(js, App.js(children));
+    fse.outputFile(html, App.Component(children));
 
     // create test files
-    fse.outputFile(test, App.test());
+    fse.outputFile(test, App.Test());
 
     // create index files
     fse.outputFile(index, `export {App} from './App'`);

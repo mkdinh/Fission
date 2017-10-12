@@ -7,7 +7,7 @@ const generate = require('./generators');
 //templating module to construct template str
 //--------------------------------------------------------
 module.exports = (props, jobType, job, parent, cb) => {
-    // console.log(parent, props.name)
+
     // spread out component properties into constant
     let {name, className, classProps, group, html, css, children} = props;
 

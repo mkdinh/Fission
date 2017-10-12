@@ -54,7 +54,7 @@ module.exports = (package) => {
     if(group){
         if(fse.pathExistsSync(groupIndex)){
             fse.readFileSync(groupIndex,"utf8").match(regExp) ? 
-                "" //console.log(`${name} component already exist in index.js`) 
+                null
             :  
                 fse.appendFileSync(groupIndex,`\nexport { ${name} } from "./${name}";`);
         }else{
@@ -72,7 +72,7 @@ module.exports = (package) => {
             fse.readFile(compIndex,'utf8', (err, text) => {
                 
                 text.match(regExp) ? 
-                    "" // console.log(`${name} component already exist in its index.js`) 
+                    null
                 :
                     fse.appendFileSync(compIndex,`\nexport { ${name} } from "./${name}";`);  
             })

@@ -163,10 +163,11 @@ const sample = {
                                             {
                                                 name: "Paragraph",
                                                 className: "paragraph",
+                                                group: "Text",
                                                 html: {
                                                     type: "Dumb",
                                                     tag: "p",
-                                                    value: "See more in About!"
+                                                    value: "Learn more about the Chain-React.ion Team!"
                                                 },
                                                 css: {
                                                     "font-size": "2rem"
@@ -178,7 +179,7 @@ const sample = {
                                         name: "Col",
                                         className: "col s${size}",
                                         classProps: {size: "s6"},
-                                        Group: "Grid",
+                                        group: "Grid",
                                         html: {
                                             type: "Dumb",
                                             tag: "div" 
@@ -191,6 +192,7 @@ const sample = {
                                             {
                                                 name: "Paragraph",
                                                 className: "paragraph",
+                                                group: "Text",
                                                 html: {
                                                     type: "Dumb",
                                                     tag: "p",
@@ -203,6 +205,7 @@ const sample = {
                                             {
                                                 name: "Paragraph",
                                                 className: "paragraph",
+                                                group: "Text",
                                                 html: {
                                                     type: "Dumb",
                                                     tag: "p",
@@ -261,5 +264,7 @@ const sample = {
 //     ]
 // }
 
-compile(sample, 'createApp');
+compile(sample, 'createApp', () => {
+    console.log("completed")
+});
 // setTimeout(() => inspect(sample.App.children), 1000)

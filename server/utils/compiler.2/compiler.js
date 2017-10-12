@@ -4,8 +4,7 @@ const templater = require('./templater');
 
 // Complier Modules
 //--------------------------------------------------------
-module.exports = function compile(package, jobType, num, parentKey) {
-
+module.exports = function compile(package, jobType, cb, num, parentKey) {
     // if this is a recursive interation, set parent the name of parent object for reference
     let parent = parentKey || "App";
     let jobNum = num || package.jobNum;
@@ -37,7 +36,7 @@ module.exports = function compile(package, jobType, num, parentKey) {
 
                     package[component].forEach(child => {
                         // console.log(`-----------------------${parent}--------------------------`)
-                        compile(child , jobType, jobNum, parent);
+                        compile(child, jobType, null, jobNum, parent);
                     })
 
             }else if(!compiledLevel){
@@ -45,7 +44,7 @@ module.exports = function compile(package, jobType, num, parentKey) {
                 // recursive loop to read over files parameters
                 // send the whole object as argument to templater to generate files
                 templater(package, jobType, jobNum, parent, () => { 
-                    compile(package[component], jobType, jobNum, parent);
+                    compile(package[component], jobType, null, jobNum, parent);
                     compiledLevel = true;
                 })
               
@@ -55,6 +54,10 @@ module.exports = function compile(package, jobType, num, parentKey) {
             }
             
         }
+    }
+
+    if(parent === "App" && cb ){
+        cb()
     }
 }
      

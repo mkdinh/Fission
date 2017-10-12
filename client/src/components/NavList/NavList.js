@@ -1,6 +1,6 @@
 // Import React dependencies
 //--------------------------------------------------------
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './NavList.css';
 import { NavLink } from '../NavLink';
 

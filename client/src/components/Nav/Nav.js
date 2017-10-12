@@ -1,6 +1,6 @@
 // Import React dependencies
 //--------------------------------------------------------
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Nav.css';
 import { NavList } from '../NavList';
 import { NavLink } from '../NavLink';
@@ -17,18 +17,18 @@ class Nav extends Component{
 	render(){
 		return(
 
-			<nav className="">
-				<img src='logo.png'/>
+			<nav className="navbar">
+				Fission
 
 					<NavList >
  						<NavLink >
-							<a href='#'>Sass</a>
+							<a href='#'>Home</a>
   						</NavLink>
 						<NavLink >
-							<a href='#'>Sass</a>
+							<a href='#'>Build</a>
   						</NavLink>
 						<NavLink >
-							<a href='#'>Sass</a>
+							<a href='#'>About</a>
   						</NavLink>
  					</NavList>
 

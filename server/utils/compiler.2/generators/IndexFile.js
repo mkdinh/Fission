@@ -5,11 +5,14 @@ const IndexCSS = require('../templates/Index/style.js');
 
 module.exports = (job) => {
     
+    let jobDir;
+    let dir;
+    
     // set job directory
-    const jobDir = process.cwd() + `/server/jobs/${job}/`;
+    jobDir = process.cwd() + `/server/jobs/${job}/`;
     
     // create source dir
-    const dir = path.join(jobDir,'src/');
+    dir = path.join(jobDir,'src/');
     
     // create App files
     const html = dir + "index.js";

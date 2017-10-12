@@ -1,19 +1,20 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './NavLink.css';
+import './Col.css';
+import { Paragraph } from '../../Text';
 
 
 // Create stateless component
 //--------------------------------------------------------
-const NavLink = (props) =>
+const Col = (props) =>
 
-	<li className="">
+	<div className={`col ${props.size}`}>
 
 		{props.children}
 
-	</li>
+	</div>
 
 // Export component to application
 //--------------------------------------------------------
-export { NavLink };                                     
+export { Col };                                     

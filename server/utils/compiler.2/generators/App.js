@@ -29,7 +29,7 @@ module.exports = (children,job) => {
     fse.outputFile(test, App.Test());
 
     // create index files
-    fse.outputFile(index, `export {App} from './App'`);
+    fse.outputFile(index, `export { App } from './App';`);
 
     // create css files
     fse.outputFile(css, "/* Empty CSS file */");

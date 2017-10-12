@@ -65,22 +65,28 @@ const helper = {
     
         return children;  
     },
-    import: (array,expand,path) => {
+    import: (package) => {
+        
+        let {children, group, expand, path} = package;
         
         let importArray;
         let file = "";
         let imported = [];
-
+        
         if(expand){
-            importArray = helper.flatten(array);
+            importArray = helper.flatten(children);
         }else{
-            importArray = array;
+            importArray = children;
         };
-
+       
         importArray.forEach(child => {  
             if(!imported.includes(child.name)){
-                file += `import { ${child.name} } from '${path+child.name}';\n`
+                
+                let importPath = helper.importPath(child, group, path)
+
+                file += `import { ${child.name} } from '${importPath}';\n`
                 imported.push(child.name);
+
             } 
         })
   
@@ -95,8 +101,24 @@ const helper = {
         children = children.join(" ").replace(new RegExp('> ', 'g'), ">\n").replace(new RegExp(",","g"), "");
 
         return children;
+    }, 
+
+    importPath: (component, group, path) => {
+        if(group && component.group && group === component.group){
+            // console.log(path, component.name)
+            return path + component.name; 
+        }else if(group && component.group && group !== component.group){
+            return path + "../" + component.group;
+        }else if(group && !component.group){
+            return "../" + path + component.name;
+        }else if(!group && component.group){
+            return path + component.group + "/";
+        }else if(!group && !component.group){
+            return path + component.name;
+        }else{
+            return console.log("Error: Cannot find path to component")
+        }
     }
-    
 }
 
 module.exports = helper;

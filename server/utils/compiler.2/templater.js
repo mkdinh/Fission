@@ -9,8 +9,8 @@ const generate = require('./generators');
 module.exports = (props, jobType, job, parent, cb) => {
     // console.log(parent, props.name)
     // spread out component properties into constant
-    let {name, className, classProps, html, css, children} = props;
-    
+    let {name, className, classProps, group, html, css, children} = props;
+
     // if parent is App, create a directory and intialize the App and index component
     if(jobType === 'createApp' && parent === "App"){
         let AppChildren = props.App.children;
@@ -23,13 +23,16 @@ module.exports = (props, jobType, job, parent, cb) => {
     // if there is html object, create component with html props
     if(html){
 
-        let htmlPack = {html, name, className, classProps, children, parent};
+        let htmlPack = {html, name, className, group, classProps, children, parent};
 
         // generate html template
         let htmlTemplate = html.type === 'Dumb'? template.Dumb(htmlPack): template.Smart(htmlPack);
 
         // generate component file
-        generate.Component(htmlTemplate,parent,job);
+
+        let filePack = {template: htmlTemplate, name, parent, group, job};
+
+        generate.Component(filePack);
     }
     
     // if there is css object, creat component with css props
@@ -40,7 +43,10 @@ module.exports = (props, jobType, job, parent, cb) => {
         let cssTemplate = template.CSS(cssPack);
 
         // generate css file
-        generate.Style(cssTemplate,name,job);
+
+        let filePack = {template: cssTemplate, name, group, job}
+
+        generate.Style(filePack);
     }
 
     cb();

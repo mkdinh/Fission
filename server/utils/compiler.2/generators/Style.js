@@ -5,16 +5,25 @@ const path = require('path');
 
 // create new css file
 //--------------------------------------------------------
-module.exports = (template,Comp,job) => {
+module.exports = (package) => {
+    
+    // const jobDir = process.cwd() + `/server/jobs/${job}/`;
+    let {template, name, group, job} = package
+    let jobDir;
+    let cssDir;
     
     // set job directory
-    // const jobDir = process.cwd() + `/server/jobs/${job}/`;
-    const jobDir = process.cwd() + '/client/'
+    jobDir = process.cwd() + '/client/'
+
     // create source dir
-    const dir = path.join(jobDir,`src/components/${Comp}/`);
+    if(group){
+        cssDir = path.join(jobDir,`src/components/${group}/${name}/`);
+    }else{
+        cssDir = path.join(jobDir,`src/components/${name}/`);
+    };
 
     // create App files
-    const file = dir + `${Comp}.css`;
-    console.log
+    const file = cssDir + `${name}.css`;
+    
     fse.outputFile(file, template)
 }

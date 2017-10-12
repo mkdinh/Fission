@@ -1,19 +1,19 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './NavLink.css';
+import './Paragraph.css';
 
 
 // Create stateless component
 //--------------------------------------------------------
-const NavLink = (props) =>
+const Paragraph = (props) =>
 
-	<li className="">
+	<p className="paragraph">
 
 		{props.children}
 
-	</li>
+	</p>
 
 // Export component to application
 //--------------------------------------------------------
-export { NavLink };                                     
+export { Paragraph };                                     

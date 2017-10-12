@@ -1,6 +1,7 @@
 // Import Dependencies
 //--------------------------------------------------------
 const compile = require("../utils/compiler.2/compiler.js");
+const inspect = require("../utils/compiler.2/inspector.js");
 const fse = require('fs-extra');
 
 // Sample Template
@@ -17,14 +18,17 @@ const sample = {
         children:[
             {
                 name: "Nav",
-                className: "",
+                className: "navbar",
                 html: {
                     expand: true,
                     type: "Smart",
                     tag: "nav",
-                    value: "<img src='logo.png'/>",
+                    value: "Fission"
                 },
-                css: {},
+                css: {
+                    "font-size": "2rem",
+                    padding: "0 1rem"
+                },
                 children: [
                     {
                         name: "NavList",
@@ -41,8 +45,8 @@ const sample = {
                                 css: {},
                                 html: {
                                     type: "Dumb",
-                                    tag: "il",
-                                    value: "<a href='#'>Sass</a>"
+                                    tag: "li",
+                                    value: "<a href='#'>Home</a>"
                                 },
                             },
                             {
@@ -51,8 +55,8 @@ const sample = {
                                 css: {},
                                 html: {
                                     type: "Dumb",
-                                    tag: "il",
-                                    value: "<a href='#'>Sass</a>"
+                                    tag: "li",
+                                    value: "<a href='#'>Build</a>"
                                 }
                             },
                             {
@@ -61,8 +65,8 @@ const sample = {
                                 css: {},
                                 html: {
                                     type: "Dumb",
-                                    tag: "il",
-                                    value: "<a href='#'>Sass</a>"
+                                    tag: "li",
+                                    value: "<a href='#'>About</a>"
                                 }
                             },
                         ]
@@ -74,7 +78,7 @@ const sample = {
                 name: "Container",
                 className: "container ${fluid}",
                 classProps: {fluid: "fluid"},
-                group: "Grid"
+                group: "Grid",
                 html: {
                     expand: true,
                     type: "Smart",
@@ -101,13 +105,15 @@ const sample = {
                                     {
                                         name: "Title",
                                         className: "title",
+                                        group: "Text",
                                         html: {
                                             type: "Dumb",
                                             tag: "h1",
-                                            value: "Welcome to the Fission Application"
+                                            value: "Welcome to Fission"
                                         },
                                         css: {
-                                            color: "black"
+                                            color: "black",
+                                            "text-align": "center"
                                         }
                                     }
                                 ]
@@ -123,13 +129,14 @@ const sample = {
                                 css: {
                                     "border": "1px solid black",
                                     "margin-left": 0,
-                                    "margin-right": 0
+                                    "margin-right": 0,
+                                    "text-align": "center"
                                 },
                                 children: [
                                     {
                                         name: "Col",
                                         className: "col s${size}",
-                                        classProps: {size: "s4"},
+                                        classProps: {size: "s6"},
                                         group: "Grid",
                                         html: {
                                             type: "Dumb",
@@ -143,13 +150,14 @@ const sample = {
                                             {
                                                 name: "Paragraph",
                                                 className: "paragraph",
+                                                group: "Text",
                                                 html: {
                                                     type: "Dumb",
                                                     tag: "p",
-                                                    value: "This is a sample view generated by the application"
+                                                    value: "This was generated by the application"
                                                 },
                                                 css: {
-                                                    "font-size": "1rem"
+                                                    "font-size": "2rem"
                                                 }
                                             },
                                             {
@@ -158,10 +166,10 @@ const sample = {
                                                 html: {
                                                     type: "Dumb",
                                                     tag: "p",
-                                                    value: "This is a sample view generated by the application"
+                                                    value: "See more in About!"
                                                 },
                                                 css: {
-                                                    "font-size": "1rem"
+                                                    "font-size": "2rem"
                                                 }
                                             }
                                         ]
@@ -169,7 +177,7 @@ const sample = {
                                     {
                                         name: "Col",
                                         className: "col s${size}",
-                                        classProps: {size: "s8"},
+                                        classProps: {size: "s6"},
                                         Group: "Grid",
                                         html: {
                                             type: "Dumb",
@@ -177,7 +185,7 @@ const sample = {
                                         },
                                         css: {
                                             width: "auto",
-                                            "background-color": "red",
+                                            "background-color": "red"
                                         },
                                         children: [
                                             {
@@ -186,10 +194,10 @@ const sample = {
                                                 html: {
                                                     type: "Dumb",
                                                     tag: "p",
-                                                    value: "This is a sample view generated by the application"
+                                                    value: "Framework is from MaterializeCSS"
                                                 },
                                                 css: {
-                                                    "font-size": "1rem"
+                                                    "font-size": "2rem"
                                                 }
                                             },
                                             {
@@ -198,10 +206,10 @@ const sample = {
                                                 html: {
                                                     type: "Dumb",
                                                     tag: "p",
-                                                    value: "This is a sample view generated by the application"
+                                                    value: "Generate React components with ease!"
                                                 },
                                                 css: {
-                                                    "font-size": "1rem"
+                                                    "font-size": "2rem"
                                                 }
                                             }
                                         ]
@@ -253,4 +261,5 @@ const sample = {
 //     ]
 // }
 
-compile(sample, 'createApp')
+compile(sample, 'createApp');
+// setTimeout(() => inspect(sample.App.children), 1000)

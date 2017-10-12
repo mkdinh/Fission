@@ -5,10 +5,10 @@ module.exports = (children) => {
     let openTag = `<div>`;
     let closeTag = `</div>`;
     let importPath = "../components/";
-    
     let inherit;
     let value;
-
+    let importPack;
+    
     let components = [];
     
     children.forEach(child => {
@@ -23,14 +23,19 @@ module.exports = (children) => {
         
         components.push(`\t\t\t\t<${child.name} ${propStr}/>`);
     })
-    components = components.join("\n")
+    components = components.join("\n");
+
+    importPack = {children, 
+        expand: false,
+        path: importPath
+    };
 
     return(
 `// Import React dependencies
 //--------------------------------------------------------
 import React, { Component } from 'react';
 import './App.css';
-${helper.import(children, false, importPath)}
+${helper.import(importPack)}
 
 // Create App component
 //--------------------------------------------------------
@@ -46,7 +51,7 @@ ${components}
 \t}
 };
 
-export {App};
+export { App };
 `
     )
 };

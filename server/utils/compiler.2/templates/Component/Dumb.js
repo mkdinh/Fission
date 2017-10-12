@@ -7,9 +7,13 @@ const helper = require('../../helpers/template.helper');
 // Export stateless component template
 //--------------------------------------------------------
 module.exports = function Dumb(props) {
- 
-    let {html, css, className,classProps, name, children} = props;
     
+    let {html, css, className, classProps, group, name, children} = props;
+    
+    let importPack, openTag, closeTag, singleTag, inherit, value;
+    
+    importPath = "../";
+
     if(classProps){
         for(prop in classProps){
             let placeholder = "$"+`{${prop}}`
@@ -26,31 +30,37 @@ module.exports = function Dumb(props) {
         openTag = `<${html.tag} className=${className}>`;
     };
     
-    let closeTag = `</${html.tag}>`;
-    let singleTag = `<${html.tag}/>`;
-    let importPath = "../";
-    console.log(openTag)
+    closeTag = `</${html.tag}>`;
+    singleTag = `<${html.tag}/>`;
 
-    let inherit;
+    
     if(children && html.expand){
         inherit = "{this.props.children}\n\n" + helper.children(children);
     }else{
         inherit = "{props.children}"
     };
 
-    // \t\t${'{props.children}' || helper.children(children,'Dumb')}
+    value = html.value;
+
+    importPack = {
+        children, 
+        group, 
+        expand: html.expand,
+        path: importPath
+    };
+
     return(
 `// Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
 import './${name}.css';
-${children? helper.import(children,false, importPath): ""}
+${children? helper.import(importPack): ""}
 
 // Create stateless component
 //--------------------------------------------------------
 const ${name} = (props) =>
 
-${children || html.value ? `\t${openTag}
+${children || value ? `\t${openTag}
 
 \t\t${inherit}
 

@@ -9,7 +9,7 @@ module.exports = (job) => {
     let dir;
     
     // set job directory
-    jobDir = process.cwd() + `/server/jobs/${job}/`;
+    jobDir = path.join(__dirname,`../../../jobs/${job}/`);
     
     // create source dir
     dir = path.join(jobDir,'src/');

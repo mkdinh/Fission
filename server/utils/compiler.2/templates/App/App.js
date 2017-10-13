@@ -10,7 +10,7 @@ module.exports = (children) => {
     let importPack;
     
     let components = [];
-    
+    // console.log(children)
     children.forEach(child => {
 
         let propStr = "";

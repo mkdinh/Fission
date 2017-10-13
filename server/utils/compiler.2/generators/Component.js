@@ -3,8 +3,6 @@
 const fse = require('fs-extra');
 const path = require('path');
 
-let created = [];
-
 // Create new component
 //--------------------------------------------------------
 module.exports = (package) => {
@@ -19,7 +17,7 @@ module.exports = (package) => {
     let regExp = new RegExp(name, "g");
  
     // set job directory
-    jobDir = process.cwd() + '/client/';
+    jobDir = path.join(__dirname,`../../../jobs/${job}/`);
    
     // if the component have a group, prepend directory before component directory
     if(group){

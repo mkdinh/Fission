@@ -4,14 +4,13 @@ const fse = require('fs-extra');
 const path = require('path');
 const App = require('../templates/App'); 
 
-
 // Script to create default App/ with its children
 module.exports = (children,job) => {
     
     // set job directory
-    // const jobDir = process.cwd() + `/server/jobs/${job}/`;
+    const jobDir = path.join(__dirname,`../../../jobs/${job}/`);
 
-    const jobDir = process.cwd() + '/client/'
+    // const jobDir = process.cwd() + '/client/'
     
     // create source dir
     const dir = path.join(jobDir,'src/App/');

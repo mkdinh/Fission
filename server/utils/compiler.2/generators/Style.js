@@ -13,7 +13,7 @@ module.exports = (package) => {
     let cssDir;
     
     // set job directory
-    jobDir = process.cwd() + '/client/'
+    jobDir = path.join(__dirname,`../../../jobs/${job}/`);
 
     // create source dir
     if(group){

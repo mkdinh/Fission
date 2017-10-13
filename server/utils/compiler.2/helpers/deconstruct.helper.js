@@ -1,6 +1,5 @@
 // Import dependencies
 //--------------------------------------------------------
-const fse = require("fs-extra");
 
 // Export deconstructor helper function
 //--------------------------------------------------------
@@ -16,33 +15,36 @@ const helper = {
         // place newline in between the open 
         parse = parse.replace(/></g,">\n<");
         // parse inline tag ex: <a></a>
-        parse = parse.replace(/>/g,">\n").replace(/</g,"\n<");
+        parse = parse.replace(/>/g,">").replace(/</g,"<");
         // split into array by new line
         parse = parse.split("\n");
         // remove array with only white spaces ''
         parse = parse.filter(el => el.length > 0);
-        // console.log(parse)
-        return parse;
+      
+        return parse.join("");
         
     },
 
-    nestHTML: function(array, obj, start, end, value, path){
+    nestHTML: function(array, obj, start, end, value, path,arrayObj){
+        var obj = obj || {
+            jobNum: 2
+        };
 
-        var nested = obj || {};
+        var arrayObj = arrayObj || [];
+        
         var start = start || 0;
         var end = end || array.length;
         var path = path || "App";
-        // console.log(path)
-        
+
         // remove "<" any any attribute follows the tag
         let openTag = array[start];
-        let closeTag;
-        let closeIndex;
+        var closeTag;
+        var closeIndex;
         var value = value || "";
 
         openTag = openTag.replace(/</,"").replace(/\s+\S*/g,"");
 
-        for(let j = array.length-1; j > 0; j--){
+        for(var j = array.length-1; j > 0; j--){
 
             // remove ">" any any attribute precedes the tag
             let tag = array[j].replace(/>/,"").replace(/\S*\s*[/]/,"/");
@@ -53,23 +55,38 @@ const helper = {
                 break;
             };
         };
+        // console.log(obj)
+        if(!closeTag){
+            let count = 0;
+            let nestedObj = arrayObj.reduce((obj,el) => {
+                console.log(el)
+                _.get(obj,"children".repeat(".children")) = [el];
+                count++
+                return obj
+            },{
+                name: "App",
+                children: []
+            })
+            console.log(nestedObj)
+            // console.log(JSON.stringify(arrayObj,null,5));
+            
+            return output = {
+                obj: obj,
+                array: array   
+            };
         
-        if(openTag && closeTag){
-            path += "." + openTag;
-            console.log(path)
-            let props = helper.getProps(array[start],openTag);
-
-            helper.set(nested,path,props)
-
-            array.splice(start,1);
-            array.splice(closeIndex,1);
-            // console.log(nested)
-            helper.nestHTML(array, nested, start, end, value, path)
         }else{
-
-            return console.log(JSON.stringify(nested,null,5))
+            path += ".children";
+            // console.log(path)
+            let props = helper.getProps(array[start],openTag);
+            // helper.set(obj,path,props)
+            arrayObj.push(props);
+            array.splice(closeIndex,1);
+            array.splice(start,1);
+            helper.nestHTML(array, obj, start, end, value, path,arrayObj)
         }
 
+        return output;
     },
 
     getProps: (whole, tag) => {
@@ -77,7 +94,7 @@ const helper = {
         let obj = {};
         // remove tag and <>
         whole = whole.replace("<"+whole,"").replace(">","");
-
+        
         let regexp = /\w+?=".*?"\s*/g;
         props = whole.match(regexp);
 
@@ -86,34 +103,38 @@ const helper = {
             if(prop[0] === "class"){
                 prop[0] = "className";
             }
-            
+            prop[1] = prop[1].replace(/"/g,"")
             obj[ prop[0] ] = prop[1];
         })
 
         obj.css = {}
             obj.html = {
             type: "Dumb",
-            tag: tag
+            tag: tag,
         }
+
+        obj.children = []
 
         return obj;
     },
 
     set: (obj, path, props) => { 
         const keys = path.split('.');
-        const lastKey = keys[keys.length-1];
-        const lastObj = keys.reduce((obj, key) => 
-            {
-                obj[key] = obj[key] || {},
-                obj[key].children = obj[key].children || [];
-                return obj[key];
-            },
-            obj);
+
+        const lastObj = keys.reduce((object, key) => {
             
-        lastObj.children.push(props)    
-        for(key in props){
-            lastObj.children[key] = props[key];
-        }
+            if(object[key]){
+                object[key] = obj[key] || {}
+            }else{
+                object[key] = obj[key] || []
+            }
+                     
+            return object[key]
+
+        },obj)
+        lastObj.push(props);
+        // console.log(lastObj)
+        return lastObj;
     }
 };
 

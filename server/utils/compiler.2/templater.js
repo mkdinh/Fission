@@ -10,10 +10,10 @@ module.exports = (props, jobType, job, parent, cb) => {
 
     // spread out component properties into constant
     let {name, className, classProps, group, html, css, children} = props;
-
+    console.log(props)
     // if parent is App, create a directory and intialize the App and index component
     if(jobType === 'createApp' && parent === "App"){
-        let AppChildren = props.App.children;
+        let AppChildren = props;
 
         // initialize with children
         generate.App(AppChildren, job);

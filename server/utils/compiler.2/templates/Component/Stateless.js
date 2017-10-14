@@ -6,48 +6,46 @@ const helper = require('../../helpers/template.helper');
 
 // Export stateless component template
 //--------------------------------------------------------
-module.exports = function Dumb(props) {
+module.exports = function Stateless(package) {
     
-    let {html, css, className, classProps, group, name, children} = props;
+    let {type, attribs, children } = package;
+    let tag = package.name;
     
+    let {classVar, name, style, component, expand, group} = attribs;
+    let className = attribs.class;
+
+
     let importPack, openTag, closeTag, singleTag, inherit, value;
     
-    importPath = "../";
+    let path = "../";
 
-    if(classProps){
-        for(prop in classProps){
-            let placeholder = "$"+`{${prop}}`
+    if(classVar){
+        for(key in classVar){
+            let placeholder = "$"+`{${key}}`
             className = className.split(" ");
-            className = "{`" + `${className[0]} \${${"props."+prop}}` + "`}";
+            className = "{`" + `${className[0]} \${${"package."+key}}` + "`}";
         }
     }
 
-    if(className === ""){
-        openTag = `<${html.tag} className="">`
-    }else if(!classProps){
-        openTag = `<${html.tag} className="${className}">`;
+    if(attribs && className){
+        openTag = `<${tag} className="${className}">`
+    }else if(attribs && classVar){
+        openTag = `<${tag} className=${className}>`;
     }else{
-        openTag = `<${html.tag} className=${className}>`;
-    };
+        openTag = `<${tag}>`
+    }
     
-    closeTag = `</${html.tag}>`;
-    singleTag = `<${html.tag}/>`;
+    closeTag = `</${tag}>`;
+    singleTag = `<${tag}/>`;
 
-    
-    if(children && html.expand){
-        inherit = "{this.props.children}\n\n" + helper.children(children);
+    if(children && attribs.expand){
+        inherit = helper.children(children);
+
     }else{
-        inherit = "{props.children}"
+        inherit = "{this.props.children}"
     };
 
-    value = html.value;
-
-    importPack = {
-        children, 
-        group, 
-        expand: html.expand,
-        path: importPath
-    };
+    importPack = {children, attribs, path}
 
     return(
 `// Import React dependencies

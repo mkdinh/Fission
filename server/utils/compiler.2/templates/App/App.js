@@ -4,13 +4,13 @@ module.exports = (children) => {
 
     let openTag = `<div>`;
     let closeTag = `</div>`;
-    let importPath = "../components/";
+    let path = "../components/";
     let inherit;
     let value;
     let importPack;
     
     let components = [];
-    // console.log(children)
+
     children.forEach(child => {
 
         let propStr = "";
@@ -27,7 +27,7 @@ module.exports = (children) => {
 
     importPack = {children, 
         expand: false,
-        path: importPath
+        path: path
     };
 
     return(
@@ -35,7 +35,7 @@ module.exports = (children) => {
 //--------------------------------------------------------
 import React, { Component } from 'react';
 import './App.css';
-${helper.import(importPack)}
+${helper.import(component, path)}
 
 // Create App component
 //--------------------------------------------------------

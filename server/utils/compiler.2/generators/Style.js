@@ -5,15 +5,14 @@ const path = require('path');
 
 // create new css file
 //--------------------------------------------------------
-module.exports = (package) => {
-    
-    // const jobDir = process.cwd() + `/server/jobs/${job}/`;
-    let {template, name, group, job} = package
+module.exports = (template, attribs, num) => {
+
+    let {name, group} = attribs;
     let jobDir;
     let cssDir;
     
     // set job directory
-    jobDir = path.join(__dirname,`../../../jobs/${job}/`);
+    jobDir = path.join(__dirname,`../../../jobs/${num}/`);
 
     // create source dir
     if(group){

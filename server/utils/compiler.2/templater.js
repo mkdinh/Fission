@@ -6,48 +6,33 @@ const generate = require('./generators');
 
 //templating module to construct template str
 //--------------------------------------------------------
-module.exports = (props, jobType, job, parent, cb) => {
-
+module.exports = (component, job, num) => {
     // spread out component properties into constant
-    let {name, className, classProps, group, html, css, children} = props;
-    console.log(props)
-    // if parent is App, create a directory and intialize the App and index component
-    if(jobType === 'createApp' && parent === "App"){
-        let AppChildren = props;
-
-        // initialize with children
-        generate.App(AppChildren, job);
-        generate.Index(job);
-    }
-
-    // if there is html object, create component with html props
-    if(html){
-
-        let htmlPack = {html, name, className, group, classProps, children, parent};
-
-        // generate html template
-        let htmlTemplate = html.type === 'Dumb'? template.Dumb(htmlPack): template.Smart(htmlPack);
-
-        // generate component file
-
-        let filePack = {template: htmlTemplate, name, parent, group, job};
-
-        generate.Component(filePack);
-    }
+    let {name, attribs, children } = component;
     
-    // if there is css object, creat component with css props
-    if(css){
-        let cssPack = {css, name, className, classProps};
+    let tag = name;
+    !attribs.name ? attribs.name = "$"+tag.toUpperCase() : "";
+    
+    let templateHTML, templateCSS, fileHTML, fileCSS
 
-        // generate css template
-        let cssTemplate = template.CSS(cssPack);
+    // if parent is App, create a directory and intialize the App and index component
+    if(job === 'createApp' && name === "App"){
+        // initialize with children
+        generate.App(children, num);
+        generate.Index(num);
+    }else{
 
-        // generate css file
-
-        let filePack = {template: cssTemplate, name, group, job}
-
-        generate.Style(filePack);
+        // create component files
+        if(attribs.component === "stateful"){
+            templateHTML = template.Stateful(component);
+            console.log(templateHTML)
+        }else{
+            templateHTML = template.Stateless(component)
+        };
+        fileJS = generate.Component(templateHTML, component, num)
+        
+        // create css files
+        templateCSS = template.Style(attribs)
+        fileCSS = generate.Style(templateCSS, attribs, num)
     }
-
-    cb();
 }

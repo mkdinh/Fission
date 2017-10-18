@@ -5,11 +5,11 @@ const path = require('path');
 const App = require('../templates/App'); 
 
 // Script to create default App/ with its children
-module.exports = (children,job) => {
+module.exports = (children, job) => {
     
     // set job directory
     const jobDir = path.join(__dirname,`../../../jobs/${job}/`);
-
+    
     // const jobDir = process.cwd() + '/client/'
     
     // create source dir

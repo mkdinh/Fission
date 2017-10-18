@@ -5,10 +5,13 @@ const path = require('path');
 
 // Create new component
 //--------------------------------------------------------
-module.exports = (package) => {
-
-    // const jobDir = process.cwd() + `/server/jobs/${job}/`;
-    let {template, name, parent, group, job} = package;
+module.exports = (template, package, num) => {
+    
+    let {type, attribs, children } = package;
+    let tag = package.name;
+    
+    let {classVar, name, group} = attribs;
+    let className = attribs.class;
 
     // parameters for creating components files
     let jobDir, compDir, groupDir , file, compIndex, groupIndex;
@@ -17,26 +20,25 @@ module.exports = (package) => {
     let regExp = new RegExp(name, "g");
  
     // set job directory
-    jobDir = path.join(__dirname,`../../../jobs/${job}/`);
+    jobDir = path.join(__dirname,`../../../jobs/${num}/`);
    
     // if the component have a group, prepend directory before component directory
     if(group){
-        compDir = path.join(jobDir,`src/components/${group}/${name}/`);
         groupDir = path.join(jobDir,`src/components/${group}/`);
+        compDir = path.join(jobDir,`src/components/${group}/${name}/`);
     }else{
         compDir = path.join(jobDir,`src/components/${name}/`);
     };
-
+    
     // create component files
     file = compDir + `${name}.js`;
     compIndex = compDir + `index.js`;
     groupIndex = groupDir + `index.js`;
-
-     // create file with template if isnt exist
-     fse.outputFile(file,template)
+ 
+    // create file with template if isnt exist
+    fse.outputFileSync(file,template);
 
     //  create group indexjs if not exist
- 
     if(!fse.pathExistsSync(groupIndex)){
             fse.outputFileSync(groupIndex, "//Import group components\n//--------------------------------------------------------")
     };
@@ -64,17 +66,15 @@ module.exports = (package) => {
   
     // if component index file doesnt exist, create index file and write export code
     // else if it does exist, then append to the file
-    fse.exists(compIndex)
-        .then((exist) => {
-            if(!exist) throw false;
-            fse.readFile(compIndex,'utf8', (err, text) => {
-                
-                text.match(regExp) ? 
-                    null
-                :
+    if(fse.pathExistsSync(compIndex)){
+
+            fse.readFile(compIndex,'utf8', (err, text) => {        
+                if(!text.match(regExp)){
                     fse.appendFileSync(compIndex,`\nexport { ${name} } from "./${name}";`);  
+                }
             })
             
-        })
-        .catch((err) => fse.outputFileSync(compIndex,`export { ${name} } from "./${name}";\n`) )
-}
+    }else{
+        fse.outputFileSync(compIndex,`export { ${name} } from "./${name}";\n`);
+    };
+};

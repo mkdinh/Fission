@@ -16,7 +16,7 @@ const LOCAL_URI = "mongodb://localhost/chain-reaction"
 
 // connect to mongoDB
 mongoose.connect(
-    process.env.MONGO_URI || LOCAL_URI,
+    process.env.MONGODB_URI || LOCAL_URI,
     {
         useMongoClient: true
     }
@@ -37,11 +37,11 @@ app.use(passport.initialize());
 app.use(passport.session())
 
 // parse body in HTTP request
-// app.use(bodyParser.urlencoded({extended: false}));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // server static files
-app.use(express.static("../client/build"));
+app.use(express.static("./client/build"));
 
 // use routes
 app.use(routes);

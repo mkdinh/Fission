@@ -6,11 +6,6 @@ import { Navbar } from '../components/Nav/';
 import { About, Build } from '../components/Page';
 import Auth0 from "../components/Auth/Auth.js"
 import { BrowserRouter as Router, Route } from "react-router-dom";
-const auth = new Auth0()
-
-const login = () => {
-	auth.login()
-}
 
 // Create App component
 //--------------------------------------------------------

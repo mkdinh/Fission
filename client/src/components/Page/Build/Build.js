@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import './Build.css';
 import { Wrapper } from '../../Card';
+import Auth0 from "../../Auth/Auth.js";
 
 // Create new stateful component
 //--------------------------------------------------------
@@ -13,7 +14,7 @@ class Build extends Component{
 	}
 
 	componentDidMount(){
-		
+		Auth0.handleAuthentication()
 	}
 
 	render(){

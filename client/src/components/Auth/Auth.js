@@ -9,7 +9,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
       domain: process.env.AUTH0_DOMAIN || "app78488740.auth0.com",
       clientID:  process.env.AUTH0_CLIENT_ID || "doh0u_68zAATE2KyI1th-O1h8YnndJEO",
-      redirectUri: process.env.AUTH0_CALLBACK_URL || "http:localhost:3000/build",
+      redirectUri: process.env.AUTH0_CALLBACK_URL,
       audience: 'https://app78488740.auth0.com/userinfo',
       responseType: 'token id_token',
       scope: 'openid'
@@ -41,6 +41,6 @@ export default class Auth {
       localStorage.setItem("access_token", authRes.accessToken);
       localStorage.setItem("id_token", authRes.idToken);
       // navigate to build page
-      history.replace("/home");
+      history.replace("/");
     }
 };

@@ -2,7 +2,6 @@
   "name": "fission",
   "version": "1.0.0",
   "main": "server.js",
-  "proxy": "http://localhost:3001/",
   "scripts": {
     "server": "node server.js",
     "client": "node scripts/start-client.js",

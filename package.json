@@ -1,0 +1,28 @@
+{
+  "name": "fission",
+  "version": "1.0.0",
+  "main": "server.js",
+  "proxy": "http://localhost:3001/",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "fs-extra": "^4.0.2",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.11.7",
+    "passport": "^0.4.0"
+  },
+  "description": ""
+}

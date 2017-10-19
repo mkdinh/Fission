@@ -24,5 +24,13 @@
     "mongoose": "^4.11.7",
     "passport": "^0.4.0"
   },
-  "description": ""
+  "description": "React Component generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkdinh/Chain-Reaction.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mkdinh/Chain-Reaction/issues"
+  },
+  "homepage": "https://github.com/mkdinh/Chain-Reaction#readme"
 }

@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-// import Container from "reactstrap/lib/Container";
-// import Col from "reactstrap/lib/Col";
-// import Row from "reactstrap/lib/Row";
 //import NavbarBrandNew from "../components/navbar";
 import Sidebarmenunew from "../../components/Sidebarmenunew";
  import Newcompomenu from "../../components/Newcompomenu";
-// import FissionButton from "../../components/fissionButton";
+import FissionButton from "../../components/FissionButton";
 //set up the Drag and Drop tool
 import ReactDOM from 'react-dom';
 //import Draggable from 'react-draggable'; // The default
 import { Draggable, Droppable } from 'react-drag-and-drop';
 import RaisedButton from "material-ui/RaisedButton";
  import "./Reactorpage.css";
-//import CodeEditor
+import CodeEditor from "../../components/Editor";
 
 //make a bunch of buttons with this data and label them like drag and drop menu?
 //set up the render?
@@ -30,7 +27,7 @@ import RaisedButton from "material-ui/RaisedButton";
 class  Reactorpage  extends Component {
 //set the state of the page to be what the component is in this case (can do later)
 showData =()=> this.setState({
-  
+
 });
 
 
@@ -50,7 +47,7 @@ render(){
     
    
 
-    <p>  Return to the editor on the canvas page for your final edits, or to add more components you would like to use</p>
+    <p>  Use the editor below for any final edits, or to add more components you would like to use</p>
     <p> If you are happy with what you see, click the Fission button to save you work</p>
     
    
@@ -58,6 +55,9 @@ render(){
   onDrop ={this.onDrop.bind(this)}>
   <div id="preview">should this be its own Component so I can update the state?</div>
   </Droppable>
+
+
+     <FissionButton />
 
   </div>
 

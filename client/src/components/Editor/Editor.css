@@ -1,4 +1,8 @@
-.editor{
-	margin: 20px;
-	border: red 5px solid;
+#ace-editor{
+	border: orange solid 5px;
+	width: 500px;
+	float: right;
+	display: block;
+	bottom: 625px;
+	padding-left: 10px;
 }

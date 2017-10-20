@@ -21,9 +21,9 @@ class Newcompomenu extends React.Component {
         return (
             <div>
         <RaisedButton
-          label="Styling" fullWidth={true}    onClick={this.handleToggle}
+          label="Styling" fullWidth={false}    onClick={this.handleToggle}
         />
-        <Drawer width={400} openSecondary={true} open={this.state.open} >
+        <Drawer width={400} openPrimary={true} open={this.state.open} >
           <AppBar title="Styling Bench" />
         </Drawer>
       </div>

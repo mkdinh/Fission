@@ -7,19 +7,11 @@ import { Row, Col } from '../../Grid';
 
 // Create new stateful component
 //--------------------------------------------------------
-class Container extends Component{
-    
-	state = {
+const Container  = (props) => 
 
-	}
-
-	render(){
-	return(
-		<div className={`container ${props.fluid? fluid: ""}`}>
-
-		</div>
-	)}
-};
+	<div className={`container ${props.fluid? `fluid`: ""}`}>
+		{props.children}
+	</div>
 
 
 // Export component to application

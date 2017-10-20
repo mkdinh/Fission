@@ -14,7 +14,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Tabbar from "./components/Tabbar";
 
 //importing page routes
-import {About, Canvas, Reactor, Login } from "./pages";
+import {About, Canvas, Reactor, Login, Profile } from "./pages";
 
 //importing the sidebar menus
 import Sidebarmenunew from "./components/Sidebarmenunew";
@@ -35,6 +35,7 @@ class App extends Component {
                             <Route exact path="/canvas" component={Canvas} />
                             <Route exact path="/reactor" component={Reactor} />
                             <Route exact path="/login" component={Login} />
+                            <Route exact path="/profile" component={Profile} />
                         </Switch>
                     </div>
                 </Router>

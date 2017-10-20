@@ -60,7 +60,6 @@ class Auth extends Component {
       // Set the time that access token will expire at
       localStorage.setItem("access_token", authRes.accessToken);
       localStorage.setItem("id_token", authRes.idToken);
-      // navigate to build page
     }
 };
 

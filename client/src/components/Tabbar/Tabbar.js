@@ -4,7 +4,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 //import SwipeableViews from 'react-swipeable-views';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 //import "./tabbar.css";
-
+import Auth0 from "../Auth/Auth.js";
 
 /*these go after the classing router tag and before the /div
 <SwipeableViews

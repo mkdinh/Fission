@@ -1,5 +1,52 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  	font-family: 'Permanent Marker', cursive;
+
 }
+
+#nav{
+
+	text-align: left;
+
+}
+
+.button{
+
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+.MuiButton-root-25{
+
+	border: black solid 5px;
+}
+
+#infobox {
+
+	border: green solid 5px;
+	font-family: 'Permanent Marker', cursive;
+}
+
+
+#ace-editor{
+
+	border: orange solid 5px;
+	height: 500px;
+	width: 100%;
+
+}
+/*play with the columns here so it's on the same row*/
+#sidebarmenu{
+
+	border:  blue solid 5px;
+	height: 700px;
+	width: 200px;
+	float: right;
+	display:  inline;
+
+
+}
+

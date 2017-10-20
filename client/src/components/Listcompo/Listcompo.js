@@ -40,7 +40,7 @@ export default class Listcompo extends React.Component {
             <ListItem
               primaryText="Button"
               initiallyOpen={true}
-              primaryTogglesNestedList={true}
+              primaryTogglesNestedList={false}
               nestedItems={[
                 <ListItem
                   key={1}

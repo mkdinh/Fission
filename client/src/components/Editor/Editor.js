@@ -25,8 +25,7 @@ class CodeEditor extends Component {
         onChange={this.onChange}
         
         style={{ height: '600px' }}
-        ref={instance => { this.ace = instance; }} // Let's put things into scope  
-        
+        ref={instance => { this.ace = instance; }} // Let's put things into scope    
         
       />
     );

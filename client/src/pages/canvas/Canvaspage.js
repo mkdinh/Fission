@@ -40,6 +40,7 @@ onDrop(data){
           <div className ="row"> 
           <div className="col-md-2">
          <Newcompomenu />
+        
           </div>
     
       <div className="col-md-2">
@@ -49,9 +50,7 @@ onDrop(data){
          </div>
         </div>
 
-    
-    <FissionButton />
-     
+  
       
     </Container>
   </div>

@@ -7,10 +7,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    email: {
-        type: String,
-        require: true
-    },
     firstName: {
         type: String,
         require: true
@@ -19,7 +15,10 @@ const UserSchema = new Schema({
         type: String,
         require: true
     },
-
+    auth0Id: {
+        type: String,
+        require: true
+    },
     components: {
         type: Schema.Types.ObjectId,
         ref: "Component"

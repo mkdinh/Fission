@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import { NavWrapper } from '../NavWrapper';
 import { NavLink } from '../NavLink';
-import axios from "axios";
 import Auth0 from "../../Auth/Auth.js";
 
 const login = (ev) => {

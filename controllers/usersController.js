@@ -7,11 +7,20 @@ const db = require('../models');
 module.exports = ({
 
     // perform login
-    signIn: (user) => {
-        
+    login: (req, res) => {
+        db.User.findOne({auth0Id: req.params.id})
+            .then( user =>{
+                if(!user) throw "No user data found";
+                res.json(user)
+            })
+            .catch( err => res.status(204).send({error: err}))
     },
 
-    update: (user) => {
-        console.log('updating')
+    create: (req, res) => {
+        db.User.create(req.body)
+            .then( user => {
+                res.json(user)
+            })
+            .catch( err => res.send(err));
     }
 })

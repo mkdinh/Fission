@@ -7,11 +7,12 @@ const usersController = require("../../controllers/usersController.js");
 // ---------------------------------------------------
 // Matches with "/api/user"
 
-router.route("/")
-    .get(usersController.signIn)
+router.route('/')
+    .post(usersController.create);
 
-router.route('/:id')
-    .put(usersController.update);
+router.route("/:id")
+    .get(usersController.login)
+
 
 // EXPORT ROUTES
 // ---------------------------------------------------

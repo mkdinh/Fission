@@ -1,10 +1,11 @@
 // import authication and history
+import React, { Component } from "react";
 import auth0 from "auth0-js";
-import history from "./history";
-
+import { Redirect } from "react-router-dom";
+import API from "../../utils/api";
 
 // create Authentication component
-class Auth {
+class Auth extends Component {
     
     auth0 = new auth0.WebAuth({
       domain: process.env.AUTH0_DOMAIN || "app78488740.auth0.com",
@@ -19,14 +20,37 @@ class Auth {
       this.auth0.authorize();
     }
 
-    handleAuthentication = () => {
+    logout = () => {
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("id_token");
+      // navigate to home route
+
+    }
+
+    handleAuthentication = (found, create) => {
+
       this.auth0.parseHash((err, authRes) => {
-        console.log(authRes)
         if(authRes && authRes.accessToken && authRes.idToken){
-          this.setSession(authRes);
-          history.replace("/build")
+          // grab auth0 idToken
+          let auth0Token = authRes.idTokenPayload.sub;
+          // split token and grab only the id 
+          let auth0Id = auth0Token.split("|")[1];
+          // check id agaisnt database as a key value
+          API.user.findOne(auth0Id)
+            .then(user => {
+              // if no user infomation found throw error 
+              if(user.status === 204) throw "Cannot find user w/ auth0Id";
+              // else set session in localstorage
+              this.setSession(authRes);
+              // display success login cb
+              found(user)
+            })
+            .catch(err => {
+              // if no content, run cb to create new user and display NewUser modal
+              create(auth0Id)          
+
+            })
         }else if(err){
-          history.replace("/");
           console.log(err)
         };
       });
@@ -37,7 +61,6 @@ class Auth {
       localStorage.setItem("access_token", authRes.accessToken);
       localStorage.setItem("id_token", authRes.idToken);
       // navigate to build page
-      history.replace("/");
     }
 };
 

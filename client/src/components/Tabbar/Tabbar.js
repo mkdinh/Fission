@@ -2,7 +2,7 @@ import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 // Get this package from https://github.com/oliviertassinari/react-swipeable-views
 //import SwipeableViews from 'react-swipeable-views';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 //import "./tabbar.css";
 
 
@@ -33,19 +33,18 @@ const styles = {
   },
 };
 
-export default class Tabbar extends React.Component {
+class Tabbar extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       slideIndex: 0,
+      page: ""
     };
   }
 
   handleChange = (value) => {
-    this.setState({
-      slideIndex: value,
-    });
+    this.props.history.push(value)
   };
 
   render() {
@@ -54,13 +53,13 @@ export default class Tabbar extends React.Component {
       <Router>
         <Tabs
           onChange={this.handleChange}
-          value={this.state.slideIndex}
+          value={this.props.history.location.pathname}
         >
 
-          <Tab label="About" value={0} containerElement={<Link to ="/about"/>} />
-          <Tab label="Your Canvas" value={1} containerElement={<Link to ="/canvas"/>} />
-           <Tab label="Reactor" value={2} containerElement={<Link to ="/reactor"/>} />
-          <Tab label="Login" value={3} containerElement={<Link to ="/login"/>} />
+          <Tab label="About" value="/"/>
+          <Tab label="Canvas"  value="/canvas"/>
+          <Tab label="Reactor" value="reactor"/>
+          <Tab label="Login" value="login"/>
          
         </Tabs>
 
@@ -68,5 +67,7 @@ export default class Tabbar extends React.Component {
         
       </div>
     );
-  }
-}
+  };
+};
+
+export default withRouter(Tabbar);

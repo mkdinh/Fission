@@ -24,53 +24,36 @@ import CodeEditor from "../../components/Editor";
 */
 
 
-class  Reactorpage  extends Component {
-//set the state of the page to be what the component is in this case (can do later)
-showData =()=> this.setState({
+class  Reactor  extends Component {
+  //set the state of the page to be what the component is in this case (can do later)
+  showData =()=> this.setState({
 
-});
-
-
-onDrop(data){
- console.log(data)
-
-}
-
-render(){
-
-  return(
+  });
 
 
-<div>
-
-    <h2>A preview of the components you have created and styled: </h2>
-    
-   
-
-    <p>  Use the editor below for any final edits, or to add more components you would like to use</p>
-    <p> If you are happy with what you see, click the Fission button to save you work</p>
-    
-   
-  <Droppable types ={['usercompo']} 
-  onDrop ={this.onDrop.bind(this)}>
-  <div id="preview">should this be its own Component so I can update the state?</div>
-  </Droppable>
-
-
-     <FissionButton />
-
-  </div>
-
-
-
-      );
+  onDrop(data){
+  console.log(data)
 
   }
 
+  render(){
+  return(
+
+
+    <div>
+
+      <h2>A preview of the components you have created and styled: </h2>
+      <p>  Use the editor below for any final edits, or to add more components you would like to use</p>
+      <p> If you are happy with what you see, click the Fission button to save you work</p>
+    
+   
+      <Droppable types ={['usercompo']} 
+          onDrop ={this.onDrop.bind(this)}>
+            <div id="preview">should this be its own Component so I can update the state?</div>
+      </Droppable>
+     <FissionButton />
+    </div>
+  )}
 }
 
-
-
-
-
-export default Reactorpage;
+export { Reactor };

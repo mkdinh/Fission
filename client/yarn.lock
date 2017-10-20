@@ -2013,11 +2013,7 @@ dom-converter@~0.1:
   dependencies:
     utila "~0.3"
 
-<<<<<<< HEAD
-dom-helpers@^3.2.0:
-=======
 dom-helpers@^3.2.0, dom-helpers@^3.2.1:
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.2.1.tgz#3203e07fed217bd1f424b019735582fc37b2825a"
 
@@ -2595,11 +2591,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-<<<<<<< HEAD
-fbjs@^0.8.1, fbjs@^0.8.16:
-=======
 fbjs@^0.8.1, fbjs@^0.8.16, fbjs@^0.8.4, fbjs@^0.8.9:
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
   version "0.8.16"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
@@ -3986,11 +3978,7 @@ jsx-ast-utils@^1.4.0, jsx-ast-utils@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-1.4.1.tgz#3867213e8dd79bf1e8f2300c0cfc1efb182c0df1"
 
-<<<<<<< HEAD
-keycode@^2.1.8:
-=======
 keycode@^2.1.7, keycode@^2.1.8:
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
 
@@ -4154,13 +4142,10 @@ lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
-<<<<<<< HEAD
-=======
 lodash.tonumber@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/lodash.tonumber/-/lodash.tonumber-4.0.3.tgz#0b96b31b35672793eb7f5a63ee791f1b9e9025d9"
 
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
@@ -5205,11 +5190,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-<<<<<<< HEAD
-prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.6.0:
-=======
 prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5320,13 +5301,6 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-<<<<<<< HEAD
-react-addons-css-transition-group@^15.6.2:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/react-addons-css-transition-group/-/react-addons-css-transition-group-15.6.2.tgz#9e4376bcf40b5217d14ec68553081cee4b08a6d6"
-  dependencies:
-    react-transition-group "^1.2.0"
-=======
 react-ace-editor@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/react-ace-editor/-/react-ace-editor-0.0.2.tgz#2b6f7ca80770a9250343ff21d12ab155cf6916fa"
@@ -5342,7 +5316,6 @@ react-ace@^5.4.0:
     lodash.get "^4.4.2"
     lodash.isequal "^4.1.1"
     prop-types "^15.5.8"
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
 
 react-dev-utils@^4.1.0:
   version "4.1.0"
@@ -5400,11 +5373,7 @@ react-error-overlay@^2.0.2:
     settle-promise "1.0.0"
     source-map "0.5.6"
 
-<<<<<<< HEAD
-react-event-listener@^0.5.1:
-=======
 react-event-listener@^0.5.0, react-event-listener@^0.5.1:
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.5.1.tgz#ba36076e47bc37c5a67ff5ccd4a9ff0f15621040"
   dependencies:
@@ -5478,9 +5447,6 @@ react-scripts@1.0.14:
   optionalDependencies:
     fsevents "1.1.2"
 
-<<<<<<< HEAD
-react-transition-group@^1.2.0, react-transition-group@^1.2.1:
-=======
 react-swipeable-views-core@^0.12.8:
   version "0.12.8"
   resolved "https://registry.yarnpkg.com/react-swipeable-views-core/-/react-swipeable-views-core-0.12.8.tgz#99460621e5a6da07fb482a25b151905ae7a797a9"
@@ -5518,7 +5484,6 @@ react-tabs@^2.1.0:
     prop-types "^15.5.0"
 
 react-transition-group@^1.2.1:
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"
   dependencies:

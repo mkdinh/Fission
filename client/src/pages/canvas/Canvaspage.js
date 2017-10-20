@@ -14,48 +14,49 @@ import CodeEditor from "../../components/Editor";
 import ReactDOM from 'react-dom';
 import { Draggable, Droppable } from 'react-drag-and-drop';
 import RaisedButton from "material-ui/RaisedButton";
-class Canvaspage extends Component {
 
-showData =()=> this.setState({
+class Canvas extends Component {
 
-});
+    state = {
 
+    }
 
-onDrop(data){
- console.log(data)
-
-}
-  render(){
-
-    return(
-    <div>     
-    
-    <Container>
-          <p>
- Your Reactor page, a space to preview and style your final 
- selected components before saving a "fission file" 
- of your work, with the button below
-          </p>
-          
-          <div className ="row"> 
-          <div className="col-md-2">
-         <Newcompomenu />
+  showData = () => {
+      this.setState({
         
+      })
+  }
+
+
+  onDrop = (data) => {
+    console.log(data)
+  }
+
+  render(){
+  return(
+
+      <Container>
+
+          <p>
+            Your Reactor page, a space to preview and style your final 
+            selected components before saving a "fission file" 
+            of your work, with the button below
+          </p>
+              
+          <div className ="row"> 
+            <div className="col-md-2">
+              <Newcompomenu />
+            </div>
+        
+            <div className="col-md-2">
+              <Listcompo />       
+              <Previewdisplay />
+              <CodeEditor />
+            </div>
           </div>
-    
-      <div className="col-md-2">
-          <Listcompo />       
-     <Previewdisplay />
-     <CodeEditor />
-         </div>
-        </div>
 
-  
-      
-    </Container>
-  </div>
-  );
-}
+      </Container>
+  )};
 }
 
-export default Canvaspage;
+export { Canvas };

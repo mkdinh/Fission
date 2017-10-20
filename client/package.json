@@ -9,12 +9,8 @@
     "history": "^4.7.2",
     "material-ui": "^0.19.4",
     "react": "^16.0.0",
-<<<<<<< HEAD
-    "react-addons-css-transition-group": "^15.6.2",
-=======
     "react-ace": "^5.4.0",
     "react-ace-editor": "^0.0.2",
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
     "react-dom": "^16.0.0",
     "react-drag-and-drop": "^2.4.0",
     "react-draggable": "^3.0.3",

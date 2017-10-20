@@ -1,17 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-<<<<<<< HEAD
-import { App } from './App';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import registerServiceWorker from './registerServiceWorker';
-
-ReactDOM.render(
-    <MuiThemeProvider>
-        <App />
-    </MuiThemeProvider>
-, document.getElementById('root'));
-=======
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -53,7 +42,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
->>>>>>> 6d4b075c9d766f9ee413972ac6029271e3d8789f
 registerServiceWorker();
 
 

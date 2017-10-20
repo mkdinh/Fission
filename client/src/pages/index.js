@@ -1,5 +1,8 @@
-export { About }  from "./about";
-export { Canvas } from "./canvas";
-export { Login } from "./login";
-export { Reactor } from "./reactor";
-export { Profile } from "./profile";
+
+import  About   from "./about";
+import  Canvas  from "./canvas";
+import  Login   from "./login";
+import  Reactor from "./reactor";
+import  Profile from "./profile";
+
+export { About, Canvas, Login, Reactor, Profile };

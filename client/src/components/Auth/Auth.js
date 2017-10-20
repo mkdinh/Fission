@@ -27,7 +27,7 @@ class Auth extends Component {
 
     }
 
-    handleAuthentication = (found, create) => {
+    handleAuthentication = (cb) => {
 
       this.auth0.parseHash((err, authRes) => {
         if(authRes && authRes.accessToken && authRes.idToken){
@@ -38,18 +38,9 @@ class Auth extends Component {
           // check id agaisnt database as a key value
           API.user.findOne(auth0Id)
             .then(user => {
-              // if no user infomation found throw error 
-              if(user.status === 204) throw "Cannot find user w/ auth0Id";
-              // else set session in localstorage
-              this.setSession(authRes);
-              // display success login cb
-              found(user)
+              cb(user, auth0Id)
             })
-            .catch(err => {
-              // if no content, run cb to create new user and display NewUser modal
-              create(auth0Id)          
-
-            })
+            .catch(err => console.log(err))
         }else if(err){
           console.log(err)
         };

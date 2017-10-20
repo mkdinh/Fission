@@ -1,1 +1,1 @@
-export { Canvas } from "./Canvaspage.js";
+export { default } from "./Canvaspage.js";

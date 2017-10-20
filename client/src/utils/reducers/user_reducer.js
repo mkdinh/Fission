@@ -13,7 +13,7 @@ export default (state = initState, action) => {
         case "LOGOUT":
             return {...initState}
         case "NEW_USER":
-            return{...state, login: true, new: true}     
+            return{...state, login: true, new: action.playload.new}     
         default:
             return {...state}
     }

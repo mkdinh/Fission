@@ -20,4 +20,4 @@ class MessageModal extends Component{
     }
 };
 
-export { Message };
+export { MessageModal };

@@ -1,7 +1,6 @@
 // Import dependencies
 //--------------------------------------------------------
 import React, { Component } from "react";
-import Transition from "react-addons-css-transition-group";
 import API from "../../utils/api";
 import { Row, Col } from "../Grid"
 import Dialog from 'material-ui/Dialog';
@@ -9,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 // create new user modal
 //--------------------------------------------------------
-export default class NewUserModal extends Component {
+class NewUserModal extends Component {
     state = {
         firstName: "",
         lastName: "",
@@ -79,3 +78,5 @@ export default class NewUserModal extends Component {
       );
     }
 };
+
+export { NewUserModal };

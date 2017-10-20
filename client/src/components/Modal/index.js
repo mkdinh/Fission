@@ -1,3 +1,3 @@
-export { Message } from "./Message";
-export { Landing } from "./Landing";
-export { NewUser } from "./NewUser";
+export { MessageModal } from "./Message";
+export { LandingModal } from "./Landing";
+export { NewUserModal } from "./NewUser";

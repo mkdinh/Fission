@@ -1,1 +1,1 @@
-export { Reactor } from "./Reactorpage.js";
+export { default } from "./Reactorpage.js";

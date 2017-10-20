@@ -3,6 +3,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 // Get this package from https://github.com/oliviertassinari/react-swipeable-views
 //import SwipeableViews from 'react-swipeable-views';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 //import "./tabbar.css";
 import Auth0 from "../Auth/Auth.js";
 
@@ -32,6 +33,10 @@ const styles = {
     padding: 10,
   },
 };
+
+const mapStateToProps = (state) => {
+  return {...state.user}
+}
 
 class Tabbar extends React.Component {
 
@@ -72,4 +77,4 @@ class Tabbar extends React.Component {
   };
 };
 
-export default withRouter(Tabbar);
+export default connect(mapStateToProps)(withRouter(Tabbar));

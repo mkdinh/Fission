@@ -1,0 +1,42 @@
+.Footer {
+    height: 300px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 35px;
+    background-image: url("https://static.skillshare.com/uploads/project/553fecf24f7dccf3168d92d7eca7d200/094d94fa");
+    font-size: 38px;
+   text-shadow: 1px 5px 2px rgba(150, 150, 150, 1);
+}
+
+
+h1, h2{
+
+	text-shadow: 1px 5px 2px rgba(150, 150, 150, 1);
+}
+
+a{
+	color: #FF4081;
+
+}
+
+/*a:hover{
+
+
+}*/
+
+.infobox{
+
+	font-family: 'Roboto', sans-serif;
+	/*text-align: center;*/
+}
+
+/*information in the list for the Build page */
+.infolist{
+
+	font-family: 'Roboto', sans-serif;
+}
+
+li, p {
+
+font-family: 'Roboto', sans-serif;
+
+}

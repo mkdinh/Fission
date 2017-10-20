@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 //import Draggable from 'react-draggable'; // The default
 import { Draggable, Droppable } from 'react-drag-and-drop';
 import RaisedButton from "material-ui/RaisedButton";
- import "./Reactorpage.css";
+ //import "./Reactorpage.css";
 import CodeEditor from "../../components/Editor";
 
 //make a bunch of buttons with this data and label them like drag and drop menu?

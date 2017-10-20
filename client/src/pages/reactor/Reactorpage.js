@@ -19,7 +19,6 @@ import RaisedButton from "material-ui/RaisedButton";
 //hmmmmmm  convert to class instead of const here since I'm passing data through?
 //
 
-
 /* old test buttons  <Row>
 <Draggable type ="usercompo" data="menucompo"><span><RaisedButton> This is menu compo</RaisedButton></span></Draggable>
 <Draggable type ="usercompo" data="Navbarcompo"><span><RaisedButton> This is a Navbar compo</RaisedButton></span></Draggable>
@@ -28,9 +27,11 @@ import RaisedButton from "material-ui/RaisedButton";
 */
 
 
-class  Canvaspage  extends Component {
+class  Reactorpage  extends Component {
 //set the state of the page to be what the component is in this case (can do later)
-showData =()=> this.setState({});
+showData =()=> this.setState({
+  
+});
 
 
 onDrop(data){
@@ -72,4 +73,4 @@ render(){
 
 
 
-export default Canvaspage;
+export default Reactorpage;

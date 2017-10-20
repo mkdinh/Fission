@@ -1,1 +1,1 @@
-export { default } from "./listcompo";
+export { default } from "./Listcompo";

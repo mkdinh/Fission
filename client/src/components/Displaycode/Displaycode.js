@@ -13,8 +13,7 @@ render(){
       <Tab>Title 1</Tab>
       <Tab>Title 2</Tab>
     </TabList>
- 
-    <TabPanel>
+     <TabPanel>
       <h2>Any content 1</h2>
     </TabPanel>
     <TabPanel>

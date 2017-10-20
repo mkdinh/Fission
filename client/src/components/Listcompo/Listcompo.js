@@ -1,13 +1,13 @@
 import React from 'react';
-import MobileTearSheet from '../../../MobileTearSheet';
+//import MobileTearSheet from '../../../MobileTearSheet';
 import {List, ListItem} from 'material-ui/List';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import Subheader from 'material-ui/Subheader';
-import Toggle from 'material-ui/Toggle';
-
+//import Toggle from 'material-ui/Toggle';
+import "./Listcompo.css";
 /*Turn the function into a hover event that watches for this click instead of the toggle*/
 
 export default class Listcompo extends React.Component {
@@ -16,14 +16,13 @@ export default class Listcompo extends React.Component {
     open: false,
   };
 
-
-  handleToggle = () => {
+  onClick = () => {
     this.setState({
       open: !this.state.open,
     });
   };
 
-  handleNestedListToggle = (item) => {
+  handleNestedListonClick = (item) => {
     this.setState({
       open: item.state.open,
     });
@@ -32,52 +31,42 @@ export default class Listcompo extends React.Component {
   render() {
     return (
       <div>
-        <Toggle
-          toggled={this.state.open}
-          onToggle={this.handleToggle}
-          labelPosition="right"
-          label="This toggle controls the expanded state of the submenu item."
-        />
-        <br />
-        <MobileTearSheet>
-          <List>
-            <Subheader>Nested List Items</Subheader>
-            <ListItem primaryText="Sent mail" leftIcon={<ContentSend />} />
-            <ListItem primaryText="Drafts" leftIcon={<ContentDrafts />} />
+          <br />
+        <div id="Listcompo">
+          <List className="List">
+            <Subheader>Component List Items</Subheader>
+            <ListItem primaryText="Cards"  />
+            <ListItem primaryText="Grid List"  />
             <ListItem
-              primaryText="Inbox"
-              leftIcon={<ContentInbox />}
+              primaryText="Button"
               initiallyOpen={true}
               primaryTogglesNestedList={true}
               nestedItems={[
                 <ListItem
                   key={1}
-                  primaryText="Starred"
-                  leftIcon={<ActionGrade />}
+                  primaryText="FlatButton"
                 />,
                 <ListItem
                   key={2}
-                  primaryText="Sent Mail"
-                  leftIcon={<ContentSend />}
-                  disabled={true}
+                  primaryText="Menus"
+                  disabled={false}
                   nestedItems={[
-                    <ListItem key={1} primaryText="Drafts" leftIcon={<ContentDrafts />} />,
+                    <ListItem key={1} primaryText="Appbar"  />,
                   ]}
                 />,
                 <ListItem
                   key={3}
-                  primaryText="Inbox"
-                  leftIcon={<ContentInbox />}
+                  primaryText="Popover"
                   open={this.state.open}
                   onNestedListToggle={this.handleNestedListToggle}
                   nestedItems={[
-                    <ListItem key={1} primaryText="Drafts" leftIcon={<ContentDrafts />} />,
+                    <ListItem key={1} primaryText="Drafts"/>,
                   ]}
                 />,
               ]}
             />
           </List>
-        </MobileTearSheet>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 // Import dependencies
 //--------------------------------------------------------
 import React, { Component } from "react";
+import { Draggable, Droppable } from 'react-drag-and-drop';
 
 
 class ListBody extends Component{
@@ -13,7 +14,7 @@ class ListBody extends Component{
             <div className="list-components" key={component._id} style={{backgroundColor: "green"}}>
                 <p>id: {component._id}</p>
                 <p>name: {component.name}</p>
-                <p>html: {component.html}</p>
+                 <Draggable type="usercompo" data={component.html}><span><p>html: {component.html}</p></span></Draggable>
                 <p>css: {component.css}</p>
             </div>
         )

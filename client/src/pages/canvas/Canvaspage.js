@@ -56,7 +56,9 @@ class Canvas extends Component {
             <div className="col-md-2">
               <Listcompo components={this.state.components}/>       
               <Previewdisplay />
+               <Droppable types={["usercompo"]} onDrop={this.onDrop.bind(this)}>
               <CodeEditor />
+              </Droppable>
             </div>
           </div>
 

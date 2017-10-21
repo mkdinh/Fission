@@ -63,10 +63,10 @@ let BorderChange = React.createClass({
         return (
             
             <div style={boxStyle}>
-            <button onClick={this.increaseHeight} style={boxStyle}> + </button>
-            <button onClick={this.increaseLength} style={boxStyle}> + </button>
-            <button onClick={this.decreaseHeight} style={boxStyle}> + </button>
-            <button onClick={this.decreaseLength} style={boxStyle}> + </button>
+            <button onClick={this.increaseHeight} style={boxStyle}> Increase Height </button>
+            <button onClick={this.increaseLength} style={boxStyle}> Increase Length </button>
+            <button onClick={this.decreaseHeight} style={boxStyle}> Decrease Height </button>
+            <button onClick={this.decreaseLength} style={boxStyle}> Decrease Length</button>
             </div>
         );
 

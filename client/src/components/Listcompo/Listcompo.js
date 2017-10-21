@@ -1,6 +1,7 @@
 import React from 'react';
 //import MobileTearSheet from '../../../MobileTearSheet';
 import {List, ListItem} from 'material-ui/List';
+import { ListBody } from "./Body";
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
@@ -13,19 +14,16 @@ import "./Listcompo.css";
 export default class Listcompo extends React.Component {
 
   state = {
+    components: {},
     open: false,
   };
 
-  onClick = () => {
-    this.setState({
-      open: !this.state.open,
-    });
+  componentWillReceiveProps(props){
+      this.setState({components: props.components})
   };
 
-  handleNestedListonClick = (item) => {
-    this.setState({
-      open: item.state.open,
-    });
+  onClick = () => {
+    console.log(this.state)
   };
 
   render() {
@@ -33,41 +31,43 @@ export default class Listcompo extends React.Component {
       <div>
           <br />
         <div id="Listcompo">
-          <List className="List">
+          <a onClick={this.onClick}> Click me </a>
+          <List className="List" style={{height: "50vh", overflow: "scroll"}}>
             <Subheader>Component List Items</Subheader>
-            <ListItem primaryText="Cards"  />
-            <ListItem primaryText="Grid List"  />
-            <ListItem
-              primaryText="Button"
-              initiallyOpen={true}
+            {console.log(this.state.components)}
+            {Object.keys(this.state.components).map(group => <ListItem
+              key={group}
+              primaryText={group}
               primaryTogglesNestedList={false}
-              nestedItems={[
-                <ListItem
-                  key={1}
-                  primaryText="FlatButton"
-                />,
-                <ListItem
-                  key={2}
-                  primaryText="Menus"
-                  disabled={false}
-                  nestedItems={[
-                    <ListItem key={1} primaryText="Appbar"  />,
-                  ]}
-                />,
-                <ListItem
-                  key={3}
-                  primaryText="Popover"
-                  open={this.state.open}
-                  onNestedListToggle={this.handleNestedListToggle}
-                  nestedItems={[
-                    <ListItem key={1} primaryText="Drafts"/>,
-                  ]}
-                />,
-              ]}
-            />
+              nestedItems={[<ListBody key={group} components={this.state.components[group]}/>]}
+              />)}
           </List>
         </div>
       </div>
     );
   }
 }
+{/* <ListItem primaryText="Cards"  />
+<ListItem primaryText="Grid List"  /> */}
+
+// nestedItems={[
+//   <ListItem
+//     key={1}
+//     primaryText="FlatButton"
+//   />,
+//   <ListItem
+//     key={2}
+//     primaryText="Menus"
+//     disabled={false}
+//     nestedItems={[
+//       <ListItem key={1} primaryText="Appbar"  />,
+//     ]}
+//   />,
+//   <ListItem
+//     key={3}
+//     primaryText="Popover"
+//     open={this.state.open}
+//     onNestedListToggle={this.handleNestedListToggle}
+//     nestedItems={[
+//       <ListItem key={1} primaryText="Drafts"/>,
+//     ]}

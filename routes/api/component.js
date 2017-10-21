@@ -11,8 +11,11 @@ router.route('/')
 
 router.route('/:id')
     .get(compController.findOne)
-    .put(compController.update)
-    .delete(compController.delete);
+    .put(compController.updateOne)
+    .delete(compController.deleteOne);
+
+router.route("/group/all")
+    .get(compController.findGroups)
 
 // EXPORT ROUTES
 // ---------------------------------------------------

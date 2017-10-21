@@ -15,12 +15,22 @@ import ReactDOM from 'react-dom';
 import { Draggable, Droppable } from 'react-drag-and-drop';
 import RaisedButton from "material-ui/RaisedButton";
 
+import API from "../../utils/api"
+
 class Canvas extends Component {
 
     state = {
-
+      components: {}
     }
 
+  componentDidMount(){
+    API.component.findGroups()
+      .then( db => {
+        this.setState({components: db.data})
+      })
+      .catch( err => console.log(err))
+  }
+  
   showData = () => {
       this.setState({
         
@@ -45,11 +55,11 @@ class Canvas extends Component {
               
           <div className ="row"> 
             <div className="col-md-2">
-              <Newcompomenu />
+              <Newcompomenu/>
             </div>
         
             <div className="col-md-2">
-              <Listcompo />       
+              <Listcompo components={this.state.components}/>       
               <Previewdisplay />
               <CodeEditor />
             </div>

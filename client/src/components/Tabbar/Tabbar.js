@@ -76,5 +76,6 @@ class Tabbar extends React.Component {
     );
   };
 };
+const connectRedux = connect(mapStateToProps)(Tabbar);
 
-export default connect(mapStateToProps)(withRouter(Tabbar));
+export default withRouter(connectRedux);

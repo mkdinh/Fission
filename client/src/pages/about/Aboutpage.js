@@ -24,10 +24,13 @@ class About extends Component{
         <li>expand (shallow || deep)</li>
       </ul>
       <p>Nesting html is supported but this is still a prototype there might be some errors when generating components nesting component</p>
-  </div>          
-      
-          <Footer />
-    )}
-};
+  </div>     
+  <Footer />     
+      </div>
+          
+    );
+
+  }
+}
 
 export default About;

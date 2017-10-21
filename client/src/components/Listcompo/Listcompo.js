@@ -8,6 +8,8 @@ import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import Subheader from 'material-ui/Subheader';
 //import Toggle from 'material-ui/Toggle';
+import { Draggable, Droppable } from 'react-drag-and-drop';
+//import group from "../../group.json";
 import "./Listcompo.css";
 /*Turn the function into a hover event that watches for this click instead of the toggle*/
 
@@ -30,8 +32,10 @@ export default class Listcompo extends React.Component {
     return (
       <div>
           <br />
+         
         <div id="Listcompo">
           <a onClick={this.onClick}> Click me </a>
+          <p>Button</p>
           <List className="List" style={{height: "50vh", overflow: "scroll"}}>
             <Subheader>Component List Items</Subheader>
             {console.log(this.state.components)}
@@ -43,6 +47,7 @@ export default class Listcompo extends React.Component {
               />)}
           </List>
         </div>
+       
       </div>
     );
   }

@@ -1,5 +1,7 @@
 import ReactAce from 'react-ace-editor';
 import React, { Component } from 'react';
+import { Draggable, Droppable } from 'react-drag-and-drop'
+
  import "./Editor.css";
  
 class CodeEditor extends Component {
@@ -18,7 +20,7 @@ class CodeEditor extends Component {
 
   render() {
     return (
-      
+
       <ReactAce
         mode="javascript"
         theme="github"
@@ -28,6 +30,7 @@ class CodeEditor extends Component {
         ref={instance => { this.ace = instance; }} // Let's put things into scope    
         
       />
+      
     );
   }
 }

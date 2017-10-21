@@ -1,0 +1,65 @@
+[
+    {
+        "_id": "59ea80a5355b844588fbdcb6",
+        "name": "Raised Button",
+        "group": "buttons",
+        "html": "<a class='waves-effect waves-light btn'>button</a>",
+        "css": "",
+        "__v": 0,
+        "default": true
+    },
+    {
+        "_id": "59ea80e2355b844588fbdcb7",
+        "name": "Raised Button (Left Icon)",
+        "group": "buttons",
+        "html": "<a class='waves-effect waves-light btn'><i class='material-icons left'>cloud</i>button</a>",
+        "css": "",
+        "__v": 0,
+        "default": true
+    },
+    {
+        "_id": "59ea80f2355b844588fbdcb8",
+        "name": "Raised Button (Right Icon)",
+        "group": "buttons",
+        "html": "<a class='waves-effect waves-light btn'><i class='material-icons right'>cloud</i>button</a>",
+        "css": "",
+        "__v": 0,
+        "default": true
+    },
+    {
+        "_id": "59ea812c355b844588fbdcb9",
+        "name": "Float Button",
+        "group": "buttons",
+        "html": "<a class='btn-floating btn-large waves-effect waves-light red'><i class='material-icons'>add</i></a>",
+        "css": "",
+        "__v": 0,
+        "default": true
+    },
+    {
+        "_id": "59ea81bfa4a6f946488f02cf",
+        "name": "Flat Button",
+        "group": "buttons",
+        "html": " <a class='waves-effect waves-teal btn-flat'>Button</a>",
+        "css": "",
+        "__v": 0,
+        "default": true
+    },
+    {
+        "_id": "59ea820ca4a6f946488f02d0",
+        "name": "Submit Button",
+        "group": "buttons",
+        "html": "<button class='btn waves-effect waves-light' type='submit' name='action'>Submit\n<i class='material-icons right'>send</i>\n</button>",
+        "css": "",
+        "__v": 0,
+        "default": true
+    },
+    {
+        "_id": "59ea8230a4a6f946488f02d1",
+        "name": "Disabled Button",
+        "group": "buttons",
+        "html": "<a class='btn-large disabled'>Button</a>",
+        "css": "",
+        "__v": 0,
+        "default": true
+    }
+]

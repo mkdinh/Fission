@@ -2,6 +2,7 @@
 //uses react-tabs to create a small component with clickable tabs
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Draggable, Droppable } from 'react-drag-and-drop';
 import "./Displaycode.css";
 
 class Previewdisplay extends Component{
@@ -9,7 +10,6 @@ class Previewdisplay extends Component{
 render(){
 
 	return(
-
 <Tabs className="Tabs">
     <TabList>
       <Tab>HTML</Tab>

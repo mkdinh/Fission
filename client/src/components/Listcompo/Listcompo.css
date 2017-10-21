@@ -1,8 +1,8 @@
 .List{
 
-	border: 5px red solid !important;
-	width: 50% !important;
-	background-color: #ffd699 !important;
+	width: 400px !important;
+	background-color: #00BCD4 !important;
+	color: white !important;
 	overflow: "scroll" !important
   	}
 
@@ -10,4 +10,11 @@ p{
 
 	  	font-family: 'Permanent Marker', cursive;
 
+}
+
+.Subheader{
+
+	font-family: 'Roboto';
+	color: white;
+	font-size: larger;
 }

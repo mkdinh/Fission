@@ -1,7 +1,6 @@
 .Tabs{
 
-	border: 5px green solid !important;
-	width: 50% !important;
-	background-color: #ffd699 !important;
-	
+	width: 400px !important;
+	background-color: #00BCD4 !important;
+	color: white !important;
 }

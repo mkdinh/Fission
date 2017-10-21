@@ -1,12 +1,19 @@
 .List{
 
-	border: 5px red solid !important;
 	width: 50% !important;
-	background-color: #ffd699 !important;
+	background-color: #00BCD4 !important;
+	color: white;
   	}
 
 p{
 
 	  	font-family: 'Permanent Marker', cursive;
+
+}
+
+.Subheader{
+
+	font-family: 'Roboto';
+	color: white;
 
 }

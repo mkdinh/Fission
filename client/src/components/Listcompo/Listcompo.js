@@ -34,7 +34,7 @@ export default class Listcompo extends React.Component {
           <br />
         <div id="Listcompo">
           <List className="List">
-            <Subheader>Component List Items</Subheader>
+            <Subheader className="Subheader">Component List Items</Subheader>
             <ListItem primaryText="Cards"  />
             <ListItem primaryText="Grid List"  />
             <ListItem

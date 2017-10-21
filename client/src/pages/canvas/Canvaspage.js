@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Container from "reactstrap/lib/Container";
 import Newcompomenu from "../../components/Newcompomenu";
+import Col from "reactstrap/lib/Container";
+import Row from "reactstrap/lib/Container";
 import FissionButton from "../../components/FissionButton";
 import Previewdisplay from "../../components/Displaycode";
 import Listcompo from "../../components/Listcompo";
@@ -44,9 +46,10 @@ class Canvas extends Component {
             </div>
         
             <div className="col-md-2">
-              <Listcompo />       
+           
               <Previewdisplay />
               <CodeEditor />
+                 <Listcompo />   
             </div>
           </div>
 

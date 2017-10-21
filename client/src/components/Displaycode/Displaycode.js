@@ -5,6 +5,16 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Draggable, Droppable } from 'react-drag-and-drop';
 import "./Displaycode.css";
 
+/*
+
+psuedo code:  need to grab the component object from the database and then
+parse it out to other spaces;  each of the tabs below need to take a different
+key value pair from the compo's props {components.html}{component.css} etc.  and divvy
+the, up per tab (so maybe the name/)
+
+
+*/
+
 class Previewdisplay extends Component{
 
 render(){

@@ -39,12 +39,14 @@ export default class Listcompo extends React.Component {
           <List className="List" style={{height: "50vh", overflow: "scroll"}}>
             <Subheader>Component List Items</Subheader>
             {console.log(this.state.components)}
+          {/*<Draggable type="" data ="{this.state.primaryText}><span>"*/}
             {Object.keys(this.state.components).map(group => <ListItem
               key={group}
               primaryText={group}
               primaryTogglesNestedList={false}
               nestedItems={[<ListBody key={group} components={this.state.components[group]}/>]}
               />)}
+            {/*</Draggable>*/}
           </List>
         </div>
        

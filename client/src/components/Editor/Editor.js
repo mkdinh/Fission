@@ -4,7 +4,9 @@ import { Draggable, Droppable } from 'react-drag-and-drop'
 
  import "./Editor.css";
  
-class CodeEditor extends Component {
+
+  {/*<Droppable types={['usercompo']} onDrop={this.onDrop.bind(this)}*/}
+   class CodeEditor extends Component {
   
   constructor() {
     super();
@@ -25,13 +27,11 @@ class CodeEditor extends Component {
         mode="javascript"
         theme="github"
         onChange={this.onChange}
-        
         style={{ height: '500px' }}
         ref={instance => { this.ace = instance; }} // Let's put things into scope    
         
       />
-      
-    );
+     );
   }
 }
 

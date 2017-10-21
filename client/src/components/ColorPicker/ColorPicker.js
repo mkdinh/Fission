@@ -1,19 +1,32 @@
 import React from 'react';
-import { SketchPicker } from 'react-color';
-import "./ColorPicker.css";
+import { ChromePicker } from 'react-color';
 
 class ColorPicker extends React.Component {
+  state = {
+    background: 'green',
+  };
 
-  handleChange(color, event) {
-    
-  }
+  handleChangeComplete = (color) => {
+    this.setState({ background: color.hex });
+  };
 
   render() {
-  return (<SketchPicker onChange={ this.handleChange } 
-        />
-);
-
+    let boxStyle = {
+      backgroundColor: this.state.background,
+      height: 150,
+      width: 150,
+      border: "2px solid red"
+    }
+    return (
+      <div>
+      <ChromePicker
+        backgroundcolor={ "#fff"}
+        color={this.state.background}
+        onChangeComplete={ this.handleChangeComplete }
+      />
+      <div style={boxStyle}></div>
+      </div>
+    );
   }
 }
-
-export {ColorPicker};
+export default ColorPicker;

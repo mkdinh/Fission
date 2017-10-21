@@ -22,7 +22,7 @@ import { Draggable, Droppable } from 'react-drag-and-drop'
 
   render() {
     return (
-
+      <Droppable types={["usercompo"]} onDrop={this.onDrop.bind(this)}>
       <ReactAce
         mode="javascript"
         theme="github"
@@ -31,6 +31,7 @@ import { Draggable, Droppable } from 'react-drag-and-drop'
         ref={instance => { this.ace = instance; }} // Let's put things into scope    
         
       />
+      </Droppable>
      );
   }
 }

@@ -9,7 +9,6 @@ class ListBody extends Component{
     }
 
     componentItem = (component) => {
-        console.log("hello there!")
         return(
             <div className="list-components" key={component._id} style={{backgroundColor: "green"}}>
                 <p>id: {component._id}</p>
@@ -20,11 +19,12 @@ class ListBody extends Component{
         )
     }
 
+
     render(){
         return(
             <div>
                 <a>HELLLO THERE!</a>
-                {this.props.components.map(component => this.componentItem(component))}
+                {this.props.components.map(component => <div>{component.name}</div>)}
     
             </div>
         );

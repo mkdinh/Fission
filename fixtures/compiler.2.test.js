@@ -12,8 +12,7 @@ const fse = require('fs-extra');
 
 const jobNum = 2;
 
-const sample2 =`    
-<nav class="navbar" component="stateful" group="Nav" name="Navbar" expand="deep">
+const sample2 =`    <nav class="navbar" component="stateful" group="Nav" name="Navbar" expand="deep">
     <div class="nav-wrapper" component="stateful" group="Nav" name="NavWrapper">
         <a href="#" class="brand-logo">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down" component="stateful" name="NavLink" group="Nav">
@@ -90,7 +89,16 @@ const sample3 = `
 <div name="Col" group="Grid" component="stateless"></div>
 <div name="Row" group="Grid" component="stateless"></div>`
 
-const deconstructHTML = deconstruct(sample2, (html) =>{
+const buttons = `
+<div name="Container" group="Grid" component="stateless"></div>
+    <div name="Col" group="Grid" component="stateless">
+        <div name="Row" group="Grid" component="stateless">
+            <a class="waves-effect waves-light btn" name="RaisedBtn" expand="deep" component="stateful" group="Buttons">button</a>
+        </div>
+    </div>
+</div> `
+
+const deconstructHTML = deconstruct(buttons, (html) =>{
     // html = html.replace("\\","")
 
     let objHTML = parse(html)
@@ -102,7 +110,7 @@ const deconstructHTML = deconstruct(sample2, (html) =>{
         children: objHTML       
     }
 
-    compile(package, 'createApp', 3, () => {
+    compile(package, 'createApp', 5, () => {
         console.log("completed")
     });
 

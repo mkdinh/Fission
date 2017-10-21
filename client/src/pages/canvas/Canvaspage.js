@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import Container from "reactstrap/lib/Container";
-//import Grid from "reactstrap/lib/Grid";
-//import Col from "reactstrap/lib/Col";
-//import Row from "reactstrap/lib/Row";
-//import NavbarBrandNew from "../components/Navbar";
-//import Sidebarmenunew from "../../components/Sidebarmenunew";
 import Newcompomenu from "../../components/Newcompomenu";
 import FissionButton from "../../components/FissionButton";
 import Previewdisplay from "../../components/Displaycode";
@@ -48,9 +43,9 @@ class Canvas extends Component {
       <Container>
 
           <p>
-            Your Reactor page, a space to preview and style your final 
-            selected components before saving a "fission file" 
-            of your work, with the button below
+            This is your Reactor, a space to preview and style your final 
+ selected components before saving a "Fission file" 
+ of your work with the Fission Button Below.
           </p>
               
           <div className ="row"> 

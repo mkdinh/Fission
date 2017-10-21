@@ -2,7 +2,7 @@ import React,{ Component } from "react";
 import Backgroundimage from "../../components/backgroundimage";
 //import modal from ""../../components/modal;
 
-class Login extends Component{
+class About extends Component{
   state = {
 
   }
@@ -26,4 +26,4 @@ class Login extends Component{
   )}
 }
 
-export default Login;
+export default About;

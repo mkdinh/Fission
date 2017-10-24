@@ -6,7 +6,6 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 import CodeEditor from '../Editor';
-
 //set up the Drag and Drop tool
 import ReactDOM from 'react-dom';
 //import Draggable from 'react-draggable'; // The default

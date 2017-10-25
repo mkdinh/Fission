@@ -10,7 +10,6 @@ class Menuitem extends Component{
 		return(
 
 			<div>
-
 			 <MenuItem onMouseOver={this.handleToggle}>Style Option</MenuItem>
 
 			</div>

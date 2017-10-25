@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Container, Row, Col } from "../../components/Grid";
 import auth0 from "../../components/Auth";
 import { NewUserModal, LandingModal } from "../../components/Modal";
-
+import { UserProfile } from "../../components/Form";
 const mapStateToProps = (state) => {
     return {...state.user}
 }
@@ -66,9 +66,17 @@ class Profile extends Component{
                     
                 :
                     ""}
+                <Row>
+                <h1>USER PROFILE</h1>
+                </Row>
+                
+                {
+                this.state.login?
+                    <UserProfile profile={this.props.profile}/>
+                :
+                    ""
+                }
 
-                <h1>This is their profile page, only render when logged in</h1>
-                <h2>Please add more content into here</h2>
             </Container>
         )
     }

@@ -49,7 +49,7 @@ class  Reactor  extends Component {
    
       <Droppable types ={['usercompo']} 
           onDrop ={this.onDrop.bind(this)}>
-            <div id="preview">should this be its own Component so I can update the state?</div>
+            <div id="preview">This should present a preview of the file</div>
       </Droppable>
      <FissionButton />
     </div>

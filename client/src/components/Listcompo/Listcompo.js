@@ -41,6 +41,7 @@ export default class Listcompo extends React.Component {
             {Object.keys(this.state.components).map(group => <ListItem
               key={group}
               primaryText={group}
+              onClick={handleClick()}
               primaryTogglesNestedList={false}
               nestedItems={[<ListBody key={group} components={this.state.components[group]}/>]}
               />)}

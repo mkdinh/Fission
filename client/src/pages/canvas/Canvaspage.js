@@ -37,6 +37,14 @@ class Canvas extends Component {
     console.log(data)
   }
 
+
+handleClick=(newCompo)=>{
+  console.log(newCompo);
+  this.setState({active: newCompo});
+}
+
+
+
   render(){
   return(
 

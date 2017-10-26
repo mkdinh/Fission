@@ -1,74 +1,48 @@
 import React, {Component} from 'react';
 
-let BorderChange = React.createClass({
-    getInitialState: function() {
-        return {
-            width: 150,
-            length: 1500
-        };
-    },
+class BorderChange extends Component {
 
-    increaseHeight: function(event){
-        let currentHeight = this.state.height;
-        if (event.shiftKey) {
-            currentHeight+=10;
-        } else {
-            currentHeight+=1;
-        }
-            this.setState({
-                length: currentHeight
-            });
-    },increaseHeight: function(event){
-        let currentHeight = this.state.height;
-        if (event.shiftKey) {
-            currentHeight+=10;
-        } else {
-            currentHeight+=1;
-        }
-            this.setState({
-                length: currentHeight
-            });
-    },
-    decreaseHeight: function(event){
-        let currentHeight = this.state.height;
-        if (event.shiftKey) {
-            currentHeight-=10;
-        } else {
-            currentHeight-=1;
-        }
-            this.setState({
-                length: currentHeight
-            });
-    },
-    decreaseWidth: function(event){
-        let currentWidth = this.state.width;
-        if (event.shiftKey) {
-            currentWidth-=10;
-        } else {
-            currentWidth-=1;
-        }
-            this.setState({
-                width: currentWidth
-            });
-    },
-    render: function(){
-        let width = this.state.width;
-        let height = this.state.height;  
-        },
-    });
+    state = {  
+            width: 150,
+            height: 150
+        
+    }
+
+    handleHeightInput = (ev) => {
+        let {name, value} = ev.target;
+        value === "" ? value = 0 : value = value;
+        this.setState({
+            [name] : parseInt(value)
+        })
+        console.log(this.state)
+    }
+
+    handleWidthInput = (ev) => {
+        let {name, value} = ev.target;
+        value === "" ? value = 0 : value = value;
+        this.setState({
+            [name] : parseInt(value)
+        })
+        console.log(this.state);
+    }
+
+
+    render() {
         let boxStyle = {
-            width: height,
-            height: width,  
+            width: this.state.width,
+            height: this.state.height, 
+            border: "2px solid green",
         };
         return (
             
-            <div style={boxStyle}>
-            <button onClick={this.increaseHeight} style={boxStyle}> Increase Height </button>
-            <button onClick={this.increaseLength} style={boxStyle}> Increase Length </button>
-            <button onClick={this.decreaseHeight} style={boxStyle}> Decrease Height </button>
-            <button onClick={this.decreaseLength} style={boxStyle}> Decrease Length</button>
+            <div>
+            <input name="height" value={this.state.height} onChange={this.handleHeightInput}/>
+            <input name="width" value={this.state.width} onChange={this.handleWidthInput}/>
+            <div style={boxStyle}></div>
             </div>
+            
         );
-
+    }
+}
 
 export default BorderChange;

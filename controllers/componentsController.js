@@ -31,7 +31,7 @@ module.exports = {
     }, 
     findAll: (req, res) => {
         db.Component.find()
-            .then(components => res.json())
+            .then(components => res.json(components))
             .catch( err => console.log(err))
     },
 

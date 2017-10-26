@@ -22,5 +22,13 @@ module.exports = ({
                 res.json(user)
             })
             .catch( err => res.send(err));
+    },
+
+    update: (req, res) => {
+        db.User.findById(req.params.id, {$set: req.body})
+            .then( user => {
+
+            })
+            .catch( err => res.send({err: "Unable to change user data"}))
     }
 })

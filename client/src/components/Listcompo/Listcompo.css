@@ -1,20 +1,21 @@
 .List{
 
 	width: 400px !important;
-	background-color: #00BCD4 !important;
-	color: white !important;
-	overflow: "scroll" !important
+	background-color: #ffc107 !important;
+	color: black !important;
+	overflow: "scroll" !important;
   	}
 
 p{
 
-	  	font-family: 'Permanent Marker', cursive;
+	  	font-family: 'Roboto', san-serif !important;
+	  	color: black !important;
 
 }
 
 .Subheader{
 
-	font-family: 'Roboto';
-	color: white;
-	font-size: larger;
+	font-family: 'Roboto', san-serif !important;
+	color: black !important;
+	font-size: larger !important;
 }

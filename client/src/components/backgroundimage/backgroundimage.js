@@ -10,16 +10,17 @@ import React, {Component} from 'react';
     let size = modes[mode] || 'cover';
 
     let defaults = {
-      height: height || 100,
+      height: height || 1200,
       width: width,
-      backgroundColor: 'white'
+      backgroundColor: 'transparent'
     };
 
     let important = {
-      backgroundImage: `url("${src}")`,
+      backgroundImage: `url("${"https://www.nzgeo.com/wp-content/uploads/2015/08/74_Vuewpoint-1300x826.jpg"}")`,
       backgroundSize: size,
       backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
+      overFlow: 'hidden',
     };
 
     return <div {...props} style={{...defaults, ...style, ...important}} />

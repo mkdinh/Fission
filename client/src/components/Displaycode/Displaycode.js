@@ -24,6 +24,10 @@ updateDisplay=(data)=>{
 
 https://developmentarc.gitbooks.io/react-indepth/content/life_cycle/update/component_will_receive_props.html
 
+
+const newCompo ={this.state.active};
+<p> Name: {this.props.newCompo.name}</p>
+
 */
 
 
@@ -39,7 +43,7 @@ class Previewdisplay extends Component{
 
 render(){
 <div>
-const newCompo ={this.state.active};
+console.log("this is the this info from displaycode" + this);
 </div>
 
 	return(
@@ -53,7 +57,7 @@ const newCompo ={this.state.active};
     </TabList>
      <TabPanel>
       <h2>Preview Your HTML for your Component</h2>
-        <p> Name: {this.props.newCompo.name}</p>
+        
             
     </TabPanel>
     <TabPanel>

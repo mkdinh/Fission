@@ -1,7 +1,7 @@
 	/*adjust this style later, only passed in as a const now*/
 	.tab{
 
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Permanent Marker', cursive !important;
 
 
 	}

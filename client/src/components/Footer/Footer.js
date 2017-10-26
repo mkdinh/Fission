@@ -11,9 +11,9 @@ class Footer extends Component {
 
 
             <div className="Footer">
-  <div className="mui-container mui--text-center">
+ 
     Made by <a href="#">Team Chain-React.ion</a>
-  </div>
+
 </div>
 
 

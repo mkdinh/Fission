@@ -45,6 +45,21 @@ class Canvas extends Component {
   return(
 
       <Container style={{width: "80%", height: "100%"}}>
+        <p style={{
+       fontFamily: "Permanent Marker",
+       top: '30px',
+       color: 'black', 
+       width: 'auto', 
+       border: '9px dashed #121112',
+       padding: "10px",
+       margin: "50px",
+       backgroundColor: "#ffc107",
+       opacity: ".8"
+
+          }}>
+        This is your Canvas, a space to preview and style your final selected components before saving a "Fission file" of your work with the Fission Button on the Final Reactor Page.
+          </p>
+
         {/* <Newcompomenu/> */}
         <Row>
           <Col size={4}>

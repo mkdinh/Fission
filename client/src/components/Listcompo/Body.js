@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { Draggable, Droppable } from 'react-drag-and-drop';
 
 const style = {
-    container: {border: "1px solid black", margin: "0.2rem 0", width: "100%", backgroundColor: "white"}
+    container: {border: "9px dashed #121112 !important", margin: "0.2rem 0", width: "100%", backgroundColor: "#ffc107 !important"}
 }
 
 const ListBody = (props) => 

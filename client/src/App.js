@@ -9,15 +9,11 @@ import CodeEditor from "./components/Editor";
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-<<<<<<< HEAD
-//import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
-=======
 import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
->>>>>>> caa6960fa4ecf85f5b0e7f957e56518494d40883
-// import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
+import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
 //import NavbarBrandNew from "./components/navbar";
 import Tabbar from "./components/Tabbar";
-
+//<MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
 //importing page routes
 import {About, Canvas, Reactor, Login, Profile } from "./pages";
 
@@ -29,14 +25,10 @@ class App extends Component {
 
     render() {
         return (
-<<<<<<< HEAD
-            <MuiThemeProvider>
-=======
-            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
->>>>>>> caa6960fa4ecf85f5b0e7f957e56518494d40883
-            <div className="App"  style={{
-        backgroundColor: '#747472'
-      }}>
+
+            <MuiThemeProvider muiTheme={getMuiTheme(customBaseTheme)}>
+
+            <div className="App">
                 <Router>
                     <div> 
                         <Tabbar />

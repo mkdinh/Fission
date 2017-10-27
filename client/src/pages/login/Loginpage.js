@@ -15,12 +15,7 @@ class About extends Component{
       <h1>Fission</h1>
       <h2>Making Your Components, Easier</h2>     
         <p>
-          Log-in information here?  
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          aliquet diam tortor, id consequat mauris ullamcorper eu. Orci varius
-          natoque penatibus et magnis dis parturient montes, nascetur
-          ridiculus mus. Pellentesque et dui id justo finibus sollicitudin at
-          et metus. 
+          Log-In here to gain access to your workspace.
         </p>
     </div>
   )}

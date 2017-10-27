@@ -3,7 +3,8 @@
 }
 
 .List{
-	margin: 1rem !important;
+	height: "50vh" !important;
+	/* margin: 1rem !important; */
 	/* background-color: #ffc107 !important; */
 	color: black !important;
 	overflow: "scroll" !important;
@@ -29,4 +30,8 @@ p{
 
 .list-component-item:hover {
 	box-shadow: 0px 0px 10px black;
+}
+
+.list-component-footer {
+
 }

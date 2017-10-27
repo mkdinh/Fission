@@ -4,3 +4,10 @@
 	/* background-color: #ffc107 !important; */
 	color: black !important;
 }
+
+.preview-footer {
+	margin: 0.5rem;
+	padding: 0 1rem;
+	height: 4rem;
+	
+}

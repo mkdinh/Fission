@@ -12,7 +12,7 @@ const ListBody = (props) =>
     <div>
         {props.components.map(component => 
             <Draggable key={component._id}>
-            <button style={style.container} onClick ={() => {props.handleClick(component)}}>
+            <button className="list-component-item" style={style.container} onClick ={() => {props.handleClick(component)}}>
                 {component.name}
             </button>
             </Draggable>

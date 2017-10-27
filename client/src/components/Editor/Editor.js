@@ -1,31 +1,48 @@
-import ReactAce from 'react-ace-editor';
+import ReactAce from 'react-ace';
 import React, { Component } from 'react';
- 
+import brace from 'brace';
+
+import 'brace/mode/javascript';
+import 'brace/theme/ambiance';
+
 class CodeEditor extends Component {
   contructor(props) {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillReceiveProps(props){
-    console.log(this.ace)
-  }
+  // componentWillReceiveProps(props){
+  //   let code;
+  //   !props.code ? code = "" : code = props.code.replace("><",">\n<");
+  //   this.ace.editor.setValue(code);
+  // }
 
-  onChange = (newValue, e) => {
-    console.log(newValue, e);
-    const editor = this.ace.editor; // The editor object is from Ace's API
-    console.log(editor.getValue()); // Outputs the value of the editor
+  onChange = (value) => {
+    this.props.updateDOM(value);
   }
 
   render() {
     return (
       <ReactAce
-        mode="javascript"
-        theme="eclipse"
-        setReadOnly={false}
-        onChange={this.onChange}
-        style={{ height: '100%', width: "100%" }}
-        ref={instance => { this.ace = instance; }} // Let's put things into scope
+      mode="javascript"
+      theme="ambiance"
+      onChange={this.onChange}
+      name="UNIQUE_ID_OF_DIV"
+      value={this.props.code}
+      style={{ height: '100%', width: "100%" }}
+      editorProps={{$blockScrolling: true}}
       />
+      // <ReactAce
+      //   mode="javascript"
+      //   theme="github"
+      //   setReadOnly={false}
+      //   onChange={this.onChange}
+      //   value
+      //   style={{ height: '100%', width: "100%" }}
+      //   ref={instance => { this.ace = instance; }} // Let's put things into scope
+      //   editorProps={{
+      //     $blockScrolling: Infinity
+      //   }}
+      // />
     );
   }
 }

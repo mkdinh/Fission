@@ -22,3 +22,11 @@ p{
 	color: black !important;
 	font-size: larger !important;
 }
+
+.list-component-item {
+	transition: box-shadow 0.25s
+}
+
+.list-component-item:hover {
+	box-shadow: 0px 0px 10px black;
+}

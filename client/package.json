@@ -6,11 +6,11 @@
   "dependencies": {
     "auth0-js": "^8.10.1",
     "axios": "^0.16.2",
+    "brace": "^0.10.0",
     "history": "^4.7.2",
     "material-ui": "^0.19.4",
     "react": "^16.0.0",
     "react-ace": "^5.4.0",
-    "react-ace-editor": "^0.0.2",
     "react-color": "^2.13.8",
     "react-dom": "^16.0.0",
     "react-drag-and-drop": "^2.4.0",

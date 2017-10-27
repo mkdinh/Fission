@@ -29,7 +29,7 @@ export default class Listcompo extends React.Component {
           {Object.keys(this.props.components).map(group => <ListItem
             key={group}
             primaryText={group}
-            primaryTogglesNestedList={false}
+            primaryTogglesNestedList={true}
             nestedItems={[<ListBody key={group}
                               components={this.props.components[group]}
                               handleClick={this.props.handleClick}/>]}

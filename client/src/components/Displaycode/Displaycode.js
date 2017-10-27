@@ -14,6 +14,16 @@ import "./Displaycode.css";
 
 class Previewdisplay extends Component{
 
+  state = {
+    html: ""
+  }
+
+  componentWillReceiveProps(props){
+    this.setState({html: props.active.html})
+  }
+
+  updateDOM = (html) =>  this.setState({html: html})
+
   strToDOM = (str) => {return {__html: str}};
   
   render(){
@@ -22,19 +32,21 @@ class Previewdisplay extends Component{
         <Tabs>
 
           <Tab label="Preview">
-            {this.props.active.html? <div dangerouslySetInnerHTML={this.strToDOM(this.props.active.html)}/> : ""}
-          </Tab>
-
-          <Tab label="HTML">
-            <div style={{height: "69vh", backgroundColor: "white"}}>
-            
-              {this.props.active.html ? <CodeEditor code={this.props.active.html}/> : ""}
+            <div className="valign-wrapper" style={{height:"70vh", textAlign: "center"}}>
+              {this.state.html? 
+                <div style={{width: "100%"}}
+                    dangerouslySetInnerHTML={this.strToDOM(this.state.html)}/> 
+              : ""}
             </div>
           </Tab>
 
-          <Tab label="CSS">
-            <div style={{height: "69vh", backgroundColor: "white"}}>
-      
+          <Tab label="Markup">
+            <div style={{position: "relative", overflow: "scroll", height: "70vh", backgroundColor: "black"}}>
+            
+              <CodeEditor
+                updateDOM={this.updateDOM}
+                code={this.state.html}/>
+
             </div>
           </Tab>
 

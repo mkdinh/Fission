@@ -19,7 +19,7 @@ class Previewdisplay extends Component{
   render(){
     return(
       <Card style={{margin: "1rem", height: "76vh", backgroundColor: "white"}}>
-        <Tabs>
+        <Tabs className= "Tabs">
 
           <Tab label="Preview">
             {this.props.active.html? <div dangerouslySetInnerHTML={this.strToDOM(this.props.active.html)}/> : ""}

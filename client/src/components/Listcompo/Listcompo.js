@@ -23,8 +23,8 @@ export default class Listcompo extends React.Component {
 
   render() {
     return (
-      <Card id="Listcompo" style={{margin: "1rem"}}>
-          <CardTitle title="Component List" />
+      <Card id="Listcompo" style={{margin: "1rem", color: "white", backgroundColor: "white !important"}}>
+          <CardTitle title="Component List" style={{color: "white !important"}}/>
           <List className="List" style={{height: "auto", overflow: "scroll"}}>
           {Object.keys(this.props.components).map(group => <ListItem
             key={group}

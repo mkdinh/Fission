@@ -11,6 +11,7 @@ import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import Subheader from 'material-ui/Subheader';
 import Fa from "react-fontawesome";
+import Preloader from "../../components/Preloader";
 //import Toggle from 'material-ui/Toggle';
 import { Draggable, Droppable } from 'react-drag-and-drop';
 import group from "../../group.json";
@@ -30,7 +31,9 @@ export default class Listcompo extends React.Component {
         {/* <CardTitle title="Component List" /> */}
         <Tabs>
           <Tab label="Defaults">
+            {Object.keys(this.props.components).length > 0 ?
             <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
+            {console.log(this.props)}
             {Object.keys(this.props.components).map(group => { return (
                 <div>
                   <ListItem
@@ -46,6 +49,10 @@ export default class Listcompo extends React.Component {
               )}
             )}
             </List>
+              :
+            <div style={{width: "100%", textAlign: "center", margin: "2rem 0"}}>
+              <Preloader/>
+            </div>}
           </Tab>
 
           <Tab label="Customs">

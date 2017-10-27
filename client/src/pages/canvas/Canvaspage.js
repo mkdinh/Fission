@@ -32,14 +32,9 @@ class Canvas extends Component {
       })
   }
 
-
-
-
   handleClick = (newCompo) => {
     this.setState({active: newCompo});
   }
-
-
 
   render(){
   return(
@@ -57,7 +52,7 @@ class Canvas extends Component {
           <Col size={8}>
               
             <Previewdisplay
-              active = {this.state.active}
+              active={this.state.active}
               />
 
           </Col>

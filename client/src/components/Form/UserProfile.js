@@ -29,7 +29,6 @@ class UserProfile extends Component{
 
     render(){
         return(
-            <Container>
                 <Paper style={style.paper}>
                     <Row>
                         <span style={style.title}>User Profile</span>
@@ -94,7 +93,6 @@ class UserProfile extends Component{
                         </Col>
                     </Row>
                 </Paper>
-            </Container>
         )
     };
 

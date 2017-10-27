@@ -2,38 +2,22 @@ import React, {Component} from 'react';
 
 class BorderRadius extends Component {
 
-    state = {  
-            width: 150,
-            height: 150,
-            borderRadius: 0
-        
-    }
-
-  
-
-    handleBorderRadiusInput = (ev) => {
-       let {name, value} = ev.target;
-       value === "" ? value = 0 : value = value;
-       this.setState({
-           [name] : parseInt(value)
-       })
-    }
-
-
+ 
     render() {
-        let boxStyle = {
-            width: 150,
-            height: 150, 
-            border: "2px solid black",
-            borderRadius: this.state.borderRadius
-        };
+       
         return (
             
             <div>
             
             <div>Border Radius</div>
-            <input name="borderRadius" value={this.state.borderRadius} onChange={this.handleBorderRadiusInput}/>
-            <div style={boxStyle}></div>
+            <div>Top Right</div>
+            <input name="borderTopRightRadius" value={this.props.borderTopRightRadius} onChange={this.props.handleRadiusInputChange}/>
+            <div>Bottom Right</div>
+            <input name="borderBottomRightRadius" value={this.props.borderBottomRightRadius} onChange={this.props.handleRadiusInputChange}/>
+            <div>Bottom Left</div>
+            <input name="borderBottomLeftRadius" value={this.props.borderBottomLeftRadius} onChange={this.props.handleRadiusInputChange}/>
+            <div>Top Left</div>
+            <input name="borderTopLeftRadius" value={this.props.borderTopLeftRadius} onChange={this.props.handleRadiusInputChange}/>
             </div>
             
         );

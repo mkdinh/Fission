@@ -9,8 +9,8 @@ import CodeEditor from "./components/Editor";
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-//import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
-import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
+import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
+// import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
 //import NavbarBrandNew from "./components/navbar";
 import Tabbar from "./components/Tabbar";
 
@@ -25,7 +25,7 @@ class App extends Component {
 
     render() {
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme(customBaseTheme)}>
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
             <div className="App"  style={{
         backgroundColor: '#747472'
       }}>

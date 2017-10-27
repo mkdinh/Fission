@@ -46,7 +46,6 @@ class  Reactor  extends Component {
       <p>  Use the editor below for any final edits, or to add more components you would like to use</p>
       <p> If you are happy with what you see, click the Fission button to save you work</p>
     
-   
       <Droppable types ={['usercompo']} 
           onDrop ={this.onDrop.bind(this)}>
             <div id="preview">This should present a preview of the file</div>

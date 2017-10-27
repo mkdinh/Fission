@@ -6,6 +6,8 @@ import { Container, Row, Col } from "../../components/Grid";
 import auth0 from "../../components/Auth";
 import { NewUserModal, LandingModal } from "../../components/Modal";
 import { UserProfile } from "../../components/Form";
+import API from "../../utils/api";
+
 const mapStateToProps = (state) => {
     return {...state.user}
 }
@@ -21,23 +23,29 @@ class Profile extends Component{
     }
 
     componentDidMount(){
-        auth0.handleAuthentication(
-            (user, auth0Id) => {
-                // if returned with no content
-                if(user.status === 204){
-                    // dispatch new user for sign up
-                    this.props.dispatch({type: "NEW_USER", playload: {new: true}})
-                    this.setState({auth0Id: auth0Id})
-                    this.toggleModal("newUserModal")
-                }else{
-                    console.log(user)
-                    // dispatch login and save user info on global redux
-                    this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
-                    this.toggleModal("landingModal")
-                    console.log(this.props)
-                };
-            }
-        );
+        API.user.findOne("59e926cbc30a38053ab548de")
+            .then(user => {
+                this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
+                // this.toggleModal("landingModal")
+                console.log(this.props)
+            })
+        // auth0.handleAuthentication(
+        //     (user, auth0Id) => {
+        //         // if returned with no content
+        //         if(user.status === 204){
+        //             // dispatch new user for sign up
+        //             this.props.dispatch({type: "NEW_USER", playload: {new: true}})
+        //             this.setState({auth0Id: auth0Id})
+        //             this.toggleModal("newUserModal")
+        //         }else{
+    
+        //             // dispatch login and save user info on global redux
+        //             this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
+        //             this.toggleModal("landingModal")
+        //             console.log(this.props)
+        //         };
+        //     }
+        // );
     };
 
     toggleModal = (modalName) => {
@@ -46,7 +54,7 @@ class Profile extends Component{
 
     render(){
         return(
-            <Container fluid>
+            <Container>
                 {/* if user is a new user, display new user modal to fill out information */}
                 {this.state.newUserModal ? 
                     <NewUserModal
@@ -66,12 +74,9 @@ class Profile extends Component{
                     
                 :
                     ""}
-                <Row>
-                <h1>USER PROFILE</h1>
-                </Row>
                 
                 {
-                this.state.login?
+                this.props.login?
                     <UserProfile profile={this.props.profile}/>
                 :
                     ""

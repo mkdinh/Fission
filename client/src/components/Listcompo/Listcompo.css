@@ -1,7 +1,10 @@
-.List{
+::-webkit-scrollbar { 
+    display: none; 
+}
 
-	width: 400px !important;
-	background-color: #ffc107 !important;
+.List{
+	margin: 1rem !important;
+	/* background-color: #ffc107 !important; */
 	color: black !important;
 	overflow: "scroll" !important;
   	}

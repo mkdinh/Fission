@@ -9,7 +9,7 @@ import { Row, Col } from '../../Grid';
 //--------------------------------------------------------
 const Container  = (props) => 
 
-	<div className={`container ${props.fluid? `fluid`: ""}`}>
+	<div className={`container`} style={props.style}>
 		{props.children}
 	</div>
 

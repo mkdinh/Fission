@@ -8,7 +8,8 @@ import './Col.css';
 //--------------------------------------------------------
 const Col = (props) =>
 
-	<div className={`col s${props.size || 12}`}>
+	<div className={`col s${props.size || 12} ${props.className ? props.className : ""}`}
+		style={props.style}>
 
 		{props.children}
 

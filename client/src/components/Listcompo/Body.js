@@ -3,33 +3,21 @@
 import React, { Component } from "react";
 import { Draggable, Droppable } from 'react-drag-and-drop';
 
+const style = {
+    container: {border: "1px solid black", margin: "0.2rem 0", width: "100%", backgroundColor: "white"}
+}
 
-class ListBody extends Component{
-    state = {
-        components: []
-    }
+const ListBody = (props) => 
 
-    componentItem = (component) => {
-        return(
-            <div className="list-components" key={component._id} style={{backgroundColor: "green"}}>
-                <p>id: {component._id}</p>
-                <p>name: {component.name}</p>
-                 <Draggable type="usercompo" data={component.html}><span><p>html: {component.html}</p></span></Draggable>
-                <p>css: {component.css}</p>
-            </div>
-        )
-    }
+    <div>
+        {props.components.map(component => 
+            <Draggable key={component._id}>
+            <button style={style.container} onClick ={() => {props.handleClick(component)}}>
+                {component.name}
+            </button>
+            </Draggable>
+        )}
+    </div>
 
-
-    render(){
-        return(
-            <div>
-                <a>HELLLO THERE!</a>
-                {this.props.components.map(component => <div>{component.name}</div>)}
-    
-            </div>
-        );
-    };
-};
 
 export { ListBody };

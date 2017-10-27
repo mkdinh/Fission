@@ -27,7 +27,7 @@ import { Draggable, Droppable } from 'react-drag-and-drop'
         mode="javascript"
         theme="pastel_on_dark"
         onChange={this.onChange}
-        style={{ height: '500px' }}
+        style={{ height: '400px' }}
         ref={instance => { this.ace = instance; }} // Let's put things into scope    
         
       />

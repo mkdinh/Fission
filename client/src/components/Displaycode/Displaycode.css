@@ -1,6 +1,28 @@
 .Tabs {
 
-	width: 400px !important;
-	background-color: #ffc107 !important;
+/*	width: 400px !important;
+	
 	color: black !important;
+	border: green 5px solid;
+	margin: 20px;*/
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 9px dashed #121112;
+	background-color: #ffc107 !important;
+/*	margin-top: 120px;
+*/
+}
+
+
+.Tab{
+
+	color: black !important;
+	
+
+}
+
+.Tab:hover{
+	background: gray;
+	color: white;
 }

@@ -37,7 +37,7 @@ export default class Listcompo extends React.Component {
         <div id="Listcompo">
           
            <List className="List" style={{height: "50vh", overflow: "scroll"}}>
-            <Subheader>Component List Items</Subheader>
+            <Subheader className="Subheader">Component List Items</Subheader>
             {console.log(this.state.components)}
             {Object.keys(this.state.components).map(group => <ListItem
               key={group}

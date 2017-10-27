@@ -1,9 +1,11 @@
 #ace-editor{
 
-	width: 500px;
+	width: 400px;
 	float: right;
 	/*display: block;*/
-	bottom: 625px;
+	bottom: 640px;
 	padding-left: 10px;
-	border: 1px solid black;
+	border: 9px dashed #fcc107;
+	margin: 20px;
+
 }

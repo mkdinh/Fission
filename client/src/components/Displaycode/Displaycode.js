@@ -51,22 +51,22 @@ console.log("this is the this info from displaycode" + this);
 
 <Tabs className="Tabs">
     <TabList>
-      <Tab>HTML</Tab>
-      <Tab>CSS</Tab>
-      <Tab>Styling Preview</Tab>
+      <Tab className ="Tab">HTML</Tab>
+      <Tab className ="Tab">CSS</Tab>
+      <Tab className ="Tab">Styling Preview</Tab>
     </TabList>
      <TabPanel>
-      <h2>Preview Your HTML for your Component</h2>
+      <p>Preview Your HTML for your Component</p>
         
             
     </TabPanel>
     <TabPanel>
-      <h2>Preview Your CSS for your Component</h2>
-        <button onClick={()=>this.clickTime()} >Click me</button>
+      <p>Preview Your CSS for your Component</p>
+        
     </TabPanel>
        <TabPanel>
-      <h2>Preview Your Styling for your Component</h2>
-          <button onClick={()=>this.clickTime()}>Click me</button>
+      <p>Preview Your Styling for your Component</p>
+         
     </TabPanel>
   </Tabs>
 	);

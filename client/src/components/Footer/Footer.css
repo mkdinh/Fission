@@ -1,6 +1,6 @@
 .Footer {
-    height: 100px;
-    border-top: 1px solid #e0e0e0;
+    height: auto;
+    border: 5px solid purple;
     padding-top: 10px;
    /* background-image: url("https://www.nzgeo.com/wp-content/uploads/2015/08/74_Vuewpoint-1300x826.jpg");*/
     font-size: 38px;

@@ -23,7 +23,7 @@ class Newcompomenu extends React.Component {
             borderStyle: "solid",
             borderColor: "orange",
             height: 150,
-            width: 150,
+            width: 300,
 
         };
     }
@@ -85,11 +85,7 @@ class Newcompomenu extends React.Component {
      }
         return (
             <div>
-
-        <RaisedButton
-          label="Styling" fullWidth={false}    onClick={this.handleToggle}
-        />
-        <Drawer width={400} openPrimary={true} open={this.state.open} >
+        <Drawer width={500} openPrimary={true} open={this.props.sidebar} >
           <AppBar title="Styling Bench" />
           <div style={displayBoxStyle}> 
           <div style={boxStyle}>Fission</div>

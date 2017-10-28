@@ -15,7 +15,9 @@ class Canvas extends Component {
 
     state = {
       components: [],
-      active: {}
+      active: {},
+      sidebar: false,
+      editor: true
     }
 
   componentDidMount(){
@@ -26,11 +28,12 @@ class Canvas extends Component {
       .catch( err => console.log(err))
   }
   
-  showData = () => {
-      this.setState({
-        
-      })
-  }
+  toggleSidebar = () => {
+    console.log(this.state)
+    this.setState({sidebar: !this.state.sidebar})
+  };
+
+  toggleEditor = () => this.setState({editor: !this.state.editor})
 
   handleClick = (newCompo) => {
     this.setState({active: newCompo});
@@ -40,20 +43,21 @@ class Canvas extends Component {
   return(
 
       <Container style={{width: "80%", height: "100%"}}>
-        {/* <Newcompomenu/> */}
+        <Newcompomenu sidebar={this.state.sidebar}/>
         <Row>
           <Col size={4}>
             <Listcompo 
               components={this.state.components}
-              handleClick={this.handleClick}
-              />       
+              handleClick={this.handleClick}/>       
           </Col> 
 
           <Col size={8}>
               
             <Previewdisplay
               active={this.state.active}
-              />
+              editor={this.state.editor}
+              toggleSidebar={this.toggleSidebar}
+              toggleEditor={this.toggleEditor}/>
 
           </Col>
         </Row>

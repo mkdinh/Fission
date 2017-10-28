@@ -25,7 +25,7 @@ p{
 }
 
 .list-component-item {
-	transition: box-shadow 0.25s
+	transition: box-shadow 0.25s;
 }
 
 .list-component-item:hover {

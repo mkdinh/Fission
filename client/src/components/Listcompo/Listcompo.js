@@ -33,11 +33,9 @@ export default class Listcompo extends React.Component {
           <Tab label="Defaults">
             {Object.keys(this.props.components).length > 0 ?
             <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
-            {console.log(this.props)}
             {Object.keys(this.props.components).map(group => { return (
-                <div>
+                <div key={group}>
                   <ListItem
-                  key={group}
                   primaryText={group}
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}

@@ -18,15 +18,12 @@ import "./Displaycode.css";
 class Previewdisplay extends Component{
 
   state = {
-    html: "",
-    openEditor: true
+    html: ""
   }
 
   componentWillReceiveProps(props){
     this.setState({html: props.active.html})
   }
-
-  toggleEdit = () => this.setState({openEditor: !this.state.openEditor})
 
   updateDOM = (html) =>  this.setState({html: html})
 
@@ -36,10 +33,21 @@ class Previewdisplay extends Component{
     return(
       <div>
       <Card style={{margin: "1rem", height: "", backgroundColor: "white"}}>
+  
         <Tabs>
-
           <Tab label="Preview">
-            <div className="valign-wrapper" style={{height: this.state.openEditor ? "25vh" : "67.3vh", textAlign: "center"}}>
+            <div className="valign-wrapper" style={{height: this.props.editor ? "25vh" : "67.3vh", textAlign: "center"}}>
+            <div className="editor-switch">
+              {console.log(this.props)}
+              <FloatingActionButton mini={true} onClick={this.props.toggleEditor} style={{margin: "0.5rem"}}>
+                <span>Editor</span>
+              </FloatingActionButton>
+
+              <FloatingActionButton mini={true} onClick={this.props.toggleSidebar} style={{margin: "0.5rem"}}>
+              <span>Style</span>
+              </FloatingActionButton>       
+            </div>
+            
               {this.state.html? 
                 <div style={{width: "100%"}}
                     dangerouslySetInnerHTML={this.strToDOM(this.state.html)}/> 
@@ -47,31 +55,10 @@ class Previewdisplay extends Component{
             </div>
             
           </Tab>
-
-          {/* <Tab label="Markup" onClick={()=> alert("hi")}>
-            <div style={{position: "relative", overflow: "scroll", height: "35vh", backgroundColor: "black"}}>
-            
-              <CodeEditor
-                updateDOM={this.updateDOM}
-                code={this.state.html}/>
-
-            </div>
-          </Tab> */}
-
         </Tabs>
       </Card>
-      {this.state.openEditor ?
+      {this.props.editor ?
       <Card style={{position: "relative", margin: "1rem", height: "", backgroundColor: "white"}}>
-
-          <div className="editor-switch">
-              <FloatingActionButton mini={true} style={{margin: "0.5rem"}}>
-                <span>HTML</span>
-              </FloatingActionButton>
-              <FloatingActionButton mini={true} style={{margin: "0.5rem"}}>
-              <span>CSS</span>
-              </FloatingActionButton>
-            
-          </div>
           <div style={{position: "relative", overflow: "scroll", height: "40vh", backgroundColor: "black"}}>
             <CodeEditor
               updateDOM={this.updateDOM}
@@ -91,14 +78,14 @@ class Previewdisplay extends Component{
                 </Col>
                 <Col size={3}>
                   <div style={{margin: "0.5rem 0"}}>
-                    <p style={{margin: "0rem", fontSize: "0.75rem"}}>Editor</p>
+                    <p style={{margin: "0rem", fontSize: "0.75rem"}}>State</p>
           
                     <div className="switch">
                       <label>
-                        Off
-                        <input type="checkbox" value={this.state.openEditor ? "checked": ""} onClick={this.toggleEdit}/>
+                        Dumb
+                        <input type="checkbox"/>
                         <span className="lever"></span>
-                        On
+                        Smart
                       </label>
                     </div>
                   </div>

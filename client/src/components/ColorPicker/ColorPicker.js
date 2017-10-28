@@ -1,26 +1,25 @@
 import React from 'react';
-import { ChromePicker } from 'react-color';
-  
+import { SketchPicker } from 'react-color';
+import "./ColorPicker.css";
   
 
 const ColorPicker = (props) => 
     
       <div>
-        <div style={{
-          textDecoration: "underline",
-          fontWeight: "bold",
-          fontSize: 22,
-         textAlign: "left",
-         marginLeft: "14%"
+        <div id="colorTitle" style={{
+         fontSize: 22,
+         textAlign: "center",
+         marginLeft: "14%",
+         fontFamily: "Permanent Marker"
 
         }}>Choose a box color</div>
-        <div   style={{
-          marginLeft: "10%"
-        }}>
-      <ChromePicker
+        <div>
+      <SketchPicker
         backgroundcolor={"#fff"}
         color={props.background}
         onChangeComplete={props.handleChangeComplete}
+        width={480}
+        disableAlpha={true}
       
       />
       </div>

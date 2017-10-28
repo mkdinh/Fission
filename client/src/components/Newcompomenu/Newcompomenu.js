@@ -134,18 +134,18 @@ class Newcompomenu extends React.Component {
          
      }
      let displayBoxStyle = {
-         width: 400,
+         width: 500,
          height: 200,
-         color: "white",
+         backgroundColor: "white",
          border: "2px solid black",
          fontFamily: this.state.fontFamily
      }
         return (
             <div>
         <Drawer width={500} openPrimary={true} open={this.props.sidebar} >
-          <AppBar title="Styling Bench" />
+          <AppBar showMenuIconButton={false} title="Styling Bench" />
           <div style={displayBoxStyle}> 
-          <div style={boxStyle}>Fission</div>
+          <div style={boxStyle}>FISSION</div>
           </div>
           <ColorPicker 
             background={this.state.background}
@@ -154,8 +154,8 @@ class Newcompomenu extends React.Component {
 
             }
         />
-        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
         <FontFamily fontFamily={this.state.fontFamily} handleFontStyleInput={this.handleFontStyleInput}/>
+        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
         <BorderChange height={this.state.height} width={this.state.width} handleHeightInput={this.handleHeightInput} handleWidthInput={this.handleWidthInput}/>
         <PaddingCSS handlePaddingInputChange={this.handlePaddingInputChange} paddingTop={this.state.paddingTop} paddingRight={this.state.paddingRight} paddingBottom={this.state.paddingBottom} paddingLeft={this.state.paddingLeft}/>
           <MarginCSS

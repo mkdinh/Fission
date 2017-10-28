@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+//import "../../../Footer/Footer.css";
+import "./aboutpage.css";
 class About extends Component{
   state = {
     
@@ -27,10 +28,9 @@ class About extends Component{
        <div className="infobox" 
        style={{ 
       fontFamily: "Permanent Marker",
-    
        color: 'white', 
        width: 'auto', 
-       border: '#595959 5px solid',
+       border: '#595959 1px solid',
        padding: "10px",
        margin: "40px",
        backgroundColor: "gray",
@@ -38,10 +38,10 @@ class About extends Component{
        opacity: ".95",
        
      }}>
-
-       <h1>FISSION</h1>
-      <h3>Making Your Components, Easier</h3>
-
+      <div className="aboutTitle">
+       FISSION
+      Making Your Components, Easier
+      </div>
         <p style={{color: 'white'}}>
 
       Welcome to Fission! This application will generate React components based on old-fashioned html markup. 
@@ -64,16 +64,14 @@ class About extends Component{
 
 <div className="Footer" style={{
     height: "auto",
-    borderTop: "1px solid #e0e0e0",
     paddingTop: "5px",
     fontSize: "25px",
-   textShadow: "1px 5px 2px rgba(150, 150, 150, 1)",
    backgroundColor: "transparent",
    backgroundPosition: "bottom"
 
 }}>
  
-   <h3> Made by <a href="https://github.com/mkdinh/PCR">Team Chain-React.ion</a></h3>
+   Made by <a href="https://github.com/mkdinh/PCR">Team Chain-React.ion</a>
 
 </div>
 

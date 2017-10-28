@@ -1,18 +1,4 @@
-#box {
-    height: 150px;
-    width: 150px;
-    border: 1px solid black;
-}
-.sketch-picker {
-    display: block;
-    /*margin-left: 30px;*/
-    margin-right: 0px;
-   /* width: 500px;*/
-    
-}
-
-
-#colorTitle{
+#radiusTitle{
 
 	 color: #ffc107;
      -webkit-text-stroke: 1px black;
@@ -23,5 +9,4 @@
       -1px 1px 0 #000,
        1px 1px 0 #000;
        font-size: 38px;
-
 }

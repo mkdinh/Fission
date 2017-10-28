@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import "./BorderChange.css";
 class BorderChange extends Component {
 
 
@@ -8,18 +8,16 @@ class BorderChange extends Component {
         return (
             
             <div>
-                <div style={{
-                textDecoration: "underline",
-                fontWeight: "bold",
+                <div id ="borderTitle" style={{
+                fontSize: 22,
+                fontFamily: "Permanent Marker"
+            }}>Component Height</div>
+            <input name="height" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.height} onChange={this.props.handleHeightInput} />
+            <div id ="borderWidthTitle" style={{
+                fontFamily: "Permanent Marker",
                 fontSize: 22
-            }}>Height</div>
-            <input name="height" value={this.props.height} onChange={this.props.handleHeightInput} />
-            <div style={{
-                textDecoration: "underline",
-                fontWeight: "bold",
-                fontSize: 22
-            }}>Width</div>
-            <input name="width" value={this.props.width} onChange={this.props.handleWidthInput}/>
+            }}>Component Width</div>
+            <input name="width" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.width} onChange={this.props.handleWidthInput}/>
             </div>
             
         );

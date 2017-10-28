@@ -1,17 +1,16 @@
 import React from 'react';
 import { ChromePicker } from 'react-color';
-  
+import "./ColorPicker.css";
   
 
 const ColorPicker = (props) => 
     
       <div>
-        <div style={{
-          fontWeight: "bold",
-          fontSize: 22,
-         textAlign: "left",
+        <div id="colorTitle" style={{
+         fontSize: 22,
+         textAlign: "center",
          marginLeft: "14%",
-         fontFamily: "Roboto"
+         fontFamily: "Permanent Marker"
 
         }}>Choose a box color</div>
         <div   style={{

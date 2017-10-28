@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import "./BorderRadius.css";
 class BorderRadius extends Component {
 
  
@@ -9,11 +9,11 @@ class BorderRadius extends Component {
             
             <div style={{ backgroundColor: "#707070"}} >
             
-            <div style={{
-                 fontFamily: "Roboto",
-                fontWeight: "bold",
+            <div id="radiusTitle" style={{
+               fontFamily: "Permanent Marker",
                 fontSize: 22
-            }}>Border Radius</div>
+               
+            }}>Component Border Radius</div>
             <div>Top Right</div>
             <input name="borderTopRightRadius" value={this.props.borderTopRightRadius} onChange={this.props.handleRadiusInputChange}/>
             <div>Bottom Right</div>

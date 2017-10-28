@@ -6,10 +6,9 @@ class MarginCSS extends Component {
       <div>
         
         <div style={{
-                 fontFamily: "Roboto",
-                fontWeight: "bold",
+                fontFamily: "Permanent Marker",
                 fontSize: 22
-            }}>Margin</div>
+            }}>Component Margin</div>
             <div>Top</div>
             <input name="marginTop" value={this.props.marginTop} onChange={this.props.handleMarginInputChange}/>
             <div>Right</div>

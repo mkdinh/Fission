@@ -9,10 +9,9 @@ class PaddingCSS extends Component {
       }}>
         
         <div style={{
-                 fontFamily: "Roboto",
-                fontWeight: "bold",
+                 fontFamily: "Permanent Marker",
                 fontSize: 22
-            }}>Padding</div>
+            }}>Component Padding</div>
             <div>Top</div>
             <input name="paddingTop" value={this.props.paddingTop} onChange={this.props.handlePaddingInputChange}/>
             <div>Right</div>

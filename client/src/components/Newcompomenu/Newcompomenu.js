@@ -135,9 +135,9 @@ class Newcompomenu extends React.Component {
          
      }
      let displayBoxStyle = {
-         width: 400,
+         width: 500,
          height: 200,
-         color: "white",
+         backgroundColor: "white",
          border: "2px solid black",
          fontFamily: this.state.fontFamily
      }
@@ -146,7 +146,7 @@ class Newcompomenu extends React.Component {
         <Drawer width={500} openPrimary={true} open={this.props.sidebar} >
           <AppBar title="Styling Bench" />
           <div style={displayBoxStyle}> 
-          <div style={boxStyle}>Fission</div>
+          <div style={boxStyle}>FISSION</div>
           </div>
           <ColorPicker 
             background={this.state.background}

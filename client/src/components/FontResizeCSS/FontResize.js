@@ -9,10 +9,9 @@ class FontResize extends Component {
                 backgroundColor: "#707070"
             }}>
             <div style={{
-                 fontFamily: "Roboto",
-                fontWeight: "bold",
+                fontFamily: "Permanent Marker",
                 fontSize: 22,
-            }}>Font Resizer</div>
+            }}>Component Font Resizer</div>
             <input name="fontSize" value={this.props.fontSize} onChange={this.props.handleFontSizeInput}/>
             </div>
     );

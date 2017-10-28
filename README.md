@@ -1,4 +1,4 @@
-# Thank you for your interest in FISSION
+# Welcome to FISSION
 
 Please use the information below to optimize your use of our application and dive into your component workspace.
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Footer from "../../components/Footer";
 
 class About extends Component{
   state = {

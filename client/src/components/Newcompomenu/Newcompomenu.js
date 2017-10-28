@@ -1,7 +1,6 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
 import BorderChange from '../BorderChangeCSS'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import FontRestyle from '../FontRestyleCSS/FontRestyle'

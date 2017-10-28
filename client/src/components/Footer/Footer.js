@@ -12,7 +12,7 @@ class Footer extends Component {
 
             <div className="Footer">
  
-    Made by <a href="#">Team Chain-React.ion</a>
+    Made by <a href="something.com">Team Chain-React.ion</a>
 
 </div>
 

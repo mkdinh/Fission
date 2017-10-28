@@ -9,26 +9,30 @@ class About extends Component{
     return(
         <div style={{
           backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/e/ef/Kozloduy_Nuclear_Power_Plant_-_Control_Room_of_Units_1_and_2_in_black_and_white.jpg')", 
+
           backgroundPosition: 'center center', 
           backgroundRepeat:"no-repeat", 
           backgroundSize:"cover" , 
-          width: "auto",
-          position: "absolute", 
+          minWidth: "1024px",
+          position: "fixed", 
+          minHeight: "100%",
           height: "auto",
+          width: "100%",
           left: "0", 
-          right: "0"
+          right: "0",
+
 
             }}>
 
        <div className="infobox" 
        style={{ 
       fontFamily: "Permanent Marker",
-      top: '35px',
+    
        color: 'white', 
        width: 'auto', 
        border: '#595959 5px solid',
-       padding: "15px",
-       margin: "120px",
+       padding: "10px",
+       margin: "40px",
        backgroundColor: "gray",
        height: "auto",
        opacity: ".95",
@@ -61,8 +65,8 @@ class About extends Component{
 <div className="Footer" style={{
     height: "auto",
     borderTop: "1px solid #e0e0e0",
-    paddingTop: "10px",
-    fontSize: "38px",
+    paddingTop: "5px",
+    fontSize: "25px",
    textShadow: "1px 5px 2px rgba(150, 150, 150, 1)",
    backgroundColor: "transparent",
    backgroundPosition: "bottom"

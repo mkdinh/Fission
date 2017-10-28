@@ -1,4 +1,4 @@
-
+/*stylign fro heading and links*/
 h1, h2 , h3{
 
  color: #ffc107;
@@ -28,13 +28,13 @@ a{
 /*a:hover{
 }*/
 
+/*div for the overall information container on About page*/
 .infobox{
 
 	font-family: 'Roboto', sans-serif;
   color: white !important;
   text-align: left;
-/*  position: absolute;
-*/	/*text-align: center;*/
+
 }
 
 /*information in the list for the Build page */
@@ -44,10 +44,12 @@ a{
 /*  font-size: larger;*/
 }
 
+/*information for the listed support types */
 li, p {
 
 font-family: 'Roboto', sans-serif;
 color: white !important;
-/*font-size: larger;*/
+font-size: 16px;
+
 
 }

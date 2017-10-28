@@ -11,13 +11,13 @@ class MarginCSS extends Component {
                 fontSize: 22
             }}>Component Margin</div>
             <div>Top</div>
-            <input name="marginTop" value={this.props.marginTop} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginTop" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginTop} onChange={this.props.handleMarginInputChange}/>
             <div>Right</div>
-            <input name="marginRight" value={this.props.marginRight} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginRight" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginRight} onChange={this.props.handleMarginInputChange}/>
             <div>Bottom</div>
-            <input name="marginBottom" value={this.props.marginBottom} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginBottom" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginBottom} onChange={this.props.handleMarginInputChange}/>
             <div>Left</div>
-            <input name="marginLeft" value={this.props.marginLeft} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginLeft" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginLeft} onChange={this.props.handleMarginInputChange}/>
       </div>
     )
   }

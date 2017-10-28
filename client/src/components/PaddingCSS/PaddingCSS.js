@@ -13,13 +13,13 @@ class PaddingCSS extends Component {
                 fontSize: 22
             }}>Component Padding</div>
             <div>Top</div>
-            <input name="paddingTop" value={this.props.paddingTop} onChange={this.props.handlePaddingInputChange}/>
+            <input name="paddingTop" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.paddingTop} onChange={this.props.handlePaddingInputChange}/>
             <div>Right</div>
-            <input name="paddingRight" value={this.props.paddingRight} onChange={this.props.handlePaddingInputChange}/>
+            <input name="paddingRight" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.paddingRight} onChange={this.props.handlePaddingInputChange}/>
             <div>Bottom</div>
-            <input name="paddingBottom" value={this.props.paddingBottom} onChange={this.props.handlePaddingInputChange}/>
+            <input name="paddingBottom" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.paddingBottom} onChange={this.props.handlePaddingInputChange}/>
             <div>Left</div>
-            <input name="paddingLeft" value={this.props.paddingLeft} onChange={this.props.handlePaddingInputChange}/>
+            <input name="paddingLeft" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.paddingLeft} onChange={this.props.handlePaddingInputChange}/>
       </div>
     )
   }

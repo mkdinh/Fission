@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChromePicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 import "./ColorPicker.css";
   
 
@@ -13,13 +13,13 @@ const ColorPicker = (props) =>
          fontFamily: "Permanent Marker"
 
         }}>Choose a box color</div>
-        <div   style={{
-          marginLeft: "10%"
-        }}>
-      <ChromePicker
+        <div>
+      <SketchPicker
         backgroundcolor={"#fff"}
         color={props.background}
         onChangeComplete={props.handleChangeComplete}
+        width={480}
+        disableAlpha={true}
       
       />
       </div>

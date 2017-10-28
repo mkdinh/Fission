@@ -155,8 +155,8 @@ class Newcompomenu extends React.Component {
 
             }
         />
-        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
         <FontFamily fontFamily={this.state.fontFamily} handleFontStyleInput={this.handleFontStyleInput}/>
+        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
         <BorderChange height={this.state.height} width={this.state.width} handleHeightInput={this.handleHeightInput} handleWidthInput={this.handleWidthInput}/>
         <PaddingCSS handlePaddingInputChange={this.handlePaddingInputChange} paddingTop={this.state.paddingTop} paddingRight={this.state.paddingRight} paddingBottom={this.state.paddingBottom} paddingLeft={this.state.paddingLeft}/>
           {console.log (JSON.stringify(this.state) + "Padding")}

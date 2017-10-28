@@ -12,7 +12,7 @@ class FontResize extends Component {
                 fontFamily: "Permanent Marker",
                 fontSize: 22,
             }}>Component Font Resizer</div>
-            <input name="fontSize" value={this.props.fontSize} onChange={this.props.handleFontSizeInput}/>
+            <input name="fontSize" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.fontSize} onChange={this.props.handleFontSizeInput}/>
             </div>
     );
     }

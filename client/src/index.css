@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  	/* font-family: 'Permanent Marker', cursive; */
+  /* font-family: 'Permanent Marker', cursive; */
 
 }
 
@@ -22,12 +22,6 @@ body {
 .MuiButton-root-25{
 
 	border: black solid 5px;
-}
-
-#infobox {
-
-	border: green solid 5px;
-	font-family: 'Permanent Marker', cursive;
 }
 
 

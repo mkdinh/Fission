@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Backgroundimage from "../../components/backgroundimage";
 import Footer from "../../components/Footer";
 
 class About extends Component{
@@ -10,33 +9,82 @@ class About extends Component{
   render(){
     return(
         <div style={{
-          backgroundImage: "url('https://www.nzgeo.com/wp-content/uploads/2015/08/74_Vuewpoint-1300x826.jpg')", 
+          backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/e/ef/Kozloduy_Nuclear_Power_Plant_-_Control_Room_of_Units_1_and_2_in_black_and_white.jpg')", 
           backgroundPosition: 'center center', 
           backgroundRepeat:"no-repeat", 
-          backgroundSize:"cover" , width: "1000px"  }}>
+          backgroundSize:"cover" , 
+          width: "auto",
+          position: "absolute", 
+          height: "auto",
+          left: "0", 
+          right: "0"
 
-      <h1>FISSION</h1>
-      <h2>Making Your Components, Easier</h2>
+            }}>
+
        <div className="infobox" 
        style={{ 
+      fontFamily: "Permanent Marker",
+      top: '35px',
        color: 'white', 
-       height: '300px', 
-       margin: '10px', 
-       padding: '5px',
-       border: 'white 5px solid'}}>
-        <p>Welcome to Fission! This application will generate react component based on old-fashion html markups. Insert any html component you like and it will return a React component file and its css file.</p>
-      <p>On the Build page insert your html markups. Currently you can give compiling configuration inline style as tag properties. These options are supported:</p>
-      <ul className="infolist">
+       width: 'auto', 
+       border: '#595959 5px solid',
+       padding: "15px",
+       margin: "120px",
+       backgroundColor: "gray",
+       height: "auto",
+       opacity: ".95",
+       
+     }}>
+
+       <h1>FISSION</h1>
+      <h3>Making Your Components, Easier</h3>
+
+        <p style={{color: 'white'}}>
+
+      Welcome to Fission! This application will generate React components based on old-fashioned html markup. 
+      Begin on the Canvas page by inserting any html component you like and Fission will create a React component file and its css file to hold your markups. 
+      Currently, you can give compiling configuration inline styling as tag properties. 
+      Nesting html is supported but please be aware that it is still a prototype, so there may be some errors 
+      when generating components with nesting components.  
+      <br />
+      These options are supported:</p>
+      <ul className="infolist" style={{
+        textAlign: 'left',
+        marginLeft: '250px'
+      }}>
         <li>name (file name)</li>
         <li>component (stateful || stateless)</li>
         <li>group (group component into its own folder)</li>
         <li>style (any css markup)</li>
         <li>expand (shallow || deep)</li>
-      </ul>
-      <p>Nesting html is supported but this is still a prototype there might be some errors when generating components nesting component</p>
+      </ul>  
+
+<div className="Footer" style={{
+    height: "auto",
+    borderTop: "1px solid #e0e0e0",
+    paddingTop: "10px",
+    fontSize: "38px",
+   textShadow: "1px 5px 2px rgba(150, 150, 150, 1)",
+   backgroundColor: "transparent",
+   backgroundPosition: "bottom"
+
+}}>
+ 
+   <h3> Made by <a href="https://github.com/mkdinh/PCR">Team Chain-React.ion</a></h3>
+
+</div>
+
+
+
+
+
     </div>
-     <Footer />   
+     {/*<Footer />*/ }
     
+
+
+
+
       </div>
           
     );

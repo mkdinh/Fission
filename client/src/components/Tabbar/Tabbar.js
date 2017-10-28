@@ -63,8 +63,7 @@ class Tabbar extends React.Component {
 
           <Tab label="About" value="/"/>
           <Tab label="Canvas"  value="/canvas"/>
-          <Tab label="Reactor" value="/reactor"/>
-          {!this.props.login ?
+           {!this.props.login ?
             <Tab label="Login" onActive={Auth0.login} value="/login "/>
           :
             <Tab label="Profile" value="/profile"/>}

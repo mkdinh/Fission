@@ -13,7 +13,7 @@ module.exports = {
     },
 
     findGroups: (req, res) => {
-        db.Component.distinct("group")
+        db.Component.find({default: "true"}).distinct("group")
             .then( groups => {
                 let allComponents = {};
                 let len = groups.length;
@@ -29,6 +29,25 @@ module.exports = {
             })
             .catch(err => console.log(err))
     }, 
+    findCustoms: (req, res) => {
+        db.User.findById(req.params.id).populate({path: "components", model:"Component"})
+            .then( user => {
+                let allComponents = {};
+                let len = user.components.length;
+                
+                user.components.forEach( component => {
+                    if(!allComponents[component.group]){
+                        allComponents[component.group] = [component]
+                    }else{
+                        allComponents[component.group].push(component)
+                    }
+                })
+      
+                res.json(allComponents)
+            })
+            .catch(err => console.log(err))
+    }, 
+
     findAll: (req, res) => {
         db.Component.find()
             .then(components => res.json(components))
@@ -36,9 +55,20 @@ module.exports = {
     },
 
     create: (req, res) => {
-        db.Component.create(req.body)
-            .then( component => res.json(component))
-            .catch( err => console.log(err))
+        let newComponent = new db.Component(req.body);
+        console.log(req.body)
+        newComponent.save((err, doc) => {
+            if(err){
+                console.log(err)
+                res.send(err)
+            }else{
+                console.log(doc)
+                db.User.findByIdAndUpdate(req.body.create_by, {$push: {"components": doc._id}}, {new: true}, (err, newDoc) => {
+                    console.log(newDoc)
+                    res.json(newDoc)
+                })
+            }
+        })
     },
 
     updateOne: (req, res) => {

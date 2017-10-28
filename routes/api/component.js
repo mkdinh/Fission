@@ -17,6 +17,9 @@ router.route('/:id')
 router.route("/group/all")
     .get(compController.findGroups)
 
+router.route("/group/:id")
+    .get(compController.findCustoms)
+
 // EXPORT ROUTES
 // ---------------------------------------------------
 module.exports = router;

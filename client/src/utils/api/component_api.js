@@ -6,9 +6,11 @@ import axios from "axios";
 export default {
     findGroups: () => axios.get("./api/component/group/all"),
 
+    findCustoms: (id) => axios.get("./api/component/group/" + id),
+
     findAll: () => axios.get("./api/component"),
 
     findOne: compId => axios.get("./api/user/" + compId),
     
-    create: component => axios.post("./api/component", component)
+    create: (component, id) => axios.post("./api/component/", component)
 }

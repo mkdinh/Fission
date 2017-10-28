@@ -1,6 +1,5 @@
 import ReactAce from 'react-ace';
 import React, { Component } from 'react';
-import brace from 'brace';
 
 import 'brace/mode/javascript';
 import 'brace/theme/ambiance';

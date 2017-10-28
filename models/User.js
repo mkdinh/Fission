@@ -20,7 +20,7 @@ const UserSchema = new Schema({
         require: true
     },
     components: {
-        type: Schema.Types.ObjectId,
+        type: [Schema.Types.ObjectId],
         ref: "Component"
     }
 });

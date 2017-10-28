@@ -45,21 +45,27 @@ export default class Listcompo extends React.Component {
           </Tab>
 
           <Tab label="Components">
-            <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
-            
-                {/* {Object.keys(this.props.projects).map(project => { return (
-                    <div key={project}>
+            {Object.keys(this.props.customs).length > 0 ?
+              <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
+              {Object.keys(this.props.customs).map(group => { return (
+                  <div key={group}>
                     <ListItem
-                    primaryText={project._id}
+                    primaryText={group}
                     primaryTogglesNestedList={true}
-                    nestedItems={[<ListBody key={project._id}
-                                        components={project.components}
-                                        tab={this.props.tab}/>]}/>
+                    nestedItems={[<ListBody key={group}
+                                      components={this.props.customs[group]}
+                                      handleClick={this.props.handleClick}
+                                      tab={this.props.tab}/>]}
+                    />
                     <Divider/>
-                    </div>
+                  </div>
                 )}
-                )} */}
-            </List>
+              )}
+              </List>
+                :
+              <div style={{width: "100%", textAlign: "center", margin: "2rem 0"}}>
+                <Preloader/>
+              </div>}
           </Tab>
         </Tabs>
 

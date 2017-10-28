@@ -33,6 +33,7 @@ class Previewdisplay extends Component{
         <Tabs>
           <Tab label="Preview" onActive={() => this.props.updateTab("canvas")}>
             <CanvasTab
+              profile={this.props.profile}
               active={this.props.active}
               editor={this.props.editor}
               toggleSidebar={this.props.toggleSidebar}
@@ -45,6 +46,7 @@ class Previewdisplay extends Component{
 
           <Tab label="Reactor" onActive={() => this.props.updateTab("reactor")}>
             <ReactorTab
+              profile={this.props.profile}
               updateDOM={this.state.updateDOM}
               strToDOM={this.strToDOM}
               reactor={this.props.reactor}

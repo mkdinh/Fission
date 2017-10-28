@@ -30,8 +30,13 @@ const ComponentSchema = new Schema({
         default: false
     },
 
-    createBy: {
+    create_by: {
         type: String
+    },
+
+    type: {
+        type: String,
+        default: "Dumb"
     }
 });
 

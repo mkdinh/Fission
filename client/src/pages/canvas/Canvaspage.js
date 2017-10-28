@@ -5,11 +5,17 @@ import Previewdisplay from "../../components/Displaycode";
 import ListCanvas from "../../components/List/ListCanvas";
 import ListReactor from "../../components/List/ListReactor";
 import API from "../../utils/api"
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {profile: state.user.profile}
+}
 
 class Canvas extends Component {
 
     state = {
-      components: [],
+      components: {},
+      customs: {},
       reactor: [],
       preview: {},
       active: {},
@@ -19,6 +25,15 @@ class Canvas extends Component {
     }
 
   componentDidMount(){
+    if(localStorage.getItem("auth0Id")){
+      let auth0Id = localStorage.getItem("auth0Id")
+      API.user.findOne(auth0Id)
+        .then(user => {
+          this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
+          this.updateCustoms()
+        });
+    }
+
     API.component.findGroups()
       .then( db => {
         this.setState({components: db.data})
@@ -26,8 +41,15 @@ class Canvas extends Component {
       .catch( err => console.log(err))
   }
   
+  updateCustoms = () => {
+    API.component.findCustoms(this.props.profile._id)
+    .then( db => {
+      this.setState({customs: db.data})
+    })
+    .catch( err => console.log(err))
+  }
+  
   toggleSidebar = () => {
-    console.log(this.state)
     this.setState({sidebar: !this.state.sidebar})
   };
 
@@ -63,23 +85,26 @@ class Canvas extends Component {
       <Container style={{width: "80%", height: "100%"}}>
         <Newcompomenu sidebar={this.state.sidebar}/>
         <Row>
+
           <Col size={4}>
             { this.state.tab === "canvas" ?
               <ListCanvas 
                 components={this.state.components}
+                customs={this.state.customs}
                 handleClick={this.handleClick}
                 tab={this.state.tab}/>
             :
-              <ListReactor 
+              <ListReactor
+              customs={this.state.customs} 
               components={this.state.components}
               handleClick={this.handleClick}
               tab={this.state.tab}/>  
             }
           </Col> 
 
-          <Col size={8}>
-              
+          <Col size={8}>    
             <Previewdisplay
+              profile={this.props.profile}
               active={this.state.active}
               editor={this.state.editor}
               toggleSidebar={this.toggleSidebar}
@@ -87,14 +112,14 @@ class Canvas extends Component {
               updateTab={this.updateTab}
               tab={this.state.tab}
               reactor={this.state.reactor}
+              updateCustoms={this.props.updateCustoms}
               handlePreview={this.handlePreview}
-              preview={this.state.preview}
-              />
-
+              preview={this.state.preview}/>
           </Col>
+
         </Row>
       </Container>
   )};
 }
 
-export default Canvas;
+export default connect(mapStateToProps)(Canvas);

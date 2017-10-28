@@ -9,13 +9,13 @@ class BorderChange extends Component {
             
             <div>
                 <div style={{
-                textDecoration: "underline",
                 fontWeight: "bold",
-                fontSize: 22
+                fontSize: 22,
+                fontFamily: "Roboto"
             }}>Height</div>
             <input name="height" value={this.props.height} onChange={this.props.handleHeightInput} />
             <div style={{
-                textDecoration: "underline",
+                 fontFamily: "Roboto",
                 fontWeight: "bold",
                 fontSize: 22
             }}>Width</div>

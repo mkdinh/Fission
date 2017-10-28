@@ -7,10 +7,10 @@ class BorderRadius extends Component {
        
         return (
             
-            <div style={{ backgroundColor: "lightGray"}} >
+            <div style={{ backgroundColor: "#707070"}} >
             
             <div style={{
-                textDecoration: "underline",
+                 fontFamily: "Roboto",
                 fontWeight: "bold",
                 fontSize: 22
             }}>Border Radius</div>

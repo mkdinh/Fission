@@ -6,7 +6,7 @@ class MarginCSS extends Component {
       <div>
         
         <div style={{
-                textDecoration: "underline",
+                 fontFamily: "Roboto",
                 fontWeight: "bold",
                 fontSize: 22
             }}>Margin</div>

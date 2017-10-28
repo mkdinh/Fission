@@ -6,10 +6,10 @@ class FontRestyle extends Component {
        
         return (
             <div style={{
-                backgroundColor: "lightGray"
+                backgroundColor: "#707070"
             }}>
             <div style={{
-                textDecoration: "underline",
+                 fontFamily: "Roboto",
                 fontWeight: "bold",
                 fontSize: 22,
             }}>Font Resizer</div>

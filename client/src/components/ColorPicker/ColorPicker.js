@@ -7,11 +7,11 @@ const ColorPicker = (props) =>
     
       <div>
         <div style={{
-          textDecoration: "underline",
           fontWeight: "bold",
           fontSize: 22,
          textAlign: "left",
-         marginLeft: "14%"
+         marginLeft: "14%",
+         fontFamily: "Roboto"
 
         }}>Choose a box color</div>
         <div   style={{

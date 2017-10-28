@@ -1,5 +1,5 @@
-/*stylign fro heading and links*/
-h1, h2 , h3{
+/*styling from heading and links*/
+.aboutTitle{
 
  color: #ffc107;
      -webkit-text-stroke: 1px black;

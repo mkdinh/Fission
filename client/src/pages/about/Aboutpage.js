@@ -39,10 +39,10 @@ class About extends Component{
        opacity: ".95",
        
      }}>
-
+      <div className="aboutTitle">
        <h1>FISSION</h1>
       <h3>Making Your Components, Easier</h3>
-
+      </div>
         <p style={{color: 'white'}}>
 
       Welcome to Fission! This application will generate React components based on old-fashioned html markup. 

@@ -4,12 +4,12 @@ class PaddingCSS extends Component {
   render() {
     return (
       <div style={{
-        backgroundColor: "lightGray"
+        backgroundColor: "#707070"
         
       }}>
         
         <div style={{
-                textDecoration: "underline",
+                 fontFamily: "Roboto",
                 fontWeight: "bold",
                 fontSize: 22
             }}>Padding</div>

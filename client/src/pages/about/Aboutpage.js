@@ -41,11 +41,11 @@ class About extends Component{
 
         <p style={{color: 'white'}}>
 
-      Welcome to Fission! This application will generate react components based on old-fashioned html markups. 
-      Insert any html component you like and it will create a React component file and its css file on the Build page is insert your html markups. 
-      Currently you can give compiling configuration inline style as tag properties. 
-      Nesting html is supported but please be aware that it is still a prototype, hence there might be some errors 
-      when generating components nesting component.  
+      Welcome to Fission! This application will generate React components based on old-fashioned html markup. 
+      Begin on the Canvas page by inserting any html component you like and Fission will create a React component file and its css file to hold your markups. 
+      Currently, you can give compiling configuration inline styling as tag properties. 
+      Nesting html is supported but please be aware that it is still a prototype, so there may be some errors 
+      when generating components with nesting components.  
       <br />
       These options are supported:</p>
       <ul className="infolist" style={{
@@ -57,9 +57,7 @@ class About extends Component{
         <li>group (group component into its own folder)</li>
         <li>style (any css markup)</li>
         <li>expand (shallow || deep)</li>
-      </ul>
-      <p>Nesting html is supported but this is still a prototype there might be some errors when generating components nesting component</p>
-    
+      </ul>  
 
 <div className="Footer" style={{
     height: "auto",

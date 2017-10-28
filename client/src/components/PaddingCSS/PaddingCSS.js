@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import "./PaddingCSS.css";
 class PaddingCSS extends Component {
   render() {
     return (
@@ -8,7 +8,7 @@ class PaddingCSS extends Component {
         
       }}>
         
-        <div style={{
+        <div id="paddingTitle" style={{
                  fontFamily: "Permanent Marker",
                 fontSize: 22
             }}>Component Padding</div>

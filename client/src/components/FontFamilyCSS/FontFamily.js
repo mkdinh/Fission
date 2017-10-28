@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import "./FontFamily.css";
 
 class FontFamily extends React.Component {
     render(){
             return(
  <div> 
+ <div id="selectFieldLabel">
         <SelectField
           floatingLabelText="Fonts"
           onChange={this.props.handleFontStyleInput}
-        >
+          floatingLabelStyle={{color: '#ffc107', fontSize: "24px", fontFamily: "Permanent Marker"}}>
           <MenuItem value={"serif"} primaryText="serif" />
           <MenuItem value={"Georgia"} primaryText="Georgia" />
           <MenuItem value={"Palatino"} primaryText="Palatino" />
@@ -31,7 +33,7 @@ class FontFamily extends React.Component {
           <MenuItem value={"Courier"} primaryText="Courier" />
           <MenuItem value={"Monaco"} primaryText="Monaco" />
         </SelectField>
-        
+  </div>  
 </div>    
     
             );

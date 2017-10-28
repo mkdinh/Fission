@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import "./marginCSS.css";
 
 class MarginCSS extends Component {
   render() {
     return (
       <div>
         
-        <div style={{
+        <div id ="marginTitle" style={{
                 fontFamily: "Permanent Marker",
                 fontSize: 22
             }}>Component Margin</div>

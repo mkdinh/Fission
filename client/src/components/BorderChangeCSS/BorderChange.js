@@ -13,7 +13,7 @@ class BorderChange extends Component {
                 fontFamily: "Permanent Marker"
             }}>Component Height</div>
             <input name="height" value={this.props.height} onChange={this.props.handleHeightInput} />
-            <div style={{
+            <div id ="borderWidthTitle" style={{
                 fontFamily: "Permanent Marker",
                 fontSize: 22
             }}>Component Width</div>

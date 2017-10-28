@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import "./FontResize.css";
 class FontResize extends Component {
        
     render() {
@@ -8,7 +8,7 @@ class FontResize extends Component {
             <div style={{
                 backgroundColor: "#707070"
             }}>
-            <div style={{
+            <div id="fontTitle" style={{
                 fontFamily: "Permanent Marker",
                 fontSize: 22,
             }}>Component Font Resizer</div>

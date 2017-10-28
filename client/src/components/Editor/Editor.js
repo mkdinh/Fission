@@ -21,6 +21,7 @@ class CodeEditor extends Component {
       theme="ambiance"
       onChange={this.onChange}
       name="UNIQUE_ID_OF_DIV"
+      width="100%"
       value={this.props.code}
       /* editorProps={{$blockScrolling: true}} */
       />

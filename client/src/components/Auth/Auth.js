@@ -1,7 +1,6 @@
 // import authication and history
 import React, { Component } from "react";
 import auth0 from "auth0-js";
-import { Redirect } from "react-router-dom";
 import API from "../../utils/api";
 
 // create Authentication component

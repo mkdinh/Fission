@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import {Container, Row, Col} from "../../components/Grid";
 import Newcompomenu from "../../components/Newcompomenu";
-import FissionButton from "../../components/FissionButton";
 import Previewdisplay from "../../components/Displaycode";
-import Listcompo from "../../components/Listcompo";
-
-import ReactDOM from 'react-dom';
-import { Draggable, Droppable } from 'react-drag-and-drop';
-import RaisedButton from "material-ui/RaisedButton";
-
+import ListCanvas from "../../components/List/ListCanvas";
+import ListReactor from "../../components/List/ListReactor";
 import API from "../../utils/api"
 
 class Canvas extends Component {
 
     state = {
       components: [],
+      reactor: [],
+      preview: {},
       active: {},
       sidebar: false,
-      editor: true
+      editor: true,
+      tab: "canvas"
     }
 
   componentDidMount(){
@@ -35,8 +33,28 @@ class Canvas extends Component {
 
   toggleEditor = () => this.setState({editor: !this.state.editor})
 
-  handleClick = (newCompo) => {
-    this.setState({active: newCompo});
+  updateTab = (tab) => {
+    this.setState({tab: tab})
+    if(tab === "reactor" && this.state.sidebar){
+      this.setState({sidebar: false})
+    }
+  }
+
+  handlePreview = (newCompo) => {
+    this.setState({preview: newCompo})
+  }
+
+  handleClick = (newCompo, tab) => {
+    switch(tab){
+      case "canvas":
+        this.setState({active: newCompo});
+        break
+      case "reactor":
+        this.setState({reactor: [...this.state.reactor, newCompo]})
+        break
+      default:
+        return ""
+    }
   }
 
   render(){
@@ -46,9 +64,17 @@ class Canvas extends Component {
         <Newcompomenu sidebar={this.state.sidebar}/>
         <Row>
           <Col size={4}>
-            <Listcompo 
+            { this.state.tab === "canvas" ?
+              <ListCanvas 
+                components={this.state.components}
+                handleClick={this.handleClick}
+                tab={this.state.tab}/>
+            :
+              <ListReactor 
               components={this.state.components}
-              handleClick={this.handleClick}/>       
+              handleClick={this.handleClick}
+              tab={this.state.tab}/>  
+            }
           </Col> 
 
           <Col size={8}>
@@ -57,7 +83,13 @@ class Canvas extends Component {
               active={this.state.active}
               editor={this.state.editor}
               toggleSidebar={this.toggleSidebar}
-              toggleEditor={this.toggleEditor}/>
+              toggleEditor={this.toggleEditor}
+              updateTab={this.updateTab}
+              tab={this.state.tab}
+              reactor={this.state.reactor}
+              handlePreview={this.handlePreview}
+              preview={this.state.preview}
+              />
 
           </Col>
         </Row>

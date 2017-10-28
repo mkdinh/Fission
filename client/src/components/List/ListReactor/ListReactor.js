@@ -4,20 +4,10 @@ import {List, ListItem} from 'material-ui/List';
 import { ListBody } from "./Body";
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Divider from 'material-ui/Divider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import ActionGrade from 'material-ui/svg-icons/action/grade';
-import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import ContentDrafts from 'material-ui/svg-icons/content/drafts';
-import ContentSend from 'material-ui/svg-icons/content/send';
-import Subheader from 'material-ui/Subheader';
+import { Card } from 'material-ui/Card';
 import Fa from "react-fontawesome";
-import Preloader from "../../components/Preloader";
-//import Toggle from 'material-ui/Toggle';
-import { Draggable, Droppable } from 'react-drag-and-drop';
-import group from "../../group.json";
-import "./Listcompo.css";
-/*Turn the function into a hover event that watches for this click instead of the toggle
-<a onClick={this.onClick}> Click me </a>*/
+import Preloader from "../../../components/Preloader";
+import "./ListReactor.css";
 
 export default class Listcompo extends React.Component {
 
@@ -27,11 +17,11 @@ export default class Listcompo extends React.Component {
 
   render() {
     return (
-      <Card id="Listcompo" style={{margin: "1rem"}}>
+      <Card id="ListProject" style={{margin: "1rem"}}>
         {/* <CardTitle title="Component List" /> */}
         <Tabs>
-          <Tab label="Defaults">
-            {Object.keys(this.props.components).length > 0 ?
+          <Tab label="Projects">
+            {this.props.projects ?
             <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
             {Object.keys(this.props.components).map(group => { return (
                 <div key={group}>
@@ -54,8 +44,22 @@ export default class Listcompo extends React.Component {
             </div>}
           </Tab>
 
-          <Tab label="Customs">
-
+          <Tab label="Components">
+            <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
+            
+                {/* {Object.keys(this.props.projects).map(project => { return (
+                    <div key={project}>
+                    <ListItem
+                    primaryText={project._id}
+                    primaryTogglesNestedList={true}
+                    nestedItems={[<ListBody key={project._id}
+                                        components={project.components}
+                                        tab={this.props.tab}/>]}/>
+                    <Divider/>
+                    </div>
+                )}
+                )} */}
+            </List>
           </Tab>
         </Tabs>
 

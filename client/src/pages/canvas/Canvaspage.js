@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import {Container, Row, Col} from "../../components/Grid";
 import Newcompomenu from "../../components/Newcompomenu";
-import FissionButton from "../../components/FissionButton";
 import Previewdisplay from "../../components/Displaycode";
-import Listcompo from "../../components/Listcompo";
-
-import ReactDOM from 'react-dom';
-import { Draggable, Droppable } from 'react-drag-and-drop';
-import RaisedButton from "material-ui/RaisedButton";
-
+import ListCanvas from "../../components/List/ListCanvas";
+import ListReactor from "../../components/List/ListReactor";
 import API from "../../utils/api"
 
 class Canvas extends Component {
@@ -40,12 +35,13 @@ class Canvas extends Component {
 
   updateTab = (tab) => {
     this.setState({tab: tab})
+    if(tab === "reactor" && this.state.sidebar){
+      this.setState({sidebar: false})
+    }
   }
 
   handlePreview = (newCompo) => {
-  
     this.setState({preview: newCompo})
-    console.log(this.state.preview)
   }
 
   handleClick = (newCompo, tab) => {
@@ -54,8 +50,10 @@ class Canvas extends Component {
         this.setState({active: newCompo});
         break
       case "reactor":
-      this.setState({reactor: [...this.state.reactor, newCompo]})
+        this.setState({reactor: [...this.state.reactor, newCompo]})
         break
+      default:
+        return ""
     }
   }
 
@@ -66,10 +64,17 @@ class Canvas extends Component {
         <Newcompomenu sidebar={this.state.sidebar}/>
         <Row>
           <Col size={4}>
-            <Listcompo 
+            { this.state.tab === "canvas" ?
+              <ListCanvas 
+                components={this.state.components}
+                handleClick={this.handleClick}
+                tab={this.state.tab}/>
+            :
+              <ListReactor 
               components={this.state.components}
               handleClick={this.handleClick}
-              tab={this.state.tab}/>       
+              tab={this.state.tab}/>  
+            }
           </Col> 
 
           <Col size={8}>

@@ -1,13 +1,9 @@
 // import depedencies
 //--------------------------------------------------------
 import React, { Component } from "react";
-import { Row, Col } from "../Grid"
+import { Row } from "../Grid"
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
-
-const style = {
-    msg: {fontSize: "2rem"}
-}
 
 // create new message modal that render when returning user logged in
 //--------------------------------------------------------

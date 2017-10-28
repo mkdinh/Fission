@@ -2,8 +2,7 @@
 //--------------------------------------------------------
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col } from "../../components/Grid";
-import auth0 from "../../components/Auth";
+import { Container } from "../../components/Grid";
 import { NewUserModal, LandingModal } from "../../components/Modal";
 import { UserProfile } from "../../components/Form";
 import API from "../../utils/api";

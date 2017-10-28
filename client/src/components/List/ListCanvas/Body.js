@@ -1,7 +1,6 @@
 // Import dependencies
 //--------------------------------------------------------
-import React, { Component } from "react";
-import { Draggable, Droppable } from 'react-drag-and-drop';
+import React from "react";
 
 const style = {
     container: {border: "1px solid black", margin: "0.25rem 0.5rem", width: "95.5%", backgroundColor: "white"}

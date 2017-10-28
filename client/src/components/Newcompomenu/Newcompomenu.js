@@ -1,7 +1,6 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
-<<<<<<< HEAD
 import RaisedButton from 'material-ui/RaisedButton';
 import BorderChange from '../BorderChangeCSS';
 import ColorPicker from '../ColorPicker/ColorPicker';
@@ -10,14 +9,7 @@ import BorderRadius from '../BorderRadiusCSS/BorderRadius';
 import PaddingCSS from '../PaddingCSS/PaddingCSS';
 import MarginCSS from '../MarginCSS/MarginCSS';
 import FontFamily from '../FontFamilyCSS/FontFamily'
-=======
-import BorderChange from '../BorderChangeCSS'
-import ColorPicker from '../ColorPicker/ColorPicker'
-import FontRestyle from '../FontRestyleCSS/FontRestyle'
-import BorderRadius from '../BorderRadiusCSS/BorderRadius'
-import PaddingCSS from '../PaddingCSS/PaddingCSS'
-import MarginCSS from '../MarginCSS/MarginCSS'
->>>>>>> 8c774e2cc1e09eb5784b51af7051270d1a7959ca
+
 
 
 /*this will be the menu where people can select their components' styling*/

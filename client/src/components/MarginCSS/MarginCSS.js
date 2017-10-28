@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
+import "./marginCSS.css";
 
 class MarginCSS extends Component {
   render() {
     return (
       <div>
         
-        <div style={{
-                textDecoration: "underline",
-                fontWeight: "bold",
+        <div id ="marginTitle" style={{
+                fontFamily: "Permanent Marker",
                 fontSize: 22
-            }}>Margin</div>
+            }}>Component Margin</div>
             <div>Top</div>
-            <input name="marginTop" value={this.props.marginTop} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginTop" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginTop} onChange={this.props.handleMarginInputChange}/>
             <div>Right</div>
-            <input name="marginRight" value={this.props.marginRight} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginRight" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginRight} onChange={this.props.handleMarginInputChange}/>
             <div>Bottom</div>
-            <input name="marginBottom" value={this.props.marginBottom} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginBottom" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginBottom} onChange={this.props.handleMarginInputChange}/>
             <div>Left</div>
-            <input name="marginLeft" value={this.props.marginLeft} onChange={this.props.handleMarginInputChange}/>
+            <input name="marginLeft" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginLeft} onChange={this.props.handleMarginInputChange}/>
       </div>
     )
   }

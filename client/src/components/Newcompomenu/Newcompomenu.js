@@ -1,7 +1,6 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
-<<<<<<< HEAD
 import RaisedButton from 'material-ui/RaisedButton';
 import BorderChange from '../BorderChangeCSS';
 import ColorPicker from '../ColorPicker/ColorPicker';
@@ -10,14 +9,7 @@ import BorderRadius from '../BorderRadiusCSS/BorderRadius';
 import PaddingCSS from '../PaddingCSS/PaddingCSS';
 import MarginCSS from '../MarginCSS/MarginCSS';
 import FontFamily from '../FontFamilyCSS/FontFamily'
-=======
-import BorderChange from '../BorderChangeCSS'
-import ColorPicker from '../ColorPicker/ColorPicker'
-import FontRestyle from '../FontRestyleCSS/FontRestyle'
-import BorderRadius from '../BorderRadiusCSS/BorderRadius'
-import PaddingCSS from '../PaddingCSS/PaddingCSS'
-import MarginCSS from '../MarginCSS/MarginCSS'
->>>>>>> 8c774e2cc1e09eb5784b51af7051270d1a7959ca
+
 
 
 /*this will be the menu where people can select their components' styling*/
@@ -143,18 +135,18 @@ class Newcompomenu extends React.Component {
          
      }
      let displayBoxStyle = {
-         width: 400,
+         width: 500,
          height: 200,
-         color: "white",
+         backgroundColor: "white",
          border: "2px solid black",
          fontFamily: this.state.fontFamily
      }
         return (
             <div>
         <Drawer width={500} openPrimary={true} open={this.props.sidebar} >
-          <AppBar title="Styling Bench" />
+          <AppBar showMenuIconButton={false} title="Styling Bench" />
           <div style={displayBoxStyle}> 
-          <div style={boxStyle}>Fission</div>
+          <div style={boxStyle}>FISSION</div>
           </div>
           <ColorPicker 
             background={this.state.background}
@@ -163,8 +155,8 @@ class Newcompomenu extends React.Component {
 
             }
         />
-        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
         <FontFamily fontFamily={this.state.fontFamily} handleFontStyleInput={this.handleFontStyleInput}/>
+        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
         <BorderChange height={this.state.height} width={this.state.width} handleHeightInput={this.handleHeightInput} handleWidthInput={this.handleWidthInput}/>
         <PaddingCSS handlePaddingInputChange={this.handlePaddingInputChange} paddingTop={this.state.paddingTop} paddingRight={this.state.paddingRight} paddingBottom={this.state.paddingBottom} paddingLeft={this.state.paddingLeft}/>
           {console.log (JSON.stringify(this.state) + "Padding")}

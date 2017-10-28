@@ -1,12 +1,23 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
+<<<<<<< HEAD
+import RaisedButton from 'material-ui/RaisedButton';
+import BorderChange from '../BorderChangeCSS';
+import ColorPicker from '../ColorPicker/ColorPicker';
+import FontResize from '../FontResizeCSS/FontResize';
+import BorderRadius from '../BorderRadiusCSS/BorderRadius';
+import PaddingCSS from '../PaddingCSS/PaddingCSS';
+import MarginCSS from '../MarginCSS/MarginCSS';
+import FontFamily from '../FontFamilyCSS/FontFamily'
+=======
 import BorderChange from '../BorderChangeCSS'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import FontRestyle from '../FontRestyleCSS/FontRestyle'
 import BorderRadius from '../BorderRadiusCSS/BorderRadius'
 import PaddingCSS from '../PaddingCSS/PaddingCSS'
 import MarginCSS from '../MarginCSS/MarginCSS'
+>>>>>>> 8c774e2cc1e09eb5784b51af7051270d1a7959ca
 
 
 /*this will be the menu where people can select their components' styling*/
@@ -18,6 +29,7 @@ class Newcompomenu extends React.Component {
             open: false,
             color: "white",
             fontSize: 12,
+            fontFamily: "Georgia",
             background: "#601534",
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0,
@@ -92,7 +104,8 @@ class Newcompomenu extends React.Component {
         })
         
     } 
-    handleFontSizeInput = (ev) => {
+   
+ handleFontSizeInput = (ev) => {
         let {name, value} = ev.target;
         value === "" ? value = 0 : value = value;
         this.setState({
@@ -100,6 +113,11 @@ class Newcompomenu extends React.Component {
         })
         console.log(this.state + "from handleFontSizeInput");
     }
+
+    handleFontStyleInput = (event, index, value) => {
+        console.log(this.state.value);
+        console.log("event " + event);
+        this.setState({fontFamily: value})};
 
     render() {
      let boxStyle = {
@@ -128,7 +146,8 @@ class Newcompomenu extends React.Component {
          width: 400,
          height: 200,
          color: "white",
-         border: "2px solid black"
+         border: "2px solid black",
+         fontFamily: this.state.fontFamily
      }
         return (
             <div>
@@ -144,7 +163,8 @@ class Newcompomenu extends React.Component {
 
             }
         />
-        <FontRestyle fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
+        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
+        <FontFamily fontFamily={this.state.fontFamily} handleFontStyleInput={this.handleFontStyleInput}/>
         <BorderChange height={this.state.height} width={this.state.width} handleHeightInput={this.handleHeightInput} handleWidthInput={this.handleWidthInput}/>
         <PaddingCSS handlePaddingInputChange={this.handlePaddingInputChange} paddingTop={this.state.paddingTop} paddingRight={this.state.paddingRight} paddingBottom={this.state.paddingBottom} paddingLeft={this.state.paddingLeft}/>
           {console.log (JSON.stringify(this.state) + "Padding")}

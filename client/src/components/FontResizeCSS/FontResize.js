@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class FontRestyle extends Component {
+class FontResize extends Component {
        
     render() {
        
@@ -20,4 +20,4 @@ class FontRestyle extends Component {
 }
 
 
-export default FontRestyle;
+export default FontResize;

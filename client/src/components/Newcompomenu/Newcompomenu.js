@@ -144,7 +144,7 @@ class Newcompomenu extends React.Component {
         return (
             <div>
         <Drawer width={500} openPrimary={true} open={this.props.sidebar} >
-          <AppBar title="Styling Bench" />
+          <AppBar showMenuIconButton={false} title="Styling Bench" />
           <div style={displayBoxStyle}> 
           <div style={boxStyle}>FISSION</div>
           </div>

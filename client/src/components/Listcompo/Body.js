@@ -11,7 +11,7 @@ const ListBody = (props) =>
 
     <div>
         {props.components.map(component => 
-            <button className="list-component-item" style={style.container} onClick ={() => {props.handleClick(component)}}>
+            <button className="list-component-item" style={style.container} onClick ={() => {props.handleClick(component,props.tab)}}>
                 {component.name}
             </button>
         )}

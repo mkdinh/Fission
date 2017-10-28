@@ -15,9 +15,12 @@ class Canvas extends Component {
 
     state = {
       components: [],
+      reactor: [],
+      preview: {},
       active: {},
       sidebar: false,
-      editor: true
+      editor: true,
+      tab: "canvas"
     }
 
   componentDidMount(){
@@ -35,8 +38,25 @@ class Canvas extends Component {
 
   toggleEditor = () => this.setState({editor: !this.state.editor})
 
-  handleClick = (newCompo) => {
-    this.setState({active: newCompo});
+  updateTab = (tab) => {
+    this.setState({tab: tab})
+  }
+
+  handlePreview = (newCompo) => {
+  
+    this.setState({preview: newCompo})
+    console.log(this.state.preview)
+  }
+
+  handleClick = (newCompo, tab) => {
+    switch(tab){
+      case "canvas":
+        this.setState({active: newCompo});
+        break
+      case "reactor":
+      this.setState({reactor: [...this.state.reactor, newCompo]})
+        break
+    }
   }
 
   render(){
@@ -48,7 +68,8 @@ class Canvas extends Component {
           <Col size={4}>
             <Listcompo 
               components={this.state.components}
-              handleClick={this.handleClick}/>       
+              handleClick={this.handleClick}
+              tab={this.state.tab}/>       
           </Col> 
 
           <Col size={8}>
@@ -57,7 +78,13 @@ class Canvas extends Component {
               active={this.state.active}
               editor={this.state.editor}
               toggleSidebar={this.toggleSidebar}
-              toggleEditor={this.toggleEditor}/>
+              toggleEditor={this.toggleEditor}
+              updateTab={this.updateTab}
+              tab={this.state.tab}
+              reactor={this.state.reactor}
+              handlePreview={this.handlePreview}
+              preview={this.state.preview}
+              />
 
           </Col>
         </Row>

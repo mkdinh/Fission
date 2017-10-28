@@ -40,7 +40,8 @@ export default class Listcompo extends React.Component {
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
                                     components={this.props.components[group]}
-                                    handleClick={this.props.handleClick}/>]}
+                                    handleClick={this.props.handleClick}
+                                    tab={this.props.tab}/>]}
                   />
                   <Divider/>
                 </div>

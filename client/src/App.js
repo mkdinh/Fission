@@ -9,13 +9,13 @@ import CodeEditor from "./components/Editor";
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
-// import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
+//import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
+import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
 //import NavbarBrandNew from "./components/navbar";
 import Tabbar from "./components/Tabbar";
 
 //importing page routes
-import {About, Canvas, Reactor, Login, Profile } from "./pages";
+import {About, Canvas, Login, Profile } from "./pages";
 
 //importing the sidebar menus
 import Sidebarmenunew from "./components/Sidebarmenunew";
@@ -25,7 +25,7 @@ class App extends Component {
 
     render() {
         return (
-            <MuiThemeProvider>
+            <MuiThemeProvider muiTheme={getMuiTheme(customBaseTheme)}>
             <div className="App"  style={{
         backgroundColor: '#747472'
       }}>
@@ -36,7 +36,6 @@ class App extends Component {
                             <Route exact path ="/" component={About} />
                             <Route exact path="/about" component={About}/>
                             <Route exact path="/canvas" component={Canvas} />
-                            <Route exact path="/reactor" component={Reactor} />
                             <Route exact path="/login" component={Login} />
                             <Route exact path="/profile" component={Profile} />
                         </Switch>

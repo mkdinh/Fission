@@ -28,28 +28,21 @@ class About extends Component{
        <div className="infobox" 
        style={{ 
       fontFamily: "Permanent Marker",
-    
-       color: 'white', 
+       color: '#ffc107', 
        width: 'auto', 
-       border: '#595959 5px solid',
        padding: "10px",
        margin: "40px",
-       backgroundColor: "gray",
        height: "auto",
-       opacity: ".95",
-       
+           
      }}>
       <div className="aboutTitle">
        <h1>FISSION</h1>
-      <h3>Making Your Components, Easier</h3>
       </div>
-        <p style={{color: 'white'}}>
+        <p>
 
-      Welcome to Fission! This application will generate React components based on old-fashioned html markup. 
+      
       Begin on the Canvas page by inserting any html component you like and Fission will create a React component file and its css file to hold your markups. 
-      Currently, you can give compiling configuration inline styling as tag properties. 
-      Nesting html is supported but please be aware that it is still a prototype, so there may be some errors 
-      when generating components with nesting components.  
+      
       <br />
       These options are supported:</p>
       <ul className="infolist" style={{
@@ -65,16 +58,17 @@ class About extends Component{
 
 <div className="Footer" style={{
     height: "auto",
-    borderTop: "1px solid #e0e0e0",
     paddingTop: "5px",
     fontSize: "25px",
-   textShadow: "1px 5px 2px rgba(150, 150, 150, 1)",
    backgroundColor: "transparent",
-   backgroundPosition: "bottom"
+   backgroundPosition: "bottom",
+   
 
 }}>
  
-   <h3> Made by <a href="https://github.com/mkdinh/PCR">Team Chain-React.ion</a></h3>
+   <h3> 
+
+   Made by <a href="https://github.com/mkdinh/PCR">Team Chain-React.ion</a></h3>
 
 </div>
 

@@ -7,9 +7,13 @@ class BorderRadius extends Component {
        
         return (
             
-            <div>
+            <div style={{ backgroundColor: "lightGray"}} >
             
-            <div>Border Radius</div>
+            <div style={{
+                textDecoration: "underline",
+                fontWeight: "bold",
+                fontSize: 22
+            }}>Border Radius</div>
             <div>Top Right</div>
             <input name="borderTopRightRadius" value={this.props.borderTopRightRadius} onChange={this.props.handleRadiusInputChange}/>
             <div>Bottom Right</div>

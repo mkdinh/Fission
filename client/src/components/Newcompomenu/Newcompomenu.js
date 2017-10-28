@@ -6,6 +6,10 @@ import BorderChange from '../BorderChangeCSS'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import FontRestyle from '../FontRestyleCSS/FontRestyle'
 import BorderRadius from '../BorderRadiusCSS/BorderRadius'
+import PaddingCSS from '../PaddingCSS/PaddingCSS'
+import MarginCSS from '../MarginCSS/MarginCSS'
+
+
 /*this will be the menu where people can select their components' styling*/
 class Newcompomenu extends React.Component {
 
@@ -13,7 +17,8 @@ class Newcompomenu extends React.Component {
         super(props);
         this.state = {
             open: false,
-            color: "#fff",
+            color: "white",
+            fontSize: 12,
             background: "#601534",
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0,
@@ -24,6 +29,14 @@ class Newcompomenu extends React.Component {
             borderColor: "orange",
             height: 150,
             width: 300,
+            paddingTop: 0,
+            paddingRight: 0,
+            paddingBottom: 0,
+            paddingLeft: 0,
+            marginTop: 0,
+            marginRight: 0,
+            marginBottom: 0,
+            marginLeft: 0
 
         };
     }
@@ -55,7 +68,7 @@ class Newcompomenu extends React.Component {
         this.setState({ background: color.hex });
       };
 
-    handleRadiusInputChange = (ev) => {
+      handleRadiusInputChange = (ev) => {
         let {name, value} = ev.target;
         ev.target.value === "" ? value = 0 : value = ev.target.value;
         this.setState ({
@@ -63,24 +76,59 @@ class Newcompomenu extends React.Component {
         })
         
     } 
-    
+
+    handlePaddingInputChange = (ev) => {
+        let {name, value} = ev.target;
+        ev.target.value === "" ? value = 0 : value = ev.target.value;
+        this.setState ({
+            [ev.target.name]: parseInt(value)
+        })
+        
+    }  
+     handleMarginInputChange = (ev) => {
+        let {name, value} = ev.target;
+        ev.target.value === "" ? value = 0 : value = ev.target.value;
+        this.setState ({
+            [ev.target.name]: parseInt(value)
+        })
+        
+    } 
+    handleFontSizeInput = (ev) => {
+        let {name, value} = ev.target;
+        value === "" ? value = 0 : value = value;
+        this.setState({
+            [name] : parseInt(value)
+        })
+        console.log(this.state + "from handleFontSizeInput");
+    }
+
     render() {
      let boxStyle = {
          width: this.state.width,
          height: this.state.height,
+         fontSize: this.state.fontSize,
          borderSize: this.state.borderSize,
          borderColor: this.state.borderColor,
          borderStyle: this.state.borderStyle,
          background: this.state.background,
-         padding: 20,
+         paddingTop: this.state.paddingTop,
+         paddingRight: this.state.paddingRight,
+         paddingBottom: this.state.paddingBottom,
+         paddingLeft: this.state.paddingLeft,
          borderBottomLeftRadius: this.state.borderBottomLeftRadius,
          borderBottomRightRadius: this.state.borderBottomRightRadius,
          borderTopRightRadius: this.state.borderTopRightRadius,
-         borderTopLeftRadius: this.state.borderTopLeftRadius
+         borderTopLeftRadius: this.state.borderTopLeftRadius,
+         marginTop: this.state.marginTop,
+         marginRight: this.state.marginRight,
+         marginBottom: this.state.marginBottom,
+         marginLeft: this.state.marginLeft
+         
      }
      let displayBoxStyle = {
          width: 400,
-         height: 200, 
+         height: 200,
+         color: "white",
          border: "2px solid black"
      }
         return (
@@ -97,11 +145,17 @@ class Newcompomenu extends React.Component {
 
             }
         />
-         
-          <BorderChange height={this.state.height} width={this.state.width} handleHeightInput={this.handleHeightInput} handleWidthInput={this.handleWidthInput}/>
-          <FontRestyle/>
+        <FontRestyle fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
+        <BorderChange height={this.state.height} width={this.state.width} handleHeightInput={this.handleHeightInput} handleWidthInput={this.handleWidthInput}/>
+        <PaddingCSS handlePaddingInputChange={this.handlePaddingInputChange} paddingTop={this.state.paddingTop} paddingRight={this.state.paddingRight} paddingBottom={this.state.paddingBottom} paddingLeft={this.state.paddingLeft}/>
+          {console.log (JSON.stringify(this.state) + "Padding")}
+          <MarginCSS
+          handleMarginInputChange={this.handleMarginInputChange}
+          marginTop={this.state.marginTop} marginRight={this.state.marginRight} marginBottom={this.state.marginBottom} marginLeft={this.state.marginLeft}
+          />
           <BorderRadius handleRadiusInputChange={this.handleRadiusInputChange} borderBottomLeftRadius={this.state.borderBottomLeftRadius} borderBottomRightRadius={this.state.borderBottomRightRadius} borderTopLeftRadius={this.state.borderTopLeftRadius} borderTopRightRadius={this.state.borderTopRightRadius}/>
           {console.log (JSON.stringify(this.state) + "Border Radius")}
+          
         </Drawer>
       </div>
         );

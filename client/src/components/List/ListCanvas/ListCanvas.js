@@ -20,17 +20,17 @@ export default class Listcompo extends React.Component {
       <Card id="Listcompo" style={{margin: "1rem"}}>
         {/* <CardTitle title="Component List" /> */}
         <Tabs>
-          <Tab label="Templates">
-            {Object.keys(this.props.components).length > 0 ?
+          <Tab mode="create" label="Templates" onActive={this.props.updateCanvasMode}>
+            {Object.keys(this.props.defaults).length > 0 ?
             <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
-            {Object.keys(this.props.components).map(group => { return (
+            {Object.keys(this.props.defaults).map(group => { return (
                 <div key={group}>
                   <ListItem
                   primaryText={group}
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
-                                    components={this.props.components[group]}
-                                    handleClick={this.props.handleClick}
+                                    components={this.props.defaults[group]}
+                                    addComponent={this.props.addComponent}
                                     tab={this.props.tab}/>]}
                   />
                   <Divider/>
@@ -44,7 +44,7 @@ export default class Listcompo extends React.Component {
             </div>}
           </Tab>
 
-          <Tab label="Customs">
+          <Tab mode="edit" label="Customs" onActive={this.props.updateCanvasMode}>
           {Object.keys(this.props.customs).length > 0 ?
             <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
             {Object.keys(this.props.customs).map(group => { return (
@@ -54,7 +54,7 @@ export default class Listcompo extends React.Component {
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
                                     components={this.props.customs[group]}
-                                    handleClick={this.props.handleClick}
+                                    addComponent={this.props.addComponent}
                                     tab={this.props.tab}/>]}
                   />
                   <Divider/>

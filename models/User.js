@@ -22,6 +22,11 @@ const UserSchema = new Schema({
     components: {
         type: [Schema.Types.ObjectId],
         ref: "Component"
+    },
+
+    projects: {
+        type: [Schema.Types.ObjectId],
+        ref: "Project"
     }
 });
 

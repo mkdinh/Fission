@@ -10,7 +10,7 @@ const ListBody = (props) =>
 
     <div>
         {props.components.map(component => 
-            <button className="list-component-item" style={style.container} onClick ={() => {props.handleClick(component,props.tab)}}>
+            <button key={component._id} className="list-component-item" style={style.container} onClick ={() => {props.addComponent(component,props.tab)}}>
                 {component.name}
             </button>
         )}

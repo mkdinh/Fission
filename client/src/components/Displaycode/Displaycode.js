@@ -31,7 +31,7 @@ class Previewdisplay extends Component{
     return(
       <div style={style.wrapper}>
         <Tabs>
-          <Tab label="Preview" onActive={() => this.props.updateTab("canvas")}>
+          <Tab label="Generator" onActive={() => this.props.updateTab("canvas")}>
             <CanvasTab
               profile={this.props.profile}
               active={this.props.active}
@@ -39,18 +39,25 @@ class Previewdisplay extends Component{
               toggleSidebar={this.props.toggleSidebar}
               toggleEditor={this.props.toggleEditor}
               updateTab={this.props.updateTab}
+              canvasMode={this.props.canvasMode}
               tab={this.props.tab}
+              addSnackbar={this.props.addSnackbar}
+              updateCustoms={this.props.updateCustoms}
               updateDOM={this.state.updateDOM}
               strToDOM={this.strToDOM}/>
           </Tab>
 
           <Tab label="Reactor" onActive={() => this.props.updateTab("reactor")}>
             <ReactorTab
+              activeProject={this.props.activeProject}
+              removeFromProject={this.props.removeFromProject}
               profile={this.props.profile}
               updateDOM={this.state.updateDOM}
+              updateProjects={this.props.updateProjects}
               strToDOM={this.strToDOM}
               reactor={this.props.reactor}
-              handlePreview={this.props.handlePreview}
+              addSnackbar={this.props.addSnackbar}
+              addComponent={this.props.addComponent}
               preview={this.props.preview}/>
           </Tab>
 

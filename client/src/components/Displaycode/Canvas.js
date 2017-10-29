@@ -40,16 +40,52 @@ class CanvasTab extends Component {
     }
 
     updateDOM = (html) =>  this.setState({html: html})
+    
+    toggleType = () => this.state.type === "Dumb" ?
+        this.setState({type: "Smart"}) : this.setState({type: "Dumb"})
 
     handleChange = (ev) => {
         let { value, name } = ev.target;
         this.setState({[name]: value});
+        console.log(this.state)
     }
 
-    handleSumbit = () => {
-        API.component.create(this.state)
-            .then((doc) => this.props.updateCustoms())
-            .catch((err) => console.log(err))
+    handleSumbit = (ev) => {
+        ev.preventDefault();
+        let context, auth0Id;
+
+        console.log(this.state)
+        if(!this.state.html){
+            this.props.addSnackbar("There is no markups for this component", "error")
+            return
+        }
+        
+        if(!this.state.name){
+            this.props.addSnackbar("The component's name is missing", "error")
+            return
+        }
+
+        context = ev.target.name;
+        auth0Id = this.props.profile.auth0Id;
+        
+        switch(context){
+            case "create":
+                API.component.create(this.state)
+                    .then((doc) => {
+                        this.props.updateCustoms(auth0Id, doc);
+                        this.props.addSnackbar(`Successfully created ${this.state.name}`, "success")
+                    })
+                    .catch((err) => console.log(err))
+                break
+            case "edit":
+                let componentId = this.props.active._id;
+                API.component.updateOne(this.state, componentId)
+                    .then((doc) => {
+                        this.props.updateCustoms(auth0Id, doc.data);
+                        this.props.addSnackbar(`Successfully updated ${this.state.name}`, "success")
+                    })
+                    .catch((err) => console.log(err))
+        }
     }
 
     render(){
@@ -65,7 +101,6 @@ class CanvasTab extends Component {
                         <span>Style</span>
                         </FloatingActionButton>       
                     </div>
-                    {console.log(this.props)}
                     {this.state.html? 
                         <div style={style.previewDiv} dangerouslySetInnerHTML={this.props.strToDOM(this.state.html)}/> 
                     : ""}
@@ -98,7 +133,9 @@ class CanvasTab extends Component {
                                 <div className="switch">
                                     <label>
                                         Dumb
-                                            <input type="checkbox"/>
+                                            <input type="checkbox" 
+                                                onClick={this.toggleType} 
+                                                checked= {this.state.type ==="Smart"? "checked": ""}/>
                                             <span className="lever"></span>
                                         Smart
                                     </label>
@@ -106,9 +143,16 @@ class CanvasTab extends Component {
                                 </div>
                             </Col>
                             <Col size={3} className="valign-wrapper" style={{height: "100%"}}>
-                                <button className='btn-flat waves-effect waves-light' onClick={this.handleSumbit} type='submit' name='action'>Save
-                                <i className='material-icons right'>send</i>
-                                </button>
+                                {
+                                    this.props.canvasMode === "create" ?
+                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSumbit} type='submit'>Create
+                                    <i className='material-icons right'>send</i>
+                                    </button>
+                                    :
+                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSumbit} type='submit'>Save
+                                    <i className='material-icons right'>send</i>
+                                    </button>
+                                }
                             </Col>  
                     </div>
                     </Card>

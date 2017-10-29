@@ -12,38 +12,47 @@ module.exports = {
             .catch( err => console.log(err))
     },
 
-    findGroups: (req, res) => {
-        db.Component.find({default: "true"}).distinct("group")
-            .then( groups => {
-                let allComponents = {};
-                let len = groups.length;
+    findDefaults: (req, res) => {
+        db.Component.find({default: true})
+            .then( components => {
+                let sorted = { General: [] };
 
-                for(let i = 0; i < len; i++){
-                    db.Component.find({group: groups[i]})
-                        .then(components => {
-                            allComponents[groups[i]] = components
-                            i === len-1 ? res.json(allComponents) : "";
-                        })
-                        .catch( err => console.log(err))
-                };
+                components.forEach( component => {
+                    if(!component.group){
+                        sorted.General.push(component)
+                    }else{
+                        let group = component.group.charAt(0).toUpperCase() + component.group.substring(1);
+
+                        if(!sorted[group]){
+                            sorted[group] = [component]
+                        }else{
+                            sorted[group].push(component)
+                        }
+                    }
+                })
+                res.json(sorted)             
             })
             .catch(err => console.log(err))
     }, 
     findCustoms: (req, res) => {
-        db.User.findById(req.params.id).populate({path: "components", model:"Component"})
-            .then( user => {
-                let allComponents = {};
-                let len = user.components.length;
+        db.User.findOne({auth0Id: req.params.id}).populate({path: "components", model:"Component"})
+            .then( user => {     
+                let sorted = { General: [] };
                 
                 user.components.forEach( component => {
-                    if(!allComponents[component.group]){
-                        allComponents[component.group] = [component]
+                    if(!component.group){
+                        sorted.General.push(component)
                     }else{
-                        allComponents[component.group].push(component)
+                        let group = component.group.charAt(0).toUpperCase() + component.group.substring(1);
+
+                        if(!sorted[group]){
+                            sorted[group] = [component]
+                        }else{
+                            sorted[group].push(component)
+                        }
                     }
                 })
-      
-                res.json(allComponents)
+                res.json(sorted)
             })
             .catch(err => console.log(err))
     }, 

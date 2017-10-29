@@ -5,14 +5,17 @@ const projectController = require('../../controllers/projectsController.js');
 
 // API ROUTES
 // ---------------------------------------------------
-router.route('/')
+router.route('/user/:id')
     .get(projectController.findAll)
     .post(projectController.create)
 
 router.route('/:id')
     .get(projectController.findOne)
-    .put(projectController.update)
-    .delete(projectController.delete)
+    .put(projectController.updateOne)
+    .delete(projectController.deleteOne)
+
+router.route('/save/:id')
+    .put(projectController.SaveOne)
 
 router.route('/compile/')
     .get(projectController.compile)

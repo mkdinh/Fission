@@ -4,7 +4,7 @@ import axios from "axios";
 // Handle HTTP requests from clients
 //--------------------------------------------------------
 export default {
-    findGroups: () => axios.get("./api/component/group/all"),
+    findDefaults: () => axios.get("./api/component/group/all"),
 
     findCustoms: (id) => axios.get("./api/component/group/" + id),
 
@@ -12,5 +12,7 @@ export default {
 
     findOne: compId => axios.get("./api/user/" + compId),
     
-    create: (component, id) => axios.post("./api/component/", component)
+    create: (component, id) => axios.post("./api/component/", component),
+
+    updateOne: (component, componentId) => axios.put("./api/component/" + componentId, component)
 }

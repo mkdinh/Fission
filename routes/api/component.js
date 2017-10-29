@@ -15,7 +15,7 @@ router.route('/:id')
     .delete(compController.deleteOne);
 
 router.route("/group/all")
-    .get(compController.findGroups)
+    .get(compController.findDefaults)
 
 router.route("/group/:id")
     .get(compController.findCustoms)

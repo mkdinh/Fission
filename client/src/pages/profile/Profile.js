@@ -26,7 +26,6 @@ class Profile extends Component{
             .then(user => {
                 this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
                 // this.toggleModal("landingModal")
-                console.log(user.data.auth0Id)
                 localStorage.setItem("auth0Id", user.data.auth0Id)
             })
     };

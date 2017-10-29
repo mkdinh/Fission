@@ -19,23 +19,11 @@ class CodeEditor extends Component {
       mode="javascript"
       theme="ambiance"
       onChange={this.onChange}
-      name="UNIQUE_ID_OF_DIV"
+      name="canvas_editor"
       width="100%"
       value={this.props.code}
-      /* editorProps={{$blockScrolling: true}} */
+      editorProps={{$blockScrolling: true}}
       />
-      // <ReactAce
-      //   mode="javascript"
-      //   theme="github"
-      //   setReadOnly={false}
-      //   onChange={this.onChange}
-      //   value
-      //   style={{ height: '100%', width: "100%" }}
-      //   ref={instance => { this.ace = instance; }} // Let's put things into scope
-      //   editorProps={{
-      //     $blockScrolling: Infinity
-      //   }}
-      // />
     );
   }
 }

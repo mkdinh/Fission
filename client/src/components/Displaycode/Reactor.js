@@ -4,6 +4,7 @@ import { Card } from 'material-ui/Card';
 import { Row, Col } from "../../components/Grid";
 import FissionBtn from "../../components/FissionButton";
 import API from "../../utils/api";
+import "./reactor.css";
 
 const style= {
     card: {position: "relative", backgroundColor: "white", padding: 0},
@@ -114,7 +115,7 @@ class ReactorTab extends Component {
         return(
             <div>
                 <div style={{position: "relative", marginTop: "1rem"}}>
-                    <Col size={6} style={{padding: 0}}>
+                    <Col size={6} style={{padding: 0, color: "black"}}>
                         <Card style={{...style.card, width: "100%", height: "65vh", marginRight: "1%", overflow:"scroll", padding: "0.5rem 0"}}>
                         {   
                             this.state.activeProject.name ?
@@ -161,7 +162,7 @@ class ReactorTab extends Component {
                         
                         {
                             this.props.editActiveProject ?
-                                <FissionBtn bg={"green"} handleClick={this.handleSave} style={{marginTop: "1rem", backgroundColor: "gold"}} label="Save It"/>
+                                <FissionBtn bg={"green"} handleClick={this.handleSave} style={{marginTop: "1rem", backgroundColor: "#ffc107"}} label="Save It"/>
                             :
                             ""
                         }
@@ -169,7 +170,7 @@ class ReactorTab extends Component {
                     </Col>
 
                     <Col size={6} style={{width: "49%", marginLeft: '1%', padding: 0 }}>
-                        <div className="valign-wrapper" style={{...style.card, height: "35vh", width: "100%"}}>
+                        <div className="valign-wrapper" style={{...style.card, height: "35vh", width: "100%",  color: "black"}}>
                         {
                             this.props.preview? 
                             <div
@@ -179,13 +180,13 @@ class ReactorTab extends Component {
                         }
                         </div>
 
-                        <div className="valign-wrapper" style={{...style.card, height: "27.50vh", width: "100%", marginTop: "1rem"}}>
+                        <div className="valign-wrapper" style={{...style.card, height: "27.50vh", width: "100%", marginTop: "1rem", color: "black"}}>
 
                         {
                             this.props.preview ? 
                             <div style={{margin: "1rem"}}>
-                            <p><b>Name:</b> {this.props.preview.name}</p>
-                            <p><b>Group:</b> {this.props.preview.group}</p>
+                            <p id="nameDiv">Name: {this.props.preview.name}</p>
+                            <p id="groupDiv">Group: {this.props.preview.group}</p>
                             </div>
                             : ""
                         }

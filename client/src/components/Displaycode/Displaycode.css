@@ -30,3 +30,8 @@
 .reactor-component-list-item:hover {
 	background-color: lightgrey
 }
+
+h3{
+
+	color: black !important;
+}

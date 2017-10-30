@@ -6,6 +6,7 @@ import { Container } from "../../components/Grid";
 import { NewUserModal, LandingModal } from "../../components/Modal";
 import { UserProfile } from "../../components/Form";
 import API from "../../utils/api";
+import auth0 from "../../components/Auth"
 
 const mapStateToProps = (state) => {
     return {...state.user}
@@ -22,12 +23,11 @@ class Profile extends Component{
     }
 
     componentDidMount(){
-        API.user.findOne("59e926cbc30a38053ab548de")
-            .then(user => {
-                this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
-                // this.toggleModal("landingModal")
-                localStorage.setItem("auth0Id", user.data.auth0Id)
-            })
+        auth0.handleAuthentication(() => {
+            this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
+            this.toggleModal("landingModal")
+            localStorage.setItem("auth0Id", user.data.auth0Id)
+        })
     };
 
     toggleModal = (modalName) => {

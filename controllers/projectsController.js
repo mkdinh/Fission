@@ -86,7 +86,7 @@ module.exports = {
                     html = html.replace("\\","")
                 
                     let objHTML = parse(html)
-                    let package = {
+                    let compiledPackage = {
                         attribs: {
                             name: "App",
                             expand: "shallow"
@@ -94,7 +94,7 @@ module.exports = {
                         children: objHTML       
                     }
 
-                    compile(package, 'component', jobNum, () => {
+                    compile(compiledPackage, 'component', jobNum, () => {
                         res.send("Hello")
                         // res.download(folder+"/sample.html", (err) => {
                         //     if (err) {

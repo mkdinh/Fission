@@ -38,7 +38,9 @@ class Canvas extends Component {
   componentDidMount(){
     if(localStorage.getItem("auth0Id")){
       let auth0Id = localStorage.getItem("auth0Id");
-      this.props.dispatch(action.login(auth0Id));
+      // if(auth0Id){
+      //   this.props.dispatch(action.login(auth0Id));
+      // }
       this.props.dispatch(action.getDefaults())
       this.updateCustoms(auth0Id);
       this.updateProjects(auth0Id);

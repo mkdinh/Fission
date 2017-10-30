@@ -1,19 +1,19 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './SampleButton.css';
+import './GoldenButton.css';
 
 
 // Create stateless component
 //--------------------------------------------------------
-const SampleButton = (props) =>
+const GoldenButton = (props) =>
 
-	<a className="btn" style="[object Object]">
+	<button className="btn waves-effect waves-light" type="submit" style="[object Object]">
 
 		{props.children}
 
-	</a>
+	</button>
 
 // Export component to application
 //--------------------------------------------------------
-export { SampleButton };                                     
+export { GoldenButton };                                     

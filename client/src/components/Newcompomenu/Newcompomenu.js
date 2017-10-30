@@ -2,15 +2,6 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-<<<<<<< HEAD
-import BorderChange from '../BorderChangeCSS';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import FontResize from '../FontResizeCSS/FontResize';
-import BorderRadius from '../BorderRadiusCSS/BorderRadius';
-import PaddingCSS from '../PaddingCSS/PaddingCSS';
-import MarginCSS from '../MarginCSS/MarginCSS';
-import FontFamily from '../FontFamilyCSS/FontFamily'
-=======
 import BorderChange from './StylePicker/BorderChangeCSS';
 import ColorPicker from './StylePicker/ColorPicker/ColorPicker';
 import FontResize from './StylePicker/FontResizeCSS/FontResize';
@@ -18,8 +9,6 @@ import BorderRadius from './StylePicker/BorderRadiusCSS/BorderRadius';
 import PaddingCSS from './StylePicker/PaddingCSS/PaddingCSS';
 import MarginCSS from './StylePicker/MarginCSS/MarginCSS';
 import FontFamily from './StylePicker/FontFamilyCSS/FontFamily'
->>>>>>> 7534289e396ec34a341fc7cc8b7de8d78975185c
-
 
 /*this will be the menu where people can select their components' styling*/
 class Newcompomenu extends React.Component {
@@ -165,6 +154,7 @@ class Newcompomenu extends React.Component {
           <div style={displayBoxStyle}> 
           <div style={boxStyle}>FISSION</div>
           </div>
+
           <ColorPicker 
             background={this.props.active.css ? this.props.active.css["background-color"] : "gold"}
             handleChange={this.handleChange}

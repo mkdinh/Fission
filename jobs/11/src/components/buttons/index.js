@@ -10,3 +10,4 @@ export { RaisedButton (Right Icon) } from "./RaisedButton (Right Icon)";
 export { RaisedButton (Right Icon) } from "./RaisedButton (Right Icon)";
 export { RaisedButton (Right Icon) } from "./RaisedButton (Right Icon)";
 export { RaisedButton.RightIcon } from "./RaisedButton.RightIcon";
+export { GoldenButton } from "./GoldenButton";

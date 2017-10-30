@@ -1,14 +1,14 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './SampleButton.css';
+import './there.css';
 
 
 // Create stateless component
 //--------------------------------------------------------
-const SampleButton = (props) =>
+const there = (props) =>
 
-	<a className="btn" style="[object Object]">
+	<a className="waves-effect waves-teal btn-flat" style="[object Object]">
 
 		{props.children}
 
@@ -16,4 +16,4 @@ const SampleButton = (props) =>
 
 // Export component to application
 //--------------------------------------------------------
-export { SampleButton };                                     
+export { there };                                     

@@ -94,11 +94,12 @@ class Canvas extends Component {
   }
 
   updateActiveComponent = (type, props, key, value) => {
+    console.log(this.state.active)
     switch(type){
       case "str":
         this.setState({active: {...this.state.active, [props]: value}});
         break
-      case "array":
+      case "obj":
         let nested = {...this.state.active[props], [key]: value};
         this.setState({active: {...this.state.active, [props]: nested}});
         break

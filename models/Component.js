@@ -21,8 +21,9 @@ const ComponentSchema = new Schema({
     },
     
     css: {
-        type: String,
-        require: true
+        type: Schema.Types.Mixed,
+        require: false,
+        default: {}
     },
     
     default: {
@@ -30,8 +31,13 @@ const ComponentSchema = new Schema({
         default: false
     },
 
-    createBy: {
+    create_by: {
         type: String
+    },
+
+    type: {
+        type: String,
+        default: "Dumb"
     }
 });
 

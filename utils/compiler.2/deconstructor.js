@@ -5,12 +5,11 @@ const helper = require("./helpers/deconstruct.helper");
 // Export deconstructor function
 //--------------------------------------------------------
 
-module.exports = function deconstruct(html,cb){
+module.exports = function deconstruct(array,cb){
 
     // array of html tags
-    let strHTML = helper.parseHTML(html);
-
-    cb(strHTML)
-
-
+    // convert array into string
+    let html = array.reduce((str, comp) => str += comp +"\n", "")
+ 
+    cb(html)
 };

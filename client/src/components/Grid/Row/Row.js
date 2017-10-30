@@ -7,7 +7,7 @@ import './Row.css';
 //--------------------------------------------------------
 const Row = (props) =>
 
-	<div className={`row ${props.className ? props.classname : ""}`} style={props.style}>
+	<div className={`row ${props.valign ? "valign-wrapper" : ""}`} style={props.style}>
 		{props.children}
 	</div>
 

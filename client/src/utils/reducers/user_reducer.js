@@ -9,7 +9,7 @@ const initState = {
 export default (state = initState, action) => {
     switch(action.type){
         case "LOGIN":
-            return {...state, new: false, login: true, profile: action.payload.profile}
+            return {...state, new: false, login: true, profile: action.payload}
         case "LOGOUT":
             return {...initState}
         case "NEW_USER":

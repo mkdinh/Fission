@@ -4,7 +4,7 @@ import { Card } from 'material-ui/Card';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import { Col } from "../../components/Grid";
 import CodeEditor from "../../components/Editor";
-
+import API from "../../utils/api";
 
 const style= {
     card: {position: "relative", backgroundColor: "white", padding: 0},
@@ -20,14 +20,90 @@ const style= {
 
 class CanvasTab extends Component {
     state = {
-        html: ""
+        html: "",
+        css: "",
+        group: "",
+        name: "",
+        type: "Dumb",
+        create_by: this.props.profile._id
     }
 
     componentWillReceiveProps(props){
-        this.setState({html: props.active.html})
+        this.setState({
+            html: props.activeHTML,
+            css: props.activeCSS,
+            group: props.active.group,
+            name: props.active.name,
+            type: props.active.type,
+            default: false, 
+            create_by: props.profile._id})
     }
 
-    updateDOM = (html) =>  this.setState({html: html})
+    updateDOM = (html) =>  {
+        this.props.updateActiveHTML(html)
+        this.setState({html: html})
+    }
+    
+    toggleType = () => this.state.type === "Dumb" ?
+        this.setState({type: "Smart"}) : this.setState({type: "Dumb"})
+
+    handleChange = (ev) => {
+        let { value, name } = ev.target;
+        this.setState({[name]: value});
+    }
+
+    handleSubmit = (ev) => {
+        ev.preventDefault();
+        let group, exists;
+
+        let context = ev.target.name;
+        let auth0Id = this.props.profile.auth0Id;
+
+        this.props.toggleSidebar();
+
+        switch(context){
+            case "create":
+                if(!this.state.html){
+                    this.props.addSnackbar("There is no markups for this component", "error")
+                    return
+                }
+                
+                if(!this.state.name){
+                    this.props.addSnackbar("The component's name is missing", "error")
+                    return
+                }
+                
+                group = this.state.group.charAt(0).toUpperCase() + this.state.group.substring(1);
+
+                if(this.state.group !== "" && this.props.customs[group]){
+                    exists = this.props.customs[group].filter(el => el.name === this.state.name)
+                }else{
+                    exists = this.props.customs["General"].filter(el => el.name === this.state.name)
+                }
+
+                if(exists.length > 0){
+                    this.props.addSnackbar("Another component already has this name!", "error")
+                    return
+                }
+        
+                API.component.create(this.state)
+                    .then((doc) => {
+                        let name = this.state.name
+                        this.props.updateCustoms(auth0Id, doc);
+                        this.props.addSnackbar(`Successfully created ${name}`, "success")
+                    })
+                    .catch((err) => console.log(err))
+                break
+            case "edit":
+                let componentId = this.props.active._id;
+                API.component.updateOne(this.state, componentId)
+                    .then((doc) => {
+                        this.props.updateCustoms(auth0Id, doc.data);
+                        this.props.addSnackbar(`Successfully updated ${this.state.name}`, "success")
+                    })
+                    .catch((err) => console.log(err))
+        }
+    }
 
     render(){
         return(
@@ -42,7 +118,6 @@ class CanvasTab extends Component {
                         <span>Style</span>
                         </FloatingActionButton>       
                     </div>
-                    
                     {this.state.html? 
                         <div style={style.previewDiv} dangerouslySetInnerHTML={this.props.strToDOM(this.state.html)}/> 
                     : ""}
@@ -63,10 +138,10 @@ class CanvasTab extends Component {
                     <Card style={{margin: "1rem 0"}}>
                     <div className="row preview-footer">
                             <Col size={4}>
-                                <input id="component_name" value={this.props.active.name} placeholder="Component Name"/>
+                                <input id="component_name" name="name" value={this.state.name} onChange={this.handleChange} placeholder="Component Name"/>
                             </Col>
                             <Col size={2}>
-                                <input value={this.props.active.group} placeholder="Group Name"/>
+                                <input name="group" value={this.state.group} onChange={this.handleChange} placeholder="Group Name"/>
                             </Col>
                             <Col size={3}>
                                 <div style={{margin: "0.5rem 0"}}>
@@ -75,7 +150,9 @@ class CanvasTab extends Component {
                                 <div className="switch">
                                     <label>
                                         Dumb
-                                            <input type="checkbox"/>
+                                            <input type="checkbox" 
+                                                onClick={this.toggleType} 
+                                                checked= {this.state.type ==="Smart"? "checked": ""}/>
                                             <span className="lever"></span>
                                         Smart
                                     </label>
@@ -83,9 +160,16 @@ class CanvasTab extends Component {
                                 </div>
                             </Col>
                             <Col size={3} className="valign-wrapper" style={{height: "100%"}}>
-                                <button className='btn-flat waves-effect waves-light' type='submit' name='action'>Save
-                                <i className='material-icons right'>send</i>
-                                </button>
+                                {
+                                    this.props.canvasMode === "create" ?
+                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSubmit} type='submit'>Create
+                                    <i className='material-icons right'>send</i>
+                                    </button>
+                                    :
+                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSubmit} type='submit'>Save
+                                    <i className='material-icons right'>send</i>
+                                    </button>
+                                }
                             </Col>  
                     </div>
                     </Card>

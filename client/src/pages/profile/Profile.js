@@ -26,25 +26,8 @@ class Profile extends Component{
             .then(user => {
                 this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
                 // this.toggleModal("landingModal")
-                console.log(this.props)
+                localStorage.setItem("auth0Id", user.data.auth0Id)
             })
-        // auth0.handleAuthentication(
-        //     (user, auth0Id) => {
-        //         // if returned with no content
-        //         if(user.status === 204){
-        //             // dispatch new user for sign up
-        //             this.props.dispatch({type: "NEW_USER", playload: {new: true}})
-        //             this.setState({auth0Id: auth0Id})
-        //             this.toggleModal("newUserModal")
-        //         }else{
-    
-        //             // dispatch login and save user info on global redux
-        //             this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
-        //             this.toggleModal("landingModal")
-        //             console.log(this.props)
-        //         };
-        //     }
-        // );
     };
 
     toggleModal = (modalName) => {

@@ -12,23 +12,51 @@ module.exports = {
             .catch( err => console.log(err))
     },
 
-    findGroups: (req, res) => {
-        db.Component.distinct("group")
-            .then( groups => {
-                let allComponents = {};
-                let len = groups.length;
+    findDefaults: (req, res) => {
+        db.Component.find({default: true})
+            .then( components => {
+                let sorted = { General: [] };
 
-                for(let i = 0; i < len; i++){
-                    db.Component.find({group: groups[i]})
-                        .then(components => {
-                            allComponents[groups[i]] = components
-                            i === len-1 ? res.json(allComponents) : "";
-                        })
-                        .catch( err => console.log(err))
-                };
+                components.forEach( component => {
+                    if(!component.group){
+                        sorted.General.push(component)
+                    }else{
+                        let group = component.group.charAt(0).toUpperCase() + component.group.substring(1);
+
+                        if(!sorted[group]){
+                            sorted[group] = [component]
+                        }else{
+                            sorted[group].push(component)
+                        }
+                    }
+                })
+                res.json(sorted)             
             })
             .catch(err => console.log(err))
     }, 
+    findCustoms: (req, res) => {
+        db.User.findOne({auth0Id: req.params.id}).populate({path: "components", model:"Component"})
+            .then( user => {     
+                let sorted = { General: [] };
+                
+                user.components.forEach( component => {
+                    if(!component.group){
+                        sorted.General.push(component)
+                    }else{
+                        let group = component.group.charAt(0).toUpperCase() + component.group.substring(1);
+
+                        if(!sorted[group]){
+                            sorted[group] = [component]
+                        }else{
+                            sorted[group].push(component)
+                        }
+                    }
+                })
+                res.json(sorted)
+            })
+            .catch(err => console.log(err))
+    }, 
+
     findAll: (req, res) => {
         db.Component.find()
             .then(components => res.json(components))
@@ -36,9 +64,20 @@ module.exports = {
     },
 
     create: (req, res) => {
-        db.Component.create(req.body)
-            .then( component => res.json(component))
-            .catch( err => console.log(err))
+        let newComponent = new db.Component(req.body);
+        console.log(req.body)
+        newComponent.save((err, doc) => {
+            if(err){
+                console.log(err)
+                res.send(err)
+            }else{
+                console.log(doc)
+                db.User.findByIdAndUpdate(req.body.create_by, {$push: {"components": doc._id}}, {new: true}, (err, newDoc) => {
+                    console.log(newDoc)
+                    res.json(newDoc)
+                })
+            }
+        })
     },
 
     updateOne: (req, res) => {

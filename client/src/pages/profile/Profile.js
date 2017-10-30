@@ -23,7 +23,7 @@ class Profile extends Component{
     }
 
     componentDidMount(){
-        auth0.handleAuthentication(() => {
+        auth0.handleAuthentication((user, auth0Id) => {
             this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
             this.toggleModal("landingModal")
             localStorage.setItem("auth0Id", user.data.auth0Id)

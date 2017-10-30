@@ -7,3 +7,8 @@
 	padding-left: 10px;
 	border: 1px solid black;
 }
+
+.ace_print-margin{
+
+	visibility: hidden;
+}

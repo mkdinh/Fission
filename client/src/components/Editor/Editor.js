@@ -22,6 +22,9 @@ class CodeEditor extends Component {
       name="canvas_editor"
       width="100%"
       value={this.props.code}
+      showPrintMargin={false}
+      wrapEnabled={true}
+      showGutter={false}
       editorProps={{$blockScrolling: true}}
       />
     );

@@ -21,8 +21,9 @@ const ComponentSchema = new Schema({
     },
     
     css: {
-        type: String,
-        require: true
+        type: Schema.Types.Mixed,
+        require: false,
+        default: {}
     },
     
     default: {

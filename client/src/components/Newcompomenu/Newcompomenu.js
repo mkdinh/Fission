@@ -67,7 +67,6 @@ class Newcompomenu extends React.Component {
     });
 
     handleChange = (color) => {
-        console.log(color)
         this.props.updateActiveCSS("background-color", color.hex)
         this.setState({ background: color.hex });
       };
@@ -156,7 +155,7 @@ class Newcompomenu extends React.Component {
           <div style={boxStyle}>FISSION</div>
           </div>
           <ColorPicker 
-            background={this.props.activeCSS["background-color"]}
+            background={this.props.activeCSS["background-color"] || "gold"}
             handleChange={this.handleChange}
         />
         <FontFamily 

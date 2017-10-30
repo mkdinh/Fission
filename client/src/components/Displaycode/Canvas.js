@@ -30,8 +30,8 @@ class CanvasTab extends Component {
 
     componentWillReceiveProps(props){
         this.setState({
-            html: props.active.html,
-            css: props.active.css,
+            html: props.activeHTML,
+            css: props.activeCSS,
             group: props.active.group,
             name: props.active.name,
             type: props.active.type,
@@ -39,7 +39,10 @@ class CanvasTab extends Component {
             create_by: props.profile._id})
     }
 
-    updateDOM = (html) =>  this.setState({html: html})
+    updateDOM = (html) =>  {
+        this.props.updateActiveHTML(html)
+        this.setState({html: html})
+    }
     
     toggleType = () => this.state.type === "Dumb" ?
         this.setState({type: "Smart"}) : this.setState({type: "Dumb"})
@@ -49,12 +52,14 @@ class CanvasTab extends Component {
         this.setState({[name]: value});
     }
 
-    handleSumbit = (ev) => {
+    handleSubmit = (ev) => {
         ev.preventDefault();
         let group, exists;
 
         let context = ev.target.name;
         let auth0Id = this.props.profile.auth0Id;
+
+        this.props.toggleSidebar();
 
         switch(context){
             case "create":
@@ -157,11 +162,11 @@ class CanvasTab extends Component {
                             <Col size={3} className="valign-wrapper" style={{height: "100%"}}>
                                 {
                                     this.props.canvasMode === "create" ?
-                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSumbit} type='submit'>Create
+                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSubmit} type='submit'>Create
                                     <i className='material-icons right'>send</i>
                                     </button>
                                     :
-                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSumbit} type='submit'>Save
+                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSubmit} type='submit'>Save
                                     <i className='material-icons right'>send</i>
                                     </button>
                                 }

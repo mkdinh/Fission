@@ -25,6 +25,7 @@ class Canvas extends Component {
       preview: {},
       active: {},
       activeCSS: {},
+      activeHTML: ""  ,
       activeProject: {},
       editActiveProject: false,
       snackbars: [],
@@ -77,7 +78,10 @@ class Canvas extends Component {
 
   updatePreview = (newCompo) => this.setState({preview: newCompo})
 
-  updateCanvasMode = (tab) => this.setState({canvasMode: tab.props.mode})
+  updateCanvasMode = (tab) => {
+    this.addComponent({}, "canvas", () => this.updateActiveCSS(null, null, true));
+    this.setState({canvasMode: tab.props.mode}
+    )}
 
   updateActiveProject = (project) => {
     API.project.findOne(project._id)
@@ -92,10 +96,19 @@ class Canvas extends Component {
     if(!reset){
       this.setState({activeCSS: {...this.state.activeCSS, [style]: value}})
     }else{
-      this.setState({activeCSS: {}})
+      if(this.state.active.css){
+        this.setState({activeCSS: this.state.active.css});
+      }
+      else{
+        this.setState({activeCSS: {}});
+      }
     }
   }
 
+  updateActiveHTML = (value) => {
+    this.setState({activeHTML: value})
+    console.log(this.state.activeHTML)
+  }
   
 
   addSnackbar = (message, type) => {
@@ -113,21 +126,21 @@ class Canvas extends Component {
 
   }
   
-  addComponent = (newCompo, context) => {
+  addComponent = (newCompo, context, cb) => {
     switch(context){
       case "canvas":
-        this.setState({active: newCompo});
+        this.setState({active: newCompo},  cb ? () => cb() : null);
         break
       case "reactor":
         let exists = this.state.reactor.filter(comp => comp._id === newCompo._id)
         if(exists.length === 0){
-          this.setState({reactor: [...this.state.reactor, newCompo]})
+          this.setState({reactor: [...this.state.reactor, newCompo]},  cb ? () => cb() : null)
         }else{
           this.addSnackbar("You already added this component", "warning")
         }
         break
       case "preview":
-        this.setState({preview: newCompo})
+        this.setState({preview: newCompo},  cb ? () => cb() : null)
         break
       default:
         return ""
@@ -160,6 +173,7 @@ class Canvas extends Component {
                 customs={this.props.customs}
                 updateCustoms={this.updateCustoms}
                 updateActiveCSS={this.updateActiveCSS}
+                updateActiveHTML={this.updateActiveHTML}
                 addComponent={this.addComponent}
                 addSnackbar={this.addSnackbar}
                 updateCanvasMode={this.updateCanvasMode}/>
@@ -188,6 +202,8 @@ class Canvas extends Component {
               active={this.state.active}
               activeProject={this.state.activeProject}
               activeCSS={this.state.activeCSS}
+              activeHTML={this.state.activeHTML}
+              updateActiveHTML={this.updateActiveHTML}
               editor={this.state.editor}
               canvasMode={this.state.canvasMode}
               toggleSidebar={this.toggleSidebar}

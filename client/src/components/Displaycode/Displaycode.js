@@ -41,7 +41,7 @@ class Previewdisplay extends Component{
         let style = this.objToStr(this.props.activeCSS);
         html = html.replace(/(<\S+\s+)/, `$1style="${style}"`)
       }
-      console.log(html)
+
       return {__html: html}};
     }
   
@@ -53,6 +53,9 @@ class Previewdisplay extends Component{
             <CanvasTab
               profile={this.props.profile}
               active={this.props.active}
+              activeCSS={this.props.activeCSS}
+              activeHTML={this.props.activeHTML}
+              updateActiveHTML={this.props.updateActiveHTML}
               editor={this.props.editor}
               toggleSidebar={this.props.toggleSidebar}
               toggleEditor={this.props.toggleEditor}
@@ -82,7 +85,7 @@ class Previewdisplay extends Component{
               preview={this.props.preview}/>
           </Tab>
           <Tab label="Laboratory" className="valign-wrapper">
-              <div classname="valign-wrapper" style={{height: "50vh"}}>
+              <div className="valign-wrapper" style={{height: "50vh"}}>
                 <div style={{width: "100%", textAlign: "center"}}>
                   <img src={quarantine} alt={"quarantine"} style={{width: "50%", margin: "2rem auto"}}/>
                 </div>

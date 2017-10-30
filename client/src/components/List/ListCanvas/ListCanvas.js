@@ -34,6 +34,7 @@ export default class Listcompo extends React.Component {
                   nestedItems={[<ListBody key={group}
                                     default
                                     components={this.props.defaults[group]}
+                                    updateActiveHTML={this.props.updateActiveHTML}
                                     addComponent={this.props.addComponent}
                                     tab={this.props.tab}/>]}
                   >
@@ -52,6 +53,7 @@ export default class Listcompo extends React.Component {
           <Tab mode="edit" label="Customs" onActive={this.props.updateCanvasMode}>
           {Object.keys(this.props.customs).length > 0 ?
             <List className="List" style={{maxHeight: "50vh", overflow: "scroll"}}>
+        
             {Object.keys(this.props.customs).map(group => { return (
                 <div key={group}>
                   <ListItem
@@ -59,7 +61,9 @@ export default class Listcompo extends React.Component {
                   primaryText={group}
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
+                                    listName={"customs"}
                                     updateActiveCSS={this.props.updateActiveCSS}
+                                    updateActiveHTML={this.props.updateActiveHTML}
                                     updateCustoms={this.props.updateCustoms}
                                     addSnackbar={this.props.addSnackbar}
                                     components={this.props.customs[group]}

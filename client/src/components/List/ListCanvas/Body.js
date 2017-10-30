@@ -18,15 +18,19 @@ class ListBody extends Component {
             .then(deleted => {
                 this.props.addSnackbar("Successfully deleted component!", "success")
                 this.props.updateCustoms(this.props.auth0Id)
+                this.props.addComponent({}, this.props.tab)
             })
             .catch(err => console.log(err))
     }
 
     handleClick = (component) => {
-        console.log(this.props)
-        this.props.updateActiveCSS(null, null, true);
-        this.props.addComponent(component,this.props.tab)
-    }
+        this.props.updateActiveHTML(component.html);
+        this.props.addComponent(component, this.props.tab, () => {
+            if(this.props.listName === "customs"){
+                this.props.updateActiveCSS(null, null, true);
+            };
+        });
+    };
 
     render(){
         return(

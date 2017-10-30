@@ -71,7 +71,7 @@ class About extends Component{
 
 }}>
  
-   Made by <a href="https://github.com/mkdinh/PCR">Team Chain-React.ion</a>
+   Made by <a href="https://github.com/mkdinh/PCR" id ="teamName">Team Chain-React.ion</a>
 
 </div>
 

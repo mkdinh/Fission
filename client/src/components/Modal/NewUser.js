@@ -29,7 +29,7 @@ class NewUserModal extends Component {
         // send userInfo to database to create new user
         API.user.create(this.state)
             // display welcome message
-            .then( user => console.log(user) )
+            .then( user => this.props.toggleModal("newUserModal") )
             // else display error
             .catch( err => console.log(err) )
     }

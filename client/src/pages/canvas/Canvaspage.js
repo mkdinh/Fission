@@ -23,7 +23,13 @@ class Canvas extends Component {
     state = {
       reactor: [],
       preview: {},
-      active: {},
+      active: {
+        name: "",
+        type: "Dumb",
+        group: "",
+        html: "",
+        css: {}
+      },
       activeCSS: {},
       activeHTML: ""  ,
       activeProject: {},
@@ -38,9 +44,9 @@ class Canvas extends Component {
   componentDidMount(){
     if(localStorage.getItem("auth0Id")){
       let auth0Id = localStorage.getItem("auth0Id");
-      // if(auth0Id){
-      //   this.props.dispatch(action.login(auth0Id));
-      // }
+      if(auth0Id){
+        this.props.dispatch(action.login(auth0Id));
+      }
       this.props.dispatch(action.getDefaults())
       this.updateCustoms(auth0Id);
       this.updateProjects(auth0Id);
@@ -81,7 +87,7 @@ class Canvas extends Component {
   updatePreview = (newCompo) => this.setState({preview: newCompo})
 
   updateCanvasMode = (tab) => {
-    this.addComponent({}, "canvas")
+    this.addComponent(null, "reset")
     this.setState({canvasMode: tab.props.mode})
   }
 
@@ -151,6 +157,8 @@ class Canvas extends Component {
       case "preview":
         this.setState({preview: newCompo},  cb ? () => cb() : null)
         break
+      case "reset":
+        this.setState({name: "",type: "Dumb", css:{}, html: "", group:""})
       default:
         return ""
     }

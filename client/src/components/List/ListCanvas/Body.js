@@ -18,12 +18,12 @@ class ListBody extends Component {
             .then(deleted => {
                 this.props.addSnackbar("Successfully deleted component!", "success")
                 this.props.updateCustoms(this.props.auth0Id)
-                this.props.addComponent({}, this.props.tab)
+                this.addComponent(null, "reset")
             })
             .catch(err => console.log(err))
     }
 
-    handleClick = (component) => {;
+    handleClick = (component) => {
         this.props.addComponent(component, this.props.tab)
     };
 

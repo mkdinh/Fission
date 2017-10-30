@@ -26,10 +26,14 @@ class Previewdisplay extends Component{
   }
 
   objToStr = (obj) => {
-    let str = Object.keys(obj).reduce((str, attr) => {
-      let statement = `${attr}: ${obj[attr]}; `;
-      return str += statement;
-    },"")
+    let str;
+
+    if(obj){
+        str = Object.keys(obj).reduce((str, attr) => {
+        let statement = `${attr}: ${obj[attr]}; `;
+        return str += statement;
+      },"")
+    }
     return str;
   }
 

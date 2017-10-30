@@ -71,9 +71,7 @@ module.exports = {
                 console.log(err)
                 res.send(err)
             }else{
-                console.log(doc)
                 db.User.findByIdAndUpdate(req.body.create_by, {$push: {"components": doc._id}}, {new: true}, (err, newDoc) => {
-                    console.log(newDoc)
                     res.json(newDoc)
                 })
             }

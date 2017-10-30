@@ -24,9 +24,16 @@ class Profile extends Component{
 
     componentDidMount(){
         auth0.handleAuthentication((user, auth0Id) => {
-            this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
-            this.toggleModal("landingModal")
-            localStorage.setItem("auth0Id", user.data.auth0Id)
+            console.log(user.status)
+            if(user.status === 204){
+                this.props.dispatch({type: "NEW_USER", payload: {new: true}})
+                this.setState({newUserModal: true, auth0Id: auth0Id})
+                console.log(this.state)
+            }else{
+                this.props.dispatch({type: "LOGIN", payload: {profile: user.data}})
+                this.toggleModal("landingModal")
+                localStorage.setItem("auth0Id", user.data.auth0Id)
+            }
         })
     };
 

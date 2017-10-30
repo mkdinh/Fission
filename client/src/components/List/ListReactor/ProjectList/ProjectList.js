@@ -15,10 +15,10 @@ class ProjectList extends Component {
             <List className="List" style={style.list}>
             {this.props.projects.map(project => { return (
                 <ProjectItem
-                    updateActiveProject={this.props.updateActiveProject}
                     toggleEditProject={this.props.toggleEditProject}
                     key={project._id}
                     auth0Id={this.props.auth0Id}
+                    addProject={this.props.addProject}
                     updateProjects={this.props.updateProjects}
                     project={project}
                 />

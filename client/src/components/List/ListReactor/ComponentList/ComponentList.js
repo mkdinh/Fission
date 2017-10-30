@@ -13,6 +13,7 @@ class ComponentList extends Component {
                 {Object.keys(this.props.components).map(group =>
                         <ComponentItem 
                             tab={this.props.tab}
+                            updateActiveProject={this.props.updateActiveProject}
                             addComponent={this.props.addComponent}
                             components={this.props.components} 
                             group={group}/>

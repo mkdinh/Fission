@@ -23,13 +23,8 @@ class ListBody extends Component {
             .catch(err => console.log(err))
     }
 
-    handleClick = (component) => {
-        this.props.updateActiveHTML(component.html);
-        this.props.addComponent(component, this.props.tab, () => {
-            if(this.props.listName === "customs"){
-                this.props.updateActiveCSS(null, null, true);
-            };
-        });
+    handleClick = (component) => {;
+        this.props.addComponent(component, this.props.tab)
     };
 
     render(){

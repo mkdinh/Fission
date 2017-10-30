@@ -18,6 +18,7 @@ class ComponentItem extends Component {
                     primaryTogglesNestedList={true}
                     nestedItems={
                     [<ComponentBody key={this.props.group}
+                        updateActiveProject={this.props.updateActiveProject}
                         components={this.props.components[this.props.group]}
                         addComponent={this.props.addComponent}
                         tab={this.props.tab}/>]

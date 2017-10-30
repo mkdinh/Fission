@@ -13,7 +13,7 @@ const ComponentBody = (props) =>
             <button className="list-component-item" 
                 style={style.container} 
                 onMouseOver={()=> props.addComponent(component, "preview")}
-                onClick ={() => {props.addComponent(component,props.tab)}}>
+                onClick ={() => {props.updateActiveProject("array", "components", null, component)}}>
                 {component.name}
             </button>
         )}

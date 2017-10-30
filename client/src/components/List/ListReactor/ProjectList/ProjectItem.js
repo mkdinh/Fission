@@ -41,7 +41,7 @@ class ProjectItem extends Component {
         return(
             <div>
             <ListItem
-                onClick={() => this.props.updateActiveProject(this.props.project)}
+                onClick={() => this.props.addProject(this.props.project)}
                 primaryTogglesNestedList={true}>
                 <Row style={style.row}>
                         {

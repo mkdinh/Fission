@@ -79,11 +79,12 @@ class Canvas extends Component {
   updatePreview = (newCompo) => this.setState({preview: newCompo})
 
   updateCanvasMode = (tab) => {
-    this.addComponent({}, "canvas", () => this.updateActiveCSS(null, null, true));
-    this.setState({canvasMode: tab.props.mode}
-    )}
+    this.addComponent({}, "canvas")
+    this.setState({canvasMode: tab.props.mode})
+  }
 
-  updateActiveProject = (project) => {
+  addProject = (project) => {
+  
     API.project.findOne(project._id)
       .then(db => {
         let project = db.data;
@@ -92,24 +93,29 @@ class Canvas extends Component {
       .catch(err => console.log(err))
   }
 
-  updateActiveCSS = (style, value, reset) => {
-    if(!reset){
-      this.setState({activeCSS: {...this.state.activeCSS, [style]: value}})
-    }else{
-      if(this.state.active.css){
-        this.setState({activeCSS: this.state.active.css});
-      }
-      else{
-        this.setState({activeCSS: {}});
-      }
+  updateActiveComponent = (type, props, key, value) => {
+    switch(type){
+      case "str":
+        this.setState({active: {...this.state.active, [props]: value}});
+        break
+      case "array":
+        let nested = {...this.state.active[props], [key]: value};
+        this.setState({active: {...this.state.active, [props]: nested}});
+        break
     }
   }
 
-  updateActiveHTML = (value) => {
-    this.setState({activeHTML: value})
-    console.log(this.state.activeHTML)
+  updateActiveProject = (type, props, key, value) => {
+    switch(type){
+      case "str":
+        this.setState({activeProject: {...this.state.activeProject, [props]: value}});
+        break
+      case "array":
+        let newArray = [...this.state.activeProject[props], value];
+        this.setState({activeProject: {...this.state.activeProject, [props]: newArray}});
+        break
+    }
   }
-  
 
   addSnackbar = (message, type) => {
     let snack = {
@@ -161,8 +167,8 @@ class Canvas extends Component {
       <Container style={{width: "80%", height: "100%", margin: "0 auto"}}>
         <Newcompomenu 
         sidebar={this.state.sidebar}
-        activeCSS={this.state.activeCSS}
-        updateActiveCSS={this.updateActiveCSS}/>
+        active={this.state.active}
+        updateActiveComponent={this.updateActiveComponent}/>
 
         <Row>
           <Col size={4}>
@@ -172,8 +178,7 @@ class Canvas extends Component {
                 defaults={this.props.defaults}
                 customs={this.props.customs}
                 updateCustoms={this.updateCustoms}
-                updateActiveCSS={this.updateActiveCSS}
-                updateActiveHTML={this.updateActiveHTML}
+                updateActiveComponent={this.updateActiveComponent}
                 addComponent={this.addComponent}
                 addSnackbar={this.addSnackbar}
                 updateCanvasMode={this.updateCanvasMode}/>
@@ -182,7 +187,9 @@ class Canvas extends Component {
               profile={this.props.profile}
               customs={this.props.customs} 
               projects={this.props.projects}
+              activeProject={this.state.activeProject}
               addComponent={this.addComponent}
+              addProject={this.addProject}
               updateProjects={this.updateProjects}
               toggleEditProject={this.toggleEditProject}
               editActiveProject={this.state.editActiveProject}
@@ -199,17 +206,17 @@ class Canvas extends Component {
           <Col size={8}>    
             <Previewdisplay
               profile={this.props.profile}
-              active={this.state.active}
-              activeProject={this.state.activeProject}
-              activeCSS={this.state.activeCSS}
-              activeHTML={this.state.activeHTML}
-              updateActiveHTML={this.updateActiveHTML}
               editor={this.state.editor}
-              canvasMode={this.state.canvasMode}
-              toggleSidebar={this.toggleSidebar}
-              toggleEditor={this.toggleEditor}
-              updateTab={this.updateTab}
+              sidebar={this.state.sidebar}
               tab={this.state.tab}
+              toggleEditor={this.toggleEditor}
+              toggleSidebar={this.toggleSidebar}
+              updateTab={this.updateTab}
+              canvasMode={this.state.canvasMode}
+              active={this.state.active}
+              updateActiveComponent={this.updateActiveComponent}
+              activeProject={this.state.activeProject}
+              updateActiveProject={this.updateActiveProject}
               reactor={this.state.reactor}
               customs={this.props.customs}
               updateCustoms={this.updateCustoms}

@@ -34,7 +34,7 @@ export default class Listcompo extends React.Component {
                   nestedItems={[<ListBody key={group}
                                     default
                                     components={this.props.defaults[group]}
-                                    updateActiveHTML={this.props.updateActiveHTML}
+                                    updateActiveComponent={this.props.updateActiveComponent}
                                     addComponent={this.props.addComponent}
                                     tab={this.props.tab}/>]}
                   >
@@ -62,8 +62,7 @@ export default class Listcompo extends React.Component {
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
                                     listName={"customs"}
-                                    updateActiveCSS={this.props.updateActiveCSS}
-                                    updateActiveHTML={this.props.updateActiveHTML}
+                                    updateActiveComponent={this.props.updateActiveComponent}
                                     updateCustoms={this.props.updateCustoms}
                                     addSnackbar={this.props.addSnackbar}
                                     components={this.props.customs[group]}

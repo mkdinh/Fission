@@ -34,26 +34,24 @@ class ReactorTab extends Component {
     componentWillReceiveProps(props){
         this.setState({
             activeProject: props.activeProject, 
-            reactor: props.reactor,
         })
-
     }
 
     handleProjectInput = (ev) => {
         let value = ev.target.value;
-        this.setState({name: value})
+        this.props.updateActiveProject("str", "name", null, value);
     }
 
     handleEdit = () => {
         this.setState({
             edit: !this.state.edit, 
-            name: this.state.activeProject.name
+            name: this.props.activeProject.name
         })
     }
 
     handleRemove = (ev) => {
         ev.preventDefault();
-        API.project.deleteOne(this.state.activeProject._id)
+        API.project.deleteOne(this.props.activeProject._id)
             .then( project => {
                 this.props.updateProjects(this.props.profile.auth0Id, true)
                 this.props.addSnackbar('Successfully deleted project', "success")
@@ -65,9 +63,9 @@ class ReactorTab extends Component {
     handleSave = (ev) => {
         ev.preventDefault()
 
-        let newComp = this.state.reactor.map(el => el._id);
+        let newComp = this.props.activeProject.components.map(el => el._id);
         if(newComp){
-            API.project.saveOne({components: newComp, name: this.state.name}, this.state.activeProject._id)
+            API.project.saveOne({components: newComp, name: this.props.activeProject.name}, this.props.activeProject._id)
                 .then(project => {
                     this.props.addSnackbar(`Successfully saved ${project.data.name}`, "success")
                     this.props.updateProjects()
@@ -83,7 +81,7 @@ class ReactorTab extends Component {
         ev.preventDefault();
         let htmlDOMs = [];
 
-        this.state.reactor.forEach( comp => {
+        this.props.activeProject.components.forEach( comp => {
             let parser = new DOMParser();
             let doc = parser.parseFromString(comp.html, "text/xml");
             let dom = doc.firstChild;
@@ -98,11 +96,11 @@ class ReactorTab extends Component {
         })  
         
         let project = {
-            components: this.state.reactor,
+            components: this.props.activeProject.components,
             htmlDOMs: htmlDOMs
         }
 
-        API.project.compile(project, this.state.activeProject._id)
+        API.project.compile(project, this.props.activeProject._id)
         .then( db => {
                 // window.open("http://localhost:3001/api/project/compile/59f628ab3851070f8cb0be42", '_blank')
                 this.props.addSnackbar("Successfully compiled your project!")
@@ -117,10 +115,10 @@ class ReactorTab extends Component {
                     <Col size={6} style={{padding: 0}}>
                         <Card style={{...style.card, width: "100%", height: "65vh", marginRight: "1%", overflow:"scroll", padding: "0.5rem 0"}}>
                         {   
-                            this.state.activeProject.name ?
+                            this.props.activeProject ?
                                 this.props.editActiveProject ? 
                                 <input style={style.nameInput} 
-                                    value={this.state.name} 
+                                    value={this.props.activeProject.name} 
                                     onChange={this.handleProjectInput}/>
                                 :
                                 <div>
@@ -131,7 +129,7 @@ class ReactorTab extends Component {
                             <h3 style={style.projectName}>Select a project</h3>
                         }
                         {   
-                            this.props.reactor.length > 0 ?     
+                            this.props.reactor.length > 0   ?     
                                 this.props.reactor.map(component => 
                                 <div 
                                 key={component._id} 
@@ -171,10 +169,10 @@ class ReactorTab extends Component {
                     <Col size={6} style={{width: "49%", marginLeft: '1%', padding: 0 }}>
                         <div className="valign-wrapper" style={{...style.card, height: "35vh", width: "100%"}}>
                         {
-                            this.props.preview? 
+                            this.props.preview.html && this.props.preview.css? 
                             <div
                             style={{width: "100%",textAlign: "center"}} 
-                            dangerouslySetInnerHTML={this.props.strToDOM(this.props.preview.html)}/> 
+                            dangerouslySetInnerHTML={this.props.strToDOM(this.props.preview.html, this.props.preview.css)}/>
                             : ""
                         }
                         </div>
@@ -204,7 +202,7 @@ class ReactorTab extends Component {
                     </Col>
                 </div>
                 {
-                    this.state.activeProject._id && !this.props.editActiveProject?
+                    this.props.activeProject._id && !this.props.editActiveProject?
                         <FissionBtn 
                             handleClick={this.handleFuse} 
                             bg={"gold"} style={{marginTop: "1rem"}} 

@@ -25,10 +25,10 @@ export default class Listcompo extends React.Component {
           <Tab label="Projects">
             {this.props.projects ?
               <ProjectList
-                updateActiveProject={this.props.updateActiveProject}
                 auth0Id={this.props.profile.auth0Id}
                 updateProjects={this.props.updateProjects}
                 toggleEditProject={this.props.toggleEditProject}
+                addProject={this.props.addProject}
                 projects={this.props.projects}/>
             :
             <div style={{width: "100%", textAlign: "center", margin: "2rem 0"}}>
@@ -47,6 +47,7 @@ export default class Listcompo extends React.Component {
               Object.keys(this.props.customs).length > 0 ?
                 <ComponentList
                   tab={this.props.tab}
+                  updateActiveProject={this.props.updateActiveProject}
                   addSnackbar={this.props.addSnackbar}
                   addComponent={this.props.addComponent}
                   components={this.props.customs}/>

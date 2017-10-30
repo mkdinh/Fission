@@ -30,8 +30,8 @@ class CanvasTab extends Component {
 
     componentWillReceiveProps(props){
         this.setState({
-            html: props.activeHTML,
-            css: props.activeCSS,
+            html: props.active.html,
+            css: props.active.css,
             group: props.active.group,
             name: props.active.name,
             type: props.active.type,
@@ -40,16 +40,17 @@ class CanvasTab extends Component {
     }
 
     updateDOM = (html) =>  {
-        this.props.updateActiveHTML(html)
-        this.setState({html: html})
+        this.props.updateActiveComponent("str","html", null, html)
     }
     
-    toggleType = () => this.state.type === "Dumb" ?
-        this.setState({type: "Smart"}) : this.setState({type: "Dumb"})
+    toggleType = () => this.props.active.type === "Dumb" ?
+        this.props.updateActiveComponent("str", "type", null, "Smart") 
+        :
+        this.props.updateActiveComponent("str", "type", null, "Dumb")
 
     handleChange = (ev) => {
         let { value, name } = ev.target;
-        this.setState({[name]: value});
+        this.props.updateActiveComponent("str", name, null, value)
     }
 
     handleSubmit = (ev) => {
@@ -59,7 +60,7 @@ class CanvasTab extends Component {
         let context = ev.target.name;
         let auth0Id = this.props.profile.auth0Id;
 
-        this.props.toggleSidebar();
+        this.props.sidebar ? this.props.toggleSidebar(): null;
 
         switch(context){
             case "create":
@@ -118,8 +119,9 @@ class CanvasTab extends Component {
                         <span>Style</span>
                         </FloatingActionButton>       
                     </div>
-                    {this.state.html? 
-                        <div style={style.previewDiv} dangerouslySetInnerHTML={this.props.strToDOM(this.state.html)}/> 
+                    {this.props.active.html? 
+                        <div style={style.previewDiv} 
+                            dangerouslySetInnerHTML={this.props.strToDOM(this.props.active.html, this.props.active.css)}/> 
                     : ""}
                     </div>
 
@@ -138,10 +140,10 @@ class CanvasTab extends Component {
                     <Card style={{margin: "1rem 0"}}>
                     <div className="row preview-footer">
                             <Col size={4}>
-                                <input id="component_name" name="name" value={this.state.name} onChange={this.handleChange} placeholder="Component Name"/>
+                                <input id="component_name" name="name" value={this.props.active.name} onChange={this.handleChange} placeholder="Component Name"/>
                             </Col>
                             <Col size={2}>
-                                <input name="group" value={this.state.group} onChange={this.handleChange} placeholder="Group Name"/>
+                                <input name="group" value={this.props.active.group} onChange={this.handleChange} placeholder="Group Name"/>
                             </Col>
                             <Col size={3}>
                                 <div style={{margin: "0.5rem 0"}}>
@@ -152,7 +154,7 @@ class CanvasTab extends Component {
                                         Dumb
                                             <input type="checkbox" 
                                                 onClick={this.toggleType} 
-                                                checked= {this.state.type ==="Smart"? "checked": ""}/>
+                                                checked= {this.props.active.type ==="Smart"? "checked": ""}/>
                                             <span className="lever"></span>
                                         Smart
                                     </label>

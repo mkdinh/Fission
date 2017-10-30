@@ -27,21 +27,19 @@ class Previewdisplay extends Component{
 
   objToStr = (obj) => {
     let str = Object.keys(obj).reduce((str, attr) => {
-      let statement = `${attr}: ${obj[attr]}`;
+      let statement = `${attr}: ${obj[attr]}; `;
       return str += statement;
     },"")
-    
     return str;
   }
 
-  strToDOM = (html) => {
+  strToDOM = (html, css) => {
     if(html){
-      let cssExists = Object.keys(this.props.activeCSS).length > 0;
+      let cssExists = Object.keys(css).length > 0;
       if(cssExists){
-        let style = this.objToStr(this.props.activeCSS);
+        let style = this.objToStr(css);
         html = html.replace(/(<\S+\s+)/, `$1style="${style}"`)
       }
-
       return {__html: html}};
     }
   
@@ -53,10 +51,9 @@ class Previewdisplay extends Component{
             <CanvasTab
               profile={this.props.profile}
               active={this.props.active}
-              activeCSS={this.props.activeCSS}
-              activeHTML={this.props.activeHTML}
-              updateActiveHTML={this.props.updateActiveHTML}
+              updateActiveComponent={this.props.updateActiveComponent}
               editor={this.props.editor}
+              sidebar={this.props.sidebar}
               toggleSidebar={this.props.toggleSidebar}
               toggleEditor={this.props.toggleEditor}
               updateTab={this.props.updateTab}
@@ -71,6 +68,7 @@ class Previewdisplay extends Component{
 
           <Tab label="Reactor" onActive={() => this.props.updateTab("reactor")}>
             <ReactorTab
+              active={this.props.active}
               activeProject={this.props.activeProject}
               toggleEditProject={this.props.toggleEditProject}
               editActiveProject={this.props.editActiveProject}
@@ -78,12 +76,14 @@ class Previewdisplay extends Component{
               profile={this.props.profile}
               updateDOM={this.state.updateDOM}
               updateProjects={this.props.updateProjects}
+              updateActiveProject={this.props.updateActiveProject}
               strToDOM={this.strToDOM}
               reactor={this.props.reactor}
               addSnackbar={this.props.addSnackbar}
               addComponent={this.props.addComponent}
               preview={this.props.preview}/>
           </Tab>
+          
           <Tab label="Laboratory" className="valign-wrapper">
               <div className="valign-wrapper" style={{height: "50vh"}}>
                 <div style={{width: "100%", textAlign: "center"}}>

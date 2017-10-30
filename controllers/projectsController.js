@@ -4,6 +4,8 @@ const db = require('../models');
 const path = require('path');
 const deconstruct = require("../utils/compiler.2/deconstructor")
 const compile = require("../utils/compiler.2/compiler.js");
+const parse = require("html-dom-parser");
+const fse = require("fs-extra");
 
 // DEFINING METHODS
 // ---------------------------------------------------
@@ -44,10 +46,12 @@ module.exports = {
     },
 
     SaveOne: (req, res) => {
-        
-        db.Project.findOneAndUpdate({_id: req.params.id}, {$set:{components: req.body}}, {new: true})
+        db.Project.findOneAndUpdate(
+                {_id: req.params.id}, 
+                {$set:{components: req.body.components, name: req.body.name}}, 
+                {new: true})
             .then(project => {
-                console.log(project)
+                
                 res.json(project)
             })
             .catch(err => console.log(err))
@@ -59,29 +63,50 @@ module.exports = {
             .catch(err => console.log(err))
     },
 
+    compileSample: (req, res) => {
+        let file = path.join(__dirname, "../jobs/11/sample.html")
+        console.log(file)
+        res.download(file)
+    },
+
     compile: (req, res) => {
+        let comps = req.body.components;
+        let compIds = comps.map(el => el._id);
 
-        let data = req.body;
-        let jobNum = Math.floor(Math.random() * 100000000) + 1;
-        let folder = path.join(__dirname, "../jobs/" + jobNum)
+        db.Project.findOneAndUpdate({_id: req.params.id}, {$set: {components: compIds}}, {new: true})
+            .then(user => {
 
-        const deconstructHTML = deconstruct(data, (html) =>{
-            // html = html.replace("\\","")
-        
-            let objHTML = parse(html)
-            let package = {
-                attribs: {
-                    name: "App",
-                    expand: "shallow"
-                },
-                children: objHTML       
-            }
-        
-            compile(package, 'createApp', 5, () => {
-                res.download(folder)
-            });
-        
-        });
-        
+                // let jobNum = Math.floor(Math.random() * 100000000) + 1;
+                let jobNum = 11;
+                let folder = path.join(__dirname, "../jobs/" + jobNum)
+                
+                // fse.mkdirSync(folder);
+                
+                const deconstructHTML = deconstruct(req.body.htmlDOMs, (html) =>{
+                    html = html.replace("\\","")
+                
+                    let objHTML = parse(html)
+                    let package = {
+                        attribs: {
+                            name: "App",
+                            expand: "shallow"
+                        },
+                        children: objHTML       
+                    }
+
+                    compile(package, 'component', jobNum, () => {
+                        res.send("Hello")
+                        // res.download(folder+"/sample.html", (err) => {
+                        //     if (err) {
+                        //         console.log(err)
+                        //     } else {
+                        //         console.log("success!")
+                        //     }
+                        // })
+                    });
+                
+                });
+            })   
+            .catch(err => console.log(err))   
     }
 }

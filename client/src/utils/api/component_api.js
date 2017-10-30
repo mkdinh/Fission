@@ -14,5 +14,7 @@ export default {
     
     create: (component, id) => axios.post("./api/component/", component),
 
-    updateOne: (component, componentId) => axios.put("./api/component/" + componentId, component)
+    updateOne: (component, componentId) => axios.put("./api/component/" + componentId, component),
+
+    deleteOne: (componentId) => axios.delete("./api/component/" + componentId)
 }

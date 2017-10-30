@@ -17,7 +17,7 @@ const ColorPicker = (props) =>
       <SketchPicker
         backgroundcolor={"#fff"}
         color={props.background}
-        onChangeComplete={props.handleChangeComplete}
+        onChange={props.handleChange}
         width={480}
         disableAlpha={true}
       

@@ -47,33 +47,45 @@ class CanvasTab extends Component {
     handleChange = (ev) => {
         let { value, name } = ev.target;
         this.setState({[name]: value});
-        console.log(this.state)
     }
 
     handleSumbit = (ev) => {
         ev.preventDefault();
-        let context, auth0Id;
+        let group, exists;
 
-        console.log(this.state)
-        if(!this.state.html){
-            this.props.addSnackbar("There is no markups for this component", "error")
-            return
-        }
-        
-        if(!this.state.name){
-            this.props.addSnackbar("The component's name is missing", "error")
-            return
-        }
+        let context = ev.target.name;
+        let auth0Id = this.props.profile.auth0Id;
 
-        context = ev.target.name;
-        auth0Id = this.props.profile.auth0Id;
-        
         switch(context){
             case "create":
+                if(!this.state.html){
+                    this.props.addSnackbar("There is no markups for this component", "error")
+                    return
+                }
+                
+                if(!this.state.name){
+                    this.props.addSnackbar("The component's name is missing", "error")
+                    return
+                }
+                
+                group = this.state.group.charAt(0).toUpperCase() + this.state.group.substring(1);
+
+                if(this.state.group !== "" && this.props.customs[group]){
+                    exists = this.props.customs[group].filter(el => el.name === this.state.name)
+                }else{
+                    exists = this.props.customs["General"].filter(el => el.name === this.state.name)
+                }
+
+                if(exists.length > 0){
+                    this.props.addSnackbar("Another component already has this name!", "error")
+                    return
+                }
+        
                 API.component.create(this.state)
                     .then((doc) => {
+                        let name = this.state.name
                         this.props.updateCustoms(auth0Id, doc);
-                        this.props.addSnackbar(`Successfully created ${this.state.name}`, "success")
+                        this.props.addSnackbar(`Successfully created ${name}`, "success")
                     })
                     .catch((err) => console.log(err))
                 break

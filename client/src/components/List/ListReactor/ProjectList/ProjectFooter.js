@@ -17,15 +17,18 @@ class ProjectFooter extends Component {
           name: this.state.name,
           created_by: auth0Id
         }
-
-        API.project.create(project, auth0Id)
-          .then(db => {
+        if(project.name.length > 0){
+            API.project.create(project, auth0Id)
+              .then(db => {
+                this.setState({createStage: 0, name: ""})
+                let project = db.data;
+                this.props.addSnackbar(`Successfully created project: ${project.name}`, "success")
+                this.props.updateProjects(auth0Id)
+              })
+              .catch(err => console.log(err))
+        }else{
             this.setState({createStage: 0, name: ""})
-            let project = db.data;
-            this.props.addSnackbar(`Successfully created project: ${project.name}`, "success")
-            this.props.updateProjects(auth0Id)
-          })
-          .catch(err => console.log(err))
+        }
       }
 
     handleProjectInput = (ev) => {
@@ -38,20 +41,20 @@ class ProjectFooter extends Component {
             case 0:
                 return (
                 <a href="#" onClick={() => this.setState({createStage: 1})}>
-                    <Fa name="plus" style={{position: "relative", fontSize: "1.5rem", float: "right"}}/>
+                    <Fa name="plus" style={{position: "relative", fontSize: "1.5rem"}}/>
                 </a>
                 )  
                 break
             case 1:
                 return (
                 <a href="#" onClick={this.addProject}>
-                    <Fa name="check" style={{position: "relative", fontSize: "1.5rem", float: "right"}}/>
+                    <Fa name="check" style={{position: "relative", fontSize: "1.5rem"}}/>
                 </a>)  
                 break
             case 2:
                 return(
                 <a href="#">
-                    <Fa name="cog" spin style={{position: "relative", fontSize: "1.5rem", float: "right"}}/>   
+                    <Fa name="cog" spin style={{position: "relative", fontSize: "1.5rem"}}/>   
                 </a>             
                 )
         }
@@ -61,10 +64,10 @@ class ProjectFooter extends Component {
         return(
             <div className="list-component-footer" style={{position: "relative", height: "3rem", padding:"1rem"}}>
                 <Row>
-                    <Col size={11}>
+                    <Col size={10}>
                         {this.state.createStage >= 1 ? <input value={this.state.name} style={{height: "1.5rem"}} className="inline" onChange={this.handleProjectInput}/>: ""}
                     </Col>
-                    <Col size={1}>
+                    <Col size={2}>
                         {this.addProjectIcon()}
                     </Col>
                 </Row>

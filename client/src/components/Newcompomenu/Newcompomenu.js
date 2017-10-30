@@ -2,13 +2,13 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import BorderChange from '../BorderChangeCSS';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import FontResize from '../FontResizeCSS/FontResize';
-import BorderRadius from '../BorderRadiusCSS/BorderRadius';
-import PaddingCSS from '../PaddingCSS/PaddingCSS';
-import MarginCSS from '../MarginCSS/MarginCSS';
-import FontFamily from '../FontFamilyCSS/FontFamily'
+import BorderChange from './StylePicker/BorderChangeCSS';
+import ColorPicker from './StylePicker/ColorPicker/ColorPicker';
+import FontResize from './StylePicker/FontResizeCSS/FontResize';
+import BorderRadius from './StylePicker/BorderRadiusCSS/BorderRadius';
+import PaddingCSS from './StylePicker/PaddingCSS/PaddingCSS';
+import MarginCSS from './StylePicker/MarginCSS/MarginCSS';
+import FontFamily from './StylePicker/FontFamilyCSS/FontFamily'
 
 
 /*this will be the menu where people can select their components' styling*/
@@ -66,9 +66,17 @@ class Newcompomenu extends React.Component {
         open: !this.state.open
     });
 
-    handleChangeComplete = (color) => {
+    handleChange = (color) => {
+        console.log(color)
+        this.props.updateActiveCSS("background-color", color.hex)
         this.setState({ background: color.hex });
       };
+
+      handleIntInput = (ev) => {
+          let { name, value } = ev.target;
+          value === "" ? value = 0 : "";
+          this.updateActiveCSS(name, value)
+      }
 
       handleRadiusInputChange = (ev) => {
         let {name, value} = ev.target;
@@ -142,27 +150,48 @@ class Newcompomenu extends React.Component {
      }
         return (
             <div>
-        <Drawer width={500} openPrimary={true} open={this.props.sidebar} >
-          <AppBar showMenuIconButton={false} title="Styling Bench" />
+        <Drawer width={450} openPrimary={true} open={this.props.sidebar} >
+          <AppBar style={{height: "3.05rem"}} showMenuIconButton={false} title="Styling Bench" />
           <div style={displayBoxStyle}> 
           <div style={boxStyle}>FISSION</div>
           </div>
           <ColorPicker 
-            background={this.state.background}
-            handleChangeComplete={
-                this.handleChangeComplete
-
-            }
+            background={this.props.activeCSS["background-color"]}
+            handleChange={this.handleChange}
         />
-        <FontFamily fontFamily={this.state.fontFamily} handleFontStyleInput={this.handleFontStyleInput}/>
-        <FontResize fontSize={this.state.fontSize} handleFontSizeInput={this.handleFontSizeInput}/>
-        <BorderChange height={this.state.height} width={this.state.width} handleHeightInput={this.handleHeightInput} handleWidthInput={this.handleWidthInput}/>
-        <PaddingCSS handlePaddingInputChange={this.handlePaddingInputChange} paddingTop={this.state.paddingTop} paddingRight={this.state.paddingRight} paddingBottom={this.state.paddingBottom} paddingLeft={this.state.paddingLeft}/>
+        <FontFamily 
+            fontFamily={this.state.fontFamily} 
+            handleFontStyleInput={this.handleFontStyleInput}/>
+        <FontResize 
+            handleIntInput={this.handleIntInput} 
+            fontSize={this.state.fontSize} 
+            handleFontSizeInput={this.handleFontSizeInput}/>
+        <BorderChange 
+            handleIntInput={this.handleIntInput} 
+            height={this.state.height} 
+            width={this.state.width} 
+            handleHeightInput={this.handleHeightInput} 
+            handleWidthInput={this.handleWidthInput}/>
+        <PaddingCSS 
+            handleIntInput={this.handleIntInput} 
+            handlePaddingInputChange={this.handlePaddingInputChange} 
+            paddingTop={this.state.paddingTop} 
+            paddingRight={this.state.paddingRight} paddingBottom={this.state.paddingBottom} paddingLeft={this.state.paddingLeft}/>
           <MarginCSS
-          handleMarginInputChange={this.handleMarginInputChange}
-          marginTop={this.state.marginTop} marginRight={this.state.marginRight} marginBottom={this.state.marginBottom} marginLeft={this.state.marginLeft}
-          />
-          <BorderRadius handleRadiusInputChange={this.handleRadiusInputChange} borderBottomLeftRadius={this.state.borderBottomLeftRadius} borderBottomRightRadius={this.state.borderBottomRightRadius} borderTopLeftRadius={this.state.borderTopLeftRadius} borderTopRightRadius={this.state.borderTopRightRadius}/>
+            handleIntInput={this.handleIntInput}
+            handleMarginInputChange={this.handleMarginInputChange}
+            marginTop={this.state.marginTop} 
+            marginRight={this.state.marginRight} 
+            marginBottom={this.state.marginBottom} 
+            marginLeft={this.state.marginLeft}
+            />
+          <BorderRadius 
+            handleIntInput={this.handleIntInput}
+            handleRadiusInputChange={this.handleRadiusInputChange} 
+            borderBottomLeftRadius={this.state.borderBottomLeftRadius} 
+            borderBottomRightRadius={this.state.borderBottomRightRadius} 
+            borderTopLeftRadius={this.state.borderTopLeftRadius} 
+            borderTopRightRadius={this.state.borderTopRightRadius}/>
  
         </Drawer>
       </div>

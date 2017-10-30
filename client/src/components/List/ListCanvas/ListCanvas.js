@@ -1,5 +1,4 @@
 import React from 'react';
-//import MobileTearSheet from '../../../MobileTearSheet';
 import { List, ListItem } from 'material-ui/List';
 import { ListBody } from "./Body";
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -8,6 +7,10 @@ import { Card } from 'material-ui/Card';
 import Fa from "react-fontawesome";
 import Preloader from "../../../components/Preloader";
 import "./ListCanvas.css";
+
+const style = {
+  row: {padding: 0}
+}
 
 export default class Listcompo extends React.Component {
 
@@ -22,17 +25,19 @@ export default class Listcompo extends React.Component {
         <Tabs>
           <Tab mode="create" label="Templates" onActive={this.props.updateCanvasMode}>
             {Object.keys(this.props.defaults).length > 0 ?
-            <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
+            <List className="List" style={{maxHeight: "50vh", overflow: "scroll"}}>
             {Object.keys(this.props.defaults).map(group => { return (
                 <div key={group}>
                   <ListItem
                   primaryText={group}
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
+                                    default
                                     components={this.props.defaults[group]}
                                     addComponent={this.props.addComponent}
                                     tab={this.props.tab}/>]}
-                  />
+                  >
+                  </ListItem>
                   <Divider/>
                 </div>
               )}
@@ -46,13 +51,17 @@ export default class Listcompo extends React.Component {
 
           <Tab mode="edit" label="Customs" onActive={this.props.updateCanvasMode}>
           {Object.keys(this.props.customs).length > 0 ?
-            <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
+            <List className="List" style={{maxHeight: "50vh", overflow: "scroll"}}>
             {Object.keys(this.props.customs).map(group => { return (
                 <div key={group}>
                   <ListItem
+                  addSnackbar={this.props.addSnackbar}
                   primaryText={group}
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
+                                    updateActiveCSS={this.props.updateActiveCSS}
+                                    updateCustoms={this.props.updateCustoms}
+                                    addSnackbar={this.props.addSnackbar}
                                     components={this.props.customs[group]}
                                     addComponent={this.props.addComponent}
                                     tab={this.props.tab}/>]}

@@ -1,16 +1,19 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './Row.css';
+import './SubmitButton.css';
+
 
 // Create stateless component
 //--------------------------------------------------------
-const Row = (props) =>
+const SubmitButton = (props) =>
 
-	<div className={`row ${props.valign ? "valign-wrapper" : ""}`} style={props.style}>
+	<button className="btn waves-effect waves-light" type="submit">
+
 		{props.children}
-	</div>
+
+	</button>
 
 // Export component to application
 //--------------------------------------------------------
-export { Row };                                     
+export { SubmitButton };                                     

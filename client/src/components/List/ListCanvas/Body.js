@@ -1,20 +1,60 @@
 // Import dependencies
 //--------------------------------------------------------
-import React from "react";
+import React, { Component } from "react";
+import Fa from "react-fontawesome";
+import { Row, Col } from "../../Grid";
+import API from "../../../utils/api";
 
 const style = {
+    row: {padding: "0.25rem", margin: "0rem"},
+    deleteIcon: {fontSize: "1.5rem", float: "right"},
     container: {border: "1px solid black", margin: "0.25rem 0.5rem", width: "95.5%", backgroundColor: "white"}
 }
 
-const ListBody = (props) => 
+class ListBody extends Component {
 
-    <div>
-        {props.components.map(component => 
-            <button key={component._id} className="list-component-item" style={style.container} onClick ={() => {props.addComponent(component,props.tab)}}>
-                {component.name}
-            </button>
-        )}
-    </div>
+    handleDelete= (id) => {
+        API.component.deleteOne(id)
+            .then(deleted => {
+                this.props.addSnackbar("Successfully deleted component!", "success")
+                this.props.updateCustoms(this.props.auth0Id)
+            })
+            .catch(err => console.log(err))
+    }
 
+    handleClick = (component) => {
+        console.log(this.props)
+        this.props.updateActiveCSS(null, null, true);
+        this.props.addComponent(component,this.props.tab)
+    }
+
+    render(){
+        return(
+            <div>
+                {this.props.components.map(component => 
+                    <button key={component._id} className="list-component-item" style={style.container} onClick ={() => this.handleClick(component)}>
+                        <Row valign style={style.row}>                    
+                            <Col size={10}>
+                            {component.name}
+                            </Col>
+                            <Col size={2}>
+                                {
+                                    this.props.default ?
+                                        ""
+                                    :
+                                        <a href="#/"
+                                        style={style.deleteIcon} 
+                                        onClick={(ev) => {ev.preventDefault(); this.handleDelete(component._id)}}>
+                                         <Fa name="times"/>
+                                        </a>
+                                }
+                            </Col>
+                        </Row>
+                    </button>
+                )}
+            </div>
+        )
+    }
+}
 
 export { ListBody };

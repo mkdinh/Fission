@@ -5,6 +5,7 @@ import "./Displaycode.css";
 import {Tabs, Tab} from 'material-ui/Tabs';
 import CanvasTab from "./Canvas";
 import ReactorTab from "./Reactor";
+import quarantine from "./quarantine.png";
 
 const style= {
   card: {position: "relative", backgroundColor: "white", padding: 0},
@@ -24,8 +25,25 @@ class Previewdisplay extends Component{
     html: ""
   }
 
+  objToStr = (obj) => {
+    let str = Object.keys(obj).reduce((str, attr) => {
+      let statement = `${attr}: ${obj[attr]}`;
+      return str += statement;
+    },"")
+    
+    return str;
+  }
 
-  strToDOM = (str) => {return {__html: str}};
+  strToDOM = (html) => {
+    if(html){
+      let cssExists = Object.keys(this.props.activeCSS).length > 0;
+      if(cssExists){
+        let style = this.objToStr(this.props.activeCSS);
+        html = html.replace(/(<\S+\s+)/, `$1style="${style}"`)
+      }
+      console.log(html)
+      return {__html: html}};
+    }
   
   render(){
     return(
@@ -42,6 +60,7 @@ class Previewdisplay extends Component{
               canvasMode={this.props.canvasMode}
               tab={this.props.tab}
               addSnackbar={this.props.addSnackbar}
+              customs={this.props.customs}
               updateCustoms={this.props.updateCustoms}
               updateDOM={this.state.updateDOM}
               strToDOM={this.strToDOM}/>
@@ -50,6 +69,8 @@ class Previewdisplay extends Component{
           <Tab label="Reactor" onActive={() => this.props.updateTab("reactor")}>
             <ReactorTab
               activeProject={this.props.activeProject}
+              toggleEditProject={this.props.toggleEditProject}
+              editActiveProject={this.props.editActiveProject}
               removeFromProject={this.props.removeFromProject}
               profile={this.props.profile}
               updateDOM={this.state.updateDOM}
@@ -60,7 +81,13 @@ class Previewdisplay extends Component{
               addComponent={this.props.addComponent}
               preview={this.props.preview}/>
           </Tab>
-
+          <Tab label="Laboratory" className="valign-wrapper">
+              <div classname="valign-wrapper" style={{height: "50vh"}}>
+                <div style={{width: "100%", textAlign: "center"}}>
+                  <img src={quarantine} alt={"quarantine"} style={{width: "50%", margin: "2rem auto"}}/>
+                </div>
+              </div>
+          </Tab>
         </Tabs>
     </div>
     )

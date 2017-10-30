@@ -7,7 +7,7 @@ const style = {
 
 class ProjectList extends Component {
     state = {
-    
+        projectSelected: false
     }
 
     render(){
@@ -16,6 +16,7 @@ class ProjectList extends Component {
             {this.props.projects.map(project => { return (
                 <ProjectItem
                     updateActiveProject={this.props.updateActiveProject}
+                    toggleEditProject={this.props.toggleEditProject}
                     key={project._id}
                     auth0Id={this.props.auth0Id}
                     updateProjects={this.props.updateProjects}

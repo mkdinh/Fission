@@ -16,7 +16,7 @@ class CodeEditor extends Component {
   render() {
     return (
       <ReactAce
-      mode="javascript"
+      mode="HTML"
       theme="ambiance"
       onChange={this.onChange}
       name="canvas_editor"

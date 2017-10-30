@@ -17,8 +17,9 @@ router.route('/:id')
 router.route('/save/:id')
     .put(projectController.SaveOne)
 
-router.route('/compile/')
-    .get(projectController.compile)
+router.route('/compile/:id')
+    .get(projectController.compileSample)
+    .put(projectController.compile)
 
 // EXPORT ROUTES
 // ---------------------------------------------------

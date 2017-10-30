@@ -24,12 +24,14 @@ class Canvas extends Component {
       reactor: [],
       preview: {},
       active: {},
+      activeCSS: {},
       activeProject: {},
+      editActiveProject: false,
       snackbars: [],
       canvasMode : "create",
       sidebar: false,
       editor: true,
-      tab: "reactor"
+      tab: "canvas"
     }
 
   componentDidMount(){
@@ -43,15 +45,20 @@ class Canvas extends Component {
   }
 
   updateCustoms = (id, active) => {
+    var id = id || this.props.profile.auth0Id;
+
     this.props.dispatch(action.getCustoms(id))
     if(active){
-      console.log(active)
       this.setState({active: active})
     }
   }
 
-  updateProjects = (id, active) => {
+  updateProjects = (id, reset) => {
+    var id = id || this.props.profile.auth0Id;
     this.props.dispatch(action.getProjects(id))
+    if(reset){
+      this.setState({activeProject: {}, reactor: []})
+    }
   }
   
   
@@ -61,6 +68,8 @@ class Canvas extends Component {
       this.setState({sidebar: false})
     }
   }
+
+  toggleEditProject = () => this.setState({editActiveProject: !this.state.editActiveProject})
 
   toggleSidebar = () => this.setState({sidebar: !this.state.sidebar})
 
@@ -78,6 +87,16 @@ class Canvas extends Component {
       })
       .catch(err => console.log(err))
   }
+
+  updateActiveCSS = (style, value, reset) => {
+    if(!reset){
+      this.setState({activeCSS: {...this.state.activeCSS, [style]: value}})
+    }else{
+      this.setState({activeCSS: {}})
+    }
+  }
+
+  
 
   addSnackbar = (message, type) => {
     let snack = {
@@ -115,7 +134,7 @@ class Canvas extends Component {
     }
   }
 
-  
+
   removeFromProject = (ev) => {
     ev.preventDefault();
     let id = ev.currentTarget.getAttribute("data-id");
@@ -126,8 +145,11 @@ class Canvas extends Component {
   render(){
   return(
 
-      <Container style={{width: "80%", height: "100%"}}>
-        <Newcompomenu sidebar={this.state.sidebar}/>
+      <Container style={{width: "80%", height: "100%", margin: "0 auto"}}>
+        <Newcompomenu 
+        sidebar={this.state.sidebar}
+        activeCSS={this.state.activeCSS}
+        updateActiveCSS={this.updateActiveCSS}/>
 
         <Row>
           <Col size={4}>
@@ -136,7 +158,10 @@ class Canvas extends Component {
                 tab={this.state.tab}
                 defaults={this.props.defaults}
                 customs={this.props.customs}
+                updateCustoms={this.updateCustoms}
+                updateActiveCSS={this.updateActiveCSS}
                 addComponent={this.addComponent}
+                addSnackbar={this.addSnackbar}
                 updateCanvasMode={this.updateCanvasMode}/>
             :
               <ListReactor
@@ -145,6 +170,8 @@ class Canvas extends Component {
               projects={this.props.projects}
               addComponent={this.addComponent}
               updateProjects={this.updateProjects}
+              toggleEditProject={this.toggleEditProject}
+              editActiveProject={this.state.editActiveProject}
               updateActiveProject={this.updateActiveProject}
               addSnackbar={this.addSnackbar}
               tab={this.state.tab}/>  
@@ -160,6 +187,7 @@ class Canvas extends Component {
               profile={this.props.profile}
               active={this.state.active}
               activeProject={this.state.activeProject}
+              activeCSS={this.state.activeCSS}
               editor={this.state.editor}
               canvasMode={this.state.canvasMode}
               toggleSidebar={this.toggleSidebar}
@@ -167,9 +195,12 @@ class Canvas extends Component {
               updateTab={this.updateTab}
               tab={this.state.tab}
               reactor={this.state.reactor}
+              customs={this.props.customs}
               updateCustoms={this.updateCustoms}
               updateProjects={this.updateProjects}
               removeFromProject={this.removeFromProject}
+              toggleEditProject={this.toggleEditProject}
+              editActiveProject={this.state.editActiveProject}
               addComponent={this.addComponent}
               addSnackbar={this.addSnackbar}
               preview={this.state.preview}/>

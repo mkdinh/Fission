@@ -1,16 +1,19 @@
 // Import React dependencies
 //--------------------------------------------------------
 import React from 'react';
-import './Row.css';
+import './FlatButton.css';
+
 
 // Create stateless component
 //--------------------------------------------------------
-const Row = (props) =>
+const FlatButton = (props) =>
 
-	<div className={`row ${props.valign ? "valign-wrapper" : ""}`} style={props.style}>
+	<a className="waves-effect waves-teal btn-flat">
+
 		{props.children}
-	</div>
+
+	</a>
 
 // Export component to application
 //--------------------------------------------------------
-export { Row };                                     
+export { FlatButton };                                     

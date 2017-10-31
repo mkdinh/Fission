@@ -120,7 +120,7 @@ class CanvasTab extends Component {
                         <span>Editor</span>
                         </FloatingActionButton>
 
-                        <FloatingActionButton mini={true} onClick={() => this.props.addComponent(null, "resetCSS")} style={style.actionBtn}>
+                        <FloatingActionButton mini={true} onClick={() => this.props.updateActiveComponent("resetCSS")} style={style.actionBtn}>
                         <span>Reset</span>
                         </FloatingActionButton>           
                     </div>

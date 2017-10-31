@@ -114,6 +114,29 @@ class Canvas extends Component {
         let nested = {...this.state.active[props], [key]: value};
         this.setState({active: {...this.state.active, [props]: nested}});
         break
+      case "resetCSS":
+        let activeId = this.state.active._id;
+        if(activeId){
+            let group = this.state.active.group;
+            
+            group ? group = group.charAt(0).toUpperCase() + group.substring(1) : group = "General";
+
+            let dbComp;
+            if(this.state.active.default){
+              dbComp = this.props.defaults[group].filter( el => el._id === activeId);
+            }else{
+              dbComp = this.props.customs[group].filter( el => el._id === activeId);
+            }
+
+            let resetCSS = {...this.state.active, css: dbComp[0].css}
+            this.setState({active: resetCSS})
+          }else{
+            let resetCSS = {...this.state.active, css: {}}
+            this.setState({active: resetCSS})
+          }
+        break
+      default: 
+        null
     }
   }
 
@@ -180,27 +203,6 @@ class Canvas extends Component {
         this.setState({name: "", type: "Dumb", group: "", html: "", css: {} })
         break
 
-      case "resetCSS":
-        let activeId = this.state.active._id;
-        if(activeId){
-            let group = this.state.active.group;
-            group = group.charAt(0).toUpperCase() + group.substring(1) || "General";
-
-            let dbComp;
-            if(this.state.active.default){
-              dbComp = this.props.defaults[group].filter( el => el._id === activeId);
-            }else{
-              dbComp = this.props.customs[group].filter( el => el._id === activeId);
-            }
-
-            let resetCSS = {...this.state.active, css: dbComp[0].css}
-            this.setState({active: resetCSS})
-          }else{
-            let resetCSS = {...this.state.active, css: {}}
-            this.setState({active: resetCSS})
-          }
-        break
-        
       default:
         return ""
     }

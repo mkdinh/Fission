@@ -21,6 +21,14 @@ export default {
         )
     },
 
+    logout: () => {
+        return (
+            dispatch => {
+                dispatch({type: "LOGOUT"})
+            }
+        )
+    },
+
 // COMPONENT REDUCERS
 //--------------------------------------------------------
     getDefaults: () => {

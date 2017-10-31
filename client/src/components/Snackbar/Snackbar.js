@@ -4,6 +4,6 @@ import "./Snackbar.css";
 
 export default (props) =>
 
-  <div className={`snackbar error ${props.type}`}>
+  <div className={`snackbar ${props.type}`}>
     {props.message}
   </div>

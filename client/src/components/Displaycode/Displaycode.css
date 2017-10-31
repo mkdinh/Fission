@@ -11,14 +11,6 @@
 	
 }
 
-.editor-switch {
-	position: absolute;
-	top: 0rem;
-	right: -2rem;
-	height: 2rem;
-	width: 2rem;
-	font-size: 0.75rem
-}
 
 .reactor-component-list-item{
 	width: 100%;

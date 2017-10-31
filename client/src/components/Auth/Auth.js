@@ -1,10 +1,9 @@
 // import authication and history
-import React, { Component } from "react";
 import auth0 from "auth0-js";
 import API from "../../utils/api";
 
 // create Authentication component
-class Auth extends Component {
+class Auth {
     
     auth0 = new auth0.WebAuth({
       domain: process.env.AUTH0_DOMAIN || "app78488740.auth0.com",
@@ -23,7 +22,6 @@ class Auth extends Component {
       localStorage.removeItem("access_token");
       localStorage.removeItem("id_token");
       // navigate to home route
-
     }
 
     handleAuthentication = (cb) => {

@@ -11,6 +11,7 @@ export default (state = initState, action) => {
         case "LOGIN":
             return {...state, new: false, login: true, profile: action.payload}
         case "LOGOUT":
+            console.log(initState)
             return {...initState}
         case "NEW_USER":
             return{...state, login: true, new: action.payload.new}     

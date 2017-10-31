@@ -8,10 +8,6 @@ import Fa from "react-fontawesome";
 import Preloader from "../../../components/Preloader";
 import "./ListCanvas.css";
 
-const style = {
-  row: {padding: 0}
-}
-
 export default class Listcompo extends React.Component {
 
   state = {
@@ -57,7 +53,6 @@ export default class Listcompo extends React.Component {
             {Object.keys(this.props.customs).map(group => { return (
                 <div key={group}>
                   <ListItem
-                  addSnackbar={this.props.addSnackbar}
                   primaryText={group}
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}

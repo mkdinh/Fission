@@ -15,13 +15,13 @@ class BorderRadius extends Component {
                
             }}>Component Border Radius</div>
             <div>Top Right</div>
-            <input name="borderTopRightRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopRightRadius} onChange={this.props.handleRadiusInputChange}/>
+            <input name="borderTopRightRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopRightRadius} onChange={this.props.handleTextInput}/>
             <div>Bottom Right</div>
-            <input name="borderBottomRightRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomRightRadius} onChange={this.props.handleRadiusInputChange}/>
+            <input name="borderBottomRightRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomRightRadius} onChange={this.props.handleTextInput}/>
             <div>Bottom Left</div>
-            <input name="borderBottomLeftRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomLeftRadius} onChange={this.props.handleRadiusInputChange}/>
+            <input name="borderBottomLeftRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomLeftRadius} onChange={this.props.handleTextInput}/>
             <div>Top Left</div>
-            <input name="borderTopLeftRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopLeftRadius} onChange={this.props.handleRadiusInputChange}/>
+            <input name="borderTopLeftRadius" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopLeftRadius} onChange={this.props.handleTextInput}/>
             </div>
             
         );

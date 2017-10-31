@@ -29,7 +29,10 @@ class NewUserModal extends Component {
         // send userInfo to database to create new user
         API.user.create(this.state)
             // display welcome message
-            .then( user => this.props.toggleModal("newUserModal") )
+            .then( user => {
+              localStorage.setItem("auth0Id", this.props.auth0Id)
+              this.props.toggleModal("newUserModal")
+            })
             // else display error
             .catch( err => console.log(err) )
     }

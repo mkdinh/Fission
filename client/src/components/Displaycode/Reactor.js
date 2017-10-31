@@ -24,17 +24,11 @@ const style= {
 
 class ReactorTab extends Component {
     state = {
-        activeProject: {},
-        reactor: {},
-        name: "",
-        edit: false
+        newProject: false,
+        compileCheck: false
     }
 
-    
-    componentWillReceiveProps(props){
-        this.setState({
-            activeProject: props.activeProject, 
-        })
+    componentWillReceiveProps(props) {
     }
 
     handleProjectInput = (ev) => {
@@ -47,6 +41,25 @@ class ReactorTab extends Component {
             edit: !this.state.edit, 
             name: this.props.activeProject.name
         })
+    }
+
+    handleCreate = (ev) => {
+        ev.preventDefault();
+        if(this.props.activeProject.name.length > 0){
+            let auth0Id = this.props.profile.auth0Id;
+            API.project.create(this.props.activeProject, auth0Id)
+                .then((project) => {
+                    this.props.addSnackbar(`Added new Project: ${this.props.activeProject.name}`, "success")
+                    this.props.updateProjects(auth0Id)
+                    this.props.addProject(project.data)
+                    this.setState({newProject: false})
+                })
+
+        }else{
+            this.props.addSnackbar("Your project need a name!", "warning");
+            this.setState({newProject: true});
+        }
+
     }
 
     handleRemove = (ev) => {
@@ -62,50 +75,62 @@ class ReactorTab extends Component {
 
     handleSave = (ev) => {
         ev.preventDefault()
-
-        let newComp = this.props.activeProject.components.map(el => el._id);
-        if(newComp){
-            API.project.saveOne({components: newComp, name: this.props.activeProject.name}, this.props.activeProject._id)
-                .then(project => {
-                    this.props.addSnackbar(`Successfully saved ${project.data.name}`, "success")
-                    this.props.updateProjects()
-                    this.props.toggleEditProject();
-                })
-                .catch(err => console.log(err));
+        if(this.props.activeProject.name.length > 0){
+            let newComp = this.props.activeProject.components.map(el => el._id);
+            if(newComp){
+                API.project.saveOne({components: newComp, name: this.props.activeProject.name}, this.props.activeProject._id)
+                    .then(project => {
+                        this.props.addSnackbar(`Successfully saved ${project.data.name}`, "success")
+                        this.props.updateProjects()
+                        this.props.toggleEditProject();
+                        this.setState({newProject: false})
+                    })
+                    .catch(err => console.log(err));
+            }
         }else{
-            
+            this.props.addSnackbar("Your project need a name!", "warning");
+            this.setState({newProject: true})
         }
     }
 
     handleFuse = (ev) => {
         ev.preventDefault();
-        let htmlDOMs = [];
+        let permission = ev.currentTarget.value;
 
-        this.props.activeProject.components.forEach( comp => {
-            let parser = new DOMParser();
-            let doc = parser.parseFromString(comp.html, "text/xml");
-            let dom = doc.firstChild;
+        if(permission === "true"){
+            
+            let htmlDOMs = [];
     
-            comp.css ? dom.setAttribute("style", comp.css) : "";
-
-            let name = comp.name.replace(/\s*/g,"").replace("(",".").replace(")","");
-            dom.setAttribute("name", name)
-            dom.setAttribute("component", comp.type)
-            comp.group ? dom.setAttribute("group", comp.group) : "";
-            htmlDOMs.push(dom.outerHTML)
-        })  
+            this.props.activeProject.components.forEach( comp => {
+                let parser = new DOMParser();
+                let doc = parser.parseFromString(comp.html, "text/xml");
+                let dom = doc.firstChild;
         
-        let project = {
-            components: this.props.activeProject.components,
-            htmlDOMs: htmlDOMs
-        }
+                comp.css ? dom.setAttribute("style", comp.css) : "";
+    
+                let name = comp.name.replace(/\s*/g,"").replace("(",".").replace(")","");
+                dom.setAttribute("name", name)
+                dom.setAttribute("component", comp.type)
+                comp.group ? dom.setAttribute("group", comp.group) : "";
+                htmlDOMs.push(dom.outerHTML)
+            })  
+            
+            let project = {
+                components: this.props.activeProject.components,
+                htmlDOMs: htmlDOMs
+            }
+    
+            API.project.compile(project, this.props.activeProject._id)
+            .then( db => {
+                    // window.open("http://localhost:3001/api/project/compile/59f628ab3851070f8cb0be42", '_blank')
+                    this.props.addSnackbar("Successfully compiled your project!", "success")
+                })
+                .catch( err => console.log(err))
+        }else{
 
-        API.project.compile(project, this.props.activeProject._id)
-        .then( db => {
-                // window.open("http://localhost:3001/api/project/compile/59f628ab3851070f8cb0be42", '_blank')
-                this.props.addSnackbar("Successfully compiled your project!")
-            })
-            .catch( err => console.log(err))
+            this.setState({compileCheck: false})
+
+        }
     }
 
     render(){
@@ -115,9 +140,10 @@ class ReactorTab extends Component {
                     <Col size={6} style={{padding: 0, color: "black"}}>
                         <Card style={{...style.card, width: "100%", height: "65vh", marginRight: "1%", overflow:"scroll", padding: "0.5rem 0"}}>
                         {   
-                            this.props.activeProject ?
-                                this.props.editActiveProject ? 
-                                <input style={style.nameInput} 
+                            this.props.activeProject.name  || this.state.newProject ?
+                                this.props.editActiveProject || this.state.newProject ? 
+                                <input style={style.nameInput}
+                                    placeholder="Project Name" 
                                     value={this.props.activeProject.name} 
                                     onChange={this.handleProjectInput}/>
                                 :
@@ -126,11 +152,15 @@ class ReactorTab extends Component {
                                     <h3 style={style.projectName}>{this.props.activeProject.name}</h3>
                                 </div>
                             :
-                            <h3 style={style.projectName}><div id="selectTitle">Select a project</div></h3>
+                            <div className="valign-wrapper" style={{height: "65vh"}}>
+                                <div id="selectTitle">
+                                    <h3 style={style.projectName}>Select or Create<br/>a project</h3>
+                                </div>
+                            </div>
                         }
                         {   
-                            this.props.reactor.length > 0   ?     
-                                this.props.reactor.map(component => 
+                            this.props.activeProject.components ?     
+                                this.props.activeProject.components.map(component => 
                                 <div 
                                 key={component._id} 
                                 onMouseOver={() => this.props.addComponent(component,"preview")} 
@@ -156,10 +186,21 @@ class ReactorTab extends Component {
                         }
                         </Card>
 
+                        {
+                            this.state.compileCheck ? 
+                                <FissionBtn
+                                    value={true} 
+                                    handleClick={this.handleFuse} 
+                                    bg={"green"} style={{marginTop: "1rem"}} 
+                                    label="Yes!"/>
+                            :
+                             ""
+                        }
+
                         
                         {
                             this.props.editActiveProject ?
-                                <FissionBtn bg={"green"} handleClick={this.handleSave} style={{marginTop: "1rem", backgroundColor: "gold"}} label="Save It"/>
+                                <FissionBtn bg={"green"} handleClick={this.handleSave} style={{marginTop: "1rem"}} label="Save It"/>
                             :
                             ""
                         }
@@ -182,13 +223,24 @@ class ReactorTab extends Component {
                         {
                             this.props.preview ? 
                             <div style={{margin: "1rem"}}>
-                            <p id="nameDiv">Name:{this.props.preview.name}</p>
-                            <p id="groupDiv">Group:{this.props.preview.group}</p>
+                            <p id="nameDiv">Name: {this.props.preview.name}</p>
+                            <p id="groupDiv">Group: {this.props.preview.group}</p>
                             </div>
                             : ""
                         }
                     
                         </div>
+
+                        {
+                            this.state.compileCheck ? 
+                                <FissionBtn
+                                    value={false} 
+                                    handleClick={this.handleFuse} 
+                                    bg={"red"} style={{marginTop: "1rem"}} 
+                                    label="No!"/>
+                            :
+                             ""
+                        }
 
                         {
                             this.props.editActiveProject ?
@@ -197,18 +249,30 @@ class ReactorTab extends Component {
                                     bg={"red"} style={{marginTop: "1rem"}} 
                                     label="Delete"/>
                             :
-                            ""
+                             ""
                         }
                     </Col>
                 </div>
                 {
                     this.props.activeProject._id && !this.props.editActiveProject?
-                        <FissionBtn 
-                            handleClick={this.handleFuse} 
-                            bg={"gold"} style={{marginTop: "1rem"}} 
-                            label="Fuse"/>
+                        !this.state.compileCheck ?
+                            <FissionBtn 
+                                handleClick={() => this.setState({compileCheck: true})} 
+                                bg={"gold"} style={{marginTop: "1rem"}} 
+                                label="Fuse"/>
+                            :   
+                            ""
                     :
-                    ""
+                        this.state.new || this.props.activeProject._id ?
+                            ""
+                        :
+                            <FissionBtn 
+                                handleClick={this.handleCreate} 
+                                bg={this.state.newProject ? 
+                                    this.props.activeProject.name.length > 0 ? "green": "red" 
+                                    :"gold"} 
+                                style={{marginTop: "1rem"}} 
+                                label="Create"/>
                 }
             </div>
         );

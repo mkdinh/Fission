@@ -6,7 +6,6 @@ import { Col } from "../../components/Grid";
 import CodeEditor from "../../components/Editor";
 import API from "../../utils/api";
 import "./canvas.css";
-import {pinkA200} from 'material-ui/styles/colors';
 
 const style= {
     card: {position: "relative", backgroundColor: "white", padding: 0},
@@ -113,13 +112,17 @@ class CanvasTab extends Component {
             <div>
                 <div className="valign-wrapper" style={{...style.preview, height: this.props.editor ? "25vh" : "67.3vh"}}>
                     <div className="editor-switch">
+                        <FloatingActionButton mini={true} onClick={this.props.toggleSidebar} style={style.actionBtn}>
+                        <span>Style</span>
+                        </FloatingActionButton>
+
                         <FloatingActionButton mini={true} onClick={this.props.toggleEditor} style={style.actionBtn}>
                         <span>Editor</span>
                         </FloatingActionButton>
 
-                        <FloatingActionButton mini={true} onClick={this.props.toggleSidebar} style={style.actionBtn}>
-                        <span>Style</span>
-                        </FloatingActionButton>       
+                        <FloatingActionButton mini={true} onClick={() => this.props.addComponent(null, "resetCSS")} style={style.actionBtn}>
+                        <span>Reset</span>
+                        </FloatingActionButton>           
                     </div>
                     {this.props.active.html? 
                         <div style={style.previewDiv} 
@@ -142,10 +145,10 @@ class CanvasTab extends Component {
                     <Card style={{margin: "1rem 0"}}>
                     <div className="row preview-footer"  style={{height: "90px", color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none"}}>
                             <Col size={4}>
-                                <input id="component_name" name="name" underlineFocusStyle={{color: pinkA200}} style={{color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none", borderBottomColor: "#ffc107"}} value={this.props.active.name} onChange={this.handleChange} placeholder="Component Name"/>
+                                <input id="component_name" name="name" style={{color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none", borderBottomColor: "#ffc107"}} value={this.props.active.name} onChange={this.handleChange} placeholder="Component Name"/>
                             </Col>
                             <Col size={2}>
-                                <input name="group" underlineFocusStyle={{color: pinkA200}} style={{color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none"}} value={this.props.active.group} onChange={this.handleChange} placeholder="Group Name"/>
+                                <input name="group" style={{color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none"}} value={this.props.active.group} onChange={this.handleChange} placeholder="Group Name"/>
                             </Col>
                             <Col size={3}>
                                 <div style={{margin: "0.5rem 0"}}>

@@ -11,6 +11,7 @@ const ComponentBody = (props) =>
     <div>
         {props.components.map(component => 
             <button className="list-component-item" 
+                key={component._id}
                 style={style.container} 
                 onMouseOver={()=> props.addComponent(component, "preview")}
                 onClick ={() => {props.updateActiveProject("array", "components", null, component)}}>

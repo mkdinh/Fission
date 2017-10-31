@@ -6,7 +6,7 @@ import { BrowserRouter as Router, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 //import "./tabbar.css";
 import Auth0 from "../Auth/Auth.js";
-
+import actions from "../../utils/actions";
 
 const mapStateToProps = (state) => {
   return {...state.user}
@@ -24,7 +24,13 @@ class Tabbar extends React.Component {
 
   handleChange = (value) => {
     this.props.history.push(value)
+    console.log(this.props.history.location.pathname, value)
   };
+
+  handleLogout = () => {
+    this.props.dispatch(actions.logout());
+    Auth0.logout();
+  }
 
   render() {
     return (
@@ -34,13 +40,14 @@ class Tabbar extends React.Component {
           onChange={this.handleChange}
           value={this.props.history.location.pathname}
         >
-
           <Tab label="About" value="/"/>
           <Tab label="Canvas"  value="/canvas"/>
            {!this.props.login ?
             <Tab label="Login" onActive={Auth0.login} value="/login "/>
           :
-            <Tab label="Profile" value="/profile"/>}
+            
+            // <Tab label="Profile" value="/profile"/>
+            <Tab label="Logout" onActive={this.handleLogout} value="/about"/>}
         </Tabs>
 
         </Router>

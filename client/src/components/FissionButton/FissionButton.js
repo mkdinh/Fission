@@ -7,7 +7,14 @@ class FissionButton extends Component{
 render(){
 	return(
 
-		<RaisedButton backgroundColor={this.props.bg} onClick={this.props.handleClick} style={this.props.style} waves='light' label={this.props.label} fullWidth={true}/>
+		<RaisedButton 
+			backgroundColor={this.props.bg} 
+			onClick={this.props.handleClick} 
+			style={this.props.style} 
+			waves='light'
+			value={this.props.value}
+			label={this.props.label} 
+			fullWidth={true}/>
 
 	)}
 

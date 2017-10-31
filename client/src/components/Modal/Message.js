@@ -15,7 +15,9 @@ class MessageModal extends Component{
 
     render(){
         return(
-            this.props.message
+            <div>
+                {this.props.message}
+            </div>
         )
     }
 };

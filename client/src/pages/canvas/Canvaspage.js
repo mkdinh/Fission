@@ -32,7 +32,10 @@ class Canvas extends Component {
       },
       activeCSS: {},
       activeHTML: ""  ,
-      activeProject: {},
+      activeProject: {
+        name: "",
+        components: []
+      },
       editActiveProject: false,
       snackbars: [],
       canvasMode : "create",
@@ -54,9 +57,9 @@ class Canvas extends Component {
   }
 
   updateCustoms = (id, active) => {
-    var id = id || this.props.profile.auth0Id;
+    var auth0Id = id || this.props.profile.auth0Id;
 
-    this.props.dispatch(action.getCustoms(id))
+    this.props.dispatch(action.getCustoms(auth0Id))
     if(active){
       this.setState({active: active})
     }
@@ -66,7 +69,7 @@ class Canvas extends Component {
     var id = id || this.props.profile.auth0Id;
     this.props.dispatch(action.getProjects(id))
     if(reset){
-      this.setState({activeProject: {}, reactor: []})
+      this.setState({activeProject: {name: "", components: []}})
     }
   }
   
@@ -92,17 +95,17 @@ class Canvas extends Component {
   }
 
   addProject = (project) => {
-  
-    API.project.findOne(project._id)
-      .then(db => {
-        let project = db.data;
-        this.setState({activeProject: project, reactor: project.components})
-      })
-      .catch(err => console.log(err))
+    if(project._id !== this.state.activeProject._id){
+      API.project.findOne(project._id)
+        .then(db => {
+          let project = db.data;
+          this.setState({activeProject: project, reactor: project.components})
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   updateActiveComponent = (type, props, key, value) => {
-    console.log(this.state.active)
     switch(type){
       case "str":
         this.setState({active: {...this.state.active, [props]: value}});
@@ -120,8 +123,15 @@ class Canvas extends Component {
         this.setState({activeProject: {...this.state.activeProject, [props]: value}});
         break
       case "array":
-        let newArray = [...this.state.activeProject[props], value];
-        this.setState({activeProject: {...this.state.activeProject, [props]: newArray}});
+        if(props === "components"){
+          let exists = this.state.activeProject.components.filter( el => el._id === value._id).length > 0;
+          if(!exists){
+            let newArray = [...this.state.activeProject[props], value];
+            this.setState({activeProject: {...this.state.activeProject, [props]: newArray}});
+          }else{
+            this.addSnackbar("You already added this component", "warning")
+          }
+        }
         break
     }
   }
@@ -137,15 +147,17 @@ class Canvas extends Component {
     setTimeout(() => {
       let removed = this.state.snackbars.filter(el => el.time !== snack.time);
       this.setState({snackbars: removed})
-    }, 3000)
+    }, 4000)
 
   }
   
   addComponent = (newCompo, context, cb) => {
     switch(context){
+
       case "canvas":
         this.setState({active: newCompo},  cb ? () => cb() : null);
         break
+
       case "reactor":
         let exists = this.state.reactor.filter(comp => comp._id === newCompo._id)
         if(exists.length === 0){
@@ -154,11 +166,36 @@ class Canvas extends Component {
           this.addSnackbar("You already added this component", "warning")
         }
         break
+
       case "preview":
         this.setState({preview: newCompo},  cb ? () => cb() : null)
         break
+
       case "reset":
-        this.setState({name: "",type: "Dumb", css:{}, html: "", group:""})
+        this.setState({name: "", type: "Dumb", group: "", html: "", css: {} })
+        break
+
+      case "resetCSS":
+        let activeId = this.state.active._id;
+        if(activeId){
+            let group = this.state.active.group;
+            group = group.charAt(0).toUpperCase() + group.substring(1) || "General";
+
+            let dbComp;
+            if(this.state.active.default){
+              dbComp = this.props.defaults[group].filter( el => el._id === activeId);
+            }else{
+              dbComp = this.props.customs[group].filter( el => el._id === activeId);
+            }
+
+            let resetCSS = {...this.state.active, css: dbComp[0].css}
+            this.setState({active: resetCSS})
+          }else{
+            let resetCSS = {...this.state.active, css: {}}
+            this.setState({active: resetCSS})
+          }
+        break
+        
       default:
         return ""
     }
@@ -168,8 +205,8 @@ class Canvas extends Component {
   removeFromProject = (ev) => {
     ev.preventDefault();
     let id = ev.currentTarget.getAttribute("data-id");
-    let removed = this.state.reactor.filter( el => el._id !== id)
-    this.setState({reactor: removed})
+    let removed = this.state.activeProject.components.filter( el => el._id !== id);
+    this.setState({activeProject:{...this.state.activeProject, components: removed}});
   }
 
   render(){
@@ -237,6 +274,7 @@ class Canvas extends Component {
               editActiveProject={this.state.editActiveProject}
               addComponent={this.addComponent}
               addSnackbar={this.addSnackbar}
+              addProject={this.addProject}
               preview={this.state.preview}/>
           </Col>
 

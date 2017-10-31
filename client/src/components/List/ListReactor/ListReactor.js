@@ -1,15 +1,10 @@
 import React from 'react';
-import { connect } from "react-redux";
-import {List, ListItem} from 'material-ui/List';
-import { ListBody } from "./Body";
 import {Tabs, Tab} from 'material-ui/Tabs';
 import { Card } from 'material-ui/Card';
-import Fa from "react-fontawesome";
 import Preloader from "../../../components/Preloader";
 import "./ListReactor.css";
-import { Row, Col } from "../../../components/Grid";
 import ProjectList, { ProjectFooter } from "./ProjectList";
-import ComponentList, { ComponentFooter } from "./ComponentList";
+import ComponentList from "./ComponentList";
 
 export default class Listcompo extends React.Component {
 

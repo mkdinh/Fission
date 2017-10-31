@@ -64,6 +64,7 @@ class Previewdisplay extends Component{
               canvasMode={this.props.canvasMode}
               tab={this.props.tab}
               addSnackbar={this.props.addSnackbar}
+              addComponent={this.props.addComponent}
               customs={this.props.customs}
               updateCustoms={this.props.updateCustoms}
               updateDOM={this.state.updateDOM}
@@ -85,6 +86,7 @@ class Previewdisplay extends Component{
               reactor={this.props.reactor}
               addSnackbar={this.props.addSnackbar}
               addComponent={this.props.addComponent}
+              addProject={this.props.addProject}
               preview={this.props.preview}/>
           </Tab>
           

@@ -12,6 +12,7 @@ class ComponentList extends Component {
             <List className="List" style={{maxHeight: "67vh", overflow: "scroll"}}>
                 {Object.keys(this.props.components).map(group =>
                         <ComponentItem 
+                            key={group}
                             tab={this.props.tab}
                             updateActiveProject={this.props.updateActiveProject}
                             addComponent={this.props.addComponent}

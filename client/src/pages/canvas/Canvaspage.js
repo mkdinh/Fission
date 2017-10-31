@@ -94,7 +94,7 @@ class Canvas extends Component {
     this.setState({canvasMode: tab.props.mode})
   }
 
-  addProject = (project) => {
+  addProject = (project, reset) => {
     if(project._id !== this.state.activeProject._id){
       API.project.findOne(project._id)
         .then(db => {
@@ -133,6 +133,11 @@ class Canvas extends Component {
           }
         }
         break
+      case "reset":
+        this.setState({activeProject: {name: "", components: []}})
+        break
+      default:
+        null
     }
   }
 
@@ -263,6 +268,7 @@ class Canvas extends Component {
               canvasMode={this.state.canvasMode}
               active={this.state.active}
               updateActiveComponent={this.updateActiveComponent}
+              projects={this.props.projects}
               activeProject={this.state.activeProject}
               updateActiveProject={this.updateActiveProject}
               reactor={this.state.reactor}

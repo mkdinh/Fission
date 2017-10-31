@@ -91,7 +91,7 @@ class CanvasTab extends Component {
                 API.component.create(this.state)
                     .then((doc) => {
                         let name = this.state.name
-                        this.props.updateCustoms(auth0Id, doc);
+                        this.props.updateCustoms(auth0Id);
                         this.props.addSnackbar(`Successfully created ${name}`, "success")
                     })
                     .catch((err) => console.log(err))

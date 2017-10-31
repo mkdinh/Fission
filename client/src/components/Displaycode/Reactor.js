@@ -45,7 +45,16 @@ class ReactorTab extends Component {
 
     handleCreate = (ev) => {
         ev.preventDefault();
-        if(this.props.activeProject.name.length > 0){
+        let name = this.props.activeProject.name.toLowerCase();
+        let nameExists = this.props.projects.filter(el => el.name.toLowerCase() === name).length > 0;
+
+        if(this.props.activeProject.name.length === 0){
+            this.props.addSnackbar("Your project need a name!", "warning");
+            this.setState({newProject: true});
+        }else if(nameExists){
+            this.props.addSnackbar("This project already exist!\nChoose a different Name", "warning");
+            this.setState({newProject: true});
+        }else{
             let auth0Id = this.props.profile.auth0Id;
             API.project.create(this.props.activeProject, auth0Id)
                 .then((project) => {
@@ -54,10 +63,6 @@ class ReactorTab extends Component {
                     this.props.addProject(project.data)
                     this.setState({newProject: false})
                 })
-
-        }else{
-            this.props.addSnackbar("Your project need a name!", "warning");
-            this.setState({newProject: true});
         }
 
     }
@@ -66,7 +71,8 @@ class ReactorTab extends Component {
         ev.preventDefault();
         API.project.deleteOne(this.props.activeProject._id)
             .then( project => {
-                this.props.updateProjects(this.props.profile.auth0Id, true)
+                this.props.updateProjects(this.props.profile.auth0Id, true);
+                this.props.updateActiveProject("reset")
                 this.props.addSnackbar('Successfully deleted project', "success")
                 this.props.toggleEditProject();
             })
@@ -141,7 +147,7 @@ class ReactorTab extends Component {
                     <Col size={6} style={{padding: 0, color: "black"}}>
                         <Card style={{...style.card, width: "100%", height: "65vh", marginRight: "1%", overflow:"scroll", padding: "0.5rem 0"}}>
                         {   
-                            this.props.activeProject.name  || this.state.newProject ?
+                            this.props.activeProject.name  || this.props.activeProject.components.length > 0 || this.state.newProject ?
                                 this.props.editActiveProject || this.state.newProject ? 
                                 <input style={style.nameInput}
                                     placeholder="Project Name" 

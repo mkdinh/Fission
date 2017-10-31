@@ -74,6 +74,7 @@ class Previewdisplay extends Component{
           <Tab label="Reactor" onActive={() => this.props.updateTab("reactor")}>
             <ReactorTab
               active={this.props.active}
+              projects={this.props.projects}
               activeProject={this.props.activeProject}
               toggleEditProject={this.props.toggleEditProject}
               editActiveProject={this.props.editActiveProject}

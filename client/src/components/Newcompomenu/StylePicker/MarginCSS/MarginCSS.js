@@ -11,13 +11,13 @@ class MarginCSS extends Component {
                 fontSize: 22
             }}>Component Margin</div>
             <div>Top</div>
-            <input name="margin-top" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginTop} onChange={this.props.handleTextInput}/>
+            <input name="margin-top" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginTop} onChange={this.props.handleTextInput}/>
             <div>Right</div>
-            <input name="margin-right" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginRight} onChange={this.props.handleTextInput}/>
+            <input name="margin-right" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginRight} onChange={this.props.handleTextInput}/>
             <div>Bottom</div>
-            <input name="margin-bottom" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginBottom} onChange={this.props.handleTextInput}/>
+            <input name="margin-bottom" placeholder="unassigned"  style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginBottom} onChange={this.props.handleTextInput}/>
             <div>Left</div>
-            <input name="margin-;eft" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginLeft} onChange={this.props.handleTextInput}/>
+            <input name="margin-;eft" placeholder="unassigned"  style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginLeft} onChange={this.props.handleTextInput}/>
       </div>
     )
   }

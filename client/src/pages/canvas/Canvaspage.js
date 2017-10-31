@@ -94,8 +94,8 @@ class Canvas extends Component {
     this.setState({canvasMode: tab.props.mode})
   }
 
-  addProject = (project, reset) => {
-    if(project._id !== this.state.activeProject._id){
+  addProject = (project, refresh) => {
+    if(refresh || project._id !== this.state.activeProject._id){
       API.project.findOne(project._id)
         .then(db => {
           let project = db.data;
@@ -111,8 +111,14 @@ class Canvas extends Component {
         this.setState({active: {...this.state.active, [props]: value}});
         break
       case "obj":
-        let nested = {...this.state.active[props], [key]: value};
-        this.setState({active: {...this.state.active, [props]: nested}});
+        if(props === "css" && value === ""){
+          let currentActiveCSS = this.state.active.css;
+          delete currentActiveCSS[key];
+          this.setState({active: {...this.state.active, css: currentActiveCSS}})
+        }else{
+          let nested = {...this.state.active[props], [key]: value};
+          this.setState({active: {...this.state.active, [props]: nested}});
+        }
         break
       case "resetCSS":
         let activeId = this.state.active._id;
@@ -235,6 +241,8 @@ class Canvas extends Component {
                 updateCustoms={this.updateCustoms}
                 updateActiveComponent={this.updateActiveComponent}
                 addComponent={this.addComponent}
+                activeProject={this.state.activeProject}
+                addProject={this.addProject}
                 addSnackbar={this.addSnackbar}
                 updateCanvasMode={this.updateCanvasMode}/>
             :

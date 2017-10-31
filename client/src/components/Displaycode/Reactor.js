@@ -25,7 +25,7 @@ const style= {
 class ReactorTab extends Component {
     state = {
         newProject: false,
-        compileCheck: false
+        compileConfirm: false
     }
 
     componentWillReceiveProps(props) {
@@ -124,11 +124,12 @@ class ReactorTab extends Component {
             .then( db => {
                     // window.open("http://localhost:3001/api/project/compile/59f628ab3851070f8cb0be42", '_blank')
                     this.props.addSnackbar("Successfully compiled your project!", "success")
+                    this.setState({compileConfirm: false})
                 })
                 .catch( err => console.log(err))
         }else{
 
-            this.setState({compileCheck: false})
+            this.setState({compileConfirm: false})
 
         }
     }
@@ -187,7 +188,7 @@ class ReactorTab extends Component {
                         </Card>
 
                         {
-                            this.state.compileCheck ? 
+                            this.state.compileConfirm ? 
                                 <FissionBtn
                                     value={true} 
                                     handleClick={this.handleFuse} 
@@ -232,7 +233,7 @@ class ReactorTab extends Component {
                         </div>
 
                         {
-                            this.state.compileCheck ? 
+                            this.state.compileConfirm ? 
                                 <FissionBtn
                                     value={false} 
                                     handleClick={this.handleFuse} 
@@ -255,9 +256,9 @@ class ReactorTab extends Component {
                 </div>
                 {
                     this.props.activeProject._id && !this.props.editActiveProject?
-                        !this.state.compileCheck ?
+                        !this.state.compileConfirm ?
                             <FissionBtn 
-                                handleClick={() => this.setState({compileCheck: true})} 
+                                handleClick={() => this.setState({compileConfirm: true})} 
                                 bg={"gold"} style={{marginTop: "1rem"}} 
                                 label="Fuse"/>
                             :   

@@ -159,7 +159,7 @@ class ReactorTab extends Component {
                         
                         {
                             this.props.editActiveProject ?
-                                <FissionBtn bg={"green"} handleClick={this.handleSave} style={{marginTop: "1rem", backgroundColor: "gold"}} label="Save It"/>
+                                <FissionBtn bg={"#c1ff07"} handleClick={this.handleSave} style={{marginTop: "1rem", color: "black"}} label="Save It"/>
                             :
                             ""
                         }
@@ -194,7 +194,7 @@ class ReactorTab extends Component {
                             this.props.editActiveProject ?
                                 <FissionBtn 
                                     handleClick={this.handleRemove} 
-                                    bg={"red"} style={{marginTop: "1rem"}} 
+                                    bg={"#ff4507"} style={{marginTop: "1rem", color: "black"}} 
                                     label="Delete"/>
                             :
                             ""
@@ -205,7 +205,7 @@ class ReactorTab extends Component {
                     this.props.activeProject._id && !this.props.editActiveProject?
                         <FissionBtn 
                             handleClick={this.handleFuse} 
-                            bg={"gold"} style={{marginTop: "1rem"}} 
+                            bg={"#ffc107"} style={{marginTop: "1rem", color: "black"}} 
                             label="Fuse"/>
                     :
                     ""

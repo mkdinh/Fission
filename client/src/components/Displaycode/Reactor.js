@@ -5,6 +5,8 @@ import { Row, Col } from "../../components/Grid";
 import FissionBtn from "../../components/FissionButton";
 import API from "../../utils/api";
 import "./reactor.css";
+import reactDownload from "react-file-download";
+
 const style= {
     card: {position: "relative", backgroundColor: "white", padding: 0},
     wrapper: {padding: "1rem"},
@@ -128,9 +130,16 @@ class ReactorTab extends Component {
     
             API.project.compile(project, this.props.activeProject._id)
             .then( db => {
-                    window.open(db.data.link,"_blank")
+                    console.log(db)
+                    API.project.download(db.data.num)
+                    .then(res => {
+                    
+                    reactDownload(res.data, "fission.zip")
+                    // window.open(db.data.link,"_blank")
                     this.props.addSnackbar("Successfully compiled your project!", "success")
                     this.setState({compileConfirm: false})         
+                    })
+                    .catch( err => console.log(err))
                 })
                 .catch( err => console.log(err))
         }else{

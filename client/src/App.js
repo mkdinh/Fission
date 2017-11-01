@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-//import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
-import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
+import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
+// import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
 //import NavbarBrandNew from "./components/navbar";
 import Tabbar from "./components/Tabbar";
 
@@ -16,7 +16,7 @@ class App extends Component {
 
     render() {
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme(customBaseTheme)}>
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
             <div className="App" style={{
                 backgroundColor: "#707070"
             }} >

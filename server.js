@@ -41,8 +41,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // server static files
-app.use(express.static("./client/build"));
-app.use(express.static("./jobs/11"));
+app.use(express.static("./clientheroku apps:info -a example/build"));
 
 // use routes
 app.use(routes);

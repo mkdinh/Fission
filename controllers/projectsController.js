@@ -85,9 +85,9 @@ module.exports = {
                 let host = req.headers.origin;
                 let downloadLink
                 if(process.env.NODE_ENV === "production"){
-                    downloadLink =  "https://powerful-taiga-43546.herokuapp.com/api/project/download/" + jobNum
+                    downloadLink =  "https://powerful-taiga-43546.herokuapp.com/api/project/download/" + jobNum;
                 }else{
-                    downloadLink = "http://localhost:3001/api/project/download/" + jobNum
+                    downloadLink = "http://localhost:3001/api/project/download/" + jobNum;  
                 }
 
                 let exists = fse.existsSync(folder);
@@ -114,7 +114,7 @@ module.exports = {
                         var archive = archiver('zip');
                         
                         output.on('close', function () {
-                            res.json({link: downloadLink});
+                            res.json({link: downloadLink, num: jobNum});
                             console.log(archive.pointer() + ' total bytes');
                             console.log('archiver has been finalized and the output file descriptor has closed.');
                         });

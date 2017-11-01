@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Tabbar from "./components/Tabbar";
 import "./landingpage.css";
 
 
@@ -24,15 +23,24 @@ class Landing extends Component{
           left: "0", 
           right: "0",
 
+
             }}>
 
-       <div className="titleBox">
+       <div id="titleBox">
            FISSION
+
+
+        <div id="tagLine">
+        React Components, FAST 
+        </div>
            </div>
 
-      <div className ="tagBox">
-      Making Your Components, Easier
-      </div>
+
+    <div id="iconTray">
+
+    
+    
+    </div>
 
     </div>
 

@@ -8,7 +8,6 @@ const parse = require("html-dom-parser");
 const fse = require("fs-extra");
 const archiver = require("archiver");
 const mime = require("mime");
-const request = require("request");
 
 // DEFINING METHODS
 // ---------------------------------------------------
@@ -68,9 +67,12 @@ module.exports = {
 
     download: (req, res) => {
         let file = path.join(__dirname, "../jobs/",req.params.jobNum,"/fission.zip");
+        res.set('Content-Type', 'application/zip')
+        res.set('Content-Disposition', 'attachment; filename=fission.zip');
+        // res.set("Content-Transfer-Encoding: binary");
         res.download(file);
         console.log("deleting file:", file)
-        fse.remove(path.join(__dirname, "../jobs/",req.params.jobNum));
+        // fse.remove(path.join(__dirname, "../jobs/",req.params.jobNum));
     },
 
     compile: (req, res) => {
@@ -81,9 +83,10 @@ module.exports = {
             .then(user => {
                 let jobNum = Math.floor(Math.random() * 10000) + 1;
                 // let jobNum = 12;
-                let folder = path.join(__dirname, "../jobs/" + jobNum);    
+                let folder = path.join(__dirname, "../jobs/" + jobNum);  
+
                 let host = req.headers.origin;
-                let downloadLink
+                let downloadLink;
                 if(process.env.NODE_ENV === "production"){
                     downloadLink =  "https://powerful-taiga-43546.herokuapp.com/api/project/download/" + jobNum;
                 }else{

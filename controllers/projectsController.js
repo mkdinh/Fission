@@ -69,7 +69,7 @@ module.exports = {
         let file = path.join(__dirname, "../jobs/",req.params.jobNum,"/fission.zip");
         res.set('Content-Type', 'application/zip')
         res.set('Content-Disposition', 'attachment; filename=fission.zip');
-        // res.set("Content-Transfer-Encoding: binary");
+        res.set("Content-Transfer-Encoding: binary");
         res.download(file);
         console.log("deleting file:", file)
         // fse.remove(path.join(__dirname, "../jobs/",req.params.jobNum));

@@ -20,3 +20,4 @@ module.exports = (attribs) => {
     
     return template;
 }
+

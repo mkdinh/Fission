@@ -69,6 +69,7 @@ module.exports = {
     download: (req, res) => {
         let file = path.join(__dirname, "../jobs/",req.params.jobNum,"/fission.zip");
         res.download(file);
+        console.log("deleting file:", file)
         fse.remove(path.join(__dirname, "../jobs/",req.params.jobNum));
     },
 

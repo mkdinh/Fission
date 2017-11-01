@@ -82,7 +82,12 @@ module.exports = {
                 // let jobNum = 12;
                 let folder = path.join(__dirname, "../jobs/" + jobNum);    
                 let host = req.headers.origin;
-                let downloadLink = host + "api/project/download/" + jobNum
+                let downloadLink
+                if(process.env.NODE_ENV === "product"){
+                    downloadLink = host + "/api/project/download/" + jobNum
+                }else{
+                    downloadLink = host + "api/project/download/" + jobNum
+                }
 
                 let exists = fse.existsSync(folder);
 

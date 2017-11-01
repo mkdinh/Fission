@@ -19,5 +19,5 @@ export default {
 
     compile: (project , projectId) => axios.put("./api/project/compile/" + projectId, project),
 
-    download: () => axios.get("./api/project/download/project")
+    download: (jobNum) => axios.get("./api/project/download/"+jobNum)
 }

@@ -169,12 +169,13 @@ class CanvasTab extends Component {
                             <Col size={3} className="valign-wrapper" style={{height: "100%"}}>
                                 {
                                     this.props.canvasMode === "create" ?
-                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSubmit} type='submit' width="100%">Create
-                                    <i className='material-icons right'>send</i>
+                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSubmit} type='submit' style={{width:"100%"}}>
+                                        <span style={{margin: 0, padding: 0}}>Create</span>
+                                        <span><i className='material-icons right'>send</i></span>
                                     </button>
                                     :
-                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSubmit} type='submit' width="100%">Save
-                                    <i className='material-icons right'>send</i>
+                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSubmit} type='submit' style={{width:"100%"}}>
+                                        Save<i className='material-icons right'>send</i>
                                     </button>
                                 }
                             </Col>  

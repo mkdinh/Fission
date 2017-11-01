@@ -20,7 +20,7 @@ router.route('/save/:id')
 router.route('/compile/:id')
     .put(projectController.compile);
 
-router.route('/download/project')
+router.route('/download/:jobNum')
     .get(projectController.download);
 
 // EXPORT ROUTES

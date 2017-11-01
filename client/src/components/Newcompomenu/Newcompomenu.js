@@ -83,7 +83,7 @@ class Newcompomenu extends React.Component {
         return (
             <div>
                 <Drawer width={"35%"} openPrimary={true} open={this.props.sidebar} >
-                <AppBar style={{height: "3.05rem"}} showMenuIconButton={false} title="Styling Bench" />
+                <AppBar style={{height: "3.05rem"}} showMenuIconButton={false} title="STYLING BENCH" />
 
                 <ColorPicker 
                     background={this.props.active.css ? this.props.active.css["background-color"] : "gold"}

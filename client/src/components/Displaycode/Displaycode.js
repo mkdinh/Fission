@@ -84,6 +84,7 @@ class Previewdisplay extends Component{
               updateProjects={this.props.updateProjects}
               updateActiveProject={this.props.updateActiveProject}
               strToDOM={this.strToDOM}
+              objToStr={this.objToStr}
               reactor={this.props.reactor}
               addSnackbar={this.props.addSnackbar}
               addComponent={this.props.addComponent}

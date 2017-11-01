@@ -112,7 +112,7 @@ class ReactorTab extends Component {
                 let doc = parser.parseFromString(comp.html, "text/xml");
                 let dom = doc.firstChild;
         
-                comp.css ? dom.setAttribute("style", comp.css) : "";
+                comp.css ? dom.setAttribute("style", this.props.objToStr(comp.css)) : "";
     
                 let name = comp.name.replace(/\s*/g,"").replace("(",".").replace(")","");
                 dom.setAttribute("name", name)
@@ -128,7 +128,6 @@ class ReactorTab extends Component {
     
             API.project.compile(project, this.props.activeProject._id)
             .then( db => {
-                    console.log(db)
                     window.open(db.data.link,"_blank")
                     this.props.addSnackbar("Successfully compiled your project!", "success")
                     this.setState({compileConfirm: false})         

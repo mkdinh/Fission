@@ -81,8 +81,8 @@ const helper = {
     children: (package) => {
         let innerHTML; // array of all children
         
-        // if component is stateful
-        if(package.attribs.component === "stateful"){
+        // if component is Smart
+        if(package.attribs.component === "Smart"){
             // extra indent
             innerHTML = helper.recursive(package.children,4);
         }else{

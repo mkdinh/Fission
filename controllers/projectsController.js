@@ -69,6 +69,7 @@ module.exports = {
     download: (req, res) => {
         let file = path.join(__dirname, "../jobs/",req.params.jobNum,"/fission.zip");
         res.download(file)
+        fse.remove(path.join(__dirname, "../jobs/",req.params.jobNum));
     },
 
     compile: (req, res) => {
@@ -77,20 +78,21 @@ module.exports = {
  
         db.Project.findOneAndUpdate({_id: req.params.id}, {$set: {components: compIds}}, {new: true})
             .then(user => {
-                // let jobNum = Math.floor(Math.random() * 100000000) + 1;
-                let jobNum = 12;
+                let jobNum = Math.floor(Math.random() * 10000) + 1;
+                // let jobNum = 12;
                 let folder = path.join(__dirname, "../jobs/" + jobNum);    
-                let port = process.env.PORT || "http://localhost:3001";
-                let downloadLink = port + "/api/project/download/" + jobNum
+                let host = req.headers.origin;
+                let downloadLink = host + "api/project/download/" + jobNum
 
                 let exists = fse.existsSync(folder);
+
                 if(!exists){
                     fse.mkdirSync(folder);
                 }
 
                 const deconstructHTML = deconstruct(req.body.htmlDOMs, (html) =>{
                     html = html.replace("\\","")
-                
+                    
                     let objHTML = parse(html)
                     let compiledPackage = {
                         attribs: {
@@ -99,7 +101,7 @@ module.exports = {
                         },
                         children: objHTML       
                     }
-
+            
                     compile(compiledPackage, 'component', jobNum, () => {
 
                         var output = fse.createWriteStream(folder + "/fission.zip");

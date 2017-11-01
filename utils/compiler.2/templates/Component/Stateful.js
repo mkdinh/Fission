@@ -34,7 +34,7 @@ module.exports = (package) => {
                 break
 
                 default:
-                    if(key !=="component" && key !== "name" && key !== "expand" && key !== "group"){
+                    if(key !=="component" && key !== "name" && key !== "expand" && key !== "group" && key !== "style"){
                         attrStr += `${key}="${attribs[key]}" `
                     }
                 break

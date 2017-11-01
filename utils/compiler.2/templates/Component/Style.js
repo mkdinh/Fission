@@ -2,7 +2,8 @@ module.exports = (attribs) => {
 
     let { name, style, classVar } = attribs;
     let className = attribs.class || "" ;
-    
+    let styleStr = "";
+
     className = className.split(/\s+/);
     className = "." + className[0].replace(" ",".");
 
@@ -13,8 +14,8 @@ module.exports = (attribs) => {
         };
     }
 
-    style ? style = style.replace(", ", ";\n\t") : style = "";
-
+    style ? style = style.replace("; ", ";\n\t") : style = "";
+    
     let template = `${className}{\n\t${style}\n}\n               `;
     
     return template;

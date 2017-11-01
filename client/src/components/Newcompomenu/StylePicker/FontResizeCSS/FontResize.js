@@ -6,7 +6,7 @@ class FontResize extends Component {
        
         return (
             <div style={{
-                backgroundColor: "#707070"
+                backgroundColor: "#303030"
             }}>
             <div id="fontTitle" style={{
                 fontFamily: "Permanent Marker",

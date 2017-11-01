@@ -47,3 +47,26 @@ html {
 
 }
 
+/*sets up styling for all hyperlinks on the app, the FA icons are also styled like text*/
+ .List a{
+   color: #ffc107;
+   text-shadow:  3px 3px 0 #000,
+      -1px -1px 0 #000,  
+       1px -1px 0 #000,
+       -1px 1px 0 #000,
+        1px 1px 0 #000;
+      }
+        
+ 
+ 
+ 
+ .list-component-footer a{
+ 
+   color: #ffc107;
+   text-shadow:  3px 3px 0 #000,
+      -1px -1px 0 #000,  
+       1px -1px 0 #000,
+       -1px 1px 0 #000,
+        1px 1px 0 #000;
+ 
+ }

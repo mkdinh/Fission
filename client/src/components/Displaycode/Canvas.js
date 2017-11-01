@@ -143,7 +143,7 @@ class CanvasTab extends Component {
                     : ""}
                     
                     <Card style={{margin: "1rem 0"}}>
-                    <div className="row preview-footer"  style={{height: "90px", color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none"}}>
+                    <div className="row preview-footer"  style={{color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none"}}>
                             <Col size={4}>
                                 <input id="component_name" name="name" style={{color: "#ffc107", fontSize: "12px", textAlign:"center", border:"none", borderBottomColor: "#ffc107"}} value={this.props.active.name} onChange={this.handleChange} placeholder="Component Name"/>
                             </Col>
@@ -169,11 +169,11 @@ class CanvasTab extends Component {
                             <Col size={3} className="valign-wrapper" style={{height: "100%"}}>
                                 {
                                     this.props.canvasMode === "create" ?
-                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSubmit} type='submit'>Create
+                                    <button className='btn-flat waves-effect waves-light yellow' name="create" onClick={this.handleSubmit} type='submit' width="100%">Create
                                     <i className='material-icons right'>send</i>
                                     </button>
                                     :
-                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSubmit} type='submit'>Save
+                                    <button className='btn-flat waves-effect waves-light yellow' name="edit" onClick={this.handleSubmit} type='submit' width="100%">Save
                                     <i className='material-icons right'>send</i>
                                     </button>
                                 }

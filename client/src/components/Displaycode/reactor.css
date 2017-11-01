@@ -1,7 +1,8 @@
 #nameDiv{
 
 color: black !important;
-
+font-size: 2rem;
+font-family: "Permanent Marker" !important;
 
 }
 
@@ -10,6 +11,8 @@ color: black !important;
 #groupDiv{
 
 color: black !important;
+font-size: 2rem;
+font-family: "Permanent Marker" !important;
 
 
 }
@@ -17,4 +20,16 @@ color: black !important;
 #selectTitle{
 	color: black !important;
 	width: 100%
+}
+
+.valign-wrapper{
+
+	overflow: hidden;
+}
+
+h3{
+	
+	font-family: "Permanent Marker" !important;
+
+
 }

@@ -9,7 +9,7 @@ import customBaseTheme from "material-ui/styles/baseThemes/customBaseTheme";
 import Tabbar from "./components/Tabbar";
 
 //importing page routes
-import {About, Canvas, Login, Profile } from "./pages";
+import {About, Canvas, Login, Profile, Landing} from "./pages";
 
 // console.log(About)
 class App extends Component {
@@ -24,7 +24,7 @@ class App extends Component {
                     <div> 
                         <Tabbar />
                         <Switch>
-                            <Route exact path ="/" component={About} />
+                            <Route exact path ="/" component={Landing} />
                             <Route exact path="/about" component={About}/>
                             <Route exact path="/canvas" component={Canvas} />
                             <Route exact path="/login" component={Login} />

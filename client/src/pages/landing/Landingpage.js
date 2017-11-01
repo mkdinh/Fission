@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import Tabbar from "./components/Tabbar";
+// import Tabbar from "./components/Tabbar";
 import "./landingpage.css";
+
+
 class Landing extends Component{
   state = {
     
@@ -34,9 +36,6 @@ class Landing extends Component{
 
     </div>
 
-
-
-      </div>
           
     );
 

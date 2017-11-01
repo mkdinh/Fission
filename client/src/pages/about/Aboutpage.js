@@ -59,7 +59,6 @@ class About extends Component{
         <li>component (stateful || stateless)</li>
         <li>group (group component into its own folder)</li>
         <li>style (any css markup)</li>
-        <li>expand (shallow || deep)</li>
       </ul>  
 
 <div className="Footer" style={{

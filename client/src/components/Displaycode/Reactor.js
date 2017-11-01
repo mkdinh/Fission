@@ -134,9 +134,9 @@ class ReactorTab extends Component {
                     // window.open(db.data.link,"_blank")
                     API.project.download(db.data.num)
                     .then(res => { 
-                    fileSaver.saveAs(new Blob([res.data]), "fission.zip")
-                    this.props.addSnackbar("Successfully compiled your project!", "success")
-                    this.setState({compileConfirm: false})         
+                        fileSaver.saveAs(new Blob([res.data]), "fission.zip")
+                        this.props.addSnackbar("Successfully compiled your project!", "success")
+                        this.setState({compileConfirm: false})         
                     })
                     .catch( err => console.log(err))
                 })

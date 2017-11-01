@@ -83,7 +83,7 @@ module.exports = {
                 let folder = path.join(__dirname, "../jobs/" + jobNum);    
                 let host = req.headers.origin;
                 let downloadLink
-                if(process.env.NODE_ENV === "product"){
+                if(process.env.NODE_ENV === "production"){
                     downloadLink = host + "/api/project/download/" + jobNum
                 }else{
                     downloadLink = host + "api/project/download/" + jobNum

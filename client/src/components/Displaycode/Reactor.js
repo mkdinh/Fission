@@ -128,9 +128,15 @@ class ReactorTab extends Component {
     
             API.project.compile(project, this.props.activeProject._id)
             .then( db => {
-                    // window.open("http://localhost:3001/api/project/compile/59f628ab3851070f8cb0be42", '_blank')
-                    this.props.addSnackbar("Successfully compiled your project!", "success")
-                    this.setState({compileConfirm: false})
+                window.open('http://localhost:3001/api/project/download/project',"_blank")
+                
+                    API.project.download()
+                        .then( (db) => {
+                            console.log(db)
+                            this.props.addSnackbar("Successfully compiled your project!", "success")
+                            this.setState({compileConfirm: false})
+                        })
+                        .catch(err => console.log(err))
                 })
                 .catch( err => console.log(err))
         }else{

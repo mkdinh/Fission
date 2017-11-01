@@ -42,6 +42,7 @@ app.use(bodyParser.json());
 
 // server static files
 app.use(express.static("./client/build"));
+app.use(express.static("./jobs/11"));
 
 // use routes
 app.use(routes);

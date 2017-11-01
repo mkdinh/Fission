@@ -8,7 +8,7 @@ import './RaisedButton.RightIcon.css';
 //--------------------------------------------------------
 const RaisedButton.RightIcon = (props) =>
 
-	<a className="waves-effect waves-light btn">
+	<a className="waves-effect waves-light btn" style="[object Object]">
 
 		{props.children}
 

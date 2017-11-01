@@ -204,7 +204,7 @@ class ReactorTab extends Component {
                                 <FissionBtn
                                     value={true} 
                                     handleClick={this.handleFuse} 
-                                    bg={"green"} style={{marginTop: "1rem"}} 
+                                    bg={"#c1ff07"} style={{marginTop: "1rem"}} 
                                     label="Yes!"/>
                             :
                              ""
@@ -213,7 +213,7 @@ class ReactorTab extends Component {
                         
                         {
                             this.props.editActiveProject ?
-                                <FissionBtn bg={"green"} handleClick={this.handleSave} style={{marginTop: "1rem"}} label="Save It"/>
+                                <FissionBtn bg={"#c1ff07"} handleClick={this.handleSave} style={{marginTop: "1rem"}} label="Save It"/>
                             :
                             ""
                         }
@@ -221,17 +221,17 @@ class ReactorTab extends Component {
                     </Col>
 
                     <Col size={6} style={{width: "49%", marginLeft: '1%', padding: 0 }}>
-                        <div className="valign-wrapper" style={{...style.card, height: "35vh", width: "100%", color: "black"}}>
+                        <div className="valign-wrapper" style={{...style.card, height: "35vh", width: "100%", color: "black", fontFamily: "Permanent Marker", fontSize: "2rem"}}>
                         {
                             this.props.preview.html && this.props.preview.css? 
                             <div
                             style={{width: "100%",textAlign: "center"}} 
                             dangerouslySetInnerHTML={this.props.strToDOM(this.props.preview.html, this.props.preview.css)}/>
-                            : ""
+                            : "Preview Display: "
                         }
                         </div>
 
-                        <div className="valign-wrapper" style={{...style.card, height: "27.50vh", width: "100%", marginTop: "1rem", color: "black"}}>
+                        <div className="valign-wrapper" style={{...style.card, height: "27.50vh", width: "100%", marginTop: "1rem", color: "black", fontFamily: "Permanent Marker"}}>
 
                         {
                             this.props.preview ? 
@@ -249,7 +249,7 @@ class ReactorTab extends Component {
                                 <FissionBtn
                                     value={false} 
                                     handleClick={this.handleFuse} 
-                                    bg={"red"} style={{marginTop: "1rem"}} 
+                                    bg={"#ff4507"} style={{marginTop: "1rem"}} 
                                     label="No!"/>
                             :
                              ""
@@ -259,7 +259,7 @@ class ReactorTab extends Component {
                             this.props.editActiveProject ?
                                 <FissionBtn 
                                     handleClick={this.handleRemove} 
-                                    bg={"red"} style={{marginTop: "1rem"}} 
+                                    bg={"#ff4507"} style={{marginTop: "1rem"}} 
                                     label="Delete"/>
                             :
                              ""
@@ -271,7 +271,7 @@ class ReactorTab extends Component {
                         !this.state.compileConfirm ?
                             <FissionBtn 
                                 handleClick={() => this.setState({compileConfirm: true})} 
-                                bg={"gold"} style={{marginTop: "1rem"}} 
+                                bg={"#ffc107"} style={{marginTop: "1rem"}} 
                                 label="Fuse"/>
                             :   
                             ""
@@ -282,9 +282,9 @@ class ReactorTab extends Component {
                             <FissionBtn 
                                 handleClick={this.handleCreate} 
                                 bg={this.state.newProject ? 
-                                    this.props.activeProject.name.length > 0 ? "green": "red" 
-                                    :"gold"} 
-                                style={{marginTop: "1rem"}} 
+                                    this.props.activeProject.name.length > 0 ? "#c1ff07": "#ff4507" 
+                                    :"#ffc107"} 
+                                style={{marginTop: "1rem", color:"black"}} 
                                 label="Create"/>
                 }
             </div>

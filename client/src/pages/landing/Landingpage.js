@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./landingpage.css";
-
+import img from "../../../src";
 
 class Landing extends Component{
   state = {
@@ -32,17 +32,19 @@ class Landing extends Component{
 
         <div id="tagLine">
         React Components, FAST 
+                    
         </div>
-           </div>
+        </div>
 
+        <div id="logoBox"><a href="#"><img src={"githublogo.svg"} alt="github logo" className="img-responsive"/></a></div>
 
-    <div id="iconTray">
 
     
-    
-    </div>
 
-    </div>
+ 
+
+  
+  </div>
 
           
     );

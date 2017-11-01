@@ -62,7 +62,7 @@ class About extends Component{
       </ul>  
 
 <div className="Footer" style={{
-    height: "80%",
+    height: "70%",
     paddingTop: "5px",
     fontSize: "25px",
    backgroundColor: "transparent",

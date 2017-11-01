@@ -84,9 +84,9 @@ module.exports = {
                 let host = req.headers.origin;
                 let downloadLink
                 if(process.env.NODE_ENV === "production"){
-                    downloadLink = host + "/api/project/download/" + jobNum
+                    downloadLink =  "https://powerful-taiga-43546.herokuapp.com/api/project/download/" + jobNum
                 }else{
-                    downloadLink = host + "api/project/download/" + jobNum
+                    downloadLink = "http://localhost:3001/api/project/download/" + jobNum
                 }
 
                 let exists = fse.existsSync(folder);

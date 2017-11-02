@@ -261,7 +261,7 @@ class ReactorTab extends Component {
                             this.props.editActiveProject ?
                                 <FissionBtn 
                                     handleClick={this.handleRemove} 
-                                    bg={"#ff4507"} style={{marginTop: "1rem", color: "black"}} 
+                                    bg={"#ff4507"} style={{marginTop: "1.1rem", color: "black"}} 
                                     label="Delete"/>
                             :
                              ""

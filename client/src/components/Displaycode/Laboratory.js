@@ -36,7 +36,7 @@ class Laboratory extends Component {
         return(
             <Card style={style.card}>
                 <div style={style.row}>
-                    <Row>
+                    <Row style={{marginBottom: 0}}>
                         <input name="search" 
                             placeholder="R&amp;D: Search your Component"
                             value={this.state.value} 
@@ -44,6 +44,9 @@ class Laboratory extends Component {
                     </Row>
                     <Row style={style.display}>
                         <LabList components={this.state.filter} 
+                            customs={this.props.customs}
+                            addSnackbar={this.props.addSnackbar}
+                            auth0Id={this.props.auth0Id}
                             search={this.state.search}
                             strToDOM={this.props.strToDOM}/>
                     </Row>

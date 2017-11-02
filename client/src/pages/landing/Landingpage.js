@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Tabbar from "./components/Tabbar";
+import Tabbar from "../../components/Tabbar";
 import "./landingpage.css";
 
 

@@ -44,7 +44,6 @@ class Previewdisplay extends Component{
       if(cssExists){
         let style = this.objToStr(css);
         html = html.replace(/(<[^\/]\w*)(\s*.*?>)/, `$1 style="${style}" $2`)
-        console.log(html)
       }
       return {__html: html}};
     }

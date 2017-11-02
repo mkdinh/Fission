@@ -9,7 +9,7 @@ import API from "../../utils/api";
 import auth0 from "../../components/Auth"
 
 const mapStateToProps = (state) => {
-    return {...state.user}
+    return {...state}
 }
 
 // create profile page 
@@ -24,7 +24,6 @@ class Profile extends Component{
 
     componentDidMount(){
         auth0.handleAuthentication((user, auth0Id) => {
-            console.log(user.status)
             if(user.status === 204){
                 this.props.dispatch({type: "NEW_USER", payload: {new: true}})
                 this.setState({newUserModal: true, auth0Id: auth0Id})
@@ -41,9 +40,11 @@ class Profile extends Component{
         this.setState({[modalName]: !this.state[modalName]})
     }
 
+    
     render(){
         return(
             <Container>
+                {console.log(this.props.user)}
                 {/* if user is a new user, display new user modal to fill out information */}
                 {this.state.newUserModal ? 
                     <NewUserModal
@@ -58,7 +59,7 @@ class Profile extends Component{
                     <LandingModal
                         name="landingModal" 
                         open={true}
-                        msg={`Welcome Back ${this.props.profile.firstName} ${this.props.profile.lastName}`}
+                        msg={`Welcome Back ${this.props.user.profile.profile.firstName} ${this.props.user.profile.profile.lastName}`}
                         toggleModal={this.toggleModal}/>
                     
                 :
@@ -66,11 +67,11 @@ class Profile extends Component{
                 
                 {
                 this.props.login?
-                    <UserProfile profile={this.props.profile}/>
+                    <UserProfile profile={this.props.user.profile}/>
                 :
                     ""
                 }
-
+            {console.log(this.props)}
             </Container>
         )
     }

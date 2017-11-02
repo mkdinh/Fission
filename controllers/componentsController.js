@@ -7,12 +7,6 @@ const mongoose = require("mongoose");
 // ---------------------------------------------------
 module.exports = {
 
-    findAll: (req , res) => {
-        db.Component.find({default: false})
-            .then( projects => resjson(project))
-            .catch( err => console.log(err));
-    },
-
     findOne: (req, res) => {
         db.Component.find(req.params.id)
             .then( component => res.json(component))
@@ -65,7 +59,7 @@ module.exports = {
     }, 
 
     findAll: (req, res) => {
-        db.Component.find()
+        db.Component.find({default: false})
             .then(components => res.json(components))
             .catch( err => console.log(err))
     },

@@ -25,13 +25,13 @@ class NewUserModal extends Component {
     handleSubmit = (ev) => {
         // handle submit of userInfo on database
         ev.preventDefault();
-        console.log(this.state)
         // send userInfo to database to create new user
         API.user.create(this.state)
             // display welcome message
             .then( user => {
               localStorage.setItem("auth0Id", this.props.auth0Id)
               this.props.toggleModal("newUserModal")
+              this.props.history.push("/canvas")
             })
             // else display error
             .catch( err => console.log(err) )

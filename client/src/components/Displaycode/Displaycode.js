@@ -94,7 +94,10 @@ class Previewdisplay extends Component{
           </Tab>
           
           <Tab label="Laboratory" className="valign-wrapper">
-              <LabTab 
+              <LabTab
+                customs={this.props.customs}
+                addSnackbar={this.props.addSnackbar}
+                auth0Id={this.props.profile.auth0Id} 
                 strToDOM={this.strToDOM}/>
               {/* <div className="valign-wrapper" style={{height: "50vh"}}>
                 <div style={{width: "100%", textAlign: "center"}}>

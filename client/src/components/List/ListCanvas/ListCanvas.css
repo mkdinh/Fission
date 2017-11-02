@@ -25,10 +25,12 @@ p{
 
 .list-component-item {
 	transition: box-shadow 0.25s;
+	color: black !important;
 }
 
 .list-component-item:hover {
 	box-shadow: 0px 0px 10px black;
+	color: black !important;
 }
 
 .list-component-footer {

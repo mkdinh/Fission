@@ -15,7 +15,7 @@ const style= {
     tabs: {margin: "1rem"},
     preview: {backgroundColor: "white",  textAlign: "center"},
     reactorComp: {width: "100%", borderBottom: "1px solid lightgrey"},
-    actionBtn: {margin: "0.5rem"},
+    actionBtn: {margin: "0.5rem", color: "black"},
     previewDiv: {width: "100%"},
     editorCard: {position: "relative", margin: "1rem 0", height: "", backgroundColor: "white"},
     editorWrapper: {position: "relative", overflow: "scroll", height: "40vh", backgroundColor: "black"},
@@ -215,7 +215,7 @@ class ReactorTab extends Component {
                         
                         {
                             this.props.editActiveProject ?
-                                <FissionBtn bg={"#c1ff07"} handleClick={this.handleSave} style={{marginTop: "1rem"}} label="Save It"/>
+                                <FissionBtn bg={"#c1ff07"} handleClick={this.handleSave} style={{marginTop: "1rem", color: "black"}} label="Save It"/>
                             :
                             ""
                         }
@@ -261,7 +261,7 @@ class ReactorTab extends Component {
                             this.props.editActiveProject ?
                                 <FissionBtn 
                                     handleClick={this.handleRemove} 
-                                    bg={"#ff4507"} style={{marginTop: "1rem"}} 
+                                    bg={"#ff4507"} style={{marginTop: "1rem", color: "black"}} 
                                     label="Delete"/>
                             :
                              ""
@@ -273,7 +273,7 @@ class ReactorTab extends Component {
                         !this.state.compileConfirm ?
                             <FissionBtn 
                                 handleClick={() => this.setState({compileConfirm: true})} 
-                                bg={"#ffc107"} style={{marginTop: "1rem"}} 
+                                bg={"#ffc107"} style={{marginTop: "1rem", color: "black"}} 
                                 label="Fuse"/>
                             :   
                             ""

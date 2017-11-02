@@ -34,7 +34,7 @@ class MarginCSS extends Component {
              
             <Col size={3}>
             <div>Left</div>
-            <input name="margin-;eft" placeholder="unassigned"  style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginLeft} onChange={this.props.handleTextInput}/>
+            <input name="margin-left" placeholder="unassigned"  style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.marginLeft} onChange={this.props.handleTextInput}/>
             </Col>
 
                 </Row>

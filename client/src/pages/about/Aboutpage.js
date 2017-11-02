@@ -29,13 +29,12 @@ class About extends Component{
        style={{ 
       fontFamily: "Permanent Marker",
        color: 'white', 
-       width: 'auto', 
+       width: '100%', 
        border: '#595959 1px solid',
-       padding: "10px",
-       margin: "40px",
        backgroundColor: "#303030",
        height: "auto",
        opacity: ".95",
+       padding: "2rem"
        
      }}>
       <div className="aboutTitle">

@@ -1,0 +1,21 @@
+
+
+
+.valign-wrapper p{
+
+	color: black !important;
+	
+}
+
+
+
+.itemLabIcon{
+   color: #ffc107;
+   text-shadow:  3px 3px 0 #000,
+   -1px -1px 0 #000,  
+   1px -1px 0 #000,
+   -1px 1px 0 #000,
+   1px 1px 0 #000;
+
+
+}

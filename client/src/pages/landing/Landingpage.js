@@ -35,7 +35,7 @@ class Landing extends Component{
                     
         </div>
         </div>
-        <div id="logoBox"><a href="#"><img src={"githublogo.svg"} alt="github logo" className="img-responsive"/></a></div>
+        <div id="logoBox"><a href="#"><img src={"githublogo3.svg"} alt="github logo" className="img-responsive"/></a></div>
 
   
   </div>

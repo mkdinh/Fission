@@ -3,6 +3,7 @@ import { Col, Row } from "../Grid";
 import { Card } from 'material-ui/Card';
 import API from "../../utils/api";
 import LabList from "../List/ListLab";
+import "./Laboratory.css";
 
 const style = {
     card: { position: "relative", backgroundColor: "white", padding: 0, color: "black"},
@@ -36,7 +37,7 @@ class Laboratory extends Component {
         return(
             <Card style={style.card}>
                 <div style={style.row}>
-                    <Row style={{marginBottom: 0}}>
+                    <Row style={{marginBottom: 0, color: "black"}}>
                         <input name="search" 
                             placeholder="R&amp;D: Search your Component"
                             value={this.state.value} 

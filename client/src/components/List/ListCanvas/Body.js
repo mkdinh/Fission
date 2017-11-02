@@ -6,7 +6,7 @@ import { Row, Col } from "../../Grid";
 import API from "../../../utils/api";
 
 const style = {
-    row: {padding: "0.25rem", margin: "0rem"},
+    row: {padding: "0.25rem", margin: "0rem", color: "black"},
     deleteIcon: {fontSize: "1.5rem", float: "right"},
     container: {border: "1px solid black", margin: "0.25rem 0.5rem", width: "95.5%", color: "white"}
 }

@@ -8,7 +8,7 @@ export default {
 
     findCustoms: (id) => axios.get("./api/component/group/" + id),
 
-    findAll: () => axios.get("./api/component"),
+    findAll: () => axios.get("./api/component/"),
 
     findOne: compId => axios.get("./api/user/" + compId),
     

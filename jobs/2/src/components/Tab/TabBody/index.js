@@ -1,1 +1,0 @@
-export { TabBody } from "./TabBody";

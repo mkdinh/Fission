@@ -262,7 +262,7 @@ class Canvas extends Component {
             }
 
             {this.state.snackbars.map( snack => 
-              <Snackbar message={snack.message} type={snack.type}/>
+              <Snackbar key={snack.time} message={snack.message} type={snack.type}/>
             )}
           </Col> 
 

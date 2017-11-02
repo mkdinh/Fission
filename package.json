@@ -17,14 +17,17 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "archiver": "^2.1.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "fs-extra": "^4.0.2",
     "html-dom-parser": "^0.1.2",
+    "jszip": "^3.1.4",
     "lodash": "^4.17.4",
     "mongoose": "^4.11.7",
     "passport": "^0.4.0",
-    "react-redux": "^5.0.6"
+    "react-redux": "^5.0.6",
+    "request": "^2.83.0"
   },
   "description": "React Component generator",
   "repository": {

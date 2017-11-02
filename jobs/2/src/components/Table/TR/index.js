@@ -1,1 +1,0 @@
-export { TR } from "./TR";

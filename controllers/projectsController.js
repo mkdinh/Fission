@@ -6,6 +6,8 @@ const deconstruct = require("../utils/compiler.2/deconstructor")
 const compile = require("../utils/compiler.2/compiler.js");
 const parse = require("html-dom-parser");
 const fse = require("fs-extra");
+const archiver = require("archiver");
+const mime = require("mime");
 
 // DEFINING METHODS
 // ---------------------------------------------------
@@ -63,28 +65,43 @@ module.exports = {
             .catch(err => console.log(err))
     },
 
-    compileSample: (req, res) => {
-        let file = path.join(__dirname, "../jobs/11/sample.html")
-        console.log(file)
-        res.download(file)
+    download: (req, res) => {
+        let file = path.join(__dirname, "../jobs/",req.params.jobNum,"/fission.zip");
+        res.set('Content-Type', 'application/zip')
+        res.set('Content-Disposition', 'attachment; filename=fission.zip');
+        res.set("Content-Transfer-Encoding: binary");
+        res.download(file);
+        console.log("deleting file:", file)
+        // fse.remove(path.join(__dirname, "../jobs/",req.params.jobNum));
     },
 
     compile: (req, res) => {
         let comps = req.body.components;
         let compIds = comps.map(el => el._id);
-
+ 
         db.Project.findOneAndUpdate({_id: req.params.id}, {$set: {components: compIds}}, {new: true})
             .then(user => {
+                let jobNum = Math.floor(Math.random() * 10000) + 1;
+                // let jobNum = 12;
+                let folder = path.join(__dirname, "../jobs/" + jobNum);  
 
-                // let jobNum = Math.floor(Math.random() * 100000000) + 1;
-                let jobNum = 11;
-                let folder = path.join(__dirname, "../jobs/" + jobNum)
-                
-                // fse.mkdirSync(folder);
-                
+                let host = req.headers.origin;
+                let downloadLink;
+                if(process.env.NODE_ENV === "production"){
+                    downloadLink =  "https://powerful-taiga-43546.herokuapp.com/api/project/download/" + jobNum;
+                }else{
+                    downloadLink = "http://localhost:3001/api/project/download/" + jobNum;  
+                }
+
+                let exists = fse.existsSync(folder);
+
+                if(!exists){
+                    fse.mkdirSync(folder);
+                }
+
                 const deconstructHTML = deconstruct(req.body.htmlDOMs, (html) =>{
                     html = html.replace("\\","")
-                
+                    
                     let objHTML = parse(html)
                     let compiledPackage = {
                         attribs: {
@@ -93,20 +110,29 @@ module.exports = {
                         },
                         children: objHTML       
                     }
-
+            
                     compile(compiledPackage, 'component', jobNum, () => {
-                        res.send("Hello")
-                        // res.download(folder+"/sample.html", (err) => {
-                        //     if (err) {
-                        //         console.log(err)
-                        //     } else {
-                        //         console.log("success!")
-                        //     }
-                        // })
+
+                        var output = fse.createWriteStream(folder + "/fission.zip");
+                        var archive = archiver('zip');
+                        
+                        output.on('close', function () {
+                            res.json({link: downloadLink, num: jobNum});
+                            console.log(archive.pointer() + ' total bytes');
+                            console.log('archiver has been finalized and the output file descriptor has closed.');
+                        });
+                        
+                        archive.on('error', function(err){
+                            throw err;
+                        });
+                        
+                        archive.pipe(output);
+                        archive.directory(folder + "/src", "/src")
+                        archive.finalize();
                     });
                 
-                });
+                })
             })   
-            .catch(err => console.log(err))   
+            .catch(err => console.log(err));  
     }
 }

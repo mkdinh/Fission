@@ -5,6 +5,9 @@ import { Row, Col } from "../../components/Grid";
 import FissionBtn from "../../components/FissionButton";
 import API from "../../utils/api";
 import "./reactor.css";
+import reactDownload from "js-file-download";
+import fileSaver from "file-saver";
+
 const style= {
     card: {position: "relative", backgroundColor: "white", padding: 0},
     wrapper: {padding: "1rem"},
@@ -112,7 +115,7 @@ class ReactorTab extends Component {
                 let doc = parser.parseFromString(comp.html, "text/xml");
                 let dom = doc.firstChild;
         
-                comp.css ? dom.setAttribute("style", comp.css) : "";
+                comp.css ? dom.setAttribute("style", this.props.objToStr(comp.css)) : "";
     
                 let name = comp.name.replace(/\s*/g,"").replace("(",".").replace(")","");
                 dom.setAttribute("name", name)
@@ -128,9 +131,14 @@ class ReactorTab extends Component {
     
             API.project.compile(project, this.props.activeProject._id)
             .then( db => {
-                    // window.open("http://localhost:3001/api/project/compile/59f628ab3851070f8cb0be42", '_blank')
-                    this.props.addSnackbar("Successfully compiled your project!", "success")
-                    this.setState({compileConfirm: false})
+                    // window.open(db.data.link,"_blank")
+                    API.project.download(db.data.num)
+                    .then(res => { 
+                        fileSaver.saveAs(new Blob([res.data]), "fission.zip")
+                        this.props.addSnackbar("Successfully compiled your project!", "success")
+                        this.setState({compileConfirm: false})         
+                    })
+                    .catch( err => console.log(err))
                 })
                 .catch( err => console.log(err))
         }else{

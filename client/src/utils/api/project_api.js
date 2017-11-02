@@ -17,5 +17,7 @@ export default {
 
     deleteOne: (projectId) => axios.delete("./api/project/" + projectId),
 
-    compile: (project , projectId) => axios.put("./api/project/compile/" + projectId, project)
+    compile: (project , projectId) => axios.put("./api/project/compile/" + projectId, project),
+
+    download: (jobNum) => axios.get("./api/project/download/"+jobNum, {responseType: "arraybuffer"})
 }

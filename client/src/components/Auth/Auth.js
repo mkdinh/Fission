@@ -8,12 +8,12 @@ class Auth {
     auth0 = new auth0.WebAuth({
       domain: process.env.AUTH0_DOMAIN || "app78488740.auth0.com",
       clientID:  process.env.AUTH0_CLIENT_ID || "doh0u_68zAATE2KyI1th-O1h8YnndJEO",
-      redirectUri: process.env.AUTH0_CALLBACK_URL || "http:localhost:3000/profile",
+      redirectUri:  process.env.NODE_ENV === "production" ? "https://powerful-taiga-43546.herokuapp.com/profile" : "http:localhost:3000/profile",
       audience: 'https://app78488740.auth0.com/userinfo',
       responseType: 'token id_token',
       scope: 'openid'
     });
-
+    
     login = () => {
       this.auth0.authorize();
     }

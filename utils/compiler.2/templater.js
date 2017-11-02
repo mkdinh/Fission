@@ -22,15 +22,13 @@ module.exports = (component, num) => {
     // if parent is App, create a directory and intialize the App and index component
 
     // create component files
-    if(attribs.component === "stateful"){
+    if(attribs.component === "Smart"){
         templateHTML = template.Stateful(component);
-        console.log(attribs.name)
     }else{
         templateHTML = template.Stateless(component)
-        console.log(attribs.name)
     };
     fileJS = generate.Component(templateHTML, component, num)
-    
+
     // create css files
     templateCSS = template.Style(attribs)
     fileCSS = generate.Style(templateCSS, attribs, num)

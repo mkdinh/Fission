@@ -59,6 +59,7 @@ class About extends Component{
         textAlign: 'left',
         marginLeft: '250px'
       }}>
+
         <li>Name (your file's name)</li>
         <li>Component (stateful || stateless)</li>
         <li>Group (group your component into its own folder)</li>
@@ -67,7 +68,7 @@ class About extends Component{
       </ul>  
 
 <div className="Footer" style={{
-    height: "80%",
+    height: "70%",
     paddingTop: "5px",
     fontSize: "25px",
    backgroundColor: "transparent",

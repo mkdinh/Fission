@@ -5,6 +5,7 @@ import "./Displaycode.css";
 import {Tabs, Tab} from 'material-ui/Tabs';
 import CanvasTab from "./Canvas";
 import ReactorTab from "./Reactor";
+import LabTab from "./Laboratory";
 import quarantine from "./quarantine.png";
 
 const style= {
@@ -84,6 +85,7 @@ class Previewdisplay extends Component{
               updateProjects={this.props.updateProjects}
               updateActiveProject={this.props.updateActiveProject}
               strToDOM={this.strToDOM}
+              objToStr={this.objToStr}
               reactor={this.props.reactor}
               addSnackbar={this.props.addSnackbar}
               addComponent={this.props.addComponent}
@@ -92,11 +94,13 @@ class Previewdisplay extends Component{
           </Tab>
           
           <Tab label="Laboratory" className="valign-wrapper">
-              <div className="valign-wrapper" style={{height: "50vh"}}>
+              <LabTab 
+                strToDOM={this.strToDOM}/>
+              {/* <div className="valign-wrapper" style={{height: "50vh"}}>
                 <div style={{width: "100%", textAlign: "center"}}>
                   <img src={quarantine} alt={"quarantine"} style={{width: "50%", margin: "2rem auto"}}/>
                 </div>
-              </div>
+              </div> */}
           </Tab>
         </Tabs>
     </div>

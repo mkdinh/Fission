@@ -31,7 +31,7 @@
 /*div for the overall information container on About page*/
 .infobox{
 
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Oswald', sans-serif;
   color: #ffc106 !important;
   text-align: left;
 
@@ -39,17 +39,19 @@
 
 /*information in the list for the Build page */
 .infolist{
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Oswald', sans-serif;
   color: white !important;
+  font-size: 20px;
+
 /*  font-size: larger;*/
 }
 
 /*information for the listed support types */
 li, p {
 
-font-family: 'Roboto', sans-serif;
+font-family: 'Oswald', sans-serif;
 color: white !important;
-font-size: 16px;
+font-size: 20px;
 
 
 }

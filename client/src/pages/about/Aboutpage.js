@@ -33,32 +33,38 @@ class About extends Component{
        border: '#595959 1px solid',
        padding: "10px",
        margin: "40px",
-       backgroundColor: "gray",
+       backgroundColor: "#303030",
        height: "auto",
        opacity: ".95",
        
      }}>
       <div className="aboutTitle">
        FISSION
-      Making Your Components, Easier
+       <br />
+      Fast, Easy, Complete
       </div>
-        <p style={{color: 'white'}}>
+        <div style={{color: 'white', fontFamily: "Oswald", fontSize: "25px"}}>
 
-      Welcome to Fission! This application will generate React components based on old-fashioned html markup. 
-      Begin on the Canvas page by inserting any html component you like and Fission will create a React component file and its css file to hold your markups. 
-      Currently, you can give compiling configuration inline styling as tag properties. 
-      Nesting html is supported but please be aware that it is still a prototype, so there may be some errors 
+      Welcome to Fission, 
+      <br />
+      This application will help you generate React components based on old-fashioned html markup. 
+      Begin on the Canvas page by inserting any html component you like.  When you finish, save your components and click "Fuse".
+      Fission will create a React component file to hold your markup. 
+      Currently, you can add inline styling as tag properties when compiling your work. 
+      Nesting html is supported, but please be aware that it is still a prototype, so there may be some errors 
       when generating components with nesting components.  
       <br />
-      These options are supported:</p>
+      These formatting options are supported:</div>
       <ul className="infolist" style={{
         textAlign: 'left',
         marginLeft: '250px'
       }}>
-        <li>name (file name)</li>
-        <li>component (stateful || stateless)</li>
-        <li>group (group component into its own folder)</li>
-        <li>style (any css markup)</li>
+
+        <li>Name (your file's name)</li>
+        <li>Component (stateful || stateless)</li>
+        <li>Group (group your component into its own folder)</li>
+        <li>Style (any css markup for the component)</li>
+        <li>Expand (shallow || deep)</li>
       </ul>  
 
 <div className="Footer" style={{

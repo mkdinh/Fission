@@ -8,6 +8,7 @@ import BorderRadius from './StylePicker/BorderRadiusCSS/BorderRadius';
 import PaddingCSS from './StylePicker/PaddingCSS/PaddingCSS';
 import MarginCSS from './StylePicker/MarginCSS/MarginCSS';
 import FontFamily from './StylePicker/FontFamilyCSS/FontFamily'
+import "./Newcompomenu.css";
 
 /*this will be the menu where people can select their components' styling*/
 class Newcompomenu extends React.Component {
@@ -83,7 +84,7 @@ class Newcompomenu extends React.Component {
         return (
             <div>
                 <Drawer width={"35%"} openPrimary={true} open={this.props.sidebar} >
-                <AppBar style={{height: "3.05rem"}} showMenuIconButton={false} title="STYLING BENCH" />
+                <AppBar id="drawerTitle" style={{height: "48px"}} showMenuIconButton={false} title="STYLING BENCH" />
 
                 <ColorPicker 
                     background={this.props.active.css ? this.props.active.css["background-color"] : "gold"}

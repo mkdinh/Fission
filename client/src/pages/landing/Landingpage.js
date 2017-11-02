@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Tabbar from "../../components/Tabbar";
 import "./landingpage.css";
-
+import img from "../../../src";
 
 class Landing extends Component{
   state = {
@@ -24,17 +23,28 @@ class Landing extends Component{
           left: "0", 
           right: "0",
 
+
             }}>
 
-       <div className="titleBox">
+       <div id="titleBox">
            FISSION
-           </div>
 
-      <div className ="tagBox">
-      Making Your Components, Easier
-      </div>
 
-    </div>
+        <div id="tagLine">
+        React Components, FAST 
+                    
+        </div>
+        </div>
+
+        <div id="logoBox"><a href="#"><img src={"githublogo.svg"} alt="github logo" className="img-responsive"/></a></div>
+
+
+    
+
+ 
+
+  
+  </div>
 
           
     );

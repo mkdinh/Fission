@@ -47,7 +47,7 @@ class Tabbar extends React.Component {
           :
             
             // <Tab label="Profile" value="/profile"/>
-            <Tab label="Logout" onActive={this.handleLogout} value="/about"/>}
+            <Tab label="Logout" onActive={this.handleLogout} value="/"/>}
         </Tabs>
 
         </Router>

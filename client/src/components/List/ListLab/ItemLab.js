@@ -20,8 +20,14 @@ class ItemLab extends Component {
         }else{
             group = "General"
         };
+        let exists;
 
-        let exists = this.props.customs[group].filter( el => el._id = this.props.component._id).length > 0;
+        if(this.props.customs[group]){
+            exists =this.props.customs[group].filter( el => el._id = this.props.component._id).length > 0;
+        }else{
+            exists = false;
+        };
+
         if(exists){
             this.props.addSnackbar("you already have this component", "error")
         }else{

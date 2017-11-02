@@ -43,7 +43,8 @@ class Previewdisplay extends Component{
       let cssExists = Object.keys(css).length > 0;
       if(cssExists){
         let style = this.objToStr(css);
-        html = html.replace(/(<\S+\s+)/, `$1style="${style}"`)
+        html = html.replace(/(<[^\/]\w*)(\s*.*?>)/, `$1 style="${style}" $2`)
+        console.log(html)
       }
       return {__html: html}};
     }

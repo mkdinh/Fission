@@ -58,6 +58,7 @@ export default class Listcompo extends React.Component {
                   primaryTogglesNestedList={true}
                   nestedItems={[<ListBody key={group}
                                     listName={"customs"}
+                                    auth0Id={this.props.auth0Id}
                                     updateActiveComponent={this.props.updateActiveComponent}
                                     updateCustoms={this.props.updateCustoms}
                                     activeProject={this.props.activeProject}

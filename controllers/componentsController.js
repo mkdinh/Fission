@@ -1,6 +1,7 @@
 // IMPORT DEPENDENCIES
 // ---------------------------------------------------
 const db = require('../models');
+const mongoose = require("mongoose");
 
 // DEFINING METHODS
 // ---------------------------------------------------
@@ -90,9 +91,22 @@ module.exports = {
             .catch( err => console.log(err))
     },
 
-    deleteOne: (req, res) => {
+    deleteOne: (req, res) => {  
+    
         db.Component.findByIdAndRemove(req.params.id)
-            .then( () => res.json({success: "Successfully deleted component"}))
+            .then( (comp) =>
+                db.User.findOneAndUpdate({auth0Id: req.params.auth0Id}, 
+                    {   
+                        $pull: {
+                            "components": req.params.id
+                        }
+                    }
+                )
+                .then((user) => {
+                    res.json(user)
+                })
+                .catch( err => console.log(err))
+            )
             .catch( err => console.log(err))
     }
     

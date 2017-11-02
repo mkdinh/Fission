@@ -16,5 +16,5 @@ export default {
 
     updateOne: (component, componentId) => axios.put("./api/component/" + componentId, component),
 
-    deleteOne: (componentId) => axios.delete("./api/component/" + componentId)
+    deleteOne: (componentId, auth0Id) => axios.delete("./api/component/" + auth0Id + "/" + componentId)
 }

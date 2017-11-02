@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./landingpage.css";
 import img from "../../../src";
+import Fa from "react-fontawesome";
 
 class Landing extends Component{
   state = {
@@ -26,16 +27,21 @@ class Landing extends Component{
 
             }}>
 
-       <div id="titleBox">
-           FISSION
+        <div id="titleBox">
+            FISSION
 
 
-        <div id="tagLine">
-        React Components, FAST 
-                    
+          <div id="tagLine">
+          React Components, FAST 
+                      
+          </div>
         </div>
+        <div id="logoBox">
+          <a href="https://github.com/mkdinh/PCR">
+            <Fa className="github" name="github-alt"/>
+          </a>
+          {/* <img src={"githublogo2.svg"} alt="github logo" className="logo"/></a> */}
         </div>
-        <div id="logoBox"><a href="https://github.com/mkdinh/PCR"><img src={"githublogo2.svg"} alt="github logo" className="img-responsive"/></a></div>
 
   
   </div>

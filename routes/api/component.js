@@ -12,7 +12,9 @@ router.route('/')
 router.route('/:id')
     .get(compController.findOne)
     .put(compController.updateOne)
-    .delete(compController.deleteOne);
+
+router.route("/:auth0Id/:id")
+    .delete(compController.deleteOne)
 
 router.route("/group/all")
     .get(compController.findDefaults)

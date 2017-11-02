@@ -8,18 +8,20 @@ import API from "../../../utils/api";
 const style = {
     row: {padding: "0.25rem", margin: "0rem"},
     deleteIcon: {fontSize: "1.5rem", float: "right"},
-    container: {border: "1px solid black", margin: "0.25rem 0.5rem", width: "95.5%", backgroundColor: "white"}
+    container: {border: "1px solid black", margin: "0.25rem 0.5rem", width: "95.5%", color: "white"}
 }
 
 class ListBody extends Component {
 
     handleDelete= (id) => {
-        API.component.deleteOne(id)
+        API.component.deleteOne(id, this.props.auth0Id)
             .then(deleted => {
                 this.props.addSnackbar("Successfully deleted component!", "success")
                 this.props.updateCustoms(this.props.auth0Id)
-                console.log(this.props.activeProject)
-                this.props.addProject(this.props.activeProject, true)
+    
+                if(this.props.activeProject._id){
+                    this.props.addProject(this.props.activeProject, true)
+                }
                 this.addComponent(null, "reset")
             })
             .catch(err => console.log(err))

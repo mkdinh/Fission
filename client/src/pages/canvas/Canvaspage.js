@@ -235,6 +235,7 @@ class Canvas extends Component {
           <Col size={4}>
             { this.state.tab === "canvas" ?
               <ListCanvas
+                auth0Id={this.props.profile.auth0Id}
                 tab={this.state.tab}
                 defaults={this.props.defaults}
                 customs={this.props.customs}

@@ -43,6 +43,7 @@ class Laboratory extends Component {
                             value={this.state.value} 
                             onChange={this.handleChange}/>
                     </Row>
+
                     <Row style={style.display}>
                         <LabList components={this.state.filter} 
                             customs={this.props.customs}

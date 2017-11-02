@@ -227,13 +227,13 @@ class ReactorTab extends Component {
                         {
                             this.props.preview.html && this.props.preview.css? 
                             <div
-                            style={{width: "100%",textAlign: "center"}} 
+                            style={{margin: "1rem"}} 
                             dangerouslySetInnerHTML={this.props.strToDOM(this.props.preview.html, this.props.preview.css)}/>
-                            : "Preview Display: "
+                            : "Preview: "
                         }
                         </div>
 
-                        <div className="valign-wrapper" style={{...style.card, height: "27.50vh", width: "100%", marginTop: "1rem", color: "black", fontFamily: "Permanent Marker"}}>
+                        <div className="valign-wrapper" style={{...style.card, height: "28.00vh", width: "100%", marginTop: "1rem", color: "black", fontFamily: "Permanent Marker"}}>
 
                         {
                             this.props.preview ? 

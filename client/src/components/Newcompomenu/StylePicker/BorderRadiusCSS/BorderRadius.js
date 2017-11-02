@@ -19,22 +19,22 @@ class BorderRadius extends Component {
 
             <Row>
             <Col size={3}>
-            <div>Top Right</div>
+            <div>Top<br />Right</div>
             <input name="border-top-right-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopRightRadius} onChange={this.props.handleTextInput}/>
             </Col>
 
             <Col size={3}>
-            <div>Bottom Right</div>
+            <div>Bottom<br />Right</div>
             <input name="border-bottom-right-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomRightRadius} onChange={this.props.handleTextInput}/>
             </Col>
 
             <Col size={3}>
-            <div>Bottom Left</div>
+            <div>Bottom<br />Left</div>
             <input name="border-bottom-left-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomLeftRadius} onChange={this.props.handleTextInput}/>
             </Col>
 
             <Col size={3}>
-            <div>Top Left</div>
+            <div>Top<br />Left</div>
             <input name="border-top-left-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopLeftRadius} onChange={this.props.handleTextInput}/>
             </Col>
 

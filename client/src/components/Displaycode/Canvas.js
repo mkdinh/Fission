@@ -58,7 +58,7 @@ class CanvasTab extends Component {
         ev.preventDefault();
         let group, exists;
 
-        let context = ev.target.name;
+        let context = ev.currentTarget.name;
         let auth0Id = this.props.profile.auth0Id;
 
         this.props.sidebar ? this.props.toggleSidebar(): null;
@@ -87,7 +87,7 @@ class CanvasTab extends Component {
                     this.props.addSnackbar("Another component already has this name!", "error")
                     return
                 }
-        
+                console.log(this.state)
                 API.component.create(this.state)
                     .then((doc) => {
                         let name = this.state.name

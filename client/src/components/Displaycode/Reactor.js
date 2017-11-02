@@ -153,7 +153,7 @@ class ReactorTab extends Component {
             <div>
                 <div style={{position: "relative", marginTop: "1rem"}}>
                     <Col size={6} style={{padding: 0, color: "black"}}>
-                        <Card style={{...style.card, width: "100%", height: "65vh", marginRight: "1%", overflow:"scroll", padding: "0.5rem 0"}}>
+                        <Card style={{...style.card, width: "100%", height: "65vh", marginRight: "1%", overflow:"scroll", padding: "0.5rem 0", backgroundColor: "grey"}}>
                         {   
                             this.props.activeProject.name  || this.props.activeProject.components.length > 0 || this.state.newProject ?
                                 this.props.editActiveProject || this.state.newProject ? 
@@ -226,14 +226,15 @@ class ReactorTab extends Component {
                         <div className="valign-wrapper" style={{...style.card, height: "35vh", width: "100%", color: "black", fontFamily: "Permanent Marker", fontSize: "2rem"}}>
                         {
                             this.props.preview.html && this.props.preview.css? 
+                            
                             <div
-                            style={{margin: "1rem"}} 
+                            style={{margin: "auto"}} 
                             dangerouslySetInnerHTML={this.props.strToDOM(this.props.preview.html, this.props.preview.css)}/>
                             : "Preview: "
                         }
                         </div>
 
-                        <div className="valign-wrapper" style={{...style.card, height: "28.00vh", width: "100%", marginTop: "1rem", color: "black", fontFamily: "Permanent Marker"}}>
+                        <div className="valign-wrapper" style={{...style.card, height: "27.5vh", width: "100%", marginTop: "1rem", color: "black", fontFamily: "Permanent Marker"}}>
 
                         {
                             this.props.preview ? 

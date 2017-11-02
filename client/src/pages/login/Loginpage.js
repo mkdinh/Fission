@@ -1,7 +1,7 @@
 import React,{ Component } from "react";
 //import modal from ""../../components/modal;
 
-class About extends Component{
+class Login extends Component{
   state = {
 
   }
@@ -15,19 +15,44 @@ class About extends Component{
           backgroundPosition: 'center center', 
           backgroundRepeat:"no-repeat", 
           backgroundSize:"cover" , 
-          width: "auto",
-          position: "absolute", 
+          minWidth: "1024px",
+          position: "fixed", 
+          minHeight: "100%",
           height: "auto",
-          left: "0",
+          width: "100%",
+          left: "0", 
+          right: "0",
     }}>
 
-     <h1>Fission</h1>
+<div className="infobox" 
+       style={{ 
+      fontFamily: "Permanent Marker",
+       color: 'white', 
+       width: '100%', 
+       border: '#595959 1px solid',
+       backgroundColor: "#303030",
+       height: "auto",
+       opacity: ".95",
+       padding: "2rem"
+       
+     }}>
+      
+      <div style={{color: 'white', fontFamily: "Oswald", fontSize: "40px"}}>
+
+      Thank you for logging-in, 
+      <br />
+
+      Return to the Canvas to begin complining components. 
+      
+      </div>
 
 
-
-
+      </div>
+      
     </div>
-  )}
+  );
 }
 
-export default About;
+}
+
+export default Login;

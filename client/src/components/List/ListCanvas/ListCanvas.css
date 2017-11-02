@@ -6,7 +6,7 @@
 	height: "50vh" !important;
 	/* margin: 1rem !important; */
 	/* background-color: #ffc107 !important; */
-	color: black !important;
+	color: white !important;
 	overflow: "scroll" !important;
   	}
 
@@ -34,3 +34,10 @@ p{
 .list-component-footer {
 
 }
+
+/*.list-component-item p{
+
+		color: white !important;
+
+
+}*/

@@ -49,7 +49,7 @@ export default class Listcompo extends React.Component {
 
           <Tab mode="edit" label="Customs" onActive={this.props.updateCanvasMode}>
           {Object.keys(this.props.customs).length > 0 ?
-            <List className="List" style={{maxHeight: "50vh", overflow: "scroll"}}>
+            <List className="List" style={{maxHeight: "50vh", overflow: "scroll", color: "white"}}>
         
             {Object.keys(this.props.customs).map(group => { return (
                 <div key={group}>

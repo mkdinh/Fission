@@ -6,10 +6,16 @@ const db = require('../models');
 // ---------------------------------------------------
 module.exports = {
 
+    findAll: (req , res) => {
+        db.Component.find({default: false})
+            .then( projects => resjson(project))
+            .catch( err => console.log(err));
+    },
+
     findOne: (req, res) => {
         db.Component.find(req.params.id)
             .then( component => res.json(component))
-            .catch( err => console.log(err))
+            .catch( err => console.log(err));
     },
 
     findDefaults: (req, res) => {

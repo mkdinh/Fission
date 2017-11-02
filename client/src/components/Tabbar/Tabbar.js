@@ -40,7 +40,7 @@ class Tabbar extends React.Component {
           onChange={this.handleChange}
           value={this.props.history.location.pathname}
         >
-          <Tab label="About" value="/"/>
+          <Tab label="About" value="/about"/>
           <Tab label="Canvas"  value="/canvas"/>
            {!this.props.login ?
             <Tab label="Login" onActive={Auth0.login} value="/login "/>

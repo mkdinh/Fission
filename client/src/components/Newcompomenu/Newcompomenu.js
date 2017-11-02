@@ -105,21 +105,21 @@ class Newcompomenu extends React.Component {
                     handleTextInput={this.handleTextInput} 
                     paddingTop={this.props.active.css["padding-top"] ? this.props.active.css["padding-top"] : "" } 
                     paddingRight={this.props.active.css["padding-right"] ? this.props.active.css["padding-right"] : "" } 
-                    paddingBottom={this.props.active.css["padding-top"] ? this.props.active.css["padding-bottom"] : "" } 
+                    paddingBottom={this.props.active.css["padding-bottom"] ? this.props.active.css["padding-bottom"] : "" } 
                     paddingLeft={this.props.active.css["padding-left"] ? this.props.active.css["padding-left"] : "" }/>
                 <MarginCSS
                     handleTextInput={this.handleTextInput}
                     marginTop={this.props.active.css["margin-top"] ? this.props.active.css["margin-top"] : "" }
                     marginRight={this.props.active.css["margin-right"] ? this.props.active.css["margin-right"] : "" }
                     marginBottom={this.props.active.css["margin-bottom"] ? this.props.active.css["margin-bottom"] : "" } 
-                    marginLeft={this.props.active.css["margin-right"] ? this.props.active.css["margin-left"] : "" }
+                    marginLeft={this.props.active.css["margin-left"] ? this.props.active.css["margin-left"] : "" }
                     />
                 <BorderRadius 
                     handleTextInput={this.handleTextInput}
-                    borderBottomLeftRadius={this.props.active.css["border-bottom-left"] ? this.props.active.css["border-bottom-left-radius"] : "" }
-                    borderBottomRightRadius={this.props.active.css["border-bottom-right"] ? this.props.active.css["border-bottom-right-radius"] : "" }
-                    borderTopLeftRadius={this.props.active.css["border-top-left"] ? this.props.active.css["border-top-left-radius"] : "" }
-                    borderTopRightRadius={this.props.active.css["border-top-right"] ? this.props.active.css["border-top-right-raidus"] : "" }/>
+                    borderBottomLeftRadius={this.props.active.css["border-bottom-left-radius"] ? this.props.active.css["border-bottom-left-radius"] : "" }
+                    borderBottomRightRadius={this.props.active.css["border-bottom-right-radius"] ? this.props.active.css["border-bottom-right-radius"] : "" }
+                    borderTopLeftRadius={this.props.active.css["border-top-left-radius"] ? this.props.active.css["border-top-left-radius"] : "" }
+                    borderTopRightRadius={this.props.active.css["border-top-right-radius"] ? this.props.active.css["border-top-right-raidus"] : "" }/>
         
                 </Drawer>
             </div>

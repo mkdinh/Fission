@@ -20,22 +20,22 @@ class BorderRadius extends Component {
             <Row>
             <Col size={3}>
             <div>Top Right</div>
-            <input name="borderTopRightRadius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopRightRadius} onChange={this.props.handleTextInput}/>
+            <input name="border-top-right-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopRightRadius} onChange={this.props.handleTextInput}/>
             </Col>
 
             <Col size={3}>
             <div>Bottom Right</div>
-            <input name="borderBottomRightRadius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomRightRadius} onChange={this.props.handleTextInput}/>
+            <input name="border-bottom-right-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomRightRadius} onChange={this.props.handleTextInput}/>
             </Col>
 
             <Col size={3}>
             <div>Bottom Left</div>
-            <input name="borderBottomLeftRadius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomLeftRadius} onChange={this.props.handleTextInput}/>
+            <input name="border-bottom-left-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderBottomLeftRadius} onChange={this.props.handleTextInput}/>
             </Col>
 
             <Col size={3}>
             <div>Top Left</div>
-            <input name="borderTopLeftRadius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopLeftRadius} onChange={this.props.handleTextInput}/>
+            <input name="border-top-left-radius" placeholder="unassigned" style ={{color: "#ffc107", fontSize: "20px", textAlign: "center", border: "none"}} value={this.props.borderTopLeftRadius} onChange={this.props.handleTextInput}/>
             </Col>
 
             </Row>

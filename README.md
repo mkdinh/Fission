@@ -22,4 +22,8 @@ Fission draws from a variety of technologies:
 * MongoDB
 * React-Router(DOM)
 * Express 
+
+## Sample User
+username: guest@gmail.com
+password: password
   

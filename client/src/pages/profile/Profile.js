@@ -71,7 +71,6 @@ class Profile extends Component{
                 :
                     ""
                 }
-            {console.log(this.props)}
             </Container>
         )
     }

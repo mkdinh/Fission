@@ -31,8 +31,11 @@ class ItemLab extends Component {
         if(exists){
             this.props.addSnackbar("you already have this component", "error")
         }else{
-            delete this.props.component._id;
-            API.component.create(this.props.component, this.props.auth0Id)
+            let newComponent = Object.assign({}, this.props.component);
+            delete newComponent._id;
+            newComponent.create_by = this.props.auth0Id;  
+            console.log(newComponent)
+            API.component.create(newComponent)
                 .then( comp => {
                     this.props.addSnackbar(`Successfully added ${this.props.component.name}!`, "success")
                 })

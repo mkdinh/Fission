@@ -42,7 +42,7 @@ class About extends Component{
        <br />
       Fast, Easy, Complete
       </div>
-        <div style={{color: 'white', fontFamily: "Oswald", fontSize: "25px"}}>
+        <div style={{color: 'white', fontFamily: "Oswald", fontSize: "18px"}}>
 
       Welcome to Fission, 
       <br />
@@ -52,24 +52,29 @@ class About extends Component{
       Currently, you can add inline styling as tag properties when compiling your work. 
       Nesting html is supported, but please be aware that it is still a prototype, so there may be some errors 
       when generating components with nesting components.  
-      <br />
+      <br /><br/>
+      Sample:
+      <ul> 
+        <li>email: guest@sample.com</li> 
+        <li>password: password</li> 
+      </ul>
       These formatting options are supported:</div>
       <ul className="infolist" style={{
         textAlign: 'left',
-        marginLeft: '250px'
+        marginLeft: '0px',
+        fontSize: "15px"
       }}>
 
         <li>Name (your file's name)</li>
         <li>Component (stateful || stateless)</li>
         <li>Group (group your component into its own folder)</li>
         <li>Style (any css markup for the component)</li>
-        <li>Expand (shallow || deep)</li>
       </ul>  
 
 <div className="Footer" style={{
     height: "70%",
     paddingTop: "5px",
-    fontSize: "25px",
+    fontSize: "18px",
    backgroundColor: "transparent",
    backgroundPosition: "bottom"
 

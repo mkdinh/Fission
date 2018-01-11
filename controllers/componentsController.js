@@ -66,7 +66,7 @@ module.exports = {
 
     create: (req, res) => {
         let newComponent = new db.Component(req.body);
-
+        console.log(req.body)
         newComponent.save((err, doc) => {
             if(err){
                 console.log(err)
